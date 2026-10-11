@@ -26,7 +26,7 @@ const KHANDAS_CONFIG = [
 ];
 
 // Global App State
-const AppState = {
+window.AppState = {
     currentMode: 'intro',
     activeKhandaKey: null,
     activeSubKhandaId: null,
@@ -122,12 +122,19 @@ function populateSubKhandaUnderButton(khandaKey, subCategories) {
         } else {
             suttasForSub.forEach(sutta => {
                 const li = document.createElement('li');
-                const isSelected = (sutta.sutta_number === AppState.activeSuttaNumber);
+                const sNumber = sutta.sutta_number !== undefined ? sutta.sutta_number : sutta.id;
+                const isSelected = (String(sNumber) === String(AppState.activeSuttaNumber));
                 li.className = `sutta-sub-item ${isSelected ? 'active' : ''}`;
-                li.innerHTML = `<strong>${sutta.sutta_number}.</strong> ${sutta.sutta_name ? (sutta.sutta_name.split('. ')[1] || sutta.sutta_name) : (sutta.sutta || '')}`;
+                
+                let displayName = sutta.sutta_name || sutta.sutta || '';
+                if (displayName.includes('. ')) {
+                    displayName = displayName.split('. ')[1];
+                }
+
+                li.innerHTML = `<strong>${sNumber}.</strong> ${displayName}`;
                 li.onclick = (e) => {
                     e.stopPropagation();
-                    selectSuttaItem(sutta.sutta_number || sutta.id, sub.id);
+                    selectSuttaItem(sNumber, sub.id);
                 };
                 suttaListUl.appendChild(li);
             });
@@ -169,7 +176,7 @@ function toggleSubKhandaSuttas(subId) {
         AppState.currentSuttas = suttasForSub;
 
         if (suttasForSub.length > 0) {
-            const firstSuttaId = suttasForSub[0].sutta_number || suttasForSub[0].id;
+            const firstSuttaId = suttasForSub[0].sutta_number !== undefined ? suttasForSub[0].sutta_number : suttasForSub[0].id;
             selectSuttaItem(firstSuttaId, subId);
         }
     } else {
@@ -185,18 +192,23 @@ function selectSuttaItem(suttaNum, subId) {
     AppState.activeSubKhandaId = subId;
     AppState.activeExampleIndex = 0;
 
-    // Intro Panel එක සඟවා Sutta Panel එක පෙන්වීම (අත්‍යවශ්‍යයි)
+    // View Panels පාලනය
     const introPanel = document.getElementById('viewIntroPanel');
     const suttaPanel = document.getElementById('viewSuttaPanel');
     if (introPanel) introPanel.style.display = 'none';
     if (suttaPanel) suttaPanel.style.display = 'flex';
 
+    // Sidebar active item class toggle
     document.querySelectorAll('.sutta-sub-item').forEach(el => {
         el.classList.toggle('active', el.innerText.trim().startsWith(`${suttaNum}.`));
     });
 
     const suttasForSub = (window.SuttaDatabase && window.SuttaDatabase[subId]) || [];
-    const sutta = suttasForSub.find(s => (s.sutta_number === suttaNum || s.id === suttaNum));
+    const sutta = suttasForSub.find(s => {
+        const num = s.sutta_number !== undefined ? s.sutta_number : s.id;
+        return String(num) === String(suttaNum);
+    });
+
     if (!sutta) return;
 
     AppState.currentSutta = sutta;
@@ -210,6 +222,8 @@ function selectSuttaItem(suttaNum, subId) {
         renderByanjanaWorkspace(sutta);
     } else if (subId === '04_niggahita' && typeof renderNiggahitaWorkspace === 'function') {
         renderNiggahitaWorkspace(sutta);
+    } else if (subId === '05_pakati' && typeof renderPakatiWorkspace === 'function') {
+        renderPakatiWorkspace(sutta);
     } else {
         renderSuttaWorkspace(sutta);
     }
@@ -274,7 +288,6 @@ function showShadakaraIntro() {
 
     renderKhandaTreeNavigation();
     
-    // shadakara-view.js හි ඇති මොඩියුලය මඟින් Render කිරීම
     if (typeof renderShadakaraFullIntro === 'function') {
         renderShadakaraFullIntro();
     }
@@ -385,73 +398,6 @@ function renderExtraSuttaInformation(sutta) {
         </div>
     `;
 
-    if (sutta.akkhara_chart) {
-        html += `
-            <div class="akkhara-display-card">
-                <h4 class="akkhara-group-title">🔤 පාලි අක්ෂර මාලාව (අක්ෂර 41)</h4>
-                
-                <div class="akkhara-sub-title">⚜️ ස්වර අට (08)</div>
-                <div class="akkhara-badges-grid">
-                    ${sutta.akkhara_chart.sara.map(ch => `<span class="akkhara-badge sara">${ch}</span>`).join('')}
-                </div>
-
-                <div class="akkhara-sub-title">⚜️ වර්ග ව්‍යංජන (25)</div>
-                ${sutta.akkhara_chart.vagga.map(v => `
-                    <div style="margin-bottom: 0.4rem;">
-                        <small style="color: var(--theme-primary); font-weight: bold;">${v.name}:</small>
-                        <div class="akkhara-badges-grid" style="margin-top: 0.2rem;">
-                            ${v.letters.map(ch => `<span class="akkhara-badge">${ch}</span>`).join('')}
-                        </div>
-                    </div>
-                `).join('')}
-
-                <div class="akkhara-sub-title">⚜️ අවර්ග ව්‍යංජන (07)</div>
-                <div class="akkhara-badges-grid">
-                    ${sutta.akkhara_chart.avagga.map(ch => `<span class="akkhara-badge">${ch}</span>`).join('')}
-                </div>
-
-                <div class="akkhara-sub-title">⚜️ නිග්ගහීතය (01)</div>
-                <div class="akkhara-badges-grid">
-                    ${sutta.akkhara_chart.niggahita.map(ch => `<span class="akkhara-badge niggahita">${ch}</span>`).join('')}
-                </div>
-            </div>
-        `;
-    }
-
-    if (sutta.phonetics_system) {
-        html += `
-            <div style="margin-top: 1rem; background: #FAF9F6; border: 1px solid var(--border-soft); padding: 1rem; border-radius: 8px;">
-                <h4 style="color: var(--theme-primary); margin-bottom: 0.6rem;">🔬 ධ්වනි විද්‍යාත්මක ස්ථාන-කරණ-ප්‍රයත්න විවරණය</h4>
-                <div class="table-responsive">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>ස්ථානය / කරණය</th>
-                                <th>අදාළ අක්ෂර</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${sutta.phonetics_system.sthana_classification.map(s => `
-                                <tr>
-                                    <td style="font-weight: 700; color: var(--theme-primary);">${s.sthana}</td>
-                                    <td>${s.letters}</td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        `;
-    }
-
-    if (sutta.extended_commentary) {
-        html += `
-            <div style="margin-top: 0.8rem; background: #FDFBF7; border-left: 4px solid var(--theme-accent); padding: 0.8rem; font-size: 0.95rem;">
-                <strong>ටීකා / සන්න විශෙෂ සටහන:</strong> ${sutta.extended_commentary}
-            </div>
-        `;
-    }
-
     extraContainer.innerHTML = html;
 }
 
@@ -558,6 +504,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ආරම්භයේදීම ෂඩාකාර හැඳින්වීම පෙන්වීම
     showShadakaraIntro();
 });
