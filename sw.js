@@ -1,20 +1,39 @@
-
-
-const CACHE_NAME = 'pada-rupasiddhi-v5.4.0';
+const CACHE_NAME = 'pada-rupasiddhi-v7.8.0';
 
 // Offline භාවිතය සඳහා Cache කරගත යුතු සියලුම අත්‍යවශ්‍ය ගොනු ලැයිස්තුව
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './manifest.json',
+  
+  // Stylesheets
   './css/themes.css',
   './css/main.css',
   './css/shadakara.css',
+  './css/sanna.css',
+  './css/sara.css',
+  './css/byanjana.css',
+  './css/niggahita.css',
+  './css/pakati.css',
+
+  // Core & View Scripts
   './js/app.js',
   './js/shadakara-view.js',
+  './js/sanna-view.js',
+  './js/sara-view.js',
+  './js/byanjana-view.js',
+  './js/niggahita-view.js',
+  './js/pakati-view.js',
+
+  // Data Files
   './data/0_shadakara_intro/shadakara_details.js',
   './data/1_sandhi/01_sanna.js',
   './data/1_sandhi/02_sara.js',
+  './data/1_sandhi/03_byanjana.js',
+  './data/1_sandhi/04_niggahita.js',
+  './data/1_sandhi/05_pakati.js',
+
+  // Icons
   './icons/icon-192.png',
   './icons/icon-512.png'
 ];
