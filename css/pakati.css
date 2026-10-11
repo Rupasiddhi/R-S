@@ -1,0 +1,199 @@
+/* ==========================================================================
+   පකති සන්ධි (Pakati Sandhi) - css/pakati.css
+   ========================================================================== */
+
+.pakati-banner-card {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F0FDF4 100%);
+    border-top: 5px solid #059669;
+    box-shadow: 0 4px 15px rgba(5, 150, 105, 0.06);
+    padding: 1.4rem 1.6rem;
+    border-radius: 10px;
+    margin-bottom: 1.2rem;
+}
+
+.pakati-category-badge {
+    background: #059669;
+    color: #FFF;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.pakati-sutta-title {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: #047857;
+    margin: 0.6rem 0 0.8rem 0;
+}
+
+.pakati-meaning-container {
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-left: 4px solid #10B981;
+    border-radius: 6px;
+    padding: 0.85rem 1.1rem;
+    margin-top: 0.6rem;
+}
+
+.pakati-meaning-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #064E3B;
+    text-align: justify;
+    margin: 0;
+}
+
+.pakati-meaning-text strong,
+.pakati-sanna-text strong {
+    color: #047857;
+    font-weight: 700;
+}
+
+.pakati-vutti-container {
+    background: #FFFDF9;
+    border: 1px dashed #34D399;
+    border-left: 4px solid #059669;
+    border-radius: 6px;
+    padding: 1.1rem 1.25rem;
+    margin-top: 0.9rem;
+}
+
+.pakati-vutti-text {
+    font-size: 1.08rem;
+    line-height: 1.9;
+    color: #064E3B;
+    font-weight: 600;
+    text-align: justify;
+    margin: 0 0 0.8rem 0;
+}
+
+.pakati-sanna-divider {
+    border: 0;
+    border-top: 1px dashed #A7F3D0;
+    margin: 0.8rem 0;
+}
+
+.pakati-sanna-text {
+    font-size: 0.98rem;
+    line-height: 1.85;
+    color: #1F2937;
+    text-align: justify;
+    margin: 0;
+}
+
+.pakati-formed-card {
+    background: #F0FDF4;
+    border-left: 4px solid #10B981;
+    padding: 1.2rem 1.4rem;
+}
+
+.pakati-formed-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.pakati-group-box {
+    background: #FFFFFF;
+    border: 1px solid #D1FAE5;
+    border-radius: 6px;
+    padding: 0.65rem 0.9rem;
+}
+
+.pakati-group-title {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: #047857;
+    margin-bottom: 0.45rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-bottom: 1px dashed #A7F3D0;
+    padding-bottom: 0.25rem;
+}
+
+.pakati-words-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.pakati-word-badge {
+    background: #F0FDF4;
+    border: 1px solid #A7F3D0;
+    color: #065F46;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.22rem 0.65rem;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.15s ease;
+}
+
+.pakati-word-badge:hover {
+    background: #059669;
+    color: #FFFFFF;
+    border-color: #059669;
+    transform: translateY(-1px);
+}
+
+.pakati-counter-card {
+    background: #FFFDFC;
+    border-left: 4px solid #EF4444;
+}
+
+.pakati-counter-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.pakati-commentary-card {
+    background: #F0FDF4;
+    border-left: 4px solid #10B981;
+}
+
+.pakati-commentary-text {
+    background: #FFF;
+    border: 1px dashed #A7F3D0;
+    padding: 1rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: #1F2937;
+    text-align: justify !important;
+}
+
+.pakati-derivation-card {
+    background: #FFF;
+    border: 1px solid var(--border-soft, #D1FAE5);
+    border-radius: 10px;
+    padding: 1.4rem;
+}
+
+.pakati-siddha-box {
+    margin-top: 1.2rem;
+    background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+    border: 1.5px solid #10B981;
+    padding: 1rem 1.4rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pakati-result-label {
+    font-weight: 700;
+    color: #065F46;
+    font-size: 1rem;
+}
+
+.pakati-result-word {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #047857;
+    letter-spacing: 0.5px;
+}
