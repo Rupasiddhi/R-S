@@ -72,6 +72,44 @@ body {
     gap: 1rem;
 }
 
+/* ==========================================================================
+   Sidebar Toggle Button (ඕනෑම තිරයක පැහැදිලිව දර්ශනය වන සේ සකසන ලද)
+   ========================================================================== */
+.sidebar-toggle-btn {
+    display: inline-flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 4px !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    background: #FAF6EE !important;
+    border: 1.5px solid var(--theme-accent, #C59B27) !important;
+    border-radius: 8px !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+    z-index: 1001 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+    transition: all 0.2s ease !important;
+    flex-shrink: 0 !important;
+}
+
+.sidebar-toggle-btn:hover {
+    background: #FDF9EE !important;
+    border-color: var(--theme-primary, #6B1D2F) !important;
+    transform: scale(1.04) !important;
+}
+
+.sidebar-toggle-btn .bar {
+    display: block !important;
+    width: 20px !important;
+    height: 2.5px !important;
+    background-color: var(--theme-primary, #6B1D2F) !important;
+    border-radius: 2px !important;
+    transition: all 0.25s ease !important;
+}
+
 .dhamma-wheel,
 .dhamma-wheel-badge {
     width: 44px;
@@ -85,6 +123,7 @@ body {
     font-size: 1.6rem;
     box-shadow: 0 4px 12px var(--theme-primary-glow);
     border: 1px solid var(--theme-accent);
+    flex-shrink: 0;
 }
 
 .brand-text .main-title {
@@ -94,6 +133,7 @@ body {
     color: var(--theme-primary);
     letter-spacing: 0.5px;
     line-height: 1.2;
+    white-space: nowrap;
 }
 
 .brand-text .sub-title {
@@ -101,10 +141,16 @@ body {
     color: var(--text-muted);
 }
 
-/* Search Box */
+/* Header Actions & Search Box */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
 .search-box-wrapper {
     position: relative;
-    width: 380px;
+    width: 360px;
 }
 
 .search-icon {
@@ -149,6 +195,35 @@ body {
     color: var(--text-muted);
 }
 
+/* PWA Install Button Styles */
+.pwa-install-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    color: #FFFFFF;
+    border: 1px solid #10B981;
+    border-radius: 20px;
+    padding: 0.45rem 0.95rem;
+    font-family: var(--font-sinhala);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.pwa-install-btn:hover {
+    background: linear-gradient(135deg, #047857 0%, #065F46 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35);
+}
+
+.pwa-install-btn .install-icon {
+    font-size: 1rem;
+}
+
 /* 2. Layout Structure */
 .layout-container {
     max-width: 1600px;
@@ -160,6 +235,16 @@ body {
     gap: 1.8rem;
     align-items: start;
     flex: 1;
+    transition: grid-template-columns 0.3s ease;
+}
+
+/* Sidebar Toggle: Desktop & Laptop සඟවන විලාසය */
+.layout-container.sidebar-hidden {
+    grid-template-columns: 1fr !important;
+}
+
+.layout-container.sidebar-hidden .sidebar-nav {
+    display: none !important;
 }
 
 /* 3. Left Sidebar Navigation */
@@ -196,10 +281,7 @@ body {
     gap: 0.5rem;
 }
 
-/* ==========================================================================
-   0. ෂඩාකාරය හැඳින්වීම - පැහැදිලි හා ආකර්ෂණීය බොත්තම් මෝස්තරය
-   ========================================================================== */
-
+/* 0. ෂඩාකාරය හැඳින්වීම Button */
 .intro-section-block {
     margin-bottom: 0.5rem;
 }
@@ -219,7 +301,6 @@ body {
     box-shadow: 0 3px 10px rgba(107, 29, 47, 0.08);
 }
 
-/* Icon එක විශාල කර ඉස්මතු කිරීම */
 .intro-icon {
     font-size: 1.6rem;
     display: flex;
@@ -235,7 +316,6 @@ body {
     gap: 0.25rem;
 }
 
-/* ප්‍රධාන මාතෘකාව පැහැදිලි හා විශාල කිරීම */
 .intro-btn-text strong {
     font-family: var(--font-sinhala);
     font-size: 1.08rem;
@@ -245,7 +325,6 @@ body {
     line-height: 1.3;
 }
 
-/* උප මාතෘකාව */
 .intro-btn-text small {
     font-family: var(--font-sinhala);
     font-size: 0.85rem;
@@ -254,7 +333,6 @@ body {
     line-height: 1.2;
 }
 
-/* Hover සහ Active (තෝරාගත් විට) - මෙරූන් පසුබිම මත රන්වන් අකුරු පැහැදිලිව පෙන්වීම */
 .intro-card-btn.active,
 .intro-card-btn:hover {
     background: linear-gradient(135deg, #6B1D2F 0%, #4A0E17 100%) !important;
@@ -265,13 +343,13 @@ body {
 
 .intro-card-btn.active .intro-btn-text strong,
 .intro-card-btn:hover .intro-btn-text strong {
-    color: #FFF9E6 !important; /* දීප්තිමත් රන්වන් සුදු පැහැය */
+    color: #FFF9E6 !important;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .intro-card-btn.active .intro-btn-text small,
 .intro-card-btn:hover .intro-btn-text small {
-    color: #E6CE93 !important; /* රන්වන් පැහැය */
+    color: #E6CE93 !important;
 }
 
 .section-divider {
@@ -394,7 +472,7 @@ body {
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* 4. Right Main Viewport & Fixed Single Column Views */
+/* 4. Right Main Viewport */
 .main-viewport {
     min-width: 0;
     display: flex;
@@ -403,12 +481,11 @@ body {
     width: 100%;
 }
 
-/* කාඩ්පත් තිරස්ව හිරවීම වළක්වන ප්‍රධාන නීතිය */
 .content-panel,
 #viewIntroPanel,
 #viewSuttaPanel {
     display: flex;
-    flex-direction: column; /* සියලු පැනල සිරස්ව එකිනෙක යටින් පමණක් පෙළගැසීම */
+    flex-direction: column;
     gap: 1.5rem;
     width: 100%;
     min-width: 0;
@@ -437,7 +514,6 @@ body {
     padding-bottom: 0.6rem;
 }
 
-/* ඡේද Justify කිරීම */
 p,
 .hero-body-text,
 .vutti-text,
@@ -447,7 +523,7 @@ p,
     text-justify: inter-word;
 }
 
-/* Sutta Top Banner */
+/* Sutta Banner */
 .sutta-banner-card {
     background: linear-gradient(135deg, #FFFFFF 0%, #FAF5EA 100%);
     border-top: 5px solid var(--theme-primary);
@@ -506,7 +582,7 @@ p,
     font-weight: 600;
 }
 
-/* ෂඩාකාර කාඩ්පත් 6 (සූත්‍ර පුවරුවේ) */
+/* ෂඩාකාර කාඩ්පත් 6 */
 .shadakara-dynamic-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -557,7 +633,7 @@ p,
     color: #702604;
     font-weight: 600;
     line-height: 1.6;
-    text-align: justify;              /* පාලි පාඨය දෙපස සමපාත කිරීම (Justify) */
+    text-align: justify;
     text-justify: inter-word;
 }
 
@@ -669,96 +745,8 @@ p,
     width: 100%;
     overflow-x: auto;
 }
-/* ==========================================================================
-   පාලි අක්ෂර මාලාව (අක්ෂර 41) ප්‍රදර්ශන කාඩ්පත් මෝස්තර
-   ========================================================================== */
 
-.akkhara-display-card {
-    background: #FAF8F5;
-    border: 1.5px solid var(--border-soft);
-    border-radius: 10px;
-    padding: 1.2rem;
-    margin-top: 1rem;
-}
-
-.akkhara-group-title {
-    color: var(--theme-primary);
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-bottom: 0.8rem;
-    border-bottom: 1.5px dashed var(--theme-accent);
-    padding-bottom: 0.4rem;
-}
-
-.akkhara-sub-title {
-    font-size: 0.98rem;
-    font-weight: 700;
-    color: var(--theme-primary);
-    margin: 0.9rem 0 0.4rem 0;
-}
-
-/* අකුරු කොටු පෙළගස්වන Grid එක */
-.akkhara-badges-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-bottom: 0.8rem;
-}
-
-/* තනි අකුරක් පෙන්වන කොටුව (Badge) */
-.akkhara-badge {
-    background: #FFFFFF;
-    border: 1.5px solid #D9CEBD;
-    color: var(--theme-primary);
-    font-family: var(--font-sinhala);
-    font-size: 1.35rem; /* පැහැදිලි විශාල අකුරු */
-    font-weight: 700;
-    padding: 0.35rem 0.85rem;
-    border-radius: 8px;
-    min-width: 50px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-.akkhara-badge:hover {
-    transform: translateY(-2px);
-    border-color: var(--theme-accent);
-    box-shadow: 0 4px 8px rgba(197, 155, 39, 0.2);
-}
-
-/* ස්වර අට සඳහා විශේෂ රන්වන් පසුබිම */
-.akkhara-badge.sara {
-    background: #FDF7E7;
-    color: #8C5302;
-    border-color: #C59B27;
-}
-
-/* නිග්ගහීතය සඳහා විශේෂ පසුබිම */
-.akkhara-badge.niggahita {
-    background: #F5EBE6;
-    color: #5C1422;
-    border-color: #8C2D00;
-}
-/* ==========================================================================
-   Sidebar Toggle (සැඟවීම සහ පෙන්වීම)
-   ========================================================================== */
-
-/* Sidebar Toggle සඳහා CSS (css/main.css) */
-
-/* 1. Desktop & Laptop තිර සඳහා Toggle විලාසය */
-.layout-container.sidebar-hidden {
-    grid-template-columns: 1fr !important;
-}
-
-.layout-container.sidebar-hidden .sidebar-nav {
-    display: none !important;
-}
-
-/* 2. Tablet සහ Mobile තිර (<= 1024px) සඳහා Drawer Toggle විලාසය */
+/* 5. Tablet සහ Mobile Screen Drawer Styling (<= 1024px) */
 @media (max-width: 1024px) {
     .layout-container {
         grid-template-columns: 1fr !important;
@@ -778,10 +766,9 @@ p,
         background: #FFFDF9 !important;
         box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15) !important;
         transition: transform 0.3s ease !important;
-        display: block !important; /* hidden නොවී transform මඟින් ක්‍රියා කිරීම */
+        display: block !important;
     }
 
-    /* මෙනුව විවෘත වූ විට */
     .sidebar-nav.drawer-open {
         transform: translateX(0) !important;
     }
@@ -803,39 +790,35 @@ p,
     }
 }
 
-/* PWA Install Button Styles */
-.pwa-install-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    background: linear-gradient(135deg, #059669 0%, #047857 100%);
-    color: #FFFFFF;
-    border: 1px solid #10B981;
-    border-radius: 20px;
-    padding: 0.45rem 0.95rem;
-    font-family: var(--font-sinhala);
-    font-size: 0.88rem;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25);
-    transition: all 0.2s ease;
-    white-space: nowrap;
-}
-
-.pwa-install-btn:hover {
-    background: linear-gradient(135deg, #047857 0%, #065F46 100%);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35);
-}
-
-.pwa-install-btn .install-icon {
-    font-size: 1rem;
-}
-
+/* 6. කුඩා ජංගම දුරකථන තිර සඳහා Header සැකසුම් (<= 768px) */
 @media (max-width: 768px) {
-    .pwa-install-btn .install-label {
-        display: none; /* කුඩා ජංගම තිරවලදී Icon එක පමණක් පෙන්වීම */
+    .header-container {
+        padding: 0 0.8rem !important;
+        gap: 0.5rem !important;
     }
+
+    .brand-identity {
+        gap: 0.5rem !important;
+    }
+
+    .brand-text .sub-title {
+        display: none !important;
+    }
+
+    .search-box-wrapper {
+        width: auto !important;
+        max-width: 160px !important;
+        flex: 1 !important;
+    }
+
+    .search-shortcut {
+        display: none !important;
+    }
+
+    .pwa-install-btn .install-label {
+        display: none;
+    }
+
     .pwa-install-btn {
         padding: 0.45rem 0.65rem;
         border-radius: 50%;
