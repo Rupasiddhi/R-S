@@ -36,6 +36,19 @@ window.AppState = {
     currentSutta: null
 };
 
+// ➔ මෙතැනට එක් කරන්න:
+let deferredPrompt = null;
+
+// බ්‍රවුසරයේ පෙරනිමි prompt එක රඳවා තබාගැනීම
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const btnInstallApp = document.getElementById('btnInstallApp');
+    if (btnInstallApp) {
+        btnInstallApp.style.display = 'inline-flex';
+    }
+});
+
 function parseLopaCuts(text) {
     if (!text) return '';
     return text.replace(/~([^~]+)~/g, '<span class="lopa-cut">$1</span>');
@@ -197,6 +210,14 @@ function selectSuttaItem(suttaNum, subId) {
     const suttaPanel = document.getElementById('viewSuttaPanel');
     if (introPanel) introPanel.style.display = 'none';
     if (suttaPanel) suttaPanel.style.display = 'flex';
+
+    // ජංගම දුරකථන තිරයකදී පමණක් (<= 768px) සූත්‍රයක් තෝරාගත් විට සයිඩ්බාර් එක වැසීම
+    if (window.innerWidth <= 768) {
+        const sidebarNav = document.querySelector('.sidebar-nav');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        if (sidebarNav) sidebarNav.classList.remove('drawer-open');
+        if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+    }
 
     // Sidebar active item class toggle
     document.querySelectorAll('.sutta-sub-item').forEach(el => {
@@ -464,14 +485,19 @@ function handleGlobalSearch(query) {
 
 // ආරම්භක Initialization
 document.addEventListener('DOMContentLoaded', () => {
+
     const btnIntro = document.getElementById('btnShadakaraIntro');
     if (btnIntro) {
-        btnIntro.addEventListener('click', showShadakaraIntro);
+        btnIntro.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showShadakaraIntro();
+        });
     }
 
     const searchInput = document.getElementById('globalSearchInput');
     if (searchInput) {
         searchInput.addEventListener('input', (e) => handleGlobalSearch(e.target.value));
+        searchInput.addEventListener('click', (e) => e.stopPropagation());
     }
 
     window.addEventListener('keydown', (e) => {
@@ -487,11 +513,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebarOverlay = document.getElementById('sidebarOverlay');
 
     if (btnToggleSidebar) {
-        btnToggleSidebar.addEventListener('click', () => {
-            if (window.innerWidth <= 1024) {
+        btnToggleSidebar.addEventListener('click', (e) => {
+            e.stopPropagation();
+            // ජංගම දුරකථන තිර (<= 768px) සඳහා Drawer ආකාරයෙන් Toggle වීම
+            if (window.innerWidth <= 768) {
                 if (sidebarNav) sidebarNav.classList.toggle('drawer-open');
                 if (sidebarOverlay) sidebarOverlay.classList.toggle('active');
             } else {
+                // Laptop සහ Tablet සඳහා සාමාන්‍ය Sidebar Hide/Show වීම පමණක් සිදුවේ
                 if (layoutContainer) layoutContainer.classList.toggle('sidebar-hidden');
             }
         });
@@ -503,6 +532,48 @@ document.addEventListener('DOMContentLoaded', () => {
             sidebarOverlay.classList.remove('active');
         });
     }
+
+    // ජංගම දුරකථන තිරයකදී පමණක් (<= 768px) පිටත ඕනෑම තැනක් ක්ලික් කළ විට Sidebar එක වැසීම
+    document.addEventListener('click', (e) => {
+        // Laptop සහ Tablet තිරවලදී (width > 768px) කිසිදු වෙනසක් සිදු නොවේ
+        if (window.innerWidth > 768) return;
+
+        // Toggle බොත්තම හෝ Sidebar එක ඇතුළත ක්ලික් වූ විට වැසීම වැළැක්වීම
+        if (sidebarNav && sidebarNav.contains(e.target)) return;
+        if (btnToggleSidebar && btnToggleSidebar.contains(e.target)) return;
+
+        // Mobile Drawer එක පමණක් වැසීම
+        if (sidebarNav && sidebarNav.classList.contains('drawer-open')) {
+            sidebarNav.classList.remove('drawer-open');
+            if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+        }
+    });
+
+    // ➔ PWA Install Button Click Listener:
+    const btnInstallApp = document.getElementById('btnInstallApp');
+    if (btnInstallApp) {
+        btnInstallApp.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+
+            // Prompt එක පෙන්වීම
+            deferredPrompt.prompt();
+
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+                console.log('App එක ස්ථාපනය කරන ලදී.');
+            }
+            deferredPrompt = null;
+            btnInstallApp.style.display = 'none';
+        });
+    }
+
+    // Install වීම අවසන් වූ පසු බොත්තම සැඟවීම
+    window.addEventListener('appinstalled', () => {
+        if (btnInstallApp) {
+            btnInstallApp.style.display = 'none';
+        }
+        deferredPrompt = null;
+    });
 
     showShadakaraIntro();
 });
