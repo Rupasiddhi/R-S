@@ -747,47 +747,18 @@ p,
    Sidebar Toggle (සැඟවීම සහ පෙන්වීම)
    ========================================================================== */
 
-/* Toggle Hamburger Button */
-.sidebar-toggle-btn {
-    background: var(--surface-soft);
-    border: 1.5px solid var(--border-soft);
-    border-radius: var(--radius-sm);
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
+/* Sidebar Toggle සඳහා CSS (css/main.css) */
 
-.sidebar-toggle-btn:hover {
-    background: var(--theme-light);
-    border-color: var(--theme-accent);
-}
-
-.sidebar-toggle-btn .bar {
-    width: 20px;
-    height: 2px;
-    background-color: var(--theme-primary);
-    border-radius: 2px;
-    transition: 0.3s;
-}
-
-/* Sidebar සඟවා ඇති අවස්ථාවේදී Layout එක */
+/* 1. Desktop & Laptop තිර සඳහා Toggle විලාසය */
 .layout-container.sidebar-hidden {
-    grid-template-columns: 1fr !important; /* සම්පූර්ණ තිරය viewport එකට ලබා දීම */
+    grid-template-columns: 1fr !important;
 }
 
 .layout-container.sidebar-hidden .sidebar-nav {
     display: none !important;
 }
 
-/* Sidebar Smooth Transition (Desktop & Tablet) */
-.sidebar-nav {
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* ජංගම දුරකථන සහ Tablet තිර සඳහා Overlay Drawer ආකෘතිය */
+/* 2. Tablet සහ Mobile තිර (<= 1024px) සඳහා Drawer Toggle විලාසය */
 @media (max-width: 1024px) {
     .layout-container {
         grid-template-columns: 1fr !important;
@@ -806,13 +777,15 @@ p,
         border-radius: 0 !important;
         background: #FFFDF9 !important;
         box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15) !important;
+        transition: transform 0.3s ease !important;
+        display: block !important; /* hidden නොවී transform මඟින් ක්‍රියා කිරීම */
     }
 
+    /* මෙනුව විවෘත වූ විට */
     .sidebar-nav.drawer-open {
         transform: translateX(0) !important;
     }
 
-    /* පසුබිම අඳුරු කරන Overlay එක */
     .sidebar-overlay {
         position: fixed;
         top: 0;
@@ -829,6 +802,7 @@ p,
         display: block;
     }
 }
+
 /* PWA Install Button Styles */
 .pwa-install-btn {
     display: inline-flex;
