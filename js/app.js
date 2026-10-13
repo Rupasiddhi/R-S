@@ -507,6 +507,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+// ======================================================================
+    // Sidebar Toggle Controller (Desktop, Tablet & Mobile)
+    // ======================================================================
     const btnToggleSidebar = document.getElementById('btnToggleSidebar');
     const sidebarNav = document.querySelector('.sidebar-nav');
     const layoutContainer = document.querySelector('.layout-container');
@@ -514,18 +517,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btnToggleSidebar) {
         btnToggleSidebar.addEventListener('click', (e) => {
-            e.stopPropagation();
-            // ජංගම දුරකථන තිර (<= 768px) සඳහා Drawer ආකාරයෙන් Toggle වීම
-            if (window.innerWidth <= 768) {
+            e.stopPropagation(); // පිටත ක්ලික් ඉවෙන්ට් එකට බාධා නොවීම සඳහා
+
+            if (window.innerWidth <= 1024) {
+                // Mobile සහ Tablet තිර සඳහා: Drawer එක Open / Close කිරීම
                 if (sidebarNav) sidebarNav.classList.toggle('drawer-open');
                 if (sidebarOverlay) sidebarOverlay.classList.toggle('active');
             } else {
-                // Laptop සහ Tablet සඳහා සාමාන්‍ය Sidebar Hide/Show වීම පමණක් සිදුවේ
-                if (layoutContainer) layoutContainer.classList.toggle('sidebar-hidden');
+                // Laptop සහ Desktop තිර සඳහා: Sidebar එක Hide / Show කිරීම
+                if (layoutContainer) {
+                    layoutContainer.classList.toggle('sidebar-hidden');
+                }
             }
         });
     }
 
+    // පසුබිම (Overlay) ක්ලික් කළ විට Drawer එක වැසීම
     if (sidebarOverlay) {
         sidebarOverlay.addEventListener('click', () => {
             if (sidebarNav) sidebarNav.classList.remove('drawer-open');
@@ -533,19 +540,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ජංගම දුරකථන තිරයකදී පමණක් (<= 768px) පිටත ඕනෑම තැනක් ක්ලික් කළ විට Sidebar එක වැසීම
+    // ජංගම දුරකථන තිරවලදී (Mobile Drawer විවෘතව ඇති විට) පිටත ක්ලික් කළ විට වැසීම
     document.addEventListener('click', (e) => {
-        // Laptop සහ Tablet තිරවලදී (width > 768px) කිසිදු වෙනසක් සිදු නොවේ
-        if (window.innerWidth > 768) return;
+        if (window.innerWidth <= 1024) {
+            // ක්ලික් වූයේ Sidebar එක හෝ Toggle බොත්තම ඇතුළත නොවේ නම් පමණක් වසන්න
+            if (sidebarNav && sidebarNav.contains(e.target)) return;
+            if (btnToggleSidebar && btnToggleSidebar.contains(e.target)) return;
 
-        // Toggle බොත්තම හෝ Sidebar එක ඇතුළත ක්ලික් වූ විට වැසීම වැළැක්වීම
-        if (sidebarNav && sidebarNav.contains(e.target)) return;
-        if (btnToggleSidebar && btnToggleSidebar.contains(e.target)) return;
-
-        // Mobile Drawer එක පමණක් වැසීම
-        if (sidebarNav && sidebarNav.classList.contains('drawer-open')) {
-            sidebarNav.classList.remove('drawer-open');
-            if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+            if (sidebarNav && sidebarNav.classList.contains('drawer-open')) {
+                sidebarNav.classList.remove('drawer-open');
+                if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+            }
         }
     });
 
