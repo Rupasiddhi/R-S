@@ -81,7 +81,7 @@ function renderKhandaTreeNavigation() {
         `;
         
         btn.onclick = (e) => {
-            e.stopPropagation(); // මෙනුව ක්ලික් කිරීමේදී පිටතට Event එක යාම වැළැක්වීම
+            e.stopPropagation();
             selectKhanda(item.key);
         };
 
@@ -122,7 +122,7 @@ function populateSubKhandaUnderButton(khandaKey, subCategories) {
         `;
         
         btn.onclick = (e) => {
-            e.stopPropagation(); // මෙනුව වැසීම වැළැක්වීම
+            e.stopPropagation();
             toggleSubKhandaSuttas(sub.id);
         };
 
@@ -162,7 +162,7 @@ function populateSubKhandaUnderButton(khandaKey, subCategories) {
 }
 
 /**
- * අනුඛාණ්ඩයක් Toggle කිරීම
+ * අනුඛාණ්ඩයක් Toggle කිරීම (අනුඛාණ්ඩය ක්ලික් කළ විට පමණක් සූත්‍ර ලැයිස්තුව දිගහැරේ)
  */
 function toggleSubKhandaSuttas(subId) {
     const isAlreadyActive = (AppState.activeSubKhandaId === subId);
@@ -190,6 +190,7 @@ function toggleSubKhandaSuttas(subId) {
         const suttasForSub = (window.SuttaDatabase && window.SuttaDatabase[subId]) || [];
         AppState.currentSuttas = suttasForSub;
 
+        // පළමු සූත්‍රය ස්වයංක්‍රීයව තෝරාගැනීම
         if (suttasForSub.length > 0) {
             const firstSuttaId = suttasForSub[0].sutta_number !== undefined ? suttasForSub[0].sutta_number : suttasForSub[0].id;
             selectSuttaItem(firstSuttaId, subId);
@@ -201,7 +202,6 @@ function toggleSubKhandaSuttas(subId) {
 
 /**
  * සූත්‍රයක් තෝරා ගැනීම සහ අදාළ Renderer එක කැඳවීම
- * (සූත්‍රය තෝරාගත් පසු මෙනුව ක්ෂණිකව වසා නොදමයි; පරිශීලකයාට අවශ්‍ය නම් වෙනත් සූත්‍රයක් තෝරාගත හැක)
  */
 function selectSuttaItem(suttaNum, subId) {
     AppState.activeSuttaNumber = suttaNum;
@@ -247,6 +247,7 @@ function selectSuttaItem(suttaNum, subId) {
 
 /**
  * ප්‍රධාන ඛාණ්ඩයක් තෝරා ගැනීම
+ * (මෙහිදී අනුඛාණ්ඩ ලැයිස්තුව පමණක් විවෘත වන අතර සූත්‍ර ලැයිස්තුව ඉබේ දිගහැරීම වළක්වා ඇත)
  */
 function selectKhanda(khandaKey) {
     if (AppState.currentMode === 'khanda' && AppState.activeKhandaKey === khandaKey) {
@@ -261,6 +262,7 @@ function selectKhanda(khandaKey) {
 
     AppState.currentMode = 'khanda';
     AppState.activeKhandaKey = khandaKey;
+    AppState.activeSubKhandaId = null; // කිසිදු අනුඛාණ්ඩයක් ස්වයංක්‍රීයව තෝරා නොගනී
     AppState.activeExampleIndex = 0;
 
     switchTheme(`khanda-${khandaKey}`);
@@ -268,17 +270,7 @@ function selectKhanda(khandaKey) {
     const btnIntro = document.getElementById('btnShadakaraIntro');
     if (btnIntro) btnIntro.classList.remove('active');
 
-    const introPanel = document.getElementById('viewIntroPanel');
-    const suttaPanel = document.getElementById('viewSuttaPanel');
-    if (introPanel) introPanel.style.display = 'none';
-    if (suttaPanel) suttaPanel.style.display = 'flex';
-
     renderKhandaTreeNavigation();
-
-    const currentKhandaConfig = KHANDAS_CONFIG.find(k => k.key === khandaKey);
-    if (currentKhandaConfig && currentKhandaConfig.subCategories.length > 0) {
-        toggleSubKhandaSuttas(currentKhandaConfig.subCategories[0].id);
-    }
 }
 
 /**
@@ -519,8 +511,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (sidebarOverlay) {
-        sidebarOverlay.addEventListener('click', (e) => {
-            e.stopPropagation();
+        sidebarOverlay.addEventListener('click', () => {
             if (sidebarNav) sidebarNav.classList.remove('drawer-open');
             sidebarOverlay.classList.remove('active');
         });
@@ -549,26 +540,25 @@ document.addEventListener('DOMContentLoaded', () => {
         deferredPrompt = null;
     });
 
-    // Sidebar එක ඇතුළත ඕනෑම තැනක් ක්ලික් වූ විට පිටතට Click Event එක යාම වැළැක්වීම
+    // Sidebar එක ඇතුළත ක්ලික් වූ විට පිටත Click event එක trigger වීම වැළැක්වීම
     if (sidebarNav) {
         sidebarNav.addEventListener('click', (e) => {
             e.stopPropagation();
         });
     }
 
-    // සූත්‍රය තෝරාගත් පසු හෝ මෙනුවෙන් පිටත තිරයේ ඕනෑම තැනක් ක්ලික් කළ විට මෙනුව වැසීම
+    // සූත්‍රයක් තෝරාගෙන අවසන් වූ පසු පිටත (Viewport/Header) ටච් කළ විට මෙනුව වැසීම
     document.addEventListener('click', (e) => {
-        // Toggle බොත්තම හෝ Sidebar එක ඇතුළත ක්ලික් වූ විට වැසීම නොකළ යුතුය
         if (sidebarNav && sidebarNav.contains(e.target)) return;
         if (btnToggleSidebar && btnToggleSidebar.contains(e.target)) return;
 
-        // Mobile/Tablet Drawer එක වැසීම
+        // Mobile / Tablet Drawer වැසීම
         if (sidebarNav && sidebarNav.classList.contains('drawer-open')) {
             sidebarNav.classList.remove('drawer-open');
             if (sidebarOverlay) sidebarOverlay.classList.remove('active');
         }
 
-        // Desktop තිරවලදී ද මෙනුව විවෘතව ඇත්නම් පිටත ක්ලික් කළ විට Hide කිරීම
+        // Desktop Layout හිදී සයිඩ්බාර් එක Hide කර තිරය නිදහස් කිරීම
         if (window.innerWidth > 1024) {
             if (layoutContainer && !layoutContainer.classList.contains('sidebar-hidden')) {
                 layoutContainer.classList.add('sidebar-hidden');
