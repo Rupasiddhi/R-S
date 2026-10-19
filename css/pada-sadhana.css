@@ -1,0 +1,280 @@
+/* ==========================================================================
+   නාමකණ්ඩ — පද සාධන වැඩබිම (css/pada-sadhana.css)
+   ========================================================================== */
+
+.ps-title-sub {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #8C6A4F;
+}
+
+.ps-refs {
+    font-size: 0.88rem;
+    color: #8C6A4F;
+}
+
+.ps-decl-table td {
+    vertical-align: middle;
+}
+
+.ps-vib-name {
+    font-weight: 700;
+    color: #8C2D00;
+    white-space: nowrap;
+}
+
+.ps-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.ps-form-chip {
+    background: #FFFDF9;
+    border: 1px solid #D9C8A9;
+    color: #5C1422;
+    padding: 0.28rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.98rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.ps-form-chip:hover {
+    background: #FBF1E2;
+    border-color: #C59B27;
+}
+
+.ps-form-chip.active {
+    background: #8C2D00;
+    border-color: #8C2D00;
+    color: #FFF;
+}
+
+.ps-empty {
+    color: var(--text-muted, #9A8A7E);
+}
+
+.ps-deriv-tag {
+    background: #8C2D00;
+    color: #FFF;
+    padding: 0.18rem 0.65rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.ps-deriv-tag-soft {
+    background: #FAF2E6;
+    color: #8C2D00;
+    border: 1px solid #E6D0BA;
+}
+
+.ps-deriv-word {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #5C1422;
+    margin-left: 0.2rem;
+}
+
+.ps-similar,
+.ps-note {
+    line-height: 1.8;
+    text-align: justify;
+    margin: 0 0 0.4rem 0;
+}
+
+/* උපදෙස් පෙට්ටිය */
+.ps-hint-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    background: #FFF8E8;
+    border: 1px solid #E8C86A;
+    border-left: 4px solid #C59B27;
+    border-radius: 6px;
+    padding: 0.65rem 0.9rem;
+    margin: -0.2rem 0 1rem 0;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: #4A2E18;
+}
+
+.ps-hint-icon {
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+/* වගුවේ විභක්ති බොත්තම */
+.ps-vib-btn {
+    background: transparent;
+    border: 1px dashed transparent;
+    color: #8C2D00;
+    font-weight: 700;
+    font-family: inherit;
+    font-size: 0.98rem;
+    padding: 0.2rem 0.45rem;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.ps-vib-btn:hover {
+    background: #FBF1E2;
+    border-color: #C59B27;
+}
+
+.ps-arrow {
+    color: #C59B27;
+    font-size: 0.8rem;
+}
+
+.ps-decl-row.active td {
+    background: #FFF6E6;
+}
+
+.ps-decl-row.active .ps-vib-btn {
+    background: #8C2D00;
+    color: #FFF;
+}
+
+.ps-decl-row.active .ps-arrow {
+    color: #FBD38D;
+}
+
+/* සාධන කාඩ්පතේ පියවර ලේබල */
+.ps-step-label {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #6B1D2F;
+    margin: 0.2rem 0 0.5rem 0;
+}
+
+.ps-step-no {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 50%;
+    background: #C59B27;
+    color: #FFF;
+    font-size: 0.78rem;
+}
+
+/* විභක්ති tabs */
+.ps-vib-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid #EADBCE;
+}
+
+.ps-vib-tab {
+    background: #FFFDF9;
+    border: 1px solid #D9C8A9;
+    color: #5C1422;
+    padding: 0.4rem 0.85rem;
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.ps-vib-tab:hover {
+    background: #FBF1E2;
+    border-color: #C59B27;
+}
+
+.ps-vib-tab.active {
+    background: linear-gradient(135deg, #8C2D00 0%, #6B1D2F 100%);
+    border-color: #6B1D2F;
+    color: #FFF;
+}
+
+/* රූප tabs */
+.ps-form-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.1rem;
+}
+
+.ps-form-tab {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    background: #FFFDF9;
+    border: 1px solid #D9C8A9;
+    border-radius: 8px;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.ps-form-tab:hover {
+    background: #FBF1E2;
+    border-color: #C59B27;
+}
+
+.ps-form-tab-word {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #5C1422;
+}
+
+.ps-form-tab-vac {
+    font-size: 0.72rem;
+    color: #8C6A4F;
+}
+
+.ps-form-tab.active {
+    background: #8C2D00;
+    border-color: #8C2D00;
+}
+
+.ps-form-tab.active .ps-form-tab-word,
+.ps-form-tab.active .ps-form-tab-vac {
+    color: #FFF;
+}
+
+/* දැන් පෙන්වන සාධනය */
+.ps-now-showing {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+    background: #FCF7EE;
+    border: 1px solid #EADBCE;
+    border-radius: 8px;
+    padding: 0.55rem 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.ps-now-label {
+    font-weight: 700;
+    color: #6B1D2F;
+    font-size: 0.92rem;
+}
+
+@media (max-width: 640px) {
+    .ps-decl-table th:first-child,
+    .ps-decl-table td:first-child {
+        width: auto;
+    }
+    .ps-form-chip {
+        font-size: 0.92rem;
+        padding: 0.25rem 0.55rem;
+    }
+}

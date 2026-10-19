@@ -22,6 +22,7 @@ const KHANDAS_CONFIG = [
         name: "2. නාමකණ්ඩ",
         subCategories: [
             { id: "01_pullinga", name: "පුල්ලිඞ්ගං" },
+            { id: "01b_pullinga_sadhana", name: "පුල්ලිඞ්ග පද සාධනය" },
             { id: "02_itthilinga", name: "ඉත්ථිලිඞ්ගං" },
             { id: "03_napumsakalinga", name: "නපුංසකලිඞ්ගං" },
             { id: "04_sabbanama", name: "සබ්බනාමං" },
@@ -259,6 +260,8 @@ function selectSuttaItem(suttaNum, subId) {
         renderNiggahitaWorkspace(sutta);
     } else if (subId === '05_pakati' && typeof renderPakatiWorkspace === 'function') {
         renderPakatiWorkspace(sutta);
+    } else if (typeof isPadaSadhanaSubKhanda === 'function' && isPadaSadhanaSubKhanda(subId) && typeof renderPadaSadhanaWorkspace === 'function') {
+        renderPadaSadhanaWorkspace(sutta);
     } else if (isNamaSubKhanda(subId) && typeof renderNamaWorkspace === 'function') {
         renderNamaWorkspace(sutta);
     } else {
