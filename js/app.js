@@ -24,6 +24,7 @@ const KHANDAS_CONFIG = [
             { id: "01_pullinga", name: "පුල්ලිඞ්ගං" },
             { id: "01b_pullinga_sadhana", name: "පුල්ලිඞ්ග පද සාධනය" },
             { id: "02_itthilinga", name: "ඉත්ථිලිඞ්ගං" },
+            { id: "02b_itthilinga_sadhana", name: "ඉත්ථිලිඞ්ග පද සාධනය" },
             { id: "03_napumsakalinga", name: "නපුංසකලිඞ්ගං" },
             { id: "04_sabbanama", name: "සබ්බනාමං" },
             { id: "05_sankhya", name: "සඞ්ඛ්‍යානාමං" },

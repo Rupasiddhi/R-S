@@ -107,7 +107,7 @@ function renderPadaSadhanaWorkspace(item, targetContainerId = 'viewSuttaPanel') 
                 <span class="badge badge-khanda">නාමකණ්ඩ</span>
                 ${item.ending ? `<span class="badge" style="background:#FAF2E6; color:#8C2D00; border:1px solid #E6D0BA;">${item.ending}</span>` : ''}
             </div>
-            <h2 class="nama-sutta-title">${item.word} <span class="ps-title-sub">— ${item.ending || ''} පුල්ලිඞ්ග ශබ්දය</span></h2>
+            <h2 class="nama-sutta-title">${item.word} <span class="ps-title-sub">— ${item.ending || ''} ${item.linga || 'පුල්ලිඞ්ග'} ශබ්දය</span></h2>
             <div class="nama-meaning-container">
                 <p class="nama-meaning-text">
                     <strong>${item.word}</strong> — ${item.meaning || ''}
@@ -115,6 +115,13 @@ function renderPadaSadhanaWorkspace(item, targetContainerId = 'viewSuttaPanel') 
                 </p>
             </div>
         </div>
+
+        ${(item.stem_steps && item.stem_steps.length) ? `
+            <div class="panel-card nama-derivation-card">
+                <h3 class="section-heading"><span class="heading-icon">🌱</span> ප්‍රකෘති සාධනය (${item.word} ශබ්දය සිද්ධ වන අයුරු)</h3>
+                ${renderNamaDerivationTable({ steps: item.stem_steps, final_result: item.word })}
+            </div>
+        ` : ''}
 
         <div class="panel-card">
             <h3 class="section-heading"><span class="heading-icon">📜</span> විභක්ති වරනැඟීම</h3>
