@@ -42,3 +42,23 @@ body[data-theme="khanda-6_akhyata"] {
     --theme-primary: #1B4D3E;
     --theme-accent: #52B788;
 }
+
+body[data-theme="khanda-3_karaka"] {
+    --theme-primary: #4A2C6B;
+    --theme-accent: #9B72CF;
+}
+
+body[data-theme="khanda-4_samasa"] {
+    --theme-primary: #7A3B12;
+    --theme-accent: #D98E04;
+}
+
+body[data-theme="khanda-5_taddhita"] {
+    --theme-primary: #0F5257;
+    --theme-accent: #3BA99C;
+}
+
+body[data-theme="khanda-7_kibbhidhana"] {
+    --theme-primary: #3D3D3D;
+    --theme-accent: #B08D57;
+}
