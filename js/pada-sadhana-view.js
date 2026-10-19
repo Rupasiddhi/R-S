@@ -55,6 +55,24 @@ function renderPadaSadhanaGrid(item, activeIdx, activeVib) {
     `;
 }
 
+// එකවචන / බහුවචන මාරු කිරීමේ බොත්තම (එකම විභක්තිය තුළ)
+const PS_VACANA = ['එකවචන', 'බහුවචන'];
+
+function renderVacanaToggle(item, d, activeVib) {
+    const forms = padaSadhanaOfVibhatti(item, activeVib);
+    return `
+        <span class="ps-vacana-toggle" role="group" aria-label="වචනය මාරු කරන්න">
+            ${PS_VACANA.map(vac => {
+                const has = forms.some(o => o.d.vacana === vac);
+                const on = d.vacana === vac;
+                return `<button type="button" class="ps-vac-btn ${on ? 'active' : ''}" ${has ? '' : 'disabled'}
+                    aria-pressed="${on}" title="${has ? `${d.vibhatti} ${vac} රූපයට මාරු වන්න` : `${vac} රූපයක් නැත`}"
+                    onclick="switchPadaSadhanaVacana('${vac}')">${vac}</button>`;
+            }).join('')}
+        </span>
+    `;
+}
+
 // 2. සාධන කාඩ්පතේ අන්තර්ගතය (විභක්ති tabs + රූප tabs + සාධන වගුව)
 function renderPadaSadhanaPanel(item, activeIdx, activeVib) {
     const d = (item.derivations || [])[activeIdx];
@@ -81,7 +99,7 @@ function renderPadaSadhanaPanel(item, activeIdx, activeVib) {
             <div class="ps-now-showing">
                 <span class="ps-now-label">පද සාධනය:</span>
                 <span class="ps-deriv-tag">${d.vibhatti}</span>
-                <span class="ps-deriv-tag ps-deriv-tag-soft">${d.vacana}</span>
+                ${renderVacanaToggle(item, d, activeVib)}
                 <span class="ps-deriv-word">${d.word}</span>
             </div>
             ${renderNamaDerivationTable(d)}
@@ -183,6 +201,33 @@ function switchPadaSadhana(index) {
     const fromGrid = !!(document.activeElement && document.activeElement.classList.contains('ps-form-chip'));
     updatePadaSadhanaView(index, fromGrid);
 }
+
+// එකවචන ↔ බහුවචන මාරු කිරීම — එකම විභක්තියේ, හැකි නම් එම අනුපිළිවෙළේම රූපයට
+function switchPadaSadhanaVacana(vac) {
+    const item = window.AppState && window.AppState.currentSutta;
+    if (!item || !item.derivations) return;
+    const cur = item.derivations[window.AppState.activeExampleIndex || 0];
+    if (!cur) return;
+    if (!vac) vac = cur.vacana === PS_VACANA[0] ? PS_VACANA[1] : PS_VACANA[0];
+    if (cur.vacana === vac) return;
+
+    const forms = padaSadhanaOfVibhatti(item, cur.vibhatti_key);
+    const same = forms.filter(o => o.d.vacana === cur.vacana);
+    const target = forms.filter(o => o.d.vacana === vac);
+    if (!target.length) return;
+    const pos = Math.max(0, same.findIndex(o => o.d === cur));
+    updatePadaSadhanaView(target[Math.min(pos, target.length - 1)].i, false);
+}
+
+// යතුරුපුවරුවෙන්: V — වචනය මාරු කිරීම
+document.addEventListener('keydown', (e) => {
+    if (e.key !== 'v' && e.key !== 'V') return;
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    const tag = (e.target && e.target.tagName) || '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || (e.target && e.target.isContentEditable)) return;
+    if (!document.getElementById('padaSadhanaContainer')) return;
+    switchPadaSadhanaVacana();
+});
 
 // විභක්තියක් ක්ලික් කිරීම — එහි පළමු රූපයේ සාධනය පෙන්වයි
 function selectPadaSadhanaVibhatti(vkey) {
