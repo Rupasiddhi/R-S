@@ -17,7 +17,18 @@ const KHANDAS_CONFIG = [
             { id: "05_pakati", name: "පකති සන්ධි" }
         ]
     },
-    { key: "2_nama", name: "2. නාමකණ්ඩ", subCategories: [{ id: "01_pullinga", name: "පුල්ලිංග" }, { id: "02_itthilinga", name: "ඉත්ථිලිංග" }] },
+    {
+        key: "2_nama",
+        name: "2. නාමකණ්ඩ",
+        subCategories: [
+            { id: "01_pullinga", name: "පුල්ලිඞ්ගං" },
+            { id: "02_itthilinga", name: "ඉත්ථිලිඞ්ගං" },
+            { id: "03_napumsakalinga", name: "නපුංසකලිඞ්ගං" },
+            { id: "04_sabbanama", name: "සබ්බනාමං" },
+            { id: "05_sankhya", name: "සඞ්ඛ්‍යානාමං" },
+            { id: "06_abyaya", name: "අබ්‍යයපදං (උපසග්ග-නිපාත)" }
+        ]
+    },
     { key: "3_karaka", name: "3. කාරකකණ්ඩ", subCategories: [{ id: "01_karaka_general", name: "කාරක විධි" }] },
     { key: "4_samasa", name: "4. සමාසකණ්ඩ", subCategories: [{ id: "01_samasa_general", name: "සමාස විධි" }] },
     { key: "5_taddhita", name: "5. තද්ධිතකණ්ඩ", subCategories: [{ id: "01_taddhita_general", name: "තද්ධිත විධි" }] },
@@ -201,6 +212,14 @@ function toggleSubKhandaSuttas(subId) {
 }
 
 /**
+ * අනුඛාණ්ඩය නාමකණ්ඩයට අයත්දැයි පරීක්ෂා කිරීම
+ */
+function isNamaSubKhanda(subId) {
+    const nama = KHANDAS_CONFIG.find(k => k.key === '2_nama');
+    return !!(nama && nama.subCategories.some(s => s.id === subId));
+}
+
+/**
  * සූත්‍රයක් තෝරා ගැනීම සහ අදාළ Renderer එක කැඳවීම
  */
 function selectSuttaItem(suttaNum, subId) {
@@ -240,6 +259,8 @@ function selectSuttaItem(suttaNum, subId) {
         renderNiggahitaWorkspace(sutta);
     } else if (subId === '05_pakati' && typeof renderPakatiWorkspace === 'function') {
         renderPakatiWorkspace(sutta);
+    } else if (isNamaSubKhanda(subId) && typeof renderNamaWorkspace === 'function') {
+        renderNamaWorkspace(sutta);
     } else {
         renderSuttaWorkspace(sutta);
     }
