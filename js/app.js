@@ -12,9 +12,9 @@ const KHANDAS_CONFIG = [
         subCategories: [
             { id: "01_sanna", name: "සංඥා සූත්‍ර" },
             { id: "02_sara", name: "ස්වර සන්ධි" },
+            { id: "05_pakati", name: "පකති සන්ධි" },
             { id: "03_byanjana", name: "ව්‍යංජන සන්ධි" },
-            { id: "04_niggahita", name: "නිග්ගහීත සන්ධි" },
-            { id: "05_pakati", name: "පකති සන්ධි" }
+            { id: "04_niggahita", name: "නිග්ගහීත සන්ධි" }
         ]
     },
     {
@@ -478,20 +478,264 @@ function renderDerivationTable(exampleObj) {
     finalBox.innerText = exampleObj.final_result || exampleObj.word || '--';
 }
 
-function handleGlobalSearch(query) {
-    const q = query.toLowerCase().trim();
-    if (!q) return;
+/* ==========================================================================
+ * සර්වත්‍ර සෙවුම (Global Search)
+ * සියලු ඛාණ්ඩ හා අනුඛාණ්ඩවල සූත්‍ර, වෘත්ති, අර්ථ, උදාහරණ හා වරනැඟිලි රූප තුළ සොයයි.
+ * ========================================================================== */
 
-    const items = document.querySelectorAll('.sutta-sub-item');
-    AppState.currentSuttas.forEach((s, idx) => {
-        const name = (s.sutta_name || s.sutta || '').toLowerCase();
-        const vutti = (s.vutti || '').toLowerCase();
-        const matches = name.includes(q) || vutti.includes(q) ||
-                        (s.examples && s.examples.some(e => (e.word || '').toLowerCase().includes(q)));
-        if (items[idx]) {
-            items[idx].style.display = matches ? 'block' : 'none';
+let SEARCH_INDEX = null;
+let searchActiveIndex = -1;
+let searchCurrentResults = [];
+
+// සිංහල අකුරුවල ZWJ/ZWNJ වැනි නොපෙනෙන අක්ෂර ඉවත් කර සංසන්දනය සඳහා සකස් කිරීම
+function normalizeSearchText(text) {
+    return String(text || '')
+        .normalize('NFC')
+        .replace(/<[^>]*>/g, ' ')
+        .replace(/[​-‍﻿]/g, '')
+        .replace(/[*~\[\]]/g, '')
+        .toLowerCase()
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function escapeHtml(text) {
+    return String(text || '').replace(/[&<>"']/g, ch => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[ch]));
+}
+
+function buildSearchIndex() {
+    const index = [];
+    const db = window.SuttaDatabase || {};
+
+    KHANDAS_CONFIG.forEach(khanda => {
+        (khanda.subCategories || []).forEach(sub => {
+            (db[sub.id] || []).forEach(sutta => {
+                const num = sutta.sutta_number !== undefined ? sutta.sutta_number : sutta.id;
+                const title = sutta.sutta_name || sutta.sutta || sutta.word || '';
+                const fields = [];
+                const add = (label, value) => {
+                    if (!value) return;
+                    const list = Array.isArray(value) ? value : [value];
+                    list.forEach(v => {
+                        if (typeof v === 'string' && v.trim()) {
+                            fields.push({ label, raw: v, norm: normalizeSearchText(v) });
+                        }
+                    });
+                };
+
+                add('අර්ථය', sutta.sutta_meaning || sutta.meaning);
+                add('වෘත්තිය', sutta.vutti);
+                add('සන්නය', sutta.vutti_sanna);
+                add('සූත්‍ර වර්ගය', sutta.sutta_type);
+                add('සෑදෙන පද', sutta.formed_words);
+                add('ප්‍රත්‍යුදාහරණ', sutta.counter_examples);
+                add('සමාන පද', sutta.similar_words);
+                (sutta.examples || []).forEach(ex => {
+                    add('උදාහරණය', ex.word);
+                    add('සිද්ධ පදය', ex.final_result);
+                });
+                (sutta.declension || []).forEach(row => {
+                    add(`${row.vibhatti || 'වරනැඟිල්ල'}`, [].concat(row.eka || [], row.bahu || []));
+                });
+                (sutta.derivations || []).forEach(d => add('පද සාධනය', d.word));
+
+                index.push({
+                    khandaKey: khanda.key,
+                    khandaName: khanda.name,
+                    subId: sub.id,
+                    subName: sub.name,
+                    num,
+                    title,
+                    titleNorm: normalizeSearchText(title),
+                    fields
+                });
+            });
+        });
+    });
+
+    return index;
+}
+
+function runGlobalSearch(query) {
+    if (!SEARCH_INDEX) SEARCH_INDEX = buildSearchIndex();
+    const q = normalizeSearchText(query);
+    if (!q) return [];
+
+    const terms = q.split(' ');
+    const results = [];
+
+    SEARCH_INDEX.forEach(entry => {
+        const allText = entry.titleNorm + ' ' + entry.fields.map(f => f.norm).join(' ');
+        if (!terms.every(t => allText.includes(t))) return;
+
+        let score = 0;
+        if (String(entry.num) === q) score += 100;
+        if (entry.titleNorm.includes(q)) score += 50;
+        if (terms.every(t => entry.titleNorm.includes(t))) score += 20;
+
+        // කුමන ක්ෂේත්‍රයේ ගැළපුණේද යන්න පෙන්වීමට කෙටි කොටසක් (මුල් පාඨයෙන්, ZWJ රැකගෙන)
+        let snippet = null;
+        if (!entry.titleNorm.includes(terms[0])) {
+            const field = entry.fields.find(f => f.norm.includes(terms[0]));
+            if (field) {
+                const display = cleanDisplayText(field.raw);
+                const m = termRegex(terms[0]).exec(display);
+                if (m) {
+                    let start = Math.max(0, m.index - 30);
+                    if (start > 0) {
+                        // වචනයක් මැදින් කැපීම වැළැක්වීම
+                        const space = display.indexOf(' ', start);
+                        start = (space !== -1 && space < m.index) ? space + 1 : m.index;
+                    }
+                    const end = Math.min(display.length, m.index + m[0].length + 50);
+                    snippet = { label: field.label, text: (start > 0 ? '…' : '') + display.slice(start, end) + (end < display.length ? '…' : '') };
+                } else {
+                    snippet = { label: field.label, text: display.slice(0, 80) };
+                }
+                if (field.label === 'උදාහරණය' || field.label === 'සිද්ධ පදය' || field.label === 'පද සාධනය') score += 10;
+            }
+        }
+
+        results.push({ entry, score, snippet });
+    });
+
+    results.sort((a, b) => b.score - a.score);
+    return results;
+}
+
+// පෙන්වීම සඳහා: HTML/markdown සලකුණු ඉවත් කරයි, නමුත් ZWJ (්‍ර, ්‍ය) රැකගනී
+function cleanDisplayText(text) {
+    return String(text || '')
+        .replace(/<[^>]*>/g, ' ')
+        .replace(/[*~\[\]]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+// අක්ෂර අතර නොපෙනෙන අක්ෂර (ZWJ/ZWNJ) තිබුණද ගැළපෙන regex එකක්
+function termRegex(term) {
+    const chars = Array.from(term).map(ch => ch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    return new RegExp(chars.join('[\\u200B-\\u200D\\uFEFF]*'), 'gi');
+}
+
+function highlightTerms(text, query) {
+    const display = cleanDisplayText(text);
+    const ranges = [];
+    normalizeSearchText(query).split(' ').filter(Boolean).forEach(term => {
+        const re = termRegex(term);
+        let m;
+        while ((m = re.exec(display)) !== null) {
+            if (m[0].length === 0) { re.lastIndex++; continue; }
+            ranges.push([m.index, m.index + m[0].length]);
         }
     });
+    if (!ranges.length) return escapeHtml(display);
+
+    ranges.sort((a, b) => a[0] - b[0]);
+    let out = '', pos = 0;
+    ranges.forEach(([a, b]) => {
+        if (a < pos) a = pos;
+        if (b <= a) return;
+        out += escapeHtml(display.slice(pos, a)) + '<mark>' + escapeHtml(display.slice(a, b)) + '</mark>';
+        pos = b;
+    });
+    return out + escapeHtml(display.slice(pos));
+}
+
+function renderSearchResults(query) {
+    const box = document.getElementById('searchResults');
+    if (!box) return;
+
+    if (!normalizeSearchText(query)) {
+        closeSearchResults();
+        return;
+    }
+
+    const results = runGlobalSearch(query);
+    searchCurrentResults = results.slice(0, 50);
+    searchActiveIndex = searchCurrentResults.length ? 0 : -1;
+
+    if (results.length === 0) {
+        box.innerHTML = `<div class="search-empty">"${escapeHtml(query)}" සඳහා ප්‍රතිඵල හමු නොවීය.</div>`;
+    } else {
+        box.innerHTML = `
+            <div class="search-count">ප්‍රතිඵල ${results.length}${results.length > searchCurrentResults.length ? ` (පළමු ${searchCurrentResults.length} පෙන්වයි)` : ''}</div>
+            ${searchCurrentResults.map((r, i) => {
+                const titleText = String(r.entry.title).replace(/^\s*\d+\.\s*/, '');
+                return `
+                <button type="button" class="search-result-item ${i === searchActiveIndex ? 'active' : ''}" role="option" data-idx="${i}">
+                    <span class="sr-path">${escapeHtml(r.entry.khandaName)} › ${escapeHtml(r.entry.subName)}</span>
+                    <span class="sr-title"><strong>${escapeHtml(r.entry.num)}.</strong> ${highlightTerms(titleText, query)}</span>
+                    ${r.snippet ? `<span class="sr-snippet"><em>${escapeHtml(r.snippet.label)}:</em> ${highlightTerms(r.snippet.text, query)}</span>` : ''}
+                </button>`;
+            }).join('')}
+        `;
+        box.querySelectorAll('.search-result-item').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openSearchResult(Number(btn.dataset.idx));
+            });
+        });
+    }
+
+    box.classList.add('open');
+}
+
+function closeSearchResults() {
+    const box = document.getElementById('searchResults');
+    if (box) {
+        box.classList.remove('open');
+        box.innerHTML = '';
+    }
+    searchCurrentResults = [];
+    searchActiveIndex = -1;
+}
+
+function moveSearchSelection(delta) {
+    if (!searchCurrentResults.length) return;
+    searchActiveIndex = (searchActiveIndex + delta + searchCurrentResults.length) % searchCurrentResults.length;
+    document.querySelectorAll('#searchResults .search-result-item').forEach((el, i) => {
+        el.classList.toggle('active', i === searchActiveIndex);
+        if (i === searchActiveIndex) el.scrollIntoView({ block: 'nearest' });
+    });
+}
+
+function openSearchResult(idx) {
+    const result = searchCurrentResults[idx];
+    if (!result) return;
+    const { khandaKey, subId, num } = result.entry;
+
+    closeSearchResults();
+    const input = document.getElementById('globalSearchInput');
+    if (input) input.blur();
+
+    navigateToSutta(khandaKey, subId, num);
+}
+
+/**
+ * ඕනෑම ඛාණ්ඩයක/අනුඛාණ්ඩයක සූත්‍රයකට සෘජුව යාම (සෙවුම් ප්‍රතිඵල සඳහා)
+ */
+function navigateToSutta(khandaKey, subId, suttaNum) {
+    AppState.currentMode = 'khanda';
+    AppState.activeKhandaKey = khandaKey;
+    AppState.activeSubKhandaId = subId;
+    AppState.currentSuttas = (window.SuttaDatabase && window.SuttaDatabase[subId]) || [];
+
+    switchTheme(`khanda-${khandaKey}`);
+    const btnIntro = document.getElementById('btnShadakaraIntro');
+    if (btnIntro) btnIntro.classList.remove('active');
+
+    renderKhandaTreeNavigation();
+    selectSuttaItem(suttaNum, subId);
+
+    const activeItem = document.querySelector('.sutta-sub-item.active');
+    if (activeItem) activeItem.scrollIntoView({ block: 'nearest' });
+
+    const viewport = document.getElementById('mainViewport');
+    if (viewport) viewport.scrollTop = 0;
+    window.scrollTo(0, 0);
 }
 
 // ආරම්භක Initialization
@@ -506,8 +750,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const searchInput = document.getElementById('globalSearchInput');
     if (searchInput) {
-        searchInput.addEventListener('input', (e) => handleGlobalSearch(e.target.value));
+        searchInput.addEventListener('input', (e) => renderSearchResults(e.target.value));
+        searchInput.addEventListener('focus', (e) => {
+            if (e.target.value.trim()) renderSearchResults(e.target.value);
+        });
         searchInput.addEventListener('click', (e) => e.stopPropagation());
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                moveSearchSelection(1);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                moveSearchSelection(-1);
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                if (searchActiveIndex >= 0) openSearchResult(searchActiveIndex);
+            } else if (e.key === 'Escape') {
+                searchInput.value = '';
+                closeSearchResults();
+                searchInput.blur();
+            }
+        });
+    }
+
+    const searchResultsBox = document.getElementById('searchResults');
+    if (searchResultsBox) {
+        searchResultsBox.addEventListener('click', (e) => e.stopPropagation());
     }
 
     window.addEventListener('keydown', (e) => {
@@ -573,6 +841,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // සූත්‍රයක් තෝරාගෙන අවසන් වූ පසු පිටත (Viewport/Header) ටච් කළ විට මෙනුව වැසීම
     document.addEventListener('click', (e) => {
+        // සෙවුම් ප්‍රතිඵල ලැයිස්තුවෙන් පිටත ක්ලික් කළ විට එය වැසීම
+        const searchWrapper = document.querySelector('.search-box-wrapper');
+        if (!(searchWrapper && searchWrapper.contains(e.target))) {
+            closeSearchResults();
+        }
+
         if (sidebarNav && sidebarNav.contains(e.target)) return;
         if (btnToggleSidebar && btnToggleSidebar.contains(e.target)) return;
 

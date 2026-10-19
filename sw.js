@@ -1,11 +1,22 @@
-const CACHE_NAME = 'pada-rupasiddhi-v12.8.0';
+// ==========================================================================
+// පද රූපසිද්ධි සංහිතා - Service Worker
+// --------------------------------------------------------------------------
+// උපාය මාර්ගය: Stale-While-Revalidate
+//   • Cache එකේ ඇති පිටපත වහාම ලබාදේ (offline හා වේගවත්).
+//   • එම අවස්ථාවේම පසුබිමින් network එකෙන් අලුත් පිටපත ලබාගෙන cache යාවත්කාලීන කරයි.
+//   • එබැවින් දත්ත ගොනුවක් වෙනස් කළ විට, පරිශීලකයාට ඊළඟ විවෘත කිරීමේදී අලුත් අන්තර්ගතය පෙනේ.
+// නව ගොනුවක් index.html වෙත එක් කරන විට එය ASSETS_TO_CACHE ලැයිස්තුවටද එක් කරන්න.
+// ==========================================================================
+
+const CACHE_NAME = 'pada-rupasiddhi-v13.0.0';
+const FONT_CACHE = 'pada-rupasiddhi-fonts-v1';
 
 // Offline භාවිතය සඳහා Cache කරගත යුතු සියලුම අත්‍යවශ්‍ය ගොනු ලැයිස්තුව
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './manifest.json',
-  
+
   // Stylesheets
   './css/themes.css',
   './css/main.css',
@@ -15,6 +26,8 @@ const ASSETS_TO_CACHE = [
   './css/byanjana.css',
   './css/niggahita.css',
   './css/pakati.css',
+  './css/nama.css',
+  './css/pada-sadhana.css',
 
   // Core & View Scripts
   './js/app.js',
@@ -24,6 +37,8 @@ const ASSETS_TO_CACHE = [
   './js/byanjana-view.js',
   './js/niggahita-view.js',
   './js/pakati-view.js',
+  './js/nama-view.js',
+  './js/pada-sadhana-view.js',
 
   // Data Files
   './data/0_shadakara_intro/shadakara_details.js',
@@ -32,64 +47,87 @@ const ASSETS_TO_CACHE = [
   './data/1_sandhi/03_byanjana.js',
   './data/1_sandhi/04_niggahita.js',
   './data/1_sandhi/05_pakati.js',
+  './data/2_nama/01_pullinga.js',
+  './data/2_nama/01b_pullinga_sadhana.js',
 
   // Icons
   './icons/icon-192.png',
-  './icons/icon-512.png'
+  './icons/icon-512.png',
+  './icons/icon-maskable.png'
 ];
 
-// 1. Service Worker Install වීම හා ගොනු Cache කිරීම
+// 1. Install: සියලු ගොනු Cache කිරීම
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log('[Service Worker] සියලු ගොනු Cache කරමින් පවතී...');
-      return cache.addAll(ASSETS_TO_CACHE);
-    }).then(() => {
-      return self.skipWaiting();
-    })
+    caches.open(CACHE_NAME)
+      .then((cache) => cache.addAll(ASSETS_TO_CACHE))
+      .then(() => self.skipWaiting())
   );
 });
 
-// 2. පැරණි Caches ඉවත් කිරීම (Activate වීම)
+// 2. Activate: පැරණි Caches ඉවත් කිරීම
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cache) => {
-          if (cache !== CACHE_NAME) {
-            console.log('[Service Worker] පැරණි Cache ඉවත් කරමින්:', cache);
-            return caches.delete(cache);
-          }
-        })
-      );
-    }).then(() => {
-      return self.clients.claim();
-    })
+    caches.keys().then((names) => Promise.all(
+      names
+        .filter((name) => name !== CACHE_NAME && name !== FONT_CACHE)
+        .map((name) => caches.delete(name))
+    )).then(() => self.clients.claim())
   );
 });
 
-// 3. Network First / Cache Fallback මඟින් දත්ත ලබාදීම (Offline Support)
+// Google Fonts (වෙනත් origin) - cache-first, offline තුළද සිංහල අකුරු නිවැරදිව පෙන්වීමට
+function isFontRequest(url) {
+  return url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com';
+}
+
+// 3. Fetch
 self.addEventListener('fetch', (event) => {
+  const request = event.request;
+  if (request.method !== 'GET') return;
+
+  const url = new URL(request.url);
+
+  if (isFontRequest(url)) {
+    event.respondWith(
+      caches.open(FONT_CACHE).then((cache) =>
+        cache.match(request).then((cached) => cached || fetch(request).then((response) => {
+          if (response && (response.ok || response.type === 'opaque')) {
+            cache.put(request, response.clone());
+          }
+          return response;
+        }))
+      )
+    );
+    return;
+  }
+
+  // වෙනත් origin ඉල්ලීම් browser එකටම භාර දීම
+  if (url.origin !== self.location.origin) return;
+
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request).then((networkResponse) => {
-        // අලුතින් ඉල්ලූ සාර්ථක සම්පත්ද Cache වෙත එකතු කර ගැනීම
-        if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
-          const responseToCache = networkResponse.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseToCache);
-          });
+    caches.open(CACHE_NAME).then((cache) =>
+      cache.match(request, { ignoreSearch: true }).then((cached) => {
+        const networkFetch = fetch(request).then((response) => {
+          if (response && response.ok && response.type === 'basic') {
+            cache.put(request, response.clone());
+          }
+          return response;
+        }).catch(() => {
+          // Offline: පිටු ඉල්ලීමකට මූලික පිටුව ලබාදීම
+          if (request.mode === 'navigate') {
+            return cache.match('./index.html');
+          }
+          return undefined;
+        });
+
+        if (cached) {
+          // පසුබිමින් යාවත්කාලීන කිරීම (Service worker නැවතීමට පෙර අවසන් වීමට ඉඩ දීම)
+          event.waitUntil(networkFetch.catch(() => {}));
+          return cached;
         }
-        return networkResponse;
-      }).catch(() => {
-        // Offline අවස්ථාවේදීද අත්‍යවශ්‍ය මූලික පිටුව ලබාදීම
-        if (event.request.headers.get('accept') && event.request.headers.get('accept').includes('text/html')) {
-          return caches.match('./index.html');
-        }
-      });
-    })
+        return networkFetch.then((response) => response || Response.error());
+      })
+    )
   );
 });

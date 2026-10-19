@@ -181,6 +181,104 @@ input {
     font-family: system-ui, sans-serif;
 }
 
+/* සර්වත්‍ර සෙවුම් ප්‍රතිඵල ලැයිස්තුව */
+.search-box-wrapper {
+    position: relative;
+}
+
+.search-results {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    width: min(520px, 92vw);
+    max-height: min(70vh, 560px);
+    overflow-y: auto;
+    background: var(--surface-card, #FFFFFF);
+    border: 1px solid var(--border-soft, #EADBBE);
+    border-radius: var(--radius-md, 14px);
+    box-shadow: var(--shadow-elevated, 0 10px 30px rgba(0, 0, 0, 0.12));
+    z-index: 200;
+    padding: 0.35rem;
+    color: var(--text-dark, #2B2118);
+}
+
+.search-results.open {
+    display: block;
+}
+
+.search-count,
+.search-empty {
+    font-size: 0.8rem;
+    color: var(--text-muted, #6E6153);
+    padding: 0.45rem 0.6rem;
+}
+
+.search-empty {
+    padding: 1rem 0.6rem;
+    text-align: center;
+}
+
+.search-result-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm, 8px);
+    padding: 0.55rem 0.7rem;
+    cursor: pointer;
+    font-family: inherit;
+    color: inherit;
+}
+
+.search-result-item:hover,
+.search-result-item.active {
+    background: var(--theme-light, #FAF4E6);
+    border-color: var(--border-soft, #EADBBE);
+}
+
+.search-result-item .sr-path {
+    font-size: 0.72rem;
+    color: var(--text-muted, #6E6153);
+}
+
+.search-result-item .sr-title {
+    font-size: 0.95rem;
+    color: var(--theme-primary, #5C1422);
+}
+
+.search-result-item .sr-snippet {
+    font-size: 0.8rem;
+    color: var(--text-dark, #2B2118);
+    line-height: 1.5;
+}
+
+.search-result-item .sr-snippet em {
+    font-style: normal;
+    color: var(--text-muted, #6E6153);
+}
+
+.search-result-item mark {
+    background: var(--theme-accent-light, #F4E8C1);
+    color: inherit;
+    border-radius: 3px;
+    padding: 0 1px;
+}
+
+@media (max-width: 640px) {
+    .search-results {
+        position: fixed;
+        top: calc(var(--header-height, 72px) - 4px);
+        left: 0.5rem;
+        right: 0.5rem;
+        width: auto;
+        max-height: calc(100vh - var(--header-height, 72px) - 1rem);
+    }
+}
+
 /* --------------------------------------------------------------------------
    2. ප්‍රධාන Layout Grid
    -------------------------------------------------------------------------- */
@@ -729,4 +827,4 @@ input {
     .shadakara-dynamic-grid {
         grid-template-columns: minmax(0, 1fr) !important;
     }
-}
+}
