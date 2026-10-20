@@ -278,3 +278,48 @@
         padding: 0.25rem 0.55rem;
     }
 }
+
+/* එකවචන / බහුවචන මාරු කිරීම */
+.ps-vacana-toggle {
+    display: inline-flex;
+    border: 1px solid #E6D0BA;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #FAF2E6;
+}
+
+.ps-vac-btn {
+    border: none;
+    background: transparent;
+    color: #8C2D00;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.22rem 0.8rem;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.ps-vac-btn + .ps-vac-btn {
+    border-left: 1px solid #E6D0BA;
+}
+
+.ps-vac-btn:hover:not(:disabled):not(.active) {
+    background: #F3E3CF;
+}
+
+.ps-vac-btn.active {
+    background: #8C2D00;
+    color: #FFF;
+    cursor: default;
+}
+
+.ps-vac-btn:disabled {
+    color: #C9B8A8;
+    cursor: not-allowed;
+}
+
+.ps-vac-btn:focus-visible {
+    outline: 2px solid var(--theme-accent, #C59B27);
+    outline-offset: -2px;
+}
