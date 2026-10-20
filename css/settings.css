@@ -1,0 +1,219 @@
+/* ==========================================================================
+   සැකසුම් (Settings) — Header දකුණු පස බොත්තම හා පැනලය (css/settings.css)
+   ========================================================================== */
+
+.settings-wrapper {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.settings-btn {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-sm, 8px);
+    color: #FFF9E6;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s ease, transform 0.3s ease;
+}
+
+.settings-btn:hover,
+.settings-btn[aria-expanded="true"] {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.settings-btn[aria-expanded="true"] svg {
+    transform: rotate(45deg);
+}
+
+.settings-btn svg {
+    width: 22px;
+    height: 22px;
+    transition: transform 0.3s ease;
+}
+
+.settings-panel {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    right: 0;
+    width: 300px;
+    max-width: calc(100vw - 1.5rem);
+    background: var(--surface-card, #FFFFFF);
+    color: var(--text-dark, #2B2118);
+    border: 1px solid var(--border-soft, #EADBBE);
+    border-top: 3px solid var(--theme-accent, #C59B27);
+    border-radius: var(--radius-md, 14px);
+    box-shadow: var(--shadow-elevated, 0 10px 30px rgba(0, 0, 0, 0.12));
+    padding: 1rem 1.1rem 1.1rem;
+    z-index: 120;
+}
+
+.settings-panel.open {
+    display: block;
+}
+
+.settings-title {
+    margin: 0 0 0.8rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--theme-primary, #5C1422);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.settings-close {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    line-height: 1;
+    color: var(--text-muted, #6E6153);
+    cursor: pointer;
+    padding: 0.1rem 0.3rem;
+}
+
+.settings-row {
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--border-soft, #EADBBE);
+}
+
+.settings-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.45rem;
+}
+
+.settings-hint {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted, #6E6153);
+    margin-top: 0.35rem;
+}
+
+.settings-stepper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.settings-stepper button,
+.settings-seg button,
+.settings-action {
+    font-family: inherit;
+    border: 1px solid var(--border-soft, #EADBBE);
+    background: var(--surface-soft, #FDFBF7);
+    color: var(--text-dark, #2B2118);
+    border-radius: var(--radius-sm, 8px);
+    cursor: pointer;
+}
+
+.settings-stepper button {
+    width: 38px;
+    height: 34px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.settings-stepper button:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.settings-stepper output {
+    flex: 1;
+    text-align: center;
+    font-weight: 700;
+    font-family: system-ui, sans-serif;
+    font-size: 0.9rem;
+}
+
+.settings-seg {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.35rem;
+}
+
+.settings-seg button {
+    padding: 0.4rem 0.2rem;
+    font-size: 0.82rem;
+}
+
+.settings-seg button[aria-pressed="true"],
+.settings-stepper button:not(:disabled):hover,
+.settings-seg button:hover,
+.settings-action:hover {
+    border-color: var(--theme-accent, #C59B27);
+}
+
+.settings-seg button[aria-pressed="true"] {
+    background: var(--theme-primary, #5C1422);
+    border-color: var(--theme-primary, #5C1422);
+    color: #FFF9E6;
+    font-weight: 700;
+}
+
+.settings-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--border-soft, #EADBBE);
+}
+
+.settings-action {
+    padding: 0.5rem 0.3rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.settings-version {
+    margin-top: 0.7rem;
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--text-muted, #6E6153);
+    font-family: system-ui, sans-serif;
+}
+
+/* --------------------------------------------------------------------------
+   රාත්‍රී කියවීම් මාදිලිය — වර්ණ සියල්ල එකවර අඳුරු කිරීම
+   (root මූලද්‍රව්‍යයට filter යෙදූ විට fixed/sticky පිහිටුම් වෙනස් නොවේ)
+   -------------------------------------------------------------------------- */
+html.night-mode {
+    filter: invert(0.9) hue-rotate(180deg);
+    background: #FFFFFF;
+}
+
+/* Header එක මුල් වර්ණයෙන් ම තබා ගැනීමට නැවත invert කරයි;
+   ඒ තුළ ඇති පැනල නැවත අඳුරු කරයි */
+html.night-mode img,
+html.night-mode video,
+html.night-mode .app-header,
+html.night-mode .app-header .settings-panel,
+html.night-mode .app-header .search-results {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+@media (max-width: 640px) {
+    .settings-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .settings-panel {
+        position: fixed;
+        top: calc(var(--header-height, 72px) - 2px);
+        left: 0.75rem;
+        right: 0.75rem;
+        width: auto;
+        max-width: none;
+        max-height: calc(100vh - var(--header-height, 72px) - 1rem);
+        overflow-y: auto;
+    }
+}
