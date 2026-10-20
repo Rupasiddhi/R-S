@@ -668,7 +668,7 @@ function renderSearchResults(query) {
         box.innerHTML = `
             <div class="search-count">ප්‍රතිඵල ${results.length}${results.length > searchCurrentResults.length ? ` (පළමු ${searchCurrentResults.length} පෙන්වයි)` : ''}</div>
             ${searchCurrentResults.map((r, i) => {
-                const titleText = String(r.entry.title).replace(/^\s*\d+\.\s*/, '');
+                const titleText = String(r.entry.title).replace(/^\s*[^\s.]+\.\s+/, '');
                 return `
                 <button type="button" class="search-result-item ${i === searchActiveIndex ? 'active' : ''}" role="option" data-idx="${i}">
                     <span class="sr-path">${escapeHtml(r.entry.khandaName)} › ${escapeHtml(r.entry.subName)}</span>
