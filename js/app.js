@@ -26,9 +26,13 @@ const KHANDAS_CONFIG = [
             { id: "02_itthilinga", name: "ඉත්ථිලිඞ්ගං" },
             { id: "02b_itthilinga_sadhana", name: "ඉත්ථිලිඞ්ග පද සාධනය" },
             { id: "03_napumsakalinga", name: "නපුංසකලිඞ්ගං" },
+            { id: "03b_napumsakalinga_sadhana", name: "නපුංසකලිඞ්ග පද සාධනය" },
             { id: "04_sabbanama", name: "සබ්බනාමං" },
-            { id: "05_sankhya", name: "සඞ්ඛ්‍යානාමං" },
-            { id: "06_abyaya", name: "අබ්‍යයපදං (උපසග්ග-නිපාත)" }
+            { id: "04b_sabbanama_sadhana", name: "සබ්බනාම පද සාධනය" },
+            { id: "05_alinga", name: "අලිඞ්ගනාමං (තුම්හ-අම්හ, සඞ්ඛ්‍යා)" },
+            { id: "05b_alinga_sadhana", name: "අලිඞ්ගනාම පද සාධනය" },
+            { id: "06_vibhattippaccaya", name: "විභත්තිප්පච්චයවිධානං" },
+            { id: "07_abyaya", name: "අබ්‍යයපදං (උපසග්ග-නිපාත)" }
         ]
     },
     { key: "3_karaka", name: "3. කාරකකණ්ඩ", subCategories: [{ id: "01_karaka_general", name: "කාරක විධි" }] },
