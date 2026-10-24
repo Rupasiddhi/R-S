@@ -35,7 +35,20 @@ const KHANDAS_CONFIG = [
             { id: "07_abyaya", name: "අබ්‍යයපදං (උපසග්ග-නිපාත)" }
         ]
     },
-    { key: "3_karaka", name: "3. කාරකකණ්ඩ", subCategories: [{ id: "01_karaka_general", name: "කාරක විධි" }] },
+    {
+        key: "3_karaka",
+        name: "3. කාරකකණ්ඩ",
+        subCategories: [
+            { id: "00_karaka_intro", name: "කාරක හැඳින්වීම හා සිතියම" },
+            { id: "01_karaka_pathama", name: "පඨමා — ලිඞ්ගත්ථ" },
+            { id: "02_karaka_dutiya", name: "දුතියා — කම්මකාරක" },
+            { id: "03_karaka_tatiya", name: "තතියා — කරණ, කත්තු, හෙතු" },
+            { id: "04_karaka_catutthi", name: "චතුත්ථී — සම්පදානකාරක" },
+            { id: "05_karaka_pancami", name: "පඤ්චමී — අපාදානකාරක" },
+            { id: "06_karaka_chatthi", name: "ඡට්ඨී — සාමිසම්බන්ධ" },
+            { id: "07_karaka_sattami", name: "සත්තමී — ඔකාසකාරක" }
+        ]
+    },
     { key: "4_samasa", name: "4. සමාසකණ්ඩ", subCategories: [{ id: "01_samasa_general", name: "සමාස විධි" }] },
     { key: "5_taddhita", name: "5. තද්ධිතකණ්ඩ", subCategories: [{ id: "01_taddhita_general", name: "තද්ධිත විධි" }] },
     { key: "6_akhyata", name: "6. ආඛ්‍යාතකණ්ඩ", subCategories: [{ id: "01_akhyata_general", name: "ආඛ්‍යාත විධි" }] },
@@ -165,7 +178,7 @@ function populateSubKhandaUnderButton(khandaKey, subCategories) {
                     displayName = displayName.split('. ')[1];
                 }
 
-                li.innerHTML = `<strong>${sNumber}.</strong> ${displayName}`;
+                li.innerHTML = sutta.is_intro ? `🧭 ${sutta.sutta_name}` : `<strong>${sNumber}.</strong> ${displayName}`;
                 li.onclick = (e) => {
                     e.stopPropagation();
                     selectSuttaItem(sNumber, sub.id);
@@ -330,6 +343,8 @@ function selectSuttaItem(suttaNum, subId) {
         renderNiggahitaWorkspace(sutta);
     } else if (subId === '05_pakati' && typeof renderPakatiWorkspace === 'function') {
         renderPakatiWorkspace(sutta);
+    } else if (typeof isKarakaSubKhanda === 'function' && isKarakaSubKhanda(subId) && typeof renderKarakaWorkspace === 'function') {
+        renderKarakaWorkspace(sutta);
     } else if (typeof isPadaSadhanaSubKhanda === 'function' && isPadaSadhanaSubKhanda(subId) && typeof renderPadaSadhanaWorkspace === 'function') {
         renderPadaSadhanaWorkspace(sutta);
     } else if (isNamaSubKhanda(subId) && typeof renderNamaWorkspace === 'function') {
