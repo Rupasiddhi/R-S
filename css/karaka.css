@@ -1,0 +1,175 @@
+/* ==========================================================================
+   කාරකකණ්ඩ — කියවීමේ වැඩබිම (css/karaka.css)
+   ========================================================================== */
+
+.kk-hero {
+    border-top: 6px solid var(--vc, #4A2C6B);
+    background: linear-gradient(160deg, color-mix(in srgb, var(--vc, #4A2C6B) 7%, #fff) 0%, #fff 55%);
+}
+.kk-hero-top { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+.kk-num {
+    min-width: 3rem; height: 3rem; padding: 0 0.6rem; border-radius: 14px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--vc, #4A2C6B); color: #fff; font-weight: 800; font-size: 1.25rem;
+    font-family: system-ui, sans-serif; box-shadow: 0 4px 12px color-mix(in srgb, var(--vc) 35%, transparent);
+}
+.kk-hero-chips { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.kk-badge {
+    font-size: 0.78rem; padding: 0.2rem 0.65rem; border-radius: 20px;
+    background: #fff; border: 1px solid color-mix(in srgb, var(--vc, #888) 35%, #ddd); color: #3a3a3a;
+}
+.kk-badge-role { background: var(--vc, #4A2C6B); color: #fff; border-color: transparent; font-weight: 700; }
+.kk-badge-sub { color: var(--vc, #4A2C6B); font-weight: 600; }
+.kk-sutta {
+    margin: 0.9rem 0 0.6rem; font-size: 1.7rem; line-height: 1.5; color: var(--vc, #4A2C6B);
+    word-break: break-word;
+}
+.kk-gist {
+    margin: 0 0 0.5rem; font-size: 1.04rem; font-weight: 600; color: var(--text-dark, #2B2118);
+    display: flex; gap: 0.55rem; align-items: baseline; flex-wrap: wrap;
+}
+.kk-gist-label {
+    font-size: 0.72rem; font-weight: 700; padding: 0.1rem 0.5rem; border-radius: 6px;
+    background: color-mix(in srgb, var(--vc, #4A2C6B) 14%, #fff); color: var(--vc, #4A2C6B);
+}
+.kk-gloss { margin: 0 0 0.6rem; color: var(--text-muted, #6E6153); font-size: 0.95rem; }
+.kk-headnote { font-size: 0.85rem; color: var(--text-muted); border-left: 3px solid #ddd; padding-left: 0.7rem; margin: 0.4rem 0; }
+.kk-headnote p { margin: 0.2rem 0; }
+
+/* කාරක-විභක්ති සිතියම (කුඩා) */
+.kk-map {
+    margin-top: 0.9rem; padding: 0.8rem 0.9rem; border-radius: 12px;
+    background: #fff; border: 1px dashed color-mix(in srgb, var(--vc, #888) 40%, #ddd);
+}
+.kk-map-row { display: flex; align-items: center; flex-wrap: wrap; gap: 0.3rem; }
+.kk-map-sep { width: 10px; height: 2px; background: #e5e0d8; }
+.kk-vib-dot {
+    display: inline-block; padding: 0.18rem 0.6rem; border-radius: 20px; font-size: 0.82rem;
+    border: 1.5px solid color-mix(in srgb, var(--vc) 45%, #ddd); color: color-mix(in srgb, var(--vc) 70%, #555);
+    background: #fff; opacity: 0.55;
+}
+.kk-vib-dot.on { background: var(--vc); color: #fff; border-color: var(--vc); opacity: 1; font-weight: 700; box-shadow: 0 2px 8px color-mix(in srgb, var(--vc) 40%, transparent); }
+.kk-karaka-row { margin-top: 0.55rem; }
+.kk-kar {
+    font-size: 0.78rem; padding: 0.15rem 0.5rem; border-radius: 8px; background: #F4F1EC; color: #7a6f63; opacity: 0.75;
+}
+.kk-kar.on { background: #2B2118; color: #fff; opacity: 1; font-weight: 700; }
+.kk-map-caption { margin: 0.6rem 0 0; font-size: 0.9rem; }
+
+/* කියවීමේ තීරුව */
+.kk-modebar { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; margin: 0.2rem 0 1rem; }
+.kk-modebar-label { font-size: 0.85rem; color: var(--text-muted); margin-right: 0.2rem; }
+.kk-mode-btn {
+    font-family: inherit; font-size: 0.85rem; padding: 0.35rem 0.8rem; border-radius: 20px; cursor: pointer;
+    border: 1px solid var(--border-soft, #EADBBE); background: var(--surface-soft, #FDFBF7); color: var(--text-dark);
+}
+.kk-mode-btn.active { background: var(--theme-primary, #4A2C6B); border-color: var(--theme-primary, #4A2C6B); color: #fff; font-weight: 700; }
+.kk-mark-toggle { margin-left: auto; font-size: 0.85rem; display: inline-flex; gap: 0.35rem; align-items: center; cursor: pointer; }
+
+/* පාඨ ඒකක */
+.kk-reader { display: flex; flex-direction: column; gap: 0.75rem; }
+.kk-unit {
+    border: 1px solid var(--border-soft, #EADBBE); border-radius: 12px; overflow: hidden; background: #fff;
+}
+.kk-pali {
+    position: relative; padding: 0.75rem 1rem; font-size: 1.08rem; font-weight: 600; line-height: 1.85;
+    background: linear-gradient(90deg, #FBF6EA, #fff); border-left: 5px solid var(--theme-accent, #C59B27);
+}
+.kk-pali p { margin: 0; }
+.kk-pali.is-example { border-left-color: #15803D; background: linear-gradient(90deg, #EEF7F0, #fff); }
+.kk-unit-sanna { padding: 0.55rem 1rem 0.75rem; border-top: 1px dashed var(--border-soft, #EADBBE); }
+.kk-sanna { font-size: 0.98rem; line-height: 1.9; color: #3b3027; }
+.kk-sanna p { margin: 0.35rem 0; }
+.kk-sanna strong, .kk-pali strong { color: var(--theme-primary, #4A2C6B); }
+.kk-tag {
+    float: right; margin-left: 0.5rem; font-size: 0.68rem; font-weight: 700; padding: 0.05rem 0.45rem;
+    border-radius: 6px; background: #F1ECE3; color: #7a6f63;
+}
+.kk-tag-ex { background: #DCF0E1; color: #15803D; }
+.kk-verse {
+    padding: 0.75rem 1rem; border-radius: 12px; background: #FFFBF2; border: 1px solid #F0E2C2;
+    text-align: center; font-style: italic;
+}
+.kk-verse blockquote { margin: 0; }
+.kk-verse p { margin: 0.15rem 0; }
+.kk-list ul, .kk-list ol { margin: 0.3rem 0; padding-left: 1.4rem; }
+.kk-list li { margin: 0.2rem 0; line-height: 1.8; }
+.kk-table table { width: 100%; border-collapse: collapse; }
+.kk-table td, .kk-table th { border: 1px solid var(--border-soft, #EADBBE); padding: 0.35rem 0.55rem; vertical-align: top; }
+.kk-subhead { margin-top: 0.6rem; }
+.kk-subhead h2, .kk-subhead h3 { font-size: 1.1rem; color: var(--theme-primary, #4A2C6B); margin: 0.2rem 0; }
+.kk-anuvutti {
+    display: flex; gap: 0.5rem; align-items: flex-start; padding: 0.45rem 0.8rem; border-radius: 10px;
+    background: #F3EFFA; border: 1px solid #DDD3F0; font-size: 0.92rem;
+}
+.kk-anuvutti p { margin: 0; }
+.kk-anu-icon { font-weight: 800; color: #6D4BB0; }
+.kk-lead { padding: 0.6rem 0.8rem; border-radius: 12px; background: #F7F5F1; border: 1px solid #E8E2D8; display: flex; flex-direction: column; gap: 0.4rem; }
+.kk-lead-label { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); }
+.kk-lead .kk-pali { background: transparent; border-left-width: 3px; padding: 0.2rem 0.7rem; }
+
+/* උදාහරණ පද උද්දීපනය (mark) */
+.kk-reader mark, .kk-fig-table mark { background: #FFE8A3; color: inherit; padding: 0 2px; border-radius: 3px; }
+.kk-reader mark.kk-red, .kk-fig-table mark.kk-red { color: #C0262D; }
+.kk-reader.kk-nomarks mark { background: transparent; padding: 0; }
+.kk-fig-cap { font-size: 0.82rem; color: var(--text-muted); margin: 0.3rem 0 0; text-align: center; }
+.kk-mini-note td { color: #15803D; font-size: 0.85rem; }
+
+/* කියවීමේ මාදිලි */
+.kk-reader[data-mode="pali"] .kk-unit-sanna,
+.kk-reader[data-mode="pali"] > .kk-sanna,
+.kk-reader[data-mode="pali"] > .kk-list,
+.kk-reader[data-mode="pali"] > .kk-table { display: none; }
+.kk-reader[data-mode="pali"] .kk-unit { border-radius: 10px; }
+.kk-reader[data-mode="sanna"] .kk-pali { display: none; }
+.kk-reader[data-mode="sanna"] .kk-unit-sanna { border-top: 0; }
+.kk-reader[data-mode="sanna"] .kk-unit:not(:has(.kk-unit-sanna)) { display: none; }
+
+/* පාද සටහන් */
+.kk-foot summary { cursor: pointer; font-weight: 700; color: var(--theme-primary, #4A2C6B); }
+.kk-foot aside, .kk-foot section { font-size: 0.9rem; }
+.kk-foot hr { display: none; }
+.kk-reader sup a, .kk-reader a.footnote-ref { text-decoration: none; color: var(--theme-primary); font-weight: 700; }
+
+/* පෙර / ඊළඟ */
+.kk-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 0.5rem 0 1rem; }
+.kk-nav-btn {
+    font-family: inherit; text-align: left; padding: 0.7rem 0.9rem; border-radius: 12px; cursor: pointer;
+    border: 1px solid var(--border-soft, #EADBBE); background: var(--surface-card, #fff);
+    display: flex; flex-direction: column; gap: 0.15rem; min-width: 0;
+}
+.kk-nav-next { text-align: right; align-items: flex-end; }
+.kk-nav-btn:hover { border-color: var(--theme-accent, #C59B27); }
+.kk-nav-dir { font-size: 0.75rem; color: var(--text-muted); font-weight: 700; }
+.kk-nav-title { font-size: 0.92rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
+
+/* හැඳින්වීම */
+.kk-help { font-size: 0.9rem; color: var(--text-muted); margin: 0 0 0.7rem; }
+.kk-flow { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.6rem; }
+.kk-flow-card {
+    border-radius: 12px; padding: 0.7rem 0.8rem; background: #fff; border: 1px solid #ece6dc;
+    border-top: 4px solid var(--vc); display: flex; flex-direction: column; gap: 0.2rem;
+}
+.kk-flow-q { font-size: 0.85rem; color: var(--text-muted); }
+.kk-flow-a { font-size: 1.15rem; font-weight: 800; color: var(--vc); }
+.kk-flow-k { font-size: 0.8rem; }
+.kk-flow-v { align-self: flex-start; font-size: 0.72rem; padding: 0.05rem 0.45rem; border-radius: 10px; background: var(--vc); color: #fff; }
+.kk-matrix td { vertical-align: middle; }
+.kk-matrix tbody tr { border-left: 4px solid var(--vc); }
+.kk-vib-si { display: block; font-size: 0.72rem; color: var(--text-muted); margin-top: 0.2rem; }
+.kk-chip {
+    font-family: system-ui, sans-serif; font-size: 0.8rem; font-weight: 700; margin: 0.12rem; padding: 0.15rem 0.5rem;
+    border-radius: 8px; cursor: pointer; border: 1px solid var(--vc, #ccc); background: #fff; color: var(--vc, #333);
+}
+.kk-chip:hover { background: var(--vc, #333); color: #fff; }
+.kk-none { color: #bbb; }
+
+@media (max-width: 640px) {
+    .kk-sutta { font-size: 1.3rem; }
+    .kk-num { min-width: 2.5rem; height: 2.5rem; font-size: 1.05rem; }
+    .kk-mark-toggle { margin-left: 0; }
+    .kk-pali { font-size: 1rem; padding: 0.6rem 0.75rem; }
+    .kk-unit-sanna { padding: 0.45rem 0.75rem 0.6rem; }
+    .kk-nav { grid-template-columns: 1fr; }
+    .kk-nav-next { text-align: left; align-items: flex-start; }
+}

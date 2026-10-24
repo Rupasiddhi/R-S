@@ -8,7 +8,7 @@
 // නව ගොනුවක් index.html වෙත එක් කරන විට එය ASSETS_TO_CACHE ලැයිස්තුවටද එක් කරන්න.
 // ==========================================================================
 
-const CACHE_NAME = 'pada-rupasiddhi-v13.11.0';
+const CACHE_NAME = 'pada-rupasiddhi-v14.0.0';
 const FONT_CACHE = 'pada-rupasiddhi-fonts-v1';
 
 // Offline භාවිතය සඳහා Cache කරගත යුතු සියලුම අත්‍යවශ්‍ය ගොනු ලැයිස්තුව
@@ -28,6 +28,7 @@ const ASSETS_TO_CACHE = [
   './css/pakati.css',
   './css/nama.css',
   './css/pada-sadhana.css',
+  './css/karaka.css',
   './css/settings.css',
 
   // Core & View Scripts
@@ -41,6 +42,7 @@ const ASSETS_TO_CACHE = [
   './js/pakati-view.js',
   './js/nama-view.js',
   './js/pada-sadhana-view.js',
+  './js/karaka-view.js',
 
   // Data Files
   './data/0_shadakara_intro/shadakara_details.js',
@@ -64,6 +66,14 @@ const ASSETS_TO_CACHE = [
   './data/2_nama/05b_alinga_sadhana.js',
   './data/2_nama/06_vibhattippaccaya.js',
   './data/2_nama/07_abyaya.js',
+  './data/3_karaka/00_karaka_intro.js',
+  './data/3_karaka/01_karaka_pathama.js',
+  './data/3_karaka/02_karaka_dutiya.js',
+  './data/3_karaka/03_karaka_tatiya.js',
+  './data/3_karaka/04_karaka_catutthi.js',
+  './data/3_karaka/05_karaka_pancami.js',
+  './data/3_karaka/06_karaka_chatthi.js',
+  './data/3_karaka/07_karaka_sattami.js',
 
   // Icons
   './icons/icon-192.png',
