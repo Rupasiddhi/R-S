@@ -23,7 +23,7 @@ function renderPadaSadhanaGrid(item, activeIdx, activeVib) {
     const cell = (vkey, label) => {
         const chips = padaSadhanaOfVibhatti(item, vkey)
             .filter(o => o.d.vacana === label)
-            .map(o => `<button type="button" class="ps-form-chip ${o.i === activeIdx ? 'active' : ''}" data-idx="${o.i}" title="${o.d.word} — පද සාධනය බලන්න" onclick="switchPadaSadhana(${o.i})">${o.d.word}</button>`)
+            .map(o => `<button type="button" class="ps-form-chip ${o.i === activeIdx ? 'active' : ''} ${o.d.saddaniti_only ? 'ps-sd-only' : ''}" data-idx="${o.i}" title="${o.d.word} — ${o.d.saddaniti_only ? 'සද්දනීති පදමාලා රූපය; ' : ''}පද සාධනය බලන්න" onclick="switchPadaSadhana(${o.i})">${o.d.word}</button>`)
             .join('');
         return chips || '<span class="ps-empty">—</span>';
     };
@@ -102,6 +102,7 @@ function renderPadaSadhanaPanel(item, activeIdx, activeVib) {
                 ${renderVacanaToggle(item, d, activeVib)}
                 <span class="ps-deriv-word">${d.word}</span>
             </div>
+            ${d.saddaniti_only ? `<div class="ps-sd-note">📗 මෙම රූපය <strong>සද්දනීති පදමාලාවෙහි</strong> එයි. රූපසිද්ධි සූත්‍රවලින් සෘජුව සාධනය නොවන හෙයින් ප්‍රකෘතිය, විභක්තිය හා වචනය දක්වා පමණක් පියවර දක්වා ඇත.</div>` : ''}
             ${renderNamaDerivationTable(d)}
         ` : ''}
     `;
@@ -124,12 +125,14 @@ function renderPadaSadhanaWorkspace(item, targetContainerId = 'viewSuttaPanel') 
                 <span class="nama-category-badge">${item.sub_khanda_name || 'පද සාධනය'}</span>
                 <span class="badge badge-khanda">නාමකණ්ඩ</span>
                 ${item.ending ? `<span class="badge" style="background:#FAF2E6; color:#8C2D00; border:1px solid #E6D0BA;">${item.ending}</span>` : ''}
+                ${item.source === 'saddaniti' ? `<span class="badge ps-sd-badge" title="${item.source_ref || ''}">📗 ${item.source_label || 'සද්දනීති පදමාලා'}</span>` : ''}
             </div>
             <h2 class="nama-sutta-title">${item.word} <span class="ps-title-sub">— ${item.ending || ''} ${item.linga || 'පුල්ලිඞ්ග'} ශබ්දය</span></h2>
             <div class="nama-meaning-container">
                 <p class="nama-meaning-text">
                     <strong>${item.word}</strong> — ${item.meaning || ''}
                     ${item.sutta_refs ? `<br><span class="ps-refs">අදාළ විශේෂ සූත්‍ර: ${item.sutta_refs}</span>` : ''}
+                    ${item.source === 'saddaniti' ? `<br><span class="ps-refs ps-sd-src">මූලාශ්‍රය: ${item.source_ref || 'සද්දනීතිප්පකරණං (පදමාලා)'} — රූපසිද්ධියෙහි වෙනම පද සාධනයක් නැති පදයකි.</span>` : ''}
                 </p>
             </div>
         </div>
@@ -148,6 +151,7 @@ function renderPadaSadhanaWorkspace(item, targetContainerId = 'viewSuttaPanel') 
                 <span><strong>විභක්තියක නමක්</strong> හෝ <strong>රූපයක්</strong> ක්ලික් කරන්න — එහි සූත්‍ර සහිත සම්පූර්ණ පද සාධනය පහත <strong>“සම්පූර්ණ පද සාධනය”</strong> කොටසේ දිස් වේ.</span>
             </div>
             <div id="padaSadhanaGrid">${renderPadaSadhanaGrid(item, idx, vib)}</div>
+            ${derivs.some(x => x.saddaniti_only) ? `<p class="ps-sd-legend"><span class="ps-form-chip ps-sd-only ps-legend-chip">රූපය</span> තිත් රේඛා සහිත රූප සද්දනීති පදමාලාවෙහි පමණක් එන, රූපසිද්ධියෙන් සෘජුව සාධනය නොවන රූපයි.</p>` : ''}
         </div>
 
         <div class="panel-card nama-derivation-card" id="padaSadhanaCard">

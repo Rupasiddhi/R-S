@@ -323,3 +323,12 @@
     outline: 2px solid var(--theme-accent, #C59B27);
     outline-offset: -2px;
 }
+
+/* සද්දනීති පදමාලාවෙන් ගත් පද */
+.ps-sd-badge { background: #E8F3EC; color: #1F6B3A; border: 1px solid #B9DCC5; }
+.ps-sd-src { color: #1F6B3A; }
+.ps-form-chip.ps-sd-only { border-style: dashed; border-color: #4E9A6A; }
+.ps-sd-note { margin: 0.5rem 0 0.75rem; padding: 0.6rem 0.8rem; background: #EEF7F1; border-left: 4px solid #4E9A6A; border-radius: 6px; font-size: 0.92rem; }
+.ps-sd-legend { margin: 0.6rem 0 0; font-size: 0.82rem; color: var(--text-muted, #6E6153); display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.ps-legend-chip { cursor: default; pointer-events: none; }
+.sd-tag { display: inline-block; margin-left: 0.3rem; padding: 0 0.3rem; font-size: 0.68rem; line-height: 1.35; color: #1F6B3A; background: #E8F3EC; border: 1px solid #B9DCC5; border-radius: 4px; vertical-align: middle; }
