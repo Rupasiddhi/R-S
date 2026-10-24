@@ -70,3 +70,14 @@
     .kk-nav { grid-template-columns: 1fr; }
     .kk-nav-btn:last-child { text-align: left; align-items: flex-start; }
 }
+
+/* සංඥා ඛාණ්ඩයේ ආකෘතිය තුළ HTML අන්තර්ගතය */
+.kk-html p { margin: 0.25rem 0; }
+.kk-html mark { background: #FFF1B8; color: inherit; padding: 0 2px; border-radius: 2px; }
+.kk-lead-line { color: var(--text-muted, #6E6153); margin-bottom: 0.35rem; }
+.kk-foot-card { margin: 0; border-top: 0; padding-top: 0; }
+.sanna-commentary-box.kk-text .kk-pali:first-child { margin-top: 0; }
+
+@media (max-width: 640px) {
+    .kk-html, .sanna-commentary-box.kk-text { text-align: left !important; }
+}
