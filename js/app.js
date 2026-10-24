@@ -152,7 +152,9 @@ function populateSubKhandaUnderButton(khandaKey, subCategories) {
         if (suttasForSub.length === 0) {
             suttaListUl.innerHTML = `<li style="padding: 0.4rem; font-size: 0.8rem; color: var(--text-muted); font-style: italic;">සූත්‍ර ඇතුළත් කර නොමැත.</li>`;
         } else {
-            suttasForSub.forEach(sutta => {
+            if (typeof isPadaSadhanaSubKhanda === 'function' && isPadaSadhanaSubKhanda(sub.id)) {
+                renderSadhanaGroupedList(suttaListUl, sub.id, suttasForSub);
+            } else suttasForSub.forEach(sutta => {
                 const li = document.createElement('li');
                 const sNumber = sutta.sutta_number !== undefined ? sutta.sutta_number : sutta.id;
                 const isSelected = (String(sNumber) === String(AppState.activeSuttaNumber));
@@ -175,6 +177,59 @@ function populateSubKhandaUnderButton(khandaKey, subCategories) {
         subNode.appendChild(btn);
         subNode.appendChild(suttaListUl);
         container.appendChild(subNode);
+    });
+}
+
+
+/**
+ * පද සාධන ලැයිස්තුව: ලිඞ්ගය (අනුඛාණ්ඩය) > අන්ත වර්ගය (අකාරාන්ත ආදිය) > පද ලැයිස්තුව
+ * පදයක් ක්ලික් කළ විට එහි පද සාධනය පෙන්වයි.
+ */
+function sadhanaGroupKey(subId, item) {
+    const w = item.word || '';
+    if (subId === '04b_sabbanama_sadhana') {
+        if (w === 'කා') return 'කිං';
+        return (w.length > 1 && w.endsWith('ා')) ? w.slice(0, -1) : w;
+    }
+    const e = (item.ending || '').trim();
+    return e.split(/[\s(→]/)[0] || 'වෙනත්';
+}
+function renderSadhanaGroupedList(ul, subId, items) {
+    const groups = [];
+    const idx = {};
+    items.forEach(it => {
+        const k = sadhanaGroupKey(subId, it);
+        if (!(k in idx)) { idx[k] = groups.length; groups.push({ key: k, items: [] }); }
+        groups[idx[k]].items.push(it);
+    });
+    groups.forEach(g => {
+        const hasActive = g.items.some(it => String(it.sutta_number) === String(AppState.activeSuttaNumber) && AppState.activeSubKhandaId === subId);
+        const gli = document.createElement('li');
+        gli.className = 'sadhana-group' + (hasActive ? ' open' : '');
+        const head = document.createElement('button');
+        head.type = 'button';
+        head.className = 'sadhana-group-head';
+        head.innerHTML = `<span>${g.key}</span><span class="sadhana-group-count">${g.items.length}</span><span class="sadhana-group-chev">${hasActive ? '▼' : '▶'}</span>`;
+        head.onclick = (e) => {
+            e.stopPropagation();
+            const open = gli.classList.toggle('open');
+            head.querySelector('.sadhana-group-chev').innerText = open ? '▼' : '▶';
+        };
+        const inner = document.createElement('ul');
+        inner.className = 'sadhana-word-list';
+        g.items.forEach(it => {
+            const li = document.createElement('li');
+            const n = it.sutta_number;
+            const isSel = hasActive && String(n) === String(AppState.activeSuttaNumber);
+            li.className = 'sutta-sub-item sadhana-word' + (isSel ? ' active' : '');
+            li.dataset.sub = subId; li.dataset.num = n;
+            const tag = (subId === '04b_sabbanama_sadhana' && it.linga) ? ` <small>(${it.linga.split(' ')[0]})</small>` : '';
+            li.innerHTML = `${it.word}${tag}`;
+            li.onclick = (e) => { e.stopPropagation(); selectSuttaItem(n, subId); };
+            inner.appendChild(li);
+        });
+        gli.appendChild(head); gli.appendChild(inner);
+        ul.appendChild(gli);
     });
 }
 
@@ -241,7 +296,16 @@ function selectSuttaItem(suttaNum, subId) {
 
     // Sidebar active item class toggle
     document.querySelectorAll('.sutta-sub-item').forEach(el => {
-        el.classList.toggle('active', el.innerText.trim().startsWith(`${suttaNum}.`));
+        if (el.dataset && el.dataset.sub) {
+            const on = (el.dataset.sub === subId && String(el.dataset.num) === String(suttaNum));
+            el.classList.toggle('active', on);
+            if (on) {
+                const g = el.closest('.sadhana-group');
+                if (g) { g.classList.add('open'); const c = g.querySelector('.sadhana-group-chev'); if (c) c.innerText = '▼'; }
+            }
+        } else {
+            el.classList.toggle('active', el.innerText.trim().startsWith(`${suttaNum}.`));
+        }
     });
 
     const suttasForSub = (window.SuttaDatabase && window.SuttaDatabase[subId]) || [];
