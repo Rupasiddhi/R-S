@@ -7,7 +7,7 @@
 // ==========================================================================
 
 const RS_SETTINGS_KEY = 'rupasiddhi-settings';
-const RS_APP_VERSION = 'v13.6.0';
+const RS_APP_VERSION = 'v13.9.0';
 const RS_FONT_MIN = 80;
 const RS_FONT_MAX = 150;
 const RS_FONT_STEP = 10;
