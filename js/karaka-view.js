@@ -101,15 +101,13 @@ function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
     let firstDone = false;
     const body = groups.map(g => {
         if (g.head) return `<div class="kk-subhead">${g.head.html.replace(/\*{3,}/g, '')}</div>`;
-        const html = kkPairBox(g, !firstDone, firstDone ? null : s.lead);
+        const html = kkPairBox(g, !firstDone && !s.is_intro, firstDone ? null : s.lead);
         firstDone = true;
         return html;
     }).join('');
     const leadOnly = !firstDone && (s.lead || []).length ? kkPairBox({ pali: [], sanna: [] }, true, s.lead) : '';
 
     box.innerHTML = `
-        ${s.is_intro ? kkContents() : ''}
-
         <!-- 01. සූත්‍රය, තේරුම, වෘත්තිය හා සන්නය (සංඥා ඛාණ්ඩයේ ආකෘතිය) -->
         <div class="panel-card sanna-banner-card">
             <div class="tag-row" style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.4rem; flex-wrap: wrap;">
@@ -149,23 +147,4 @@ function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
 
         ${kkPrevNext(s)}
     `;
-}
-
-// හැඳින්වීම් පිටුවේ — සූත්‍ර පටුන
-function kkContents() {
-    const k = KHANDAS_CONFIG.find(x => x.key === '3_karaka');
-    const groups = (k ? k.subCategories : []).filter(g => !g.id.startsWith('00_'));
-    return `
-        <section class="panel-card kk-toc">
-            <h3 class="kk-toc-title">සූත්‍ර පටුන</h3>
-            ${groups.map(g => `
-                <div class="kk-toc-group">
-                    <h4>${g.name}</h4>
-                    <ul>
-                        ${((window.SuttaDatabase || {})[g.id] || []).map(x =>
-                            `<li><a href="javascript:void(0)" onclick="kkGo(${x.sutta_number}, '${g.id}')"><b>${x.sutta_number}.</b> ${x.pali}</a></li>`
-                        ).join('')}
-                    </ul>
-                </div>`).join('')}
-        </section>`;
 }

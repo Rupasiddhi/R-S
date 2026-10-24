@@ -9,7 +9,7 @@ window.SuttaDatabase["00_karaka_intro"] = [
   "sutta_number": 0,
   "sub_khanda_id": "00_karaka_intro",
   "sub_khanda_name": "කාරක හැඳින්වීම",
-  "sutta_name": "කාරකකණ්ඩ හැඳින්වීම",
+  "sutta_name": "කාරක හැඳින්වීම",
   "is_intro": true,
   "blocks": [
    {
