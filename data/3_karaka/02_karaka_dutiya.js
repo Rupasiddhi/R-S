@@ -2,6 +2,7 @@
  * කාරකකණ්ඩ — දුතියා — කම්මකාරක
  * මූලාශ්‍රය: පදරූපසිද්ධි කාරකකණ්ඩ සංස්කරණ පිටපත (පාළි වුත්තිය, සිංහල සන්නය, සටහන්).
  * blocks: pali / sanna / list / verse / table / subhead / anuvutti (පාඨ පිළිවෙළින්ම).
+ * note: true — සංස්කාරක විශේෂ සටහන් (රූප සටහන්, සමීකරණ, යොමු, ශබ්දකෝෂ සටහන්).
  * tika: true — මූල රූපසිද්ධියෙහි නැති ටීකා/විවරණ පාළි හා එහි සන්නය (ක්ලික් කළ පසු පමණක් පෙන්වයි).
  */
 window.SuttaDatabase = window.SuttaDatabase || {};
@@ -119,7 +120,8 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>කස්ස හත්ථී ධාවති ()</p>"
+    "html": "<p>කස්ස හත්ථී ධාවති ()</p>",
+    "note": true
    },
    {
     "kind": "pali",
@@ -149,11 +151,13 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>පරිච්චත්තකාරණං = කට්ඨං අඞ්ගාරං කරොති</p>"
+    "html": "<p>පරිච්චත්තකාරණං = කට්ඨං අඞ්ගාරං කරොති</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>අපරිච්චත්තකාරණං = වීහයො ලුනාති</p>"
+    "html": "<p>අපරිච්චත්තකාරණං = වීහයො ලුනාති</p>",
+    "note": true
    },
    {
     "kind": "pali",
@@ -162,11 +166,13 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
    },
    {
     "kind": "sanna",
-    "html": "<p><strong>කෙයූර = Sinhala 1න අඟුපළඳනාව වැලමිටෙන් උඩ බාහුවෙහි, හස්තමූලයෙහි ලන වලල්ල.Sinhala 2න බාහු වළල්ල.</strong></p>"
+    "html": "<p><strong>කෙයූර = Sinhala 1න අඟුපළඳනාව වැලමිටෙන් උඩ බාහුවෙහි, හස්තමූලයෙහි ලන වලල්ල.Sinhala 2න බාහු වළල්ල.</strong></p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p><strong>කටක</strong> = ●න වළල්ල.</p>"
+    "html": "<p><strong>කටක</strong> = ●න වළල්ල.</p>",
+    "note": true
    },
    {
     "kind": "list",
@@ -225,7 +231,8 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
    },
    {
     "kind": "table",
-    "html": "<div class=\"kk-fig-table\"><table class=\"data-table kk-mini-table\"><tbody><tr><td>පුරිසො</td><td>මිත්තං</td><td>හත්ථං</td><td>යාචති</td></tr><tr class=\"kk-mini-note\"><td></td><td>අප්‍රධාන</td><td>ප්‍රධාන</td><td>දුහාදි ගණය</td></tr><tr><td></td><td><mark>උක්තකර්මය</mark></td><td></td><td></td></tr><tr><td>පුරිසෙන</td><td><mark class=\"kk-red\">මිත්තො</mark></td><td>හත්ථං</td><td>යාචියතෙ</td></tr></tbody></table><p class=\"kk-fig-cap\">ද්විකර්මක ක්‍රියාවක කර්ම වාච්‍යයෙහි අප්‍රධාන කර්මය (මිත්ත) උක්ත වන ආකාරය</p></div>"
+    "html": "<div class=\"kk-fig-table\"><table class=\"data-table kk-mini-table\"><tbody><tr><td>පුරිසො</td><td>මිත්තං</td><td>හත්ථං</td><td>යාචති</td></tr><tr class=\"kk-mini-note\"><td></td><td>අප්‍රධාන</td><td>ප්‍රධාන</td><td>දුහාදි ගණය</td></tr><tr><td></td><td><mark>උක්තකර්මය</mark></td><td></td><td></td></tr><tr><td>පුරිසෙන</td><td><mark class=\"kk-red\">මිත්තො</mark></td><td>හත්ථං</td><td>යාචියතෙ</td></tr></tbody></table><p class=\"kk-fig-cap\">ද්විකර්මක ක්‍රියාවක කර්ම වාච්‍යයෙහි අප්‍රධාන කර්මය (මිත්ත) උක්ත වන ආකාරය</p></div>",
+    "note": true
    },
    {
     "kind": "anuvutti",
@@ -453,7 +460,8 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
    },
    {
     "kind": "table",
-    "html": "<table>\n<colgroup>\n<col style=\"width: 36%\"/>\n<col style=\"width: 64%\"/>\n</colgroup>\n<tbody>\n<tr class=\"odd\">\n<td rowspan=\"2\"><h1 id=\"අකරත\"><strong>අකාරිත</strong></h1>\n<p><mark>පුරිසො</mark> ගාමං ගච්ඡති</p></td>\n<td rowspan=\"2\"><h1 id=\"කරත\"><strong>කාරිත</strong></h1>\n<p>සාමි <mark>පුරිසං / පුරිසෙන</mark> ගාමං ගමයති</p>\n<p>ප්‍රයෝජක <mark>ප්‍රයෝජ්‍ය</mark></p></td>\n</tr>\n<tr class=\"even\">\n</tr>\n<tr class=\"odd\">\n<td><mark>සිස්සො</mark> ධම්මං බුජ්ඣති</td>\n<td>ආචරියො <mark>සිස්සං</mark> ධම්මං බොධෙති</td>\n</tr>\n<tr class=\"even\">\n<td><mark>පුත්තො</mark> භොජනං භුඤ්ජති</td>\n<td>මාතා <mark>පුත්තං</mark> භොජනං භොජයති</td>\n</tr>\n<tr class=\"odd\">\n<td><mark>සිස්සො</mark> ධම්මං පඨති</td>\n<td>ආචරියො <mark>සිස්සං</mark> ධම්මං පාඨෙති</td>\n</tr>\n<tr class=\"even\">\n<td><mark>පුරිසො</mark> භාරං හරති</td>\n<td>සාමි <mark>පුරිසං</mark> භාරං හාරෙති</td>\n</tr>\n<tr class=\"odd\">\n<td><mark>පුරිසො</mark> කම්මං කරොති</td>\n<td>සාමි <mark>පුරිසං</mark> / පුරිසෙන කම්මං කාරයති</td>\n</tr>\n<tr class=\"even\">\n<td><mark>පුරිසො</mark> සයති.</td>\n<td>සාමි <mark>පුරිසං</mark> සයාපයති.</td>\n</tr>\n</tbody>\n</table>"
+    "html": "<table>\n<colgroup>\n<col style=\"width: 36%\"/>\n<col style=\"width: 64%\"/>\n</colgroup>\n<tbody>\n<tr class=\"odd\">\n<td rowspan=\"2\"><h1 id=\"අකරත\"><strong>අකාරිත</strong></h1>\n<p><mark>පුරිසො</mark> ගාමං ගච්ඡති</p></td>\n<td rowspan=\"2\"><h1 id=\"කරත\"><strong>කාරිත</strong></h1>\n<p>සාමි <mark>පුරිසං / පුරිසෙන</mark> ගාමං ගමයති</p>\n<p>ප්‍රයෝජක <mark>ප්‍රයෝජ්‍ය</mark></p></td>\n</tr>\n<tr class=\"even\">\n</tr>\n<tr class=\"odd\">\n<td><mark>සිස්සො</mark> ධම්මං බුජ්ඣති</td>\n<td>ආචරියො <mark>සිස්සං</mark> ධම්මං බොධෙති</td>\n</tr>\n<tr class=\"even\">\n<td><mark>පුත්තො</mark> භොජනං භුඤ්ජති</td>\n<td>මාතා <mark>පුත්තං</mark> භොජනං භොජයති</td>\n</tr>\n<tr class=\"odd\">\n<td><mark>සිස්සො</mark> ධම්මං පඨති</td>\n<td>ආචරියො <mark>සිස්සං</mark> ධම්මං පාඨෙති</td>\n</tr>\n<tr class=\"even\">\n<td><mark>පුරිසො</mark> භාරං හරති</td>\n<td>සාමි <mark>පුරිසං</mark> භාරං හාරෙති</td>\n</tr>\n<tr class=\"odd\">\n<td><mark>පුරිසො</mark> කම්මං කරොති</td>\n<td>සාමි <mark>පුරිසං</mark> / පුරිසෙන කම්මං කාරයති</td>\n</tr>\n<tr class=\"even\">\n<td><mark>පුරිසො</mark> සයති.</td>\n<td>සාමි <mark>පුරිසං</mark> සයාපයති.</td>\n</tr>\n</tbody>\n</table>",
+    "note": true
    },
    {
     "kind": "pali",
@@ -465,7 +473,8 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
    },
    {
     "kind": "table",
-    "html": "<table style=\"width:97%;\">\n<colgroup>\n<col style=\"width: 48%\"/>\n<col style=\"width: 48%\"/>\n</colgroup>\n<thead>\n<tr class=\"header\">\n<th style=\"text-align: left;\"><strong>කාරිත කත්තුකාරක</strong></th>\n<th style=\"text-align: left;\"><strong>කාරිත කම්මකාරක</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr class=\"odd\">\n<td style=\"text-align: left;\">සාමි <mark>පුරිසං</mark> ගාමං ගමයති</td>\n<td style=\"text-align: left;\">සාමිනා <mark>පුරිසො</mark> ගාමං ගමීයතෙ</td>\n</tr>\n<tr class=\"even\">\n<td style=\"text-align: left;\">ආචරියො <mark>සිස්සං</mark> ධම්මං බොධෙති</td>\n<td style=\"text-align: left;\">ආචරියෙන <mark>සිස්සො</mark> ධම්මං බොධීයතෙ</td>\n</tr>\n</tbody>\n</table>"
+    "html": "<table style=\"width:97%;\">\n<colgroup>\n<col style=\"width: 48%\"/>\n<col style=\"width: 48%\"/>\n</colgroup>\n<thead>\n<tr class=\"header\">\n<th style=\"text-align: left;\"><strong>කාරිත කත්තුකාරක</strong></th>\n<th style=\"text-align: left;\"><strong>කාරිත කම්මකාරක</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr class=\"odd\">\n<td style=\"text-align: left;\">සාමි <mark>පුරිසං</mark> ගාමං ගමයති</td>\n<td style=\"text-align: left;\">සාමිනා <mark>පුරිසො</mark> ගාමං ගමීයතෙ</td>\n</tr>\n<tr class=\"even\">\n<td style=\"text-align: left;\">ආචරියො <mark>සිස්සං</mark> ධම්මං බොධෙති</td>\n<td style=\"text-align: left;\">ආචරියෙන <mark>සිස්සො</mark> ධම්මං බොධීයතෙ</td>\n</tr>\n</tbody>\n</table>",
+    "note": true
    },
    {
     "kind": "anuvutti",
@@ -572,7 +581,8 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>[<strong>Gava+pāna</strong>] (na) CL=8 'gavapānanti etthakatha'nti'¿ ettha pana gobhinibbattaṃ khīraṃ gavaṃ, pātabbaṭṭhena pānaṃ, gavañca taṃ pānañcāti gavapānanti bhavati. Nīti, sutta.229.] (1) <mark>Milk drink.</mark></p>"
+    "html": "<p>[<strong>Gava+pāna</strong>] (na) CL=8 'gavapānanti etthakatha'nti'¿ ettha pana gobhinibbattaṃ khīraṃ gavaṃ, pātabbaṭṭhena pānaṃ, gavañca taṃ pānañcāti gavapānanti bhavati. Nīti, sutta.229.] (1) <mark>Milk drink.</mark></p>",
+    "note": true
    },
    {
     "kind": "pali",
@@ -580,39 +590,48 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
    },
    {
     "kind": "pali",
-    "html": "<p><strong>කාලෙ තාව –</strong></p>"
+    "html": "<p><strong>කාලෙ තාව –</strong></p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>1<strong>සත්තාහං</strong> <strong>ගවපානං</strong>, <strong>මාසං</strong> <strong>මංසොදනං</strong>, (<strong>කාල</strong>-<strong>ද්‍රව්‍ය</strong>)</p>"
+    "html": "<p>1<strong>සත්තාහං</strong> <strong>ගවපානං</strong>, <strong>මාසං</strong> <strong>මංසොදනං</strong>, (<strong>කාල</strong>-<strong>ද්‍රව්‍ය</strong>)</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>2 <strong>සරදං</strong> <strong>රමණීයා</strong> නදී, <strong>සබ්බකාලං</strong> <strong>රමණීයං</strong> නන්දනං, (<strong>කාල</strong>-<strong>ගුණ</strong>)</p>"
+    "html": "<p>2 <strong>සරදං</strong> <strong>රමණීයා</strong> නදී, <strong>සබ්බකාලං</strong> <strong>රමණීයං</strong> නන්දනං, (<strong>කාල</strong>-<strong>ගුණ</strong>)</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>3<strong>මාසං</strong> <strong>සජ්ඣායති</strong>, <strong>තයො මාසෙ</strong> අභිධම්මං <strong>දෙසෙසි</strong>. (<strong>කාල</strong>-<strong>ක්‍රියා</strong>)</p>"
+    "html": "<p>3<strong>මාසං</strong> <strong>සජ්ඣායති</strong>, <strong>තයො මාසෙ</strong> අභිධම්මං <strong>දෙසෙසි</strong>. (<strong>කාල</strong>-<strong>ක්‍රියා</strong>)</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p><strong>අද්ධානෙ –</strong></p>"
+    "html": "<p><strong>අද්ධානෙ –</strong></p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>1<strong>යොජනං</strong> <strong>වනරාජි</strong>, (<strong>අද්ධාන</strong>-<strong>ද්‍රව්‍ය</strong>)</p>"
+    "html": "<p>1<strong>යොජනං</strong> <strong>වනරාජි</strong>, (<strong>අද්ධාන</strong>-<strong>ද්‍රව්‍ය</strong>)</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>2<strong>යොජනං</strong> <strong>දීඝො</strong> පබ්බතො, (<strong>අද්ධාන</strong>- <strong>ගුණ</strong>)</p>"
+    "html": "<p>2<strong>යොජනං</strong> <strong>දීඝො</strong> පබ්බතො, (<strong>අද්ධාන</strong>- <strong>ගුණ</strong>)</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>3<strong>කොසං</strong> <strong>සජ්ඣායති</strong>. (<strong>අද්ධාන</strong>-<strong>ක්‍රියා</strong>)</p>"
+    "html": "<p>3<strong>කොසං</strong> <strong>සජ්ඣායති</strong>. (<strong>අද්ධාන</strong>-<strong>ක්‍රියා</strong>)</p>",
+    "note": true
    },
    {
     "kind": "sanna",
-    "html": "<p>(රියන් 4 = දුනු1, දුනු 500 = කෝෂ 1)</p>"
+    "html": "<p>(රියන් 4 = දුනු1, දුනු 500 = කෝෂ 1)</p>",
+    "note": true
    },
    {
     "kind": "pali",
@@ -784,7 +803,8 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
    },
    {
     "kind": "table",
-    "html": "<table style=\"width:98%;\">\n<colgroup>\n<col style=\"width: 16%\"/>\n<col style=\"width: 13%\"/>\n<col style=\"width: 13%\"/>\n<col style=\"width: 15%\"/>\n<col style=\"width: 12%\"/>\n<col style=\"width: 13%\"/>\n<col style=\"width: 13%\"/>\n</colgroup>\n<thead>\n<tr class=\"header\">\n<th></th>\n<th style=\"text-align: left;\"><strong>ලක්ඛණ</strong></th>\n<th><strong>වීච්ඡා</strong></th>\n<th><strong>ඉත්ථම්භූත</strong></th>\n<th style=\"text-align: left;\"><strong>භාග</strong></th>\n<th style=\"text-align: left;\"><strong>සහත්ථ</strong></th>\n<th><strong>හීනත්ථ</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr class=\"odd\">\n<td><strong>අනු</strong></td>\n<td style=\"text-align: left;\"><strong>√</strong></td>\n<td><strong>√</strong></td>\n<td><strong>√</strong></td>\n<td style=\"text-align: left;\"><strong>√</strong></td>\n<td style=\"text-align: left;\"><strong>√</strong></td>\n<td><strong>√</strong></td>\n</tr>\n<tr class=\"even\">\n<td><strong>පති &amp; පරි</strong></td>\n<td style=\"text-align: left;\"><strong>√</strong></td>\n<td><strong>√</strong></td>\n<td><strong>√</strong></td>\n<td style=\"text-align: left;\"><strong>√</strong></td>\n<td style=\"text-align: left;\"><strong>X</strong></td>\n<td><strong>X</strong></td>\n</tr>\n<tr class=\"odd\">\n<td><strong>අභි</strong></td>\n<td style=\"text-align: left;\"><strong>√</strong></td>\n<td><strong>√</strong></td>\n<td><strong>√</strong></td>\n<td style=\"text-align: left;\"><strong>X</strong></td>\n<td style=\"text-align: left;\"><strong>X</strong></td>\n<td><strong>X</strong></td>\n</tr>\n</tbody>\n</table>"
+    "html": "<table style=\"width:98%;\">\n<colgroup>\n<col style=\"width: 16%\"/>\n<col style=\"width: 13%\"/>\n<col style=\"width: 13%\"/>\n<col style=\"width: 15%\"/>\n<col style=\"width: 12%\"/>\n<col style=\"width: 13%\"/>\n<col style=\"width: 13%\"/>\n</colgroup>\n<thead>\n<tr class=\"header\">\n<th></th>\n<th style=\"text-align: left;\"><strong>ලක්ඛණ</strong></th>\n<th><strong>වීච්ඡා</strong></th>\n<th><strong>ඉත්ථම්භූත</strong></th>\n<th style=\"text-align: left;\"><strong>භාග</strong></th>\n<th style=\"text-align: left;\"><strong>සහත්ථ</strong></th>\n<th><strong>හීනත්ථ</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr class=\"odd\">\n<td><strong>අනු</strong></td>\n<td style=\"text-align: left;\"><strong>√</strong></td>\n<td><strong>√</strong></td>\n<td><strong>√</strong></td>\n<td style=\"text-align: left;\"><strong>√</strong></td>\n<td style=\"text-align: left;\"><strong>√</strong></td>\n<td><strong>√</strong></td>\n</tr>\n<tr class=\"even\">\n<td><strong>පති &amp; පරි</strong></td>\n<td style=\"text-align: left;\"><strong>√</strong></td>\n<td><strong>√</strong></td>\n<td><strong>√</strong></td>\n<td style=\"text-align: left;\"><strong>√</strong></td>\n<td style=\"text-align: left;\"><strong>X</strong></td>\n<td><strong>X</strong></td>\n</tr>\n<tr class=\"odd\">\n<td><strong>අභි</strong></td>\n<td style=\"text-align: left;\"><strong>√</strong></td>\n<td><strong>√</strong></td>\n<td><strong>√</strong></td>\n<td style=\"text-align: left;\"><strong>X</strong></td>\n<td style=\"text-align: left;\"><strong>X</strong></td>\n<td><strong>X</strong></td>\n</tr>\n</tbody>\n</table>",
+    "note": true
    },
    {
     "kind": "pali",
@@ -1047,19 +1067,23 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>උප/අනු/අධි/ආ + වස</p>"
+    "html": "<p>උප/අනු/අධි/ආ + වස</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p><mark>උප+√වස / අනු +√වස /අධි+√වස / ආ √වස</mark></p>"
+    "html": "<p><mark>උප+√වස / අනු +√වස /අධි+√වස / ආ √වස</mark></p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>(උපවසති, අනුවසති, අධිවසති, ආවසති, අජ්ඣාවසති .…)</p>"
+    "html": "<p>(උපවසති, අනුවසති, අධිවසති, ආවසති, අජ්ඣාවසති .…)</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>අධි + (සි /ඨා /වස)</p>"
+    "html": "<p>අධි + (සි /ඨා /වස)</p>",
+    "note": true
    },
    {
     "kind": "sanna",
@@ -1071,7 +1095,8 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>තප්පාන / තදාචාර</p>"
+    "html": "<p>තප්පාන / තදාචාර</p>",
+    "note": true
    },
    {
     "kind": "sanna",

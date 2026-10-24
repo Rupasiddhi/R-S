@@ -2,6 +2,7 @@
  * කාරකකණ්ඩ — පඤ්චමී — අපාදානකාරක
  * මූලාශ්‍රය: පදරූපසිද්ධි කාරකකණ්ඩ සංස්කරණ පිටපත (පාළි වුත්තිය, සිංහල සන්නය, සටහන්).
  * blocks: pali / sanna / list / verse / table / subhead / anuvutti (පාඨ පිළිවෙළින්ම).
+ * note: true — සංස්කාරක විශේෂ සටහන් (රූප සටහන්, සමීකරණ, යොමු, ශබ්දකෝෂ සටහන්).
  * tika: true — මූල රූපසිද්ධියෙහි නැති ටීකා/විවරණ පාළි හා එහි සන්නය (ක්ලික් කළ පසු පමණක් පෙන්වයි).
  */
 window.SuttaDatabase = window.SuttaDatabase || {};
@@ -136,11 +137,13 @@ window.SuttaDatabase["05_karaka_pancami"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>විජ්ජු වලාහකා (<mark>නික්ඛම්ම</mark>) විජ්ජොතතෙ</p>"
+    "html": "<p>විජ්ජු වලාහකා (<mark>නික්ඛම්ම</mark>) විජ්ජොතතෙ</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>සූදො කුසූලතො (<mark>අපනෙත්වා</mark>) වීහිං පචති</p>"
+    "html": "<p>සූදො කුසූලතො (<mark>අපනෙත්වා</mark>) වීහිං පචති</p>",
+    "note": true
    },
    {
     "kind": "sanna",
@@ -374,11 +377,13 @@ window.SuttaDatabase["05_karaka_pancami"] = [
    },
    {
     "kind": "pali",
-    "html": "<p><strong>අපාදානං 308 - (ක.273) යස්මාදපෙති භයමාදත්තෙ වා තදපාදානං</strong></p>"
+    "html": "<p><strong>අපාදානං 308 - (ක.273) යස්මාදපෙති භයමාදත්තෙ වා තදපාදානං</strong></p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p><strong>යොගෙ -309 - (ක.274) ධාතුනාමානමුපසග්ගයොගාදීස්වපි ච</strong></p>"
+    "html": "<p><strong>යොගෙ -309 - (ක.274) ධාතුනාමානමුපසග්ගයොගාදීස්වපි ච</strong></p>",
+    "note": true
    }
   ],
   "footnotes": "<aside class=\"footnotes footnotes-end-of-document\" id=\"footnotes\" role=\"doc-endnotes\">\n<hr/>\n<ol>\n<li id=\"fn1\"><p>පර්වතය <mark>දක්වා</mark> කෙත (ආ පබ්බතා ඛෙත්තං ආපබ්බතං ඛෙත්තං, මරියාදායං, වජ්ජමානා සීමා මරියාදා, පබ්බතං විනාත්‍යත්ථො.)<a class=\"footnote-back\" href=\"#fnref1\" role=\"doc-backlink\">↩︎</a></p></li>\n<li id=\"fn2\"><p>බඹලොව <mark>තෙක්</mark> ශබ්දය පැන නැගිණි (ආ ජලන්තා සීතං ආජලන්තං සීතං, අභිවිධිම්හි, ගය්හමානා සීමා අභිවිධි, ජලන්තෙන සහෙත්‍යත්ථො)<a class=\"footnote-back\" href=\"#fnref2\" role=\"doc-backlink\">↩︎</a></p></li>\n<li id=\"fn3\"><p>“ලොකෙ විජ්ජති”ති අධිකො පාඨො ම.ඡ.සං පිටකෙ අත්ථි.<a class=\"footnote-back\" href=\"#fnref3\" role=\"doc-backlink\">↩︎</a></p></li>\n<li id=\"fn4\"><p><strong>යත්වාධිකරණමෙන</strong>න්තිආදිම්හි <strong><mark>යංකාරණා</mark></strong> යස්ස චක්ඛුන්ද්‍රියාසංවරස්ස හෙතු එතං පුග්ගලං සතිකවාටෙන චක්ඛුන්ද්‍රියං <strong>අසංවුතං</strong><a class=\"footnote-back\" href=\"#fnref4\" role=\"doc-backlink\">↩︎</a></p></li>\n</ol>\n</aside>",
@@ -426,11 +431,13 @@ window.SuttaDatabase["05_karaka_pancami"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>(දාසා) <mark>තණ්ඩුලා</mark> කාකෙ රක්ඛන්ති</p>"
+    "html": "<p>(දාසා) <mark>තණ්ඩුලා</mark> කාකෙ රක්ඛන්ති</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>(දාසා) <mark>යවා</mark> ගාවො පටිසෙධෙන්ති</p>"
+    "html": "<p>(දාසා) <mark>යවා</mark> ගාවො පටිසෙධෙන්ති</p>",
+    "note": true
    },
    {
     "kind": "pali",
@@ -443,11 +450,13 @@ window.SuttaDatabase["05_karaka_pancami"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>අපාදානං - 308 – (කච්.273) - යස්මාදපෙති භයමාදත්තෙ වා තදපාදානං</p>"
+    "html": "<p>අපාදානං - 308 – (කච්.273) - යස්මාදපෙති භයමාදත්තෙ වා තදපාදානං</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>ඉච්ඡිතං - 310 – (කච්.275) - රක්ඛණත්ථානමිච්ඡිතං</p>"
+    "html": "<p>ඉච්ඡිතං - 310 – (කච්.275) - රක්ඛණත්ථානමිච්ඡිතං</p>",
+    "note": true
    }
   ],
   "footnotes": "<aside class=\"footnotes footnotes-end-of-document\" id=\"footnotes\" role=\"doc-endnotes\">\n<hr/>\n<ol>\n<li id=\"fn1\"><p>???????<a class=\"footnote-back\" href=\"#fnref1\" role=\"doc-backlink\">↩︎</a></p></li>\n</ol>\n</aside>",
@@ -495,7 +504,8 @@ window.SuttaDatabase["05_karaka_pancami"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>අපාදානං - 308 – (කච්.273) - යස්මාදපෙති භයමාදත්තෙ වා තදපාදානං</p>"
+    "html": "<p>අපාදානං - 308 – (කච්.273) - යස්මාදපෙති භයමාදත්තෙ වා තදපාදානං</p>",
+    "note": true
    }
   ],
   "footnotes": "",
@@ -543,31 +553,38 @@ window.SuttaDatabase["05_karaka_pancami"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>දූර+අන්තික = දූරන්තික</p>"
+    "html": "<p>දූර+අන්තික = දූරන්තික</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>දූරත්ථ+අන්තිකත්ථ = දූරන්තිකත්ථ</p>"
+    "html": "<p>දූරත්ථ+අන්තිකත්ථ = දූරන්තිකත්ථ</p>",
+    "note": true
    },
    {
     "kind": "verse",
-    "html": "<blockquote>\n<p>දූරන්තිකත්ථ</p>\n</blockquote>"
+    "html": "<blockquote>\n<p>දූරන්තිකත්ථ</p>\n</blockquote>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>විඤ්ඤාණපච්චයා නාමං - චතුවොකාර</p>"
+    "html": "<p>විඤ්ඤාණපච්චයා නාමං - චතුවොකාර</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>විඤ්ඤාණපච්චයා රූපං - එකවොකාර</p>"
+    "html": "<p>විඤ්ඤාණපච්චයා රූපං - එකවොකාර</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p><u>විඤ්ඤාණපච්චයා නාමරූපං - පඤ්චවොකාර</u></p>"
+    "html": "<p><u>විඤ්ඤාණපච්චයා නාමරූපං - පඤ්චවොකාර</u></p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>විඤ්ඤාණපච්චයා නාම+රූපං</p>"
+    "html": "<p>විඤ්ඤාණපච්චයා නාම+රූපං</p>",
+    "note": true
    },
    {
     "kind": "pali",
@@ -603,11 +620,13 @@ window.SuttaDatabase["05_karaka_pancami"] = [
    },
    {
     "kind": "pali",
-    "html": "<p><mark>පාසාදා</mark> සඞ්කමෙය්‍ය = <mark>පාසාදං අභිරුහිත්වා</mark> සඞ්කමෙය්‍ය</p>"
+    "html": "<p><mark>පාසාදා</mark> සඞ්කමෙය්‍ය = <mark>පාසාදං අභිරුහිත්වා</mark> සඞ්කමෙය්‍ය</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p><mark>හත්ථික්ඛන්ධා</mark> සඞ්කමෙය්‍ය = <mark>හත්ථික්ඛන්ධං අභිරුහිත්වා</mark> සඞ්කමෙය්‍ය</p>"
+    "html": "<p><mark>හත්ථික්ඛන්ධා</mark> සඞ්කමෙය්‍ය = <mark>හත්ථික්ඛන්ධං අභිරුහිත්වා</mark> සඞ්කමෙය්‍ය</p>",
+    "note": true
    },
    {
     "kind": "pali",
@@ -615,15 +634,18 @@ window.SuttaDatabase["05_karaka_pancami"] = [
    },
    {
     "kind": "pali",
-    "html": "<p><mark>අභිධම්මා</mark> පුච්ඡන්ති = <mark>අභිධම්මං සුත්වා</mark> පුච්ඡන්ති</p>"
+    "html": "<p><mark>අභිධම්මා</mark> පුච්ඡන්ති = <mark>අභිධම්මං සුත්වා</mark> පුච්ඡන්ති</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p><mark>අභිධම්මා</mark> කථයන්ති = <mark>අභිධම්මං පඨිත්වා</mark> කථයන්ති</p>"
+    "html": "<p><mark>අභිධම්මා</mark> කථයන්ති = <mark>අභිධම්මං පඨිත්වා</mark> කථයන්ති</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p><mark>ආසනා</mark> වුට්ඨහෙය්‍ය = <mark>ආසනෙ නිසීදිත්වා</mark> වුට්ඨහෙය්‍ය</p>"
+    "html": "<p><mark>ආසනා</mark> වුට්ඨහෙය්‍ය = <mark>ආසනෙ නිසීදිත්වා</mark> වුට්ඨහෙය්‍ය</p>",
+    "note": true
    },
    {
     "kind": "pali",
@@ -692,11 +714,13 @@ window.SuttaDatabase["05_karaka_pancami"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>ස්මා - 81 — (කච්.99) - ස්මාහිස්මිංනං ම්හාභිම්හි වා.</p>"
+    "html": "<p>ස්මා - 81 — (කච්.99) - ස්මාහිස්මිංනං ම්හාභිම්හි වා.</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>සො-වා- - (කච්.105) - සො වා</p>"
+    "html": "<p>සො-වා- - (කච්.105) - සො වා</p>",
+    "note": true
    }
   ],
   "footnotes": "<aside class=\"footnotes footnotes-end-of-document\" id=\"footnotes\" role=\"doc-endnotes\">\n<hr/>\n<ol>\n<li id=\"fn1\"><p>ප්‍රාසාදයෙන් මාරු වන්නේය<a class=\"footnote-back\" href=\"#fnref1\" role=\"doc-backlink\">↩︎</a></p></li>\n</ol>\n</aside>",
@@ -740,7 +764,8 @@ window.SuttaDatabase["05_karaka_pancami"] = [
    },
    {
     "kind": "pali",
-    "html": "<p><strong>දීඝ/ ඔර + <u>ස්මා→ සො</u></strong></p>"
+    "html": "<p><strong>දීඝ/ ඔර + <u>ස්මා→ සො</u></strong></p>",
+    "note": true
    },
    {
     "kind": "pali",
@@ -833,7 +858,8 @@ window.SuttaDatabase["05_karaka_pancami"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>පඤ්චමී - 307 (කච්.297) - අපාදානෙ පඤ්චමී</p>"
+    "html": "<p>පඤ්චමී - 307 (කච්.297) - අපාදානෙ පඤ්චමී</p>",
+    "note": true
    }
   ],
   "footnotes": "<aside class=\"footnotes footnotes-end-of-document\" id=\"footnotes\" role=\"doc-endnotes\">\n<hr/>\n<ol>\n<li id=\"fn1\"><p>දීඝතො - සීහළ<a class=\"footnote-back\" href=\"#fnref1\" role=\"doc-backlink\">↩︎</a></p></li>\n</ol>\n</aside>",

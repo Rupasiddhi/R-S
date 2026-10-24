@@ -124,3 +124,16 @@
 .night-mode .kk-tika { background: #221B2B; border-color: #4A3A5E; }
 .night-mode .kk-tika > summary { color: #CDB8E3; }
 .kk-rest-card > .kk-pair:first-child, .kk-rest-card > .kk-tika:first-child { margin-top: 0; }
+
+/* සංස්කාරක විශේෂ සටහන් (රූප සටහන්, සමීකරණ, යොමු, ශබ්දකෝෂ සටහන්) */
+.kk-notes { margin-top: 0.9rem; padding: 0.7rem 0.95rem; border-radius: 6px; background: #F3F7FA; border: 1px solid #D5E2EC; border-left: 4px solid #5B8DB8; }
+.kk-notes-label { display: block; font-weight: 700; font-size: 0.85rem; color: #2F5E86; margin-bottom: 0.35rem; }
+.kk-notes .kk-note-line { font-size: 0.95rem; line-height: 1.75; color: #2B3A46; }
+.kk-notes .kk-note-line p { margin: 0.1rem 0; }
+.kk-notes .kk-note-line mark { background: none; color: inherit; padding: 0; }
+.kk-notes .kk-table { margin: 0.4rem 0; }
+.kk-notes-solo { margin-top: 0.9rem; }
+.kk-notes-solo .kk-notes { margin-top: 0; }
+.night-mode .kk-notes { background: #1C2630; border-color: #2E4252; }
+.night-mode .kk-notes .kk-note-line { color: #D3DEE8; }
+.night-mode .kk-notes-label { color: #9CC3E4; }

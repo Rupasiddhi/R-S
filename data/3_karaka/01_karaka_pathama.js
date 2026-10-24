@@ -2,6 +2,7 @@
  * කාරකකණ්ඩ — පඨමා — ලිඞ්ගත්ථ
  * මූලාශ්‍රය: පදරූපසිද්ධි කාරකකණ්ඩ සංස්කරණ පිටපත (පාළි වුත්තිය, සිංහල සන්නය, සටහන්).
  * blocks: pali / sanna / list / verse / table / subhead / anuvutti (පාඨ පිළිවෙළින්ම).
+ * note: true — සංස්කාරක විශේෂ සටහන් (රූප සටහන්, සමීකරණ, යොමු, ශබ්දකෝෂ සටහන්).
  * tika: true — මූල රූපසිද්ධියෙහි නැති ටීකා/විවරණ පාළි හා එහි සන්නය (ක්ලික් කළ පසු පමණක් පෙන්වයි).
  */
 window.SuttaDatabase = window.SuttaDatabase || {};
@@ -49,19 +50,23 @@ window.SuttaDatabase["01_karaka_pathama"] = [
    },
    {
     "kind": "pali",
-    "html": "<p><strong>ලීනං + අඞ්ගං</strong></p>"
+    "html": "<p><strong>ලීනං + අඞ්ගං</strong></p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p><strong>ලී-නං + අ-ඞ්ගං</strong></p>"
+    "html": "<p><strong>ලී-නං + අ-ඞ්ගං</strong></p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p><strong>ල්-<u>ඊ ඉ</u>+ ඞ්ගං</strong></p>"
+    "html": "<p><strong>ල්-<u>ඊ ඉ</u>+ ඞ්ගං</strong></p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p><strong>ලිඞ්ගං //</strong></p>"
+    "html": "<p><strong>ලිඞ්ගං //</strong></p>",
+    "note": true
    },
    {
     "kind": "sanna",
@@ -77,11 +82,13 @@ window.SuttaDatabase["01_karaka_pathama"] = [
    },
    {
     "kind": "pali",
-    "html": "<p><mark>පුරිස</mark> + සි→ඔ</p>"
+    "html": "<p><mark>පුරිස</mark> + සි→ඔ</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>පුරිසො //</p>"
+    "html": "<p>පුරිසො //</p>",
+    "note": true
    },
    {
     "kind": "pali",
@@ -119,7 +126,8 @@ window.SuttaDatabase["01_karaka_pathama"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>පුරිස <strong>→</strong> නාමපකති = ලිංග = පාටිපදික</p>"
+    "html": "<p>පුරිස <strong>→</strong> නාමපකති = ලිංග = පාටිපදික</p>",
+    "note": true
    },
    {
     "kind": "sanna",
@@ -242,11 +250,13 @@ window.SuttaDatabase["01_karaka_pathama"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>1 කර්මාදිය හා මිශ්‍ර ලිඞ්ගාර්ථය = පුරිසො <mark>රුක්ඛං</mark> ඡින්දති, පුරිසො <mark>චොර</mark>ං පහරති</p>"
+    "html": "<p>1 කර්මාදිය හා මිශ්‍ර ලිඞ්ගාර්ථය = පුරිසො <mark>රුක්ඛං</mark> ඡින්දති, පුරිසො <mark>චොර</mark>ං පහරති</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>2 ශුද්ධ ලිඞ්ගාර්ථය = <mark>රුක්ඛො</mark></p>"
+    "html": "<p>2 ශුද්ධ ලිඞ්ගාර්ථය = <mark>රුක්ඛො</mark></p>",
+    "note": true
    },
    {
     "kind": "pali",
@@ -266,7 +276,8 @@ window.SuttaDatabase["01_karaka_pathama"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>උදා; පුරිසො <mark>රුක්ඛ</mark>ං ඡින්දති <strong>→</strong> පුරිසෙන <mark>රුක්ඛො</mark> ඡින්දීයතෙ.</p>"
+    "html": "<p>උදා; පුරිසො <mark>රුක්ඛ</mark>ං ඡින්දති <strong>→</strong> පුරිසෙන <mark>රුක්ඛො</mark> ඡින්දීයතෙ.</p>",
+    "note": true
    },
    {
     "kind": "sanna",
@@ -274,11 +285,13 @@ window.SuttaDatabase["01_karaka_pathama"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>ප්‍රථමා දුතියා තතියා ප්‍රථමා</p>"
+    "html": "<p>ප්‍රථමා දුතියා තතියා ප්‍රථමා</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>ආගතා සමණා යං සො <mark>ආගතසමණො</mark> (විහාරො)</p>"
+    "html": "<p>ආගතා සමණා යං සො <mark>ආගතසමණො</mark> (විහාරො)</p>",
+    "note": true
    },
    {
     "kind": "sanna",
@@ -350,11 +363,13 @@ window.SuttaDatabase["01_karaka_pathama"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>භො පුරිස! රාජා භව = √</p>"
+    "html": "<p>භො පුරිස! රාජා භව = √</p>",
+    "note": true
    },
    {
     "kind": "sanna",
-    "html": "<p>භො <mark>රාජ</mark>! රාජා භව = × (තාම රජ වී නැති “<strong>අලද්ධ සරූප</strong>” නිසා “රජ” යැයි ඇමතිය නොහැක. )</p>"
+    "html": "<p>භො <mark>රාජ</mark>! රාජා භව = × (තාම රජ වී නැති “<strong>අලද්ධ සරූප</strong>” නිසා “රජ” යැයි ඇමතිය නොහැක. )</p>",
+    "note": true
    },
    {
     "kind": "sanna",
@@ -362,7 +377,8 @@ window.SuttaDatabase["01_karaka_pathama"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>(ත්වං) උදකං ආහර</p>"
+    "html": "<p>(ත්වං) උදකං ආහර</p>",
+    "note": true
    },
    {
     "kind": "pali",
