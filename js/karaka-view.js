@@ -50,59 +50,46 @@ function kkPrevNext(s) {
     return `<div class="kk-nav">${btn(all[i - 1], '← පෙර')}${btn(all[i + 1], 'ඊළඟ →')}</div>`;
 }
 
-// ලේඛනයේ පාඨ කොටස් සංඥා ඛාණ්ඩයේ ආකෘතියට බෙදීම:
-//   තේරුම (සූත්‍රයේ සන්නය) → [පාළි පාඨය → එහි පදයෙන් පද සන්නය] × n (ලේඛනයේ පිළිවෙළින්ම)
-const KK_PALI_KINDS = ['pali', 'anuvutti', 'verse'];
-function kkSplitSannaLayout(blocks) {
-    const bl = (blocks || []).slice();
-    // පළමු පාළි පාඨයට පෙර ඇති සන්න ඡේද සියල්ල = සූත්‍රයේ තේරුම
-    let meaning = null;
-    const lead = [];
-    while (bl.length && bl[0].kind === 'sanna') lead.push(bl.shift());
-    if (lead.length && bl.length) meaning = { kind: 'sanna', html: lead.map(b => b.html).join('') };
-    else bl.unshift(...lead);
-    const groups = [];
-    let g = null;
-    bl.forEach(b => {
-        if (b.kind === 'subhead') { groups.push({ head: b }); g = null; return; }
-        const isPali = KK_PALI_KINDS.includes(b.kind);
-        if (!g || (isPali && g.sanna.length)) { g = { pali: [], sanna: [] }; groups.push(g); }
-        (isPali ? g.pali : g.sanna).push(b);
-    });
-    return { meaning, groups };
-}
-
+// කාරකකණ්ඩ — මූල පාළි ඡේද වශයෙන් (paras). එක් එක් ඡේදය:
+//   පාළි ඡේදය → එහි පදයෙන් පද සන්නය → විශේෂ සටහන් → ටීකා විවරණ (ක්ලික් කළ පසු)
 function kkNoteHtml(b) {
     if (b.kind === 'table' || b.kind === 'list') return kkBlockHtml(b);
+    if (b.kind === 'subhead') return `<div class="kk-note-head">${b.html.replace(/\*{3,}/g, '')}</div>`;
     return `<div class="kk-note-line">${b.html}</div>`;
 }
 
-function kkPairBox(g, first, lead) {
-    const notes = g.pali.concat(g.sanna).filter(b => b.note);
-    const P = g.pali.filter(b => !b.note), S = g.sanna.filter(b => !b.note);
-    const pali = (lead || []).map(b => `<div class="kk-lead-line">${b.html}</div>`).join('') +
-        P.map(b => b.kind === 'verse' ? `<div class="kk-verse">${b.html}</div>`
-            : b.kind === 'anuvutti' ? `<div class="kk-anu-line">${b.html}</div>` : b.html).join('');
-    const sanna = S.map(b => (b.kind === 'sanna' ? b.html : kkBlockHtml(b))).join('');
-    const note = notes.length ? `
-            <div class="kk-notes">
-                <span class="kk-notes-label">📝 විශේෂ සටහන්:</span>
-                ${notes.map(kkNoteHtml).join('')}
-            </div>` : '';
-    if (!pali && !sanna) return note ? `<div class="kk-notes-solo">${note}</div>` : '';
-    return `
-        <div class="sanna-vutti-box kk-pair">
-            ${pali ? `
-                <span class="vutti-label">${first ? 'සූත්‍ර වෘත්තිය (පාළි):' : 'පාළි පාඨය:'}</span>
-                <div class="sanna-vutti-text kk-html">${pali}</div>
-            ` : ''}
+function kkTikaHtml(list) {
+    if (!list || !list.length) return '';
+    const pali = list.filter(b => ['pali', 'verse', 'anuvutti'].includes(b.kind)).map(b => b.html).join('');
+    const sanna = list.filter(b => !['pali', 'verse', 'anuvutti'].includes(b.kind)).map(b => b.kind === 'sanna' ? b.html : kkBlockHtml(b)).join('');
+    return `<details class="kk-tika"><summary><span class="kk-tika-icon">📜</span> ටීකා විවරණ <span class="kk-tika-hint">(බැලීමට ක්ලික් කරන්න)</span></summary>
+        <div class="kk-tika-body"><div class="sanna-vutti-box kk-pair">
+            ${pali ? `<span class="vutti-label">ටීකා පාඨය:</span><div class="sanna-vutti-text kk-html">${pali}</div>` : ''}
             ${pali && sanna ? `<hr class="sanna-sanna-divider">` : ''}
+            ${sanna ? `<span class="vutti-label">පදයෙන් පද සන්නය:</span><div class="sanna-sanna-text kk-html kk-pair-sanna">${sanna}</div>` : ''}
+        </div></div></details>`;
+}
+
+function kkParaBox(p, first) {
+    const sanna = (p.sanna || []).map(b => (b.kind === 'sanna' ? b.html : kkBlockHtml(b))).join('');
+    const notes = p.notes || [];
+    return `
+        ${(p.heads || []).map(h => `<div class="kk-subhead">${h.html.replace(/\*{3,}/g, '')}</div>`).join('')}
+        <div class="sanna-vutti-box kk-pair">
+            <span class="vutti-label">${first ? 'සූත්‍ර වෘත්තිය (පාළි):' : 'පාළි පාඨය:'}</span>
+            <div class="sanna-vutti-text kk-html${p.kind === 'verse' ? ' kk-para-verse' : ''}">${p.html}</div>
             ${sanna ? `
+                <hr class="sanna-sanna-divider">
                 <span class="vutti-label">${first ? 'වෘත්තියේ පදයෙන් පද සන්නය:' : 'පදයෙන් පද සන්නය:'}</span>
                 <div class="sanna-sanna-text kk-html kk-pair-sanna">${sanna}</div>
             ` : ''}
-            ${note}
-        </div>`;
+            ${notes.length ? `
+                <div class="kk-notes">
+                    <span class="kk-notes-label">📝 විශේෂ සටහන්:</span>
+                    ${notes.map(kkNoteHtml).join('')}
+                </div>` : ''}
+        </div>
+        ${kkTikaHtml(p.tika)}`;
 }
 
 function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
@@ -110,38 +97,13 @@ function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
     if (!box || !s) return;
     window.AppState.currentSutta = s;
 
-    const { meaning, groups } = kkSplitSannaLayout(s.blocks);
     const refs = [s.kac ? `කච්. ${s.kac}` : '', s.rs ? `රූ.සි. ${s.rs}` : ''].filter(Boolean).join(' · ');
-    // ලේඛනයේ පිළිවෙළින්: මූල පාඨ + සන්නය දිස්වේ; ටීකා කොටස් (tika) ක්ලික් කළ පසු පමණි.
-    let firstDone = false;
-    const items = [];
-    groups.forEach(g => {
-        if (g.head) { items.push({ html: `<div class="kk-subhead">${g.head.html.replace(/\*{3,}/g, '')}</div>` }); return; }
-        const vis = { pali: g.pali.filter(b => !b.tika), sanna: g.sanna.filter(b => !b.tika) };
-        const tk = { pali: g.pali.filter(b => b.tika), sanna: g.sanna.filter(b => b.tika) };
-        const real = vis.pali.concat(vis.sanna).some(b => !b.note);
-        if (real) {
-            items.push({ html: kkPairBox(vis, !firstDone && !s.is_intro, firstDone ? null : s.lead), first: !firstDone });
-            firstDone = true;
-        } else if (vis.pali.length || vis.sanna.length) {
-            items.push({ html: kkPairBox(vis, false, null) });
-        }
-        if (tk.pali.length || tk.sanna.length) items.push({ tika: kkPairBox(tk, false, null) });
-    });
-    // ෂඩාකාරය පළමු (වෘත්තිය + පදයෙන් පද සන්නය) කොටුවට පසුව; ඉතිරිය ඊට පසු
-    let bodyHead = '', body = '';
-    const firstIdx = items.findIndex(it => it.first);
-    for (let i = 0; i <= firstIdx; i++) bodyHead += items[i].tika ? '' : items[i].html;
-    const preTika = items.slice(0, Math.max(firstIdx, 0)).filter(it => it.tika);
-    for (let i = firstIdx + 1; i < items.length; i++) {
-        if (!items[i].tika) { body += items[i].html; continue; }
-        let inner = '';
-        while (i < items.length && items[i].tika) inner += items[i++].tika;
-        i--;
-        body += `<details class="kk-tika"><summary><span class="kk-tika-icon">📜</span> ටීකා විවරණ <span class="kk-tika-hint">(බැලීමට ක්ලික් කරන්න)</span></summary><div class="kk-tika-body">${inner}</div></details>`;
-    }
-    if (preTika.length) body = `<details class="kk-tika"><summary><span class="kk-tika-icon">📜</span> ටීකා විවරණ <span class="kk-tika-hint">(බැලීමට ක්ලික් කරන්න)</span></summary><div class="kk-tika-body">${preTika.map(it => it.tika).join('')}</div></details>` + body;
-    const leadOnly = !firstDone && (s.lead || []).length ? kkPairBox({ pali: [], sanna: [] }, true, s.lead) : '';
+    const paras = s.paras || [];
+    const meaning = s.meaning ? { html: s.meaning } : null;
+    // ෂඩාකාරය පළමු ඡේදයට (වෘත්තිය + පදයෙන් පද සන්නය) පසුව
+    const bodyHead = paras.length ? kkParaBox(paras[0], !s.is_intro) : '';
+    const body = paras.slice(1).map(p => kkParaBox(p, false)).join('');
+    const leadOnly = '';
 
     box.innerHTML = `
         <!-- 01. සූත්‍රය, තේරුම, වෘත්තිය හා සන්නය (සංඥා ඛාණ්ඩයේ ආකෘතිය) -->

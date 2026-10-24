@@ -137,3 +137,7 @@
 .night-mode .kk-notes { background: #1C2630; border-color: #2E4252; }
 .night-mode .kk-notes .kk-note-line { color: #D3DEE8; }
 .night-mode .kk-notes-label { color: #9CC3E4; }
+.kk-para-verse p { margin: 0.1rem 0; }
+.kk-pair .sanna-vutti-text blockquote { margin: 0.3rem 0 0.3rem 1.2rem; font-style: italic; }
+.kk-note-head { font-weight: 700; color: #2F5E86; margin: 0.4rem 0 0.15rem; }
+.kk-note-head h2, .kk-note-head h3 { font-size: 0.95rem; margin: 0; }
