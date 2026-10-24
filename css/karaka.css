@@ -123,3 +123,4 @@
 .kk-tika-body .sanna-vutti-box { margin-top: 0.5rem; border-left-color: #8B6BB0; border-color: #CDB8E3; }
 .night-mode .kk-tika { background: #221B2B; border-color: #4A3A5E; }
 .night-mode .kk-tika > summary { color: #CDB8E3; }
+.kk-rest-card > .kk-pair:first-child, .kk-rest-card > .kk-tika:first-child { margin-top: 0; }
