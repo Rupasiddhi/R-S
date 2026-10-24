@@ -39,7 +39,7 @@ const KHANDAS_CONFIG = [
         key: "3_karaka",
         name: "3. කාරකකණ්ඩ",
         subCategories: [
-            { id: "00_karaka_intro", name: "කාරක හැඳින්වීම හා සිතියම" },
+            { id: "00_karaka_intro", name: "හැඳින්වීම හා සූත්‍ර පටුන" },
             { id: "01_karaka_pathama", name: "පඨමා — ලිඞ්ගත්ථ" },
             { id: "02_karaka_dutiya", name: "දුතියා — කම්මකාරක" },
             { id: "03_karaka_tatiya", name: "තතියා — කරණ, කත්තු, හෙතු" },
