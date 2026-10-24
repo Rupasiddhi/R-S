@@ -115,16 +115,20 @@ function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
             ` : ''}
         </div>
 
-        <!-- 02. සන්න, ටීකා හා න්‍යාස විශේෂ විවරණ -->
-        ${rest.length ? `
+        <!-- 02. සූත්‍ර ෂඩාකාර විමර්ශනය (සන්න/ටීකා විවරණ දැනට පෙන්වන්නේ නැත — දත්ත ගොනුවේ ඇත) -->
+        ${s.shadakara && typeof renderSannaShadakaraCards === 'function' ? `
             <div class="panel-card">
-                <h3 class="section-heading"><span class="heading-icon">📖</span> සන්න, ටීකා හා න්‍යාස විශේෂ විවරණ</h3>
-                <div class="sanna-commentary-box kk-text">${rest.map(kkBlockHtml).join('')}</div>
+                <h3 class="section-heading"><span class="heading-icon">⚜️</span> සූත්‍ර ෂඩාකාර විමර්ශනය</h3>
+                <div class="shadakara-dynamic-grid">${renderSannaShadakaraCards(s.shadakara)}</div>
             </div>
         ` : ''}
 
+        ${s.is_intro && rest.length ? `
+            <div class="panel-card"><div class="sanna-commentary-box kk-text">${rest.map(kkBlockHtml).join('')}</div></div>
+        ` : ''}
+
         <!-- 03. පාද සටහන් -->
-        ${s.footnotes ? `
+        ${s.footnotes && s.is_intro ? `
             <div class="panel-card">
                 <details class="kk-foot kk-foot-card"><summary><span class="heading-icon">📝</span> පාද සටහන්</summary>${s.footnotes}</details>
             </div>
