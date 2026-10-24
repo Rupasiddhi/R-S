@@ -224,7 +224,8 @@ function renderSadhanaGroupedList(ul, subId, items) {
             li.className = 'sutta-sub-item sadhana-word' + (isSel ? ' active' : '');
             li.dataset.sub = subId; li.dataset.num = n;
             const tag = (subId === '04b_sabbanama_sadhana' && it.linga) ? ` <small>(${it.linga.split(' ')[0]})</small>` : '';
-            li.innerHTML = `${it.word}${tag}`;
+            const sd = it.source === 'saddaniti' ? ` <span class="sd-tag" title="සද්දනීති පදමාලාවෙන්">සද්</span>` : '';
+            li.innerHTML = `${it.word}${tag}${sd}`;
             li.onclick = (e) => { e.stopPropagation(); selectSuttaItem(n, subId); };
             inner.appendChild(li);
         });
