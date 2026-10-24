@@ -81,3 +81,32 @@
 @media (max-width: 640px) {
     .kk-html, .sanna-commentary-box.kk-text { text-align: left !important; }
 }
+
+/* පොතේ සන්නය (පාළි + පදයෙන් පද සන්නය) */
+.kk-sn-group + .kk-sn-group { margin-top: 1rem; }
+.panel-card > .kk-sn-group:first-of-type { margin-top: 0.4rem; }
+.kk-sn-group .nama-vutti-text { margin: 0 0 0.45rem; }
+.kk-sn-body .nama-sanna-text { margin: 0 0 0.6rem; }
+.kk-sn-body .nama-sanna-text:last-child { margin-bottom: 0; }
+.kk-sn-center { text-align: center; font-weight: 600; color: #8C2D00; margin: 0.5rem 0; }
+.kk-sn-verse { text-align: center; font-style: italic; color: #5C1422; margin: 0.6rem 0; }
+.kk-sn-verse p { margin: 0.1rem 0; }
+.kk-sn-note { font-size: 0.85rem; color: var(--text-muted, #6E6153); border-top: 1px dotted #E2CEB1; padding-top: 0.35rem; margin: 0.5rem 0; }
+@media (max-width: 640px) {
+    .kk-sn-group .nama-vutti-text, .kk-sn-body .nama-sanna-text { text-align: left; }
+}
+
+/* පාළි → පදයෙන් පද සන්නය යුගල (ලේඛනයේ පිළිවෙළින්) */
+.kk-pair .sanna-vutti-text p { margin: 0.2rem 0; }
+.kk-pair .sanna-sanna-text p { margin: 0.35rem 0; }
+.kk-pair .kk-lead-line { font-weight: 600; }
+.kk-anu-line { color: var(--text-muted, #6E6153); border-left: 3px dashed var(--theme-accent, #C59B27); padding-left: 0.6rem; margin: 0.3rem 0; }
+.kk-pair .kk-verse { text-align: center; font-style: italic; }
+.sanna-banner-card .kk-subhead h2, .sanna-banner-card .kk-subhead h3 { margin: 1.2rem 0 0.2rem; }
+/* රූපයේ ආකාරයට: සන්නය එම කොටුව තුළම, තද පාළි පද + සිංහල තේරුම */
+.kk-pair-sanna strong { background: none !important; border: 0 !important; padding: 0 !important; margin: 0 !important; color: #6B1D2F; }
+.kk-pair-sanna mark { background: none; color: inherit; padding: 0; }
+.kk-pair .sanna-vutti-text mark { background: none; color: inherit; padding: 0; }
+@media (max-width: 640px) {
+    .kk-pair .sanna-vutti-text, .kk-pair .sanna-sanna-text, .sanna-banner-card .sanna-meaning-text { text-align: left !important; }
+}

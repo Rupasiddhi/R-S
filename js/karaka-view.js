@@ -50,17 +50,45 @@ function kkPrevNext(s) {
     return `<div class="kk-nav">${btn(all[i - 1], '← පෙර')}${btn(all[i + 1], 'ඊළඟ →')}</div>`;
 }
 
-// සූත්‍රයේ පාඨ කොටස් සංඥා ඛාණ්ඩයේ ආකෘතියට බෙදීම:
-//   තේරුම (සූත්‍රයේ සන්නය) → වෘත්තිය (පාළි) → වෘත්තියේ සන්නය → විශේෂ විවරණ (ඉතිරි සියල්ල)
+// ලේඛනයේ පාඨ කොටස් සංඥා ඛාණ්ඩයේ ආකෘතියට බෙදීම:
+//   තේරුම (සූත්‍රයේ සන්නය) → [පාළි පාඨය → එහි පදයෙන් පද සන්නය] × n (ලේඛනයේ පිළිවෙළින්ම)
+const KK_PALI_KINDS = ['pali', 'anuvutti', 'verse'];
 function kkSplitSannaLayout(blocks) {
     const bl = (blocks || []).slice();
+    // පළමු පාළි පාඨයට පෙර ඇති සන්න ඡේද සියල්ල = සූත්‍රයේ තේරුම
     let meaning = null;
-    if (bl.length && bl[0].kind === 'sanna' && bl[1] && bl[1].kind === 'pali') meaning = bl.shift();
-    const vutti = [];
-    while (bl.length && bl[0].kind === 'pali') vutti.push(bl.shift());
-    const vsanna = [];
-    if (vutti.length) while (bl.length && bl[0].kind === 'sanna') vsanna.push(bl.shift());
-    return { meaning, vutti, vsanna, rest: bl };
+    const lead = [];
+    while (bl.length && bl[0].kind === 'sanna') lead.push(bl.shift());
+    if (lead.length && bl.length) meaning = { kind: 'sanna', html: lead.map(b => b.html).join('') };
+    else bl.unshift(...lead);
+    const groups = [];
+    let g = null;
+    bl.forEach(b => {
+        if (b.kind === 'subhead') { groups.push({ head: b }); g = null; return; }
+        const isPali = KK_PALI_KINDS.includes(b.kind);
+        if (!g || (isPali && g.sanna.length)) { g = { pali: [], sanna: [] }; groups.push(g); }
+        (isPali ? g.pali : g.sanna).push(b);
+    });
+    return { meaning, groups };
+}
+
+function kkPairBox(g, first, lead) {
+    const pali = (lead || []).map(b => `<div class="kk-lead-line">${b.html}</div>`).join('') +
+        g.pali.map(b => b.kind === 'verse' ? `<div class="kk-verse">${b.html}</div>`
+            : b.kind === 'anuvutti' ? `<div class="kk-anu-line">${b.html}</div>` : b.html).join('');
+    const sanna = g.sanna.map(b => (b.kind === 'sanna' ? b.html : kkBlockHtml(b))).join('');
+    return `
+        <div class="sanna-vutti-box kk-pair">
+            ${pali ? `
+                <span class="vutti-label">${first ? 'සූත්‍ර වෘත්තිය (පාළි):' : 'පාළි පාඨය:'}</span>
+                <div class="sanna-vutti-text kk-html">${pali}</div>
+            ` : ''}
+            ${pali && sanna ? `<hr class="sanna-sanna-divider">` : ''}
+            ${sanna ? `
+                <span class="vutti-label">${first ? 'වෘත්තියේ පදයෙන් පද සන්නය:' : 'පදයෙන් පද සන්නය:'}</span>
+                <div class="sanna-sanna-text kk-html kk-pair-sanna">${sanna}</div>
+            ` : ''}
+        </div>`;
 }
 
 function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
@@ -68,15 +96,21 @@ function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
     if (!box || !s) return;
     window.AppState.currentSutta = s;
 
-    const { meaning, vutti, vsanna, rest } = kkSplitSannaLayout(s.blocks);
-    const lead = s.lead || [];
-    const inner = list => list.map(b => b.html).join('');
+    const { meaning, groups } = kkSplitSannaLayout(s.blocks);
     const refs = [s.kac ? `කච්. ${s.kac}` : '', s.rs ? `රූ.සි. ${s.rs}` : ''].filter(Boolean).join(' · ');
+    let firstDone = false;
+    const body = groups.map(g => {
+        if (g.head) return `<div class="kk-subhead">${g.head.html.replace(/\*{3,}/g, '')}</div>`;
+        const html = kkPairBox(g, !firstDone, firstDone ? null : s.lead);
+        firstDone = true;
+        return html;
+    }).join('');
+    const leadOnly = !firstDone && (s.lead || []).length ? kkPairBox({ pali: [], sanna: [] }, true, s.lead) : '';
 
     box.innerHTML = `
         ${s.is_intro ? kkContents() : ''}
 
-        <!-- 01. සූත්‍ර Top Banner (සංඥා ඛාණ්ඩයේ ආකෘතිය) -->
+        <!-- 01. සූත්‍රය, තේරුම, වෘත්තිය හා සන්නය (සංඥා ඛාණ්ඩයේ ආකෘතිය) -->
         <div class="panel-card sanna-banner-card">
             <div class="tag-row" style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.4rem; flex-wrap: wrap;">
                 <span class="sanna-category-badge">${s.is_intro ? 'හැඳින්වීම' : (s.role || 'කාරක සූත්‍ර')}</span>
@@ -95,27 +129,10 @@ function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
                 </div>
             ` : ''}
 
-            ${(lead.length || vutti.length || vsanna.length) ? `
-                <div class="sanna-vutti-box">
-                    ${(lead.length || vutti.length) ? `
-                        <span class="vutti-label">සූත්‍ර වෘත්තිය (පාළි):</span>
-                        <div class="sanna-vutti-text kk-html">
-                            ${lead.length ? `<div class="kk-lead-line">${inner(lead)}</div>` : ''}
-                            ${inner(vutti)}
-                        </div>
-                    ` : ''}
-                    ${vutti.length && vsanna.length ? `<hr class="sanna-sanna-divider">` : ''}
-                    ${vsanna.length ? `
-                        <span class="vutti-label">වෘත්තියේ පදයෙන් පද සන්නය:</span>
-                        <div class="sanna-vutti-sanna-box">
-                            <div class="sanna-sanna-text kk-html">${inner(vsanna)}</div>
-                        </div>
-                    ` : ''}
-                </div>
-            ` : ''}
+            ${leadOnly}${body}
         </div>
 
-        <!-- 02. සූත්‍ර ෂඩාකාර විමර්ශනය (සන්න/ටීකා විවරණ දැනට පෙන්වන්නේ නැත — දත්ත ගොනුවේ ඇත) -->
+        <!-- 02. සූත්‍ර ෂඩාකාර විමර්ශනය -->
         ${s.shadakara && typeof renderSannaShadakaraCards === 'function' ? `
             <div class="panel-card">
                 <h3 class="section-heading"><span class="heading-icon">⚜️</span> සූත්‍ර ෂඩාකාර විමර්ශනය</h3>
@@ -123,12 +140,8 @@ function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
             </div>
         ` : ''}
 
-        ${s.is_intro && rest.length ? `
-            <div class="panel-card"><div class="sanna-commentary-box kk-text">${rest.map(kkBlockHtml).join('')}</div></div>
-        ` : ''}
-
         <!-- 03. පාද සටහන් -->
-        ${s.footnotes && s.is_intro ? `
+        ${s.footnotes ? `
             <div class="panel-card">
                 <details class="kk-foot kk-foot-card"><summary><span class="heading-icon">📝</span> පාද සටහන්</summary>${s.footnotes}</details>
             </div>
