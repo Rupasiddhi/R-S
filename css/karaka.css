@@ -141,3 +141,40 @@
 .kk-pair .sanna-vutti-text blockquote { margin: 0.3rem 0 0.3rem 1.2rem; font-style: italic; }
 .kk-note-head { font-weight: 700; color: #2F5E86; margin: 0.4rem 0 0.15rem; }
 .kk-note-head h2, .kk-note-head h3 { font-size: 0.95rem; margin: 0; }
+
+/* ===== කාරක හැඳින්වීම — විශේෂ සටහන් ===== */
+.kkn-source { font-size: 0.82rem; color: var(--text-muted, #6E6153); margin: -0.2rem 0 0.8rem; }
+.kkn-toc { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+.kkn-toc a { font-size: 0.85rem; padding: 0.25rem 0.7rem; border-radius: 20px; text-decoration: none;
+    background: #F3F7FA; border: 1px solid #D5E2EC; color: #2F5E86; }
+.kkn-toc a:hover { background: #E4EEF6; }
+.kkn-card { border: 1px solid #E2D7C3; border-left: 4px solid #5B8DB8; border-radius: 8px; padding: 0.9rem 1.1rem; margin-top: 0.9rem; background: #FFFDF9; scroll-margin-top: 80px; }
+.kkn-title { display: flex; align-items: center; gap: 0.55rem; margin: 0 0 0.6rem; font-size: 1.05rem; color: var(--theme-primary, #4A2C6B); }
+.kkn-no { display: inline-flex; align-items: center; justify-content: center; min-width: 1.6rem; height: 1.6rem; border-radius: 50%;
+    background: #5B8DB8; color: #fff; font-size: 0.8rem; font-family: system-ui, sans-serif; }
+.kkn-body { font-size: 0.98rem; line-height: 1.85; color: #2B2118; }
+.kkn-body p { margin: 0.35rem 0; }
+.kkn-body ul, .kkn-body ol { margin: 0.35rem 0; padding-left: 1.3rem; }
+.kkn-body li { margin: 0.2rem 0; }
+.kkn-body h5 { margin: 0.8rem 0 0.3rem; font-size: 0.95rem; color: #2F5E86; }
+.kkn-body i { color: #6B1D2F; }
+.kkn-pali { font-weight: 700; color: #4D121D; padding-left: 0.7rem; border-left: 3px solid var(--theme-accent, #C59B27); }
+.kkn-mute { font-size: 0.88rem; color: var(--text-muted, #6E6153); }
+.kkn-callout { margin: 0.6rem 0; padding: 0.6rem 0.85rem; border-radius: 6px; background: #FFF8E6; border: 1px solid #EBD9A8; }
+.kkn-table { width: 100%; border-collapse: collapse; margin: 0.5rem 0; font-size: 0.93rem; }
+.kkn-table th, .kkn-table td { border: 1px solid #E2D7C3; padding: 0.4rem 0.55rem; vertical-align: top; text-align: left; }
+.kkn-table th { background: #F6F0E4; color: #4A2C6B; font-weight: 700; }
+.kkn-two { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.kkn-two > div { background: #F9F6F0; border: 1px solid #EADFCB; border-radius: 6px; padding: 0.5rem 0.9rem; }
+@media (max-width: 640px) {
+    .kkn-two { grid-template-columns: 1fr; }
+    .kkn-card { padding: 0.75rem 0.8rem; }
+    .kkn-table { font-size: 0.85rem; display: block; overflow-x: auto; }
+    .kkn-body { text-align: left; }
+}
+.night-mode .kkn-card { background: #221D18; border-color: #3E352B; }
+.night-mode .kkn-body { color: #E8DFD2; }
+.night-mode .kkn-callout { background: #2E2717; border-color: #5A4A25; }
+.night-mode .kkn-two > div, .night-mode .kkn-table th { background: #2A241D; }
+.night-mode .kkn-table th, .night-mode .kkn-table td { border-color: #3E352B; }
+.night-mode .kkn-toc a { background: #1C2630; border-color: #2E4252; color: #9CC3E4; }
