@@ -140,6 +140,9 @@ function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
         ${body ? `<div class="panel-card sanna-banner-card kk-rest-card">${body}</div>` : ''}
 
 
+        <!-- 02c. කාරක හැඳින්වීම — විශේෂ සටහන් -->
+        ${s.is_intro ? kkIntroNotes() : ''}
+
         <!-- 03. පාද සටහන් -->
         ${s.footnotes ? `
             <div class="panel-card">
@@ -149,4 +152,26 @@ function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
 
         ${kkPrevNext(s)}
     `;
+}
+
+// කාරක හැඳින්වීම — විශේෂ සටහන් (data/3_karaka/00_karaka_notes.js)
+function kkIntroNotes() {
+    const N = window.KarakaIntroNotes;
+    if (!N || !N.sections) return '';
+    return `
+        <section class="panel-card kkn-panel" id="kkn-top">
+            <h3 class="section-heading"><span class="heading-icon">📝</span> විශේෂ සටහන්</h3>
+            <p class="kkn-source">${N.source}</p>
+            <nav class="kkn-toc">${N.sections.map((x, i) =>
+                `<a href="javascript:void(0)" onclick="kknGo('${x.id}')"><b>${i + 1}.</b> ${x.title}</a>`).join('')}</nav>
+            ${N.sections.map((x, i) => `
+                <article class="kkn-card" id="kkn-${x.id}">
+                    <h4 class="kkn-title"><span class="kkn-no">${i + 1}</span>${x.title}</h4>
+                    <div class="kkn-body">${x.html}</div>
+                </article>`).join('')}
+        </section>`;
+}
+function kknGo(id) {
+    const el = document.getElementById('kkn-' + id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
