@@ -106,19 +106,24 @@ function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
         const vis = { pali: g.pali.filter(b => !b.tika), sanna: g.sanna.filter(b => !b.tika) };
         const tk = { pali: g.pali.filter(b => b.tika), sanna: g.sanna.filter(b => b.tika) };
         if (vis.pali.length || vis.sanna.length) {
-            items.push({ html: kkPairBox(vis, !firstDone && !s.is_intro, firstDone ? null : s.lead) });
+            items.push({ html: kkPairBox(vis, !firstDone && !s.is_intro, firstDone ? null : s.lead), first: !firstDone });
             firstDone = true;
         }
         if (tk.pali.length || tk.sanna.length) items.push({ tika: kkPairBox(tk, false, null) });
     });
-    let body = '';
-    for (let i = 0; i < items.length; i++) {
+    // ෂඩාකාරය පළමු (වෘත්තිය + පදයෙන් පද සන්නය) කොටුවට පසුව; ඉතිරිය ඊට පසු
+    let bodyHead = '', body = '';
+    const firstIdx = items.findIndex(it => it.first);
+    for (let i = 0; i <= firstIdx; i++) bodyHead += items[i].tika ? '' : items[i].html;
+    const preTika = items.slice(0, Math.max(firstIdx, 0)).filter(it => it.tika);
+    for (let i = firstIdx + 1; i < items.length; i++) {
         if (!items[i].tika) { body += items[i].html; continue; }
         let inner = '';
         while (i < items.length && items[i].tika) inner += items[i++].tika;
         i--;
         body += `<details class="kk-tika"><summary><span class="kk-tika-icon">📜</span> ටීකා විවරණ <span class="kk-tika-hint">(බැලීමට ක්ලික් කරන්න)</span></summary><div class="kk-tika-body">${inner}</div></details>`;
     }
+    if (preTika.length) body = `<details class="kk-tika"><summary><span class="kk-tika-icon">📜</span> ටීකා විවරණ <span class="kk-tika-hint">(බැලීමට ක්ලික් කරන්න)</span></summary><div class="kk-tika-body">${preTika.map(it => it.tika).join('')}</div></details>` + body;
     const leadOnly = !firstDone && (s.lead || []).length ? kkPairBox({ pali: [], sanna: [] }, true, s.lead) : '';
 
     box.innerHTML = `
@@ -141,7 +146,7 @@ function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
                 </div>
             ` : ''}
 
-            ${leadOnly}${body}
+            ${leadOnly}${bodyHead}
         </div>
 
         <!-- 02. සූත්‍ර ෂඩාකාර විමර්ශනය -->
@@ -151,6 +156,10 @@ function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
                 <div class="shadakara-dynamic-grid">${renderSannaShadakaraCards(s.shadakara)}</div>
             </div>
         ` : ''}
+
+        <!-- 02b. ලේඛනයේ ඉතිරි පාළි පාඨ හා සන්නය -->
+        ${body ? `<div class="panel-card sanna-banner-card kk-rest-card">${body}</div>` : ''}
+
 
         <!-- 03. පාද සටහන් -->
         ${s.footnotes ? `
