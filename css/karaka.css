@@ -110,3 +110,16 @@
 @media (max-width: 640px) {
     .kk-pair .sanna-vutti-text, .kk-pair .sanna-sanna-text, .sanna-banner-card .sanna-meaning-text { text-align: left !important; }
 }
+
+/* ටීකා විවරණ — ක්ලික් කළ පසු පමණක් */
+.kk-tika { margin-top: 0.7rem; border: 1px solid #E3D3F0; border-left: 4px solid #8B6BB0; border-radius: 6px; background: #FBF8FE; }
+.kk-tika > summary { cursor: pointer; padding: 0.55rem 0.9rem; font-weight: 700; font-size: 0.92rem; color: #5B3D86; list-style: none; user-select: none; }
+.kk-tika > summary::-webkit-details-marker { display: none; }
+.kk-tika > summary::before { content: '▸'; display: inline-block; margin-right: 0.45rem; transition: transform .15s; }
+.kk-tika[open] > summary::before { transform: rotate(90deg); }
+.kk-tika-hint { font-weight: 500; font-size: 0.8rem; color: #8A7AA0; }
+.kk-tika[open] .kk-tika-hint { display: none; }
+.kk-tika-body { padding: 0 0.8rem 0.8rem; }
+.kk-tika-body .sanna-vutti-box { margin-top: 0.5rem; border-left-color: #8B6BB0; border-color: #CDB8E3; }
+.night-mode .kk-tika { background: #221B2B; border-color: #4A3A5E; }
+.night-mode .kk-tika > summary { color: #CDB8E3; }

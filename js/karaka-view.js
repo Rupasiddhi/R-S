@@ -98,13 +98,27 @@ function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
 
     const { meaning, groups } = kkSplitSannaLayout(s.blocks);
     const refs = [s.kac ? `කච්. ${s.kac}` : '', s.rs ? `රූ.සි. ${s.rs}` : ''].filter(Boolean).join(' · ');
+    // ලේඛනයේ පිළිවෙළින්: මූල පාඨ + සන්නය දිස්වේ; ටීකා කොටස් (tika) ක්ලික් කළ පසු පමණි.
     let firstDone = false;
-    const body = groups.map(g => {
-        if (g.head) return `<div class="kk-subhead">${g.head.html.replace(/\*{3,}/g, '')}</div>`;
-        const html = kkPairBox(g, !firstDone && !s.is_intro, firstDone ? null : s.lead);
-        firstDone = true;
-        return html;
-    }).join('');
+    const items = [];
+    groups.forEach(g => {
+        if (g.head) { items.push({ html: `<div class="kk-subhead">${g.head.html.replace(/\*{3,}/g, '')}</div>` }); return; }
+        const vis = { pali: g.pali.filter(b => !b.tika), sanna: g.sanna.filter(b => !b.tika) };
+        const tk = { pali: g.pali.filter(b => b.tika), sanna: g.sanna.filter(b => b.tika) };
+        if (vis.pali.length || vis.sanna.length) {
+            items.push({ html: kkPairBox(vis, !firstDone && !s.is_intro, firstDone ? null : s.lead) });
+            firstDone = true;
+        }
+        if (tk.pali.length || tk.sanna.length) items.push({ tika: kkPairBox(tk, false, null) });
+    });
+    let body = '';
+    for (let i = 0; i < items.length; i++) {
+        if (!items[i].tika) { body += items[i].html; continue; }
+        let inner = '';
+        while (i < items.length && items[i].tika) inner += items[i++].tika;
+        i--;
+        body += `<details class="kk-tika"><summary><span class="kk-tika-icon">📜</span> ටීකා විවරණ <span class="kk-tika-hint">(බැලීමට ක්ලික් කරන්න)</span></summary><div class="kk-tika-body">${inner}</div></details>`;
+    }
     const leadOnly = !firstDone && (s.lead || []).length ? kkPairBox({ pali: [], sanna: [] }, true, s.lead) : '';
 
     box.innerHTML = `
