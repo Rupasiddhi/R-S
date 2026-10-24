@@ -2,6 +2,7 @@
  * කාරකකණ්ඩ — ඡට්ඨී — සාමිසම්බන්ධ
  * මූලාශ්‍රය: පදරූපසිද්ධි කාරකකණ්ඩ සංස්කරණ පිටපත (පාළි වුත්තිය, සිංහල සන්නය, සටහන්).
  * blocks: pali / sanna / list / verse / table / subhead / anuvutti (පාඨ පිළිවෙළින්ම).
+ * note: true — සංස්කාරක විශේෂ සටහන් (රූප සටහන්, සමීකරණ, යොමු, ශබ්දකෝෂ සටහන්).
  * tika: true — මූල රූපසිද්ධියෙහි නැති ටීකා/විවරණ පාළි හා එහි සන්නය (ක්ලික් කළ පසු පමණක් පෙන්වයි).
  */
 window.SuttaDatabase = window.SuttaDatabase || {};
@@ -90,11 +91,13 @@ window.SuttaDatabase["06_karaka_chatthi"] = [
    },
    {
     "kind": "pali",
-    "html": "<p><mark>කො</mark> පහරති? = චොරො</p>"
+    "html": "<p><mark>කො</mark> පහරති? = චොරො</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p><mark>කං</mark> පහරති</p>"
+    "html": "<p><mark>කං</mark> පහරති</p>",
+    "note": true
    },
    {
     "kind": "pali",
@@ -106,11 +109,13 @@ window.SuttaDatabase["06_karaka_chatthi"] = [
    },
    {
     "kind": "pali",
-    "html": "<p><mark>කම්හා</mark> උග්ගණ්හාති</p>"
+    "html": "<p><mark>කම්හා</mark> උග්ගණ්හාති</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>කස්ස පුත්තො ගච්ඡති</p>"
+    "html": "<p>කස්ස පුත්තො ගච්ඡති</p>",
+    "note": true
    },
    {
     "kind": "pali",
@@ -206,11 +211,13 @@ window.SuttaDatabase["06_karaka_chatthi"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>මෙ + අයං</p>"
+    "html": "<p>මෙ + අයං</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>ම්-<u>එ→ය්</u> + අ ආයං</p>"
+    "html": "<p>ම්-<u>එ→ය්</u> + අ ආයං</p>",
+    "note": true
    },
    {
     "kind": "sanna",
@@ -222,11 +229,13 @@ window.SuttaDatabase["06_karaka_chatthi"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>අව+වදති</p>"
+    "html": "<p>අව+වදති</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>අව<u>→</u>ඔ+වදති</p>"
+    "html": "<p>අව<u>→</u>ඔ+වදති</p>",
+    "note": true
    },
    {
     "kind": "sanna",
@@ -238,15 +247,18 @@ window.SuttaDatabase["06_karaka_chatthi"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>පුථස්ස (ගො) ආගමො</p>"
+    "html": "<p>පුථස්ස (ගො) ආගමො</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>පුථ + (ග්) + එව</p>"
+    "html": "<p>පුථ + (ග්) + එව</p>",
+    "note": true
    },
    {
     "kind": "sanna",
-    "html": "<p>ආගමී (ආගමය ලබන තැන) (ආගමය = ග්)</p>"
+    "html": "<p>ආගමී (ආගමය ලබන තැන) (ආගමය = ග්)</p>",
+    "note": true
    },
    {
     "kind": "pali",
@@ -254,11 +266,13 @@ window.SuttaDatabase["06_karaka_chatthi"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>දෙවානං ඉන්දො</p>"
+    "html": "<p>දෙවානං ඉන්දො</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>(යටත් අය) සාමි</p>"
+    "html": "<p>(යටත් අය) සාමි</p>",
+    "note": true
    },
    {
     "kind": "pali",
@@ -270,11 +284,13 @@ window.SuttaDatabase["06_karaka_chatthi"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>ක්වචී - අත්ථෙ -289 (ක.308) - ක්වචි දුතියා ඡට්ඨීනමත්ථෙ</p>"
+    "html": "<p>ක්වචී - අත්ථෙ -289 (ක.308) - ක්වචි දුතියා ඡට්ඨීනමත්ථෙ</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>තතියා සත්තමීනං -290 (ක.309) - තතියා සත්තමිනඤ්ච</p>"
+    "html": "<p>තතියා සත්තමීනං -290 (ක.309) - තතියා සත්තමිනඤ්ච</p>",
+    "note": true
    }
   ],
   "footnotes": "<aside class=\"footnotes footnotes-end-of-document\" id=\"footnotes\" role=\"doc-endnotes\">\n<hr/>\n<ol>\n<li id=\"fn1\"><p><strong>ගො සරෙ පුථස්සාගමො ක්වචි</strong>.</p>\n<p><strong>පුථ</strong>ඉච්චෙතස්ස නිපාතස්ස අන්තෙ ක්වචි <strong>ග</strong>කාරාගමො හොති සරෙ පරෙ. ආගච්ඡතීති <strong>ආගමො,</strong> අසන්තුප්පත්ති ආගමො. එත්ථ ච “සරෙ”ති නිමිත්තාසන්නවසෙන පුථස්ස අන්තෙති ලබ්භති. පුථගෙව, පුථ එව.<a class=\"footnote-back\" href=\"#fnref1\" role=\"doc-backlink\">↩︎</a></p></li>\n</ol>\n</aside>",
@@ -351,7 +367,8 @@ window.SuttaDatabase["06_karaka_chatthi"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>(JAa) caturā'ti cāturiyena samannāgatā. (Sanskrit) = catura</p>"
+    "html": "<p>(JAa) caturā'ti cāturiyena samannāgatā. (Sanskrit) = catura</p>",
+    "note": true
    },
    {
     "kind": "sanna",
@@ -364,11 +381,13 @@ window.SuttaDatabase["06_karaka_chatthi"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>ක්වචී - අත්ථෙ -289 (ක.308) - ක්වචි දුතියා ඡට්ඨීනමත්ථෙ</p>"
+    "html": "<p>ක්වචී - අත්ථෙ -289 (ක.308) - ක්වචි දුතියා ඡට්ඨීනමත්ථෙ</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>ඡට්ඨි - -317 (ක.310) - ඡට්ඨී ච</p>"
+    "html": "<p>ඡට්ඨි - -317 (ක.310) - ඡට්ඨී ච</p>",
+    "note": true
    }
   ],
   "footnotes": "<aside class=\"footnotes footnotes-end-of-document\" id=\"footnotes\" role=\"doc-endnotes\">\n<hr/>\n<ol>\n<li id=\"fn1\"><p>ති පුදනලද, දෙනලද, රැස් කළ.Sinhala 23 පදන ලද.<a class=\"footnote-back\" href=\"#fnref1\" role=\"doc-backlink\">↩︎</a></p></li>\n<li id=\"fn2\"><p>(ති) පුදන ලද, පූජා කළ. ගරු කරන ලද; පුදන ලද.<a class=\"footnote-back\" href=\"#fnref2\" role=\"doc-backlink\">↩︎</a></p></li>\n</ol>\n</aside>",
@@ -445,7 +464,8 @@ window.SuttaDatabase["06_karaka_chatthi"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>කම්මප්පච්චයා කොචි <mark>සත්තානං තෙසං</mark> න සරති</p>"
+    "html": "<p>කම්මප්පච්චයා කොචි <mark>සත්තානං තෙසං</mark> න සරති</p>",
+    "note": true
    },
    {
     "kind": "sanna",

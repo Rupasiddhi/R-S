@@ -2,6 +2,7 @@
  * කාරකකණ්ඩ — චතුත්ථී — සම්පදානකාරක
  * මූලාශ්‍රය: පදරූපසිද්ධි කාරකකණ්ඩ සංස්කරණ පිටපත (පාළි වුත්තිය, සිංහල සන්නය, සටහන්).
  * blocks: pali / sanna / list / verse / table / subhead / anuvutti (පාඨ පිළිවෙළින්ම).
+ * note: true — සංස්කාරක විශේෂ සටහන් (රූප සටහන්, සමීකරණ, යොමු, ශබ්දකෝෂ සටහන්).
  * tika: true — මූල රූපසිද්ධියෙහි නැති ටීකා/විවරණ පාළි හා එහි සන්නය (ක්ලික් කළ පසු පමණක් පෙන්වයි).
  */
 window.SuttaDatabase = window.SuttaDatabase || {};
@@ -312,7 +313,8 @@ window.SuttaDatabase["04_karaka_catutthi"] = [
    },
    {
     "kind": "sanna",
-    "html": "<p>ප්‍රද්‍යුම්න = [නා.ප්‍ර.] 1. අනංගයා ; කාමදේවයා. 2. <mark>වලාකුළ ; මේඝය</mark> ; අභ්‍රකූටය ; පර්ජන්‍ය.</p>"
+    "html": "<p>ප්‍රද්‍යුම්න = [නා.ප්‍ර.] 1. අනංගයා ; කාමදේවයා. 2. <mark>වලාකුළ ; මේඝය</mark> ; අභ්‍රකූටය ; පර්ජන්‍ය.</p>",
+    "note": true
    },
    {
     "kind": "sanna",
@@ -374,11 +376,13 @@ window.SuttaDatabase["04_karaka_catutthi"] = [
    },
    {
     "kind": "pali",
-    "html": "<p><mark>භගවා</mark> භික්ඛූ එතං අවොච 1</p>"
+    "html": "<p><mark>භගවා</mark> භික්ඛූ එතං අවොච 1</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>භික්ඛූ <mark>භගවතො</mark> පච්චස්සොසුං (පති+ආ+√සු) 2</p>"
+    "html": "<p>භික්ඛූ <mark>භගවතො</mark> පච්චස්සොසුං (පති+ආ+√සු) 2</p>",
+    "note": true
    },
    {
     "kind": "sanna",
@@ -390,11 +394,13 @@ window.SuttaDatabase["04_karaka_catutthi"] = [
    },
    {
     "kind": "pali",
-    "html": "<p><mark>භික්ඛු</mark> ජනං ධම්මං සාවෙති 1</p>"
+    "html": "<p><mark>භික්ඛු</mark> ජනං ධම්මං සාවෙති 1</p>",
+    "note": true
    },
    {
     "kind": "pali",
-    "html": "<p>ජනො <mark>තස්ස</mark> <mark>භික්ඛුනො</mark> අනුගිණාති (අනු+ගී) 2</p>"
+    "html": "<p>ජනො <mark>තස්ස</mark> <mark>භික්ඛුනො</mark> අනුගිණාති (අනු+ගී) 2</p>",
+    "note": true
    },
    {
     "kind": "sanna",

@@ -72,11 +72,24 @@ function kkSplitSannaLayout(blocks) {
     return { meaning, groups };
 }
 
+function kkNoteHtml(b) {
+    if (b.kind === 'table' || b.kind === 'list') return kkBlockHtml(b);
+    return `<div class="kk-note-line">${b.html}</div>`;
+}
+
 function kkPairBox(g, first, lead) {
+    const notes = g.pali.concat(g.sanna).filter(b => b.note);
+    const P = g.pali.filter(b => !b.note), S = g.sanna.filter(b => !b.note);
     const pali = (lead || []).map(b => `<div class="kk-lead-line">${b.html}</div>`).join('') +
-        g.pali.map(b => b.kind === 'verse' ? `<div class="kk-verse">${b.html}</div>`
+        P.map(b => b.kind === 'verse' ? `<div class="kk-verse">${b.html}</div>`
             : b.kind === 'anuvutti' ? `<div class="kk-anu-line">${b.html}</div>` : b.html).join('');
-    const sanna = g.sanna.map(b => (b.kind === 'sanna' ? b.html : kkBlockHtml(b))).join('');
+    const sanna = S.map(b => (b.kind === 'sanna' ? b.html : kkBlockHtml(b))).join('');
+    const note = notes.length ? `
+            <div class="kk-notes">
+                <span class="kk-notes-label">📝 විශේෂ සටහන්:</span>
+                ${notes.map(kkNoteHtml).join('')}
+            </div>` : '';
+    if (!pali && !sanna) return note ? `<div class="kk-notes-solo">${note}</div>` : '';
     return `
         <div class="sanna-vutti-box kk-pair">
             ${pali ? `
@@ -88,6 +101,7 @@ function kkPairBox(g, first, lead) {
                 <span class="vutti-label">${first ? 'වෘත්තියේ පදයෙන් පද සන්නය:' : 'පදයෙන් පද සන්නය:'}</span>
                 <div class="sanna-sanna-text kk-html kk-pair-sanna">${sanna}</div>
             ` : ''}
+            ${note}
         </div>`;
 }
 
@@ -105,9 +119,12 @@ function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
         if (g.head) { items.push({ html: `<div class="kk-subhead">${g.head.html.replace(/\*{3,}/g, '')}</div>` }); return; }
         const vis = { pali: g.pali.filter(b => !b.tika), sanna: g.sanna.filter(b => !b.tika) };
         const tk = { pali: g.pali.filter(b => b.tika), sanna: g.sanna.filter(b => b.tika) };
-        if (vis.pali.length || vis.sanna.length) {
+        const real = vis.pali.concat(vis.sanna).some(b => !b.note);
+        if (real) {
             items.push({ html: kkPairBox(vis, !firstDone && !s.is_intro, firstDone ? null : s.lead), first: !firstDone });
             firstDone = true;
+        } else if (vis.pali.length || vis.sanna.length) {
+            items.push({ html: kkPairBox(vis, false, null) });
         }
         if (tk.pali.length || tk.sanna.length) items.push({ tika: kkPairBox(tk, false, null) });
     });
