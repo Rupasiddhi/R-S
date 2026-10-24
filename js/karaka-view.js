@@ -136,6 +136,9 @@ function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
             </div>
         ` : ''}
 
+        <!-- 02a. සූත්‍රයට අදාළ විශේෂ සටහන් -->
+        ${kkSuttaNotes(s)}
+
         <!-- 02b. ලේඛනයේ ඉතිරි පාළි පාඨ හා සන්නය -->
         ${body ? `<div class="panel-card sanna-banner-card kk-rest-card">${body}</div>` : ''}
 
@@ -174,4 +177,31 @@ function kkIntroNotes() {
 function kknGo(id) {
     const el = document.getElementById('kkn-' + id);
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// සූත්‍රයට අදාළ විශේෂ සටහන් (data/3_karaka/karaka_sutta_notes.js)
+function kkTreeHtml(nodes, depth) {
+    return `<ul class="kkt-level kkt-d${depth}">${nodes.map(n => `
+        <li>
+            <div class="kkt-node${n.ex ? ' kkt-leaf' : ''}">
+                <span class="kkt-label">${n.label}</span>
+                ${n.ex ? `<span class="kkt-ex"><span class="kkt-pali">${n.ex}</span><span class="kkt-si">${n.si || ''}</span></span>` : ''}
+            </div>
+            ${n.children ? kkTreeHtml(n.children, depth + 1) : ''}
+        </li>`).join('')}</ul>`;
+}
+function kkSuttaNotes(s) {
+    const list = (window.KarakaSuttaNotes || {})[s.sutta_number];
+    if (!list || !list.length || s.is_intro) return '';
+    return `
+        <section class="panel-card kkn-panel">
+            <h3 class="section-heading"><span class="heading-icon">📝</span> විශේෂ සටහන්</h3>
+            ${list.map(n => `
+                <article class="kkn-card">
+                    <h4 class="kkn-title">${n.title}</h4>
+                    ${n.source ? `<p class="kkn-source">${n.source}</p>` : ''}
+                    ${n.tree ? `<div class="kkt-tree">${kkTreeHtml(n.tree, 0)}</div>` : ''}
+                    ${n.html ? `<div class="kkn-body">${n.html}</div>` : ''}
+                </article>`).join('')}
+        </section>`;
 }
