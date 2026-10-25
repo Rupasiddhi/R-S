@@ -41,7 +41,8 @@ window.SuttaDatabase["01_karaka_pathama"] = [
       "kind": "sanna",
       "html": "<p><strong>ලිඞ්ගත්ථාභිධානමත්තෙ</strong>, වෘක්ෂාදි වචනාර්ථයාගේ කථන මාත්‍රය ම ද්‍යොතනය කටයුතු කල්හි; <strong>පඨමාවිභත්ති හොති</strong>, ප්‍රථමා විභක්ති වන්නීය;</p>"
      }
-    ]
+    ],
+    "book": true
    },
    {
     "kind": "pali",
