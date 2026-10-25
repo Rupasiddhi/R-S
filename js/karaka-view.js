@@ -191,17 +191,22 @@ function kkTreeHtml(nodes, depth) {
         </li>`).join('')}</ul>`;
 }
 function kkSuttaNotes(s) {
-    const list = (window.KarakaSuttaNotes || {})[s.sutta_number];
-    if (!list || !list.length || s.is_intro) return '';
+    if (s.is_intro) return '';
+    const list = ((window.KarakaSuttaNotes || {})[s.sutta_number] || [])
+        .concat((window.KarakaDocNotes || {})[s.sutta_number] || []);
+    if (!list.length) return '';
     return `
         <section class="panel-card kkn-panel">
             <h3 class="section-heading"><span class="heading-icon">📝</span> විශේෂ සටහන්</h3>
-            ${list.map(n => `
-                <article class="kkn-card">
-                    <h4 class="kkn-title">${n.title}</h4>
+            ${list.length > 2 ? `<nav class="kkn-toc">${list.map((n, i) =>
+                `<a href="javascript:void(0)" onclick="kknGo('s${s.sutta_number}-${i}')"><b>${i + 1}.</b> ${n.title}</a>`).join('')}</nav>` : ''}
+            ${list.map((n, i) => `
+                <article class="kkn-card${n.kind === 'refs' ? ' kkn-card-refs' : ''}" id="kkn-s${s.sutta_number}-${i}">
+                    <h4 class="kkn-title"><span class="kkn-no">${i + 1}</span>${n.title}</h4>
                     ${n.source ? `<p class="kkn-source">${n.source}</p>` : ''}
+                    ${n.context ? `<p class="kkn-context"><span>අදාළ පාඨය:</span> ${n.context}</p>` : ''}
                     ${n.tree ? `<div class="kkt-tree">${kkTreeHtml(n.tree, 0)}</div>` : ''}
-                    ${n.html ? `<div class="kkn-body">${n.html}</div>` : ''}
+                    ${n.html ? `<div class="kkn-body kk-notes-body">${n.html}</div>` : ''}
                 </article>`).join('')}
         </section>`;
 }

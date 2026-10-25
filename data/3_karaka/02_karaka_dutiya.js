@@ -119,12 +119,6 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
       "kind": "sanna",
       "html": "<p><strong>තත්ථ</strong>, තම්පන කාරකං ඡබ්බිධං යනාදීන් කියන ලද ඒ කාරකාධිකාරයෙහි; <mark><strong>සභාවතො</strong>, රූපං පස්සති යනාදියෙහි මෙන් ස්වභාවයෙන් හෝ; <strong>පරිකප්පතො වා</strong>, ඝටං කරොති යනාදියෙහි මෙන් අවිද්‍යමානයාගේ විද්‍යමානභාව පරිකල්පනයෙන් හෝ;</mark> <strong>කම්මාදිම්හි සතියෙව</strong>, ක්‍රියා නිෂ්පත්තියට නිමිත්ත භාවයෙන් කර්මාදී කාරකය විද්‍යමාන කල්හිම; <strong>ක්‍රියා භාවතො</strong>, නිවර්තනාදී ක්‍රියාවන්ගේ සම්භවය හේතු කොටගෙන; <strong>කම්මාදීනං ඡන්නම්පි</strong>, කර්මාදී වූ සදෙනාට ම; <strong>කාරක වොහාරො</strong>, සාමාන්‍ය නාම වූ කාරක ව්‍යවහාරය තෙම; <strong>සිද්ධොව හොති</strong>, සිද්ධ ම වේ.</p>"
      }
-    ],
-    "notes": [
-     {
-      "kind": "pali",
-      "html": "<p>කස්ස හත්ථී ධාවති ()</p>"
-     }
     ]
    },
    {
@@ -142,24 +136,6 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
      {
       "kind": "list",
       "html": "<ol start=\"3\" type=\"I\">\n<li>දෙවදත්තො <mark>නිවෙසනං</mark> පවිසති, <mark>ආදිච්චං</mark> පස්සති, <mark>ධම්මං</mark> සුණාති, <mark>පණ්ඩිතෙ</mark> පයිරුපාසති.</li>\n</ol>"
-     }
-    ],
-    "notes": [
-     {
-      "kind": "pali",
-      "html": "<p>පරිච්චත්තකාරණං = කට්ඨං අඞ්ගාරං කරොති</p>"
-     },
-     {
-      "kind": "pali",
-      "html": "<p>අපරිච්චත්තකාරණං = වීහයො ලුනාති</p>"
-     },
-     {
-      "kind": "sanna",
-      "html": "<p><strong>කෙයූර = Sinhala 1න අඟුපළඳනාව වැලමිටෙන් උඩ බාහුවෙහි, හස්තමූලයෙහි ලන වලල්ල.Sinhala 2න බාහු වළල්ල.</strong></p>"
-     },
-     {
-      "kind": "pali",
-      "html": "<p><strong>කටක</strong> = ●න වළල්ල.</p>"
      }
     ],
     "tika": [
@@ -223,23 +199,11 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
       "kind": "sanna",
       "html": "<p><strong>අභිහිතකම්මෙ පන</strong>; උක්ත කර්මයෙහි වනාහි; <strong>න හොති</strong>, ද්වීතීයා විභක්ති තොම නොවන්නී යි.</p>"
      }
-    ],
-    "notes": [
-     {
-      "kind": "table",
-      "html": "<div class=\"kk-fig-table\"><table class=\"data-table kk-mini-table\"><tbody><tr><td>පුරිසො</td><td>මිත්තං</td><td>හත්ථං</td><td>යාචති</td></tr><tr class=\"kk-mini-note\"><td></td><td>අප්‍රධාන</td><td>ප්‍රධාන</td><td>දුහාදි ගණය</td></tr><tr><td></td><td><mark>උක්තකර්මය</mark></td><td></td><td></td></tr><tr><td>පුරිසෙන</td><td><mark class=\"kk-red\">මිත්තො</mark></td><td>හත්ථං</td><td>යාචියතෙ</td></tr></tbody></table><p class=\"kk-fig-cap\">ද්විකර්මක ක්‍රියාවක කර්ම වාච්‍යයෙහි අප්‍රධාන කර්මය (මිත්ත) උක්ත වන ආකාරය</p></div>"
-     }
     ]
    },
    {
     "kind": "pali",
-    "html": "<p>‘’දුතියා’’ති අධිකාරො.</p>",
-    "notes": [
-     {
-      "kind": "anuvutti",
-      "html": "<p>දුතියා - 284 (ක.299) කම්මත්ථෙ දුතියා</p>"
-     }
-    ]
+    "html": "<p>‘’දුතියා’’ති අධිකාරො.</p>"
    }
   ],
   "sutta_meaning": "",
@@ -292,12 +256,6 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
       "kind": "sanna",
       "html": "<p><strong>සබ්බත්ථ</strong>, සියලු ධාතූන්ගේ ප්‍රයෝගයෙහි; <strong>කාරිතෙ</strong>, කාරිතප්‍රත්‍යයක්හු ඇති කල්හි; <mark><strong>කත්තුකම්මණි</strong>, ප්‍රයෝජ්‍ය කර්තෘභූත කර්මාර්ථ විෂයෙහි</mark>; <strong>දුතියා</strong>, ද්විතීයා විභක්ති තොම; <strong>එවං</strong>, මෙසේ ම වන්නී යි.</p>"
      }
-    ],
-    "notes": [
-     {
-      "kind": "table",
-      "html": "<table>\n<colgroup>\n<col style=\"width: 36%\"/>\n<col style=\"width: 64%\"/>\n</colgroup>\n<tbody>\n<tr class=\"odd\">\n<td rowspan=\"2\"><h1 id=\"අකරත\"><strong>අකාරිත</strong></h1>\n<p><mark>පුරිසො</mark> ගාමං ගච්ඡති</p></td>\n<td rowspan=\"2\"><h1 id=\"කරත\"><strong>කාරිත</strong></h1>\n<p>සාමි <mark>පුරිසං / පුරිසෙන</mark> ගාමං ගමයති</p>\n<p>ප්‍රයෝජක <mark>ප්‍රයෝජ්‍ය</mark></p></td>\n</tr>\n<tr class=\"even\">\n</tr>\n<tr class=\"odd\">\n<td><mark>සිස්සො</mark> ධම්මං බුජ්ඣති</td>\n<td>ආචරියො <mark>සිස්සං</mark> ධම්මං බොධෙති</td>\n</tr>\n<tr class=\"even\">\n<td><mark>පුත්තො</mark> භොජනං භුඤ්ජති</td>\n<td>මාතා <mark>පුත්තං</mark> භොජනං භොජයති</td>\n</tr>\n<tr class=\"odd\">\n<td><mark>සිස්සො</mark> ධම්මං පඨති</td>\n<td>ආචරියො <mark>සිස්සං</mark> ධම්මං පාඨෙති</td>\n</tr>\n<tr class=\"even\">\n<td><mark>පුරිසො</mark> භාරං හරති</td>\n<td>සාමි <mark>පුරිසං</mark> භාරං හාරෙති</td>\n</tr>\n<tr class=\"odd\">\n<td><mark>පුරිසො</mark> කම්මං කරොති</td>\n<td>සාමි <mark>පුරිසං</mark> / පුරිසෙන කම්මං කාරයති</td>\n</tr>\n<tr class=\"even\">\n<td><mark>පුරිසො</mark> සයති.</td>\n<td>සාමි <mark>පුරිසං</mark> සයාපයති.</td>\n</tr>\n</tbody>\n</table>"
-     }
     ]
    },
    {
@@ -306,17 +264,7 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
    },
    {
     "kind": "pali",
-    "html": "<p>අභිහිතෙ න භවති, පුරිසෙන පුරිසො ගාමං ගමීයතෙ, සිස්සො ධම්මං බොධීයතෙ ඉච්චාදි.</p>",
-    "notes": [
-     {
-      "kind": "table",
-      "html": "<table style=\"width:97%;\">\n<colgroup>\n<col style=\"width: 48%\"/>\n<col style=\"width: 48%\"/>\n</colgroup>\n<thead>\n<tr class=\"header\">\n<th style=\"text-align: left;\"><strong>කාරිත කත්තුකාරක</strong></th>\n<th style=\"text-align: left;\"><strong>කාරිත කම්මකාරක</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr class=\"odd\">\n<td style=\"text-align: left;\">සාමි <mark>පුරිසං</mark> ගාමං ගමයති</td>\n<td style=\"text-align: left;\">සාමිනා <mark>පුරිසො</mark> ගාමං ගමීයතෙ</td>\n</tr>\n<tr class=\"even\">\n<td style=\"text-align: left;\">ආචරියො <mark>සිස්සං</mark> ධම්මං බොධෙති</td>\n<td style=\"text-align: left;\">ආචරියෙන <mark>සිස්සො</mark> ධම්මං බොධීයතෙ</td>\n</tr>\n</tbody>\n</table>"
-     },
-     {
-      "kind": "anuvutti",
-      "html": "<p>දුතියා - 284 (ක.299) කම්මත්ථෙ දුතියා</p>"
-     }
-    ]
+    "html": "<p>අභිහිතෙ න භවති, පුරිසෙන පුරිසො ගාමං ගමීයතෙ, සිස්සො ධම්මං බොධීයතෙ ඉච්චාදි.</p>"
    }
   ],
   "sutta_meaning": "( ගතිබුධභුජපඨහරකරසයාදීනං - ගති , ගමනාර්ථ ධාතුය; බුද්ධි , බුද්ධාර්ථ ධාතුය; භුජ , භුජපාලනබ්‍යවහරණෙසු යන ධාතුය; පඨ , පඨ බ්‍යතතියං වාචායං යන ධාතුය; හර , හරහරණෙ යන ධාතුය; කර , කරකරණෙ යන ධාතුය; සයාදීනං , සයනාර්ථධාතුය යන මේ ආදී ධාතූන්ගේ ප්‍රයෝගයෙහි; කාරිතෙ , කාරිත ප්‍රත්‍ය ඇති කල්හි; වා , විකල්පයෙන් ; දුතියා , ද්වීතීයා විභක්ති වේ.)",
@@ -363,55 +311,11 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
    },
    {
     "kind": "pali",
-    "html": "<p><strong>කාලෙ</strong> තාව – සත්තාහං ගවපානං, මාසං මංසොදනං, සරදං රමණීයා නදී, සබ්බකාලං රමණීයං නන්දනං, මාසං සජ්ඣායති, තයො මාසෙ අභිධම්මං දෙසෙසි.</p>",
-    "notes": [
-     {
-      "kind": "pali",
-      "html": "<p>[<strong>Gava+pāna</strong>] (na) CL=8 'gavapānanti etthakatha'nti'¿ ettha pana gobhinibbattaṃ khīraṃ gavaṃ, pātabbaṭṭhena pānaṃ, gavañca taṃ pānañcāti gavapānanti bhavati. Nīti, sutta.229.] (1) <mark>Milk drink.</mark></p>"
-     }
-    ]
+    "html": "<p><strong>කාලෙ</strong> තාව – සත්තාහං ගවපානං, මාසං මංසොදනං, සරදං රමණීයා නදී, සබ්බකාලං රමණීයං නන්දනං, මාසං සජ්ඣායති, තයො මාසෙ අභිධම්මං දෙසෙසි.</p>"
    },
    {
     "kind": "pali",
-    "html": "<p><strong>අද්ධානෙ</strong> – යොජනං වනරාජි, යොජනං දීඝො පබ්බතො, කොසං සජ්ඣායති.</p>",
-    "notes": [
-     {
-      "kind": "pali",
-      "html": "<p><strong>කාලෙ තාව –</strong></p>"
-     },
-     {
-      "kind": "pali",
-      "html": "<p>1<strong>සත්තාහං</strong> <strong>ගවපානං</strong>, <strong>මාසං</strong> <strong>මංසොදනං</strong>, (<strong>කාල</strong>-<strong>ද්‍රව්‍ය</strong>)</p>"
-     },
-     {
-      "kind": "pali",
-      "html": "<p>2 <strong>සරදං</strong> <strong>රමණීයා</strong> නදී, <strong>සබ්බකාලං</strong> <strong>රමණීයං</strong> නන්දනං, (<strong>කාල</strong>-<strong>ගුණ</strong>)</p>"
-     },
-     {
-      "kind": "pali",
-      "html": "<p>3<strong>මාසං</strong> <strong>සජ්ඣායති</strong>, <strong>තයො මාසෙ</strong> අභිධම්මං <strong>දෙසෙසි</strong>. (<strong>කාල</strong>-<strong>ක්‍රියා</strong>)</p>"
-     },
-     {
-      "kind": "pali",
-      "html": "<p><strong>අද්ධානෙ –</strong></p>"
-     },
-     {
-      "kind": "pali",
-      "html": "<p>1<strong>යොජනං</strong> <strong>වනරාජි</strong>, (<strong>අද්ධාන</strong>-<strong>ද්‍රව්‍ය</strong>)</p>"
-     },
-     {
-      "kind": "pali",
-      "html": "<p>2<strong>යොජනං</strong> <strong>දීඝො</strong> පබ්බතො, (<strong>අද්ධාන</strong>- <strong>ගුණ</strong>)</p>"
-     },
-     {
-      "kind": "pali",
-      "html": "<p>3<strong>කොසං</strong> <strong>සජ්ඣායති</strong>. (<strong>අද්ධාන</strong>-<strong>ක්‍රියා</strong>)</p>"
-     },
-     {
-      "kind": "sanna",
-      "html": "<p>(රියන් 4 = දුනු1, දුනු 500 = කෝෂ 1)</p>"
-     }
-    ]
+    "html": "<p><strong>අද්ධානෙ</strong> – යොජනං වනරාජි, යොජනං දීඝො පබ්බතො, කොසං සජ්ඣායති.</p>"
    },
    {
     "kind": "pali",
@@ -464,17 +368,7 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
       "html": "<p><strong>කම්මප්පවචනීයෙහි</strong>, කර්මාර්ථද්‍යොතක වූ නොහොත් කර්මප්‍රවචනීයසංඥා ඇති; <strong>නිපාතොපසග්ගෙහි</strong>, (ධි විනා යනාදි) නිපාත හා (අනු අභි යනාදි) උපසර්ගය යන මොවුන් හා; <strong>යුත්තෙ</strong>, යුක්තය යි සේ යි; <strong>යොගෙ සති</strong>, ප්‍රයොගයක් ඇති කල්හි; <strong>ලිඞ්ගම්හා</strong>, (ලක්ෂණාද්‍යර්ථ වාචී) ලිඞ්ගයා කෙරෙන් පරව; <strong>දුතියා විභත්ති හොති</strong>, (බොහෝ සේ තෘතීයා ෂෂ්ඨී සප්තම්‍යර්ථ විෂයෙහි) ද්විතීයා විභක්ති වන්නී යි—මෙහි දු යුත්තශබ්දයාගේ භාවසාධනය ඇති බව හඟවන පිණිස යොගෙ යි අනුප්‍රයොගය කළෝ.</p>"
      }
     ],
-    "book": true,
-    "notes": [
-     {
-      "kind": "anuvutti",
-      "html": "<p>දුතියා - 284 (ක.299) කම්මත්ථෙ දුතියා</p>"
-     },
-     {
-      "kind": "pali",
-      "html": "<p>කම්මප්පවචනීයෙහි නිපාතොපසග්ගෙහි යුත්තෙ යොගෙ සති ලිඞ්ගම්හා දුතියාවිභත්ති හොති. (බොහෝ සේ <mark>තතියා, ඡට්ඨි, සත්තමී</mark> විෂයෙහි දුතියා වේ-සන්නය)</p>"
-     }
-    ]
+    "book": true
    },
    {
     "kind": "pali",
@@ -551,12 +445,6 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
      {
       "kind": "sanna",
       "html": "<p>“දෙවදත්තො මාතරමභි” යන මෙහි යම්සේ “<mark>දෙවදත්තො මාතුවිසයෙ මාතුයා වා සාධු</mark>” යයි අධිකරණාර්ථයෙහි සප්තමිය හෝ ස්වාම්‍යර්ථයෙහි ෂෂ්ඨිය තාඛ්‍යානාර්ථ තක වූ කරන ලදද,</p>"
-     }
-    ],
-    "notes": [
-     {
-      "kind": "table",
-      "html": "<table style=\"width:98%;\">\n<colgroup>\n<col style=\"width: 16%\"/>\n<col style=\"width: 13%\"/>\n<col style=\"width: 13%\"/>\n<col style=\"width: 15%\"/>\n<col style=\"width: 12%\"/>\n<col style=\"width: 13%\"/>\n<col style=\"width: 13%\"/>\n</colgroup>\n<thead>\n<tr class=\"header\">\n<th></th>\n<th style=\"text-align: left;\"><strong>ලක්ඛණ</strong></th>\n<th><strong>වීච්ඡා</strong></th>\n<th><strong>ඉත්ථම්භූත</strong></th>\n<th style=\"text-align: left;\"><strong>භාග</strong></th>\n<th style=\"text-align: left;\"><strong>සහත්ථ</strong></th>\n<th><strong>හීනත්ථ</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr class=\"odd\">\n<td><strong>අනු</strong></td>\n<td style=\"text-align: left;\"><strong>√</strong></td>\n<td><strong>√</strong></td>\n<td><strong>√</strong></td>\n<td style=\"text-align: left;\"><strong>√</strong></td>\n<td style=\"text-align: left;\"><strong>√</strong></td>\n<td><strong>√</strong></td>\n</tr>\n<tr class=\"even\">\n<td><strong>පති &amp; පරි</strong></td>\n<td style=\"text-align: left;\"><strong>√</strong></td>\n<td><strong>√</strong></td>\n<td><strong>√</strong></td>\n<td style=\"text-align: left;\"><strong>√</strong></td>\n<td style=\"text-align: left;\"><strong>X</strong></td>\n<td><strong>X</strong></td>\n</tr>\n<tr class=\"odd\">\n<td><strong>අභි</strong></td>\n<td style=\"text-align: left;\"><strong>√</strong></td>\n<td><strong>√</strong></td>\n<td><strong>√</strong></td>\n<td style=\"text-align: left;\"><strong>X</strong></td>\n<td style=\"text-align: left;\"><strong>X</strong></td>\n<td><strong>X</strong></td>\n</tr>\n</tbody>\n</table>"
      }
     ]
    },
@@ -638,12 +526,6 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
       "html": "<p><strong>චුන්ද</strong>, චුන්දය; <strong>බොජ්ඣඞ්ගා</strong>, (සස්මෘති ධර්ම විචයාදි වූ සප්ත) බොජ්ඣංග ධර්මයෝ ; <strong>තං</strong>, තට; <strong>පටිභන්තු</strong>, වැටහෙත්වා; “තව පටිහන්තු” යී තැනි. <strong>උපමා</strong>, උපමාවක්; <strong>මං</strong>, මට; <strong>පටිභාති</strong>, වැටහෙන්නී යි. <strong>උපමා මය්හං උපට්ඨහතීති අත්ථො</strong>, මට උපමාවක් තොමෝ වැටහෙන්නීය යන අර්ථයි.</p>"
      }
     ],
-    "notes": [
-     {
-      "kind": "pali",
-      "html": "<p>පරිතො ගාමස්ස සමන්තතො සෙනා වසති.</p>"
-     }
-    ],
     "tika": [
      {
       "kind": "pali",
@@ -658,12 +540,6 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
      {
       "kind": "sanna",
       "html": "<p>(<strong>තතියා සත්තමීනං ච</strong>, තෘතීයා සප්තමින් දෙදෙනාගේද; <strong>අත්ථෙ</strong>, අර්ථයෙහි; <strong>ක්වචි</strong>, සමහර තැනෙක; <strong>දුතියා</strong>, ද්විතීයා විභක්ති වේ.)</p>"
-     }
-    ],
-    "notes": [
-     {
-      "kind": "anuvutti",
-      "html": "<p>ක්වචි දුතියා, අත්ථෙ - 289 (ක.308) ක්වචි දුතියා ඡට්ඨීනමත්ථෙ</p>"
      }
     ]
    }
@@ -737,32 +613,6 @@ window.SuttaDatabase["02_karaka_dutiya"] = [
      {
       "kind": "sanna",
       "html": "<p><strong>සත්තමියත්ථෙ</strong>, සප්තම්‍යර්ථ විෂයෙහි; <strong>කාලෙ</strong>, කාලයක් කිය යුතු කල්හි; <strong>උපන්වජ්ඣාවසස්ස</strong> <strong>පයොගෙ</strong>, <mark>උප අනු අධි ආ පූර්ව √වස</mark> නිවාසෙ යන ධාතුහුගේ ප්‍රයෝගයක් ඇති කල්හි ද; <strong>අධිසිට්ඨාසානං පයොගෙ</strong>, <mark>අධිපූර්ව වූ √සි සයෙ, √ඨා ගතිනිවුත්ති, √ආස උපවෙසනෙ</mark>, යන ධාතූන්ගේ ප්‍රයොගයක් ඇති කල්හි ද; <strong>තප්පානාචාරෙ ච</strong>, එහි බොයි එහි හැසිරෙ යි යන මේ අර්ථ කියයුතු කල්හි ද; <strong>දුතියා</strong>, ද්විතීයා වේ. මේ නියම ද අනුවෘත්ත ක්වචිග්‍රහණයෙන් සිද්ධ යි; උපො ච අනු ච අධි ච ආ ච උපන්වජ්ඣා, තෙහි යුත්තා තං පුබ්බකො වසො උපන්වඣාවසො, තස්ස උපන්වජ්ඣාවසස්ස; √සි ච √ඨා ච √ආසො ච සිට්ඨාසා, අධිනා යුත්තා තං පුබ්බකා සිට්ඨාසා අධිසිට්ඨාසා, තෙසං අධිසිට්ඨාසානං; පානං ච ආචාරො ච පානාචාරං, තස්මිං පානාචාරං තප්පා නාචාරං, තස්මිං තප්පානාචාරෙ; “ද්වන්දාදිසද්දො පච්චෙකං සම්බන්ධිතබ්බො”ති ඤායා <mark>තප්පානෙ තදාචාරෙති</mark> යොජෙතබ්බං.</p>"
-     }
-    ],
-    "notes": [
-     {
-      "kind": "pali",
-      "html": "<p>උප/අනු/අධි/ආ + වස</p>"
-     },
-     {
-      "kind": "pali",
-      "html": "<p><mark>උප+√වස / අනු +√වස /අධි+√වස / ආ √වස</mark></p>"
-     },
-     {
-      "kind": "pali",
-      "html": "<p>(උපවසති, අනුවසති, අධිවසති, ආවසති, අජ්ඣාවසති .…)</p>"
-     },
-     {
-      "kind": "pali",
-      "html": "<p>අධි + (සි /ඨා /වස)</p>"
-     },
-     {
-      "kind": "pali",
-      "html": "<p>(අධිසයති, අධිතිට්ඨති, .….)</p>"
-     },
-     {
-      "kind": "pali",
-      "html": "<p>තප්පාන / තදාචාර</p>"
      }
     ]
    },

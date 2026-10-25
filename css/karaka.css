@@ -207,3 +207,18 @@
 
 /* දිගු පාළි සමාස පද කුඩා තිරයෙහි පිටාර නොයන ලෙස */
 .kk-pair, .kk-notes, .shadakara-dynamic-grid, .kkn-panel, .sanna-meaning-box, .kk-tika, .sanna-banner-card .sanna-sutta-title { overflow-wrap: anywhere; word-break: break-word; }
+
+/* ලේඛනයේ විශේෂ සටහන් කාඩ්පත් */
+.kkn-context { font-size: 0.85rem; color: #6B1D2F; background: #FAF4E6; border-radius: 4px; padding: 0.25rem 0.6rem; margin: -0.2rem 0 0.6rem; }
+.kkn-context span { font-weight: 700; color: #6E6153; }
+.kk-notes-body .kk-note-line { padding: 0.1rem 0; border-bottom: 1px dashed #EADFCB; }
+.kk-notes-body .kk-note-line:last-child { border-bottom: 0; }
+.kk-notes-body .kk-note-line p { margin: 0.1rem 0; }
+.kk-notes-body mark { background: none; color: inherit; padding: 0; }
+.kk-notes-body table { border-collapse: collapse; width: 100%; margin: 0.4rem 0; }
+.kk-notes-body td, .kk-notes-body th { border: 1px solid #E2D7C3; padding: 0.3rem 0.5rem; vertical-align: top; }
+.kk-notes-body ul { padding-left: 1.3rem; }
+.kkn-card-refs { border-left-color: #C59B27; }
+.kkn-refs { list-style: none; padding: 0; margin: 0; }
+.kkn-refs li { padding: 0.25rem 0; font-weight: 600; color: #4D121D; }
+.night-mode .kkn-context { background: #2A241D; color: #E8B4B4; }
