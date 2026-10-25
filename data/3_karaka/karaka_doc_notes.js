@@ -22,7 +22,7 @@ window.KarakaDocNotes = {
   {
    "title": "උක්ත කර්මය — කර්තෘ වාච්‍ය හා කර්ම වාච්‍ය",
    "context": "යො පන ආඛ්‍යාතකිතකතද්ධිතසමාසෙහි වුත්තො කම්මාදිසංසට්ඨො අත්ථො, සොපි දුතිය…",
-   "html": "<div class=\"kk-note-line\"><p>උදා; පුරිසො <mark>රුක්ඛ</mark>ං ඡින්දති <strong>→</strong> පුරිසෙන <mark>රුක්ඛො</mark> ඡින්දීයතෙ.</p></div><div class=\"kk-note-line\"><p>ප්‍රථමා දුතියා තතියා ප්‍රථමා</p></div><div class=\"kk-note-line\"><p>ආගතා සමණා යං සො <mark>ආගතසමණො</mark> (විහාරො)</p></div>"
+   "html": "<div class=\"kk-note-line\"><p>උදා; පුරිසො <mark>රුක්ඛ</mark>ං ඡින්දති <strong>→</strong> පුරිසෙන <mark>රුක්ඛො</mark> ඡින්දීයතෙ.</p></div><div class=\"kk-note-line\"><p>ප්‍රථමා දුතියා තතියා ප්‍රථමා</p></div><div class=\"kk-note-line\"><p>ආගතා සමණා යං සො <mark>ආගතසමණො</mark> (විහාරො)</p></div>"
   },
   {
    "title": "ආලපනය — ලද්ධසරූපය",
