@@ -31,7 +31,7 @@ window.SuttaDatabase["03_karaka_tatiya"] = [
    "parihara_pali": "‘යෙන වා කයිරතෙ තං කරණ’න්ති අනන්තරසුත්තෙන වුච්චති.",
    "parihara": "එය ඊළඟ ‘යෙන වා කයිරතෙ තං කරණං’ සූත්‍රයෙන් කියනු ලැබේ."
   },
-  "meaning": "",
+  "meaning": "<p>(<strong>කරණෙ</strong>, කරණ කාරකයෙහි; <strong>තතියා</strong>, තෘතීයා විභක්තිය වේ.)</p>",
   "paras": [
    {
     "kind": "pali",
@@ -84,7 +84,7 @@ window.SuttaDatabase["03_karaka_tatiya"] = [
    "parihara_pali": "යෙන විකරොති, යෙන පාපුණාති, තස්සපි සඞ්ගහත්ථො; දාත්තෙන වීහයො ලුනාති, පත්තෙන පිණ්ඩාය චරති.",
    "parihara": "විකාර කරන, පැමිණෙන උපකරණයද ගැනීමටයි; දාත්තෙන වීහයො ලුනාති."
   },
-  "meaning": "",
+  "meaning": "<p>(<strong>යෙන</strong>, යමකින් (යමක් කරණ කොට); <strong>කයිරතෙ වා</strong>, කර්තෘ තෙම ක්‍රියාව කෙරේද; <strong>තං</strong>, එය (ඒ කාරකය); <strong>කරණං</strong>, කරණ නම් වේ.)</p>",
   "paras": [
    {
     "kind": "pali",
@@ -216,7 +216,7 @@ window.SuttaDatabase["03_karaka_tatiya"] = [
    "parihara_pali": "තිවිධො — සුද්ධකත්තා, හෙතුකත්තා, කම්මකත්තාති.",
    "parihara": "සුද්ධ කර්තෘ, හේතු කර්තෘ, කර්ම කර්තෘ යනුවෙන් තිවිධයි."
   },
-  "meaning": "",
+  "meaning": "<p>(<strong>යො</strong>, යමෙක් තෙමේ; <strong>කරොති</strong>, ක්‍රියාව කෙරේද; <strong>සො</strong>, හෙතෙම; <strong>කත්තා</strong>, කර්තෘ නම් වේ.)</p>",
   "paras": [
    {
     "kind": "pali",
@@ -309,7 +309,7 @@ window.SuttaDatabase["03_karaka_tatiya"] = [
    "parihara_pali": "යො පරස්ස ක්‍රියං පටිච්ච කම්මභූතොපි සුකරත්තා සයමෙව සිජ්ඣන්තො විය හොති, සො කම්මකත්තා — සයං කරීයතෙ කටො, සයමෙව පච්චතෙ ඔදනො.",
    "parihara": "අනුන්ගේ ක්‍රියාව නිසා කර්මයක් වුවද පහසු හෙයින් තමාම සිද්ධ වන්නාක් මෙන් වූයේ කර්ම කර්තෘ නම් — සයමෙව පච්චතෙ ඔදනො."
   },
-  "meaning": "",
+  "meaning": "<p>(<strong>යො</strong>, යමෙක් තෙමේ; <strong>කාරෙති</strong>, (අනිකකු ලවා) කරවාද; <strong>සො</strong>, හෙතෙම; <strong>හෙතු</strong>, හෙතු කර්තෘ නම් වේ.)</p>",
   "paras": [
    {
     "kind": "pali",
@@ -494,7 +494,7 @@ window.SuttaDatabase["03_karaka_tatiya"] = [
    "parihara_pali": "සහසද්දස්ස අප්පයොගෙපි සහත්ථෙ තතියාවිධානත්ථො.",
    "parihara": "සහ ශබ්දය නොයෙදුණත් සහ අර්ථයෙහි තෘතීයා වන පිණිසයි."
   },
-  "meaning": "",
+  "meaning": "<p>(<strong>සහාදියොගෙ ච</strong>, සහ ශබ්දාදීන් හා යෝගය ඇති කල්හි ද (ච ශබ්දයෙන් සහාර්ථය ඇති කල්හි ද); <strong>තතියා</strong>, තෘතීයා විභක්තිය වේ.)</p>",
   "paras": [
    {
     "kind": "pali",
@@ -575,7 +575,7 @@ window.SuttaDatabase["03_karaka_tatiya"] = [
    "parihara_pali": "කිස්මිඤ්චි ඵලෙ දිට්ඨසාමත්ථියං කාරණං හෙතු — අන්නෙන වසති, විජ්ජාය වසති.",
    "parihara": "යම් ඵලයක් කෙරෙහි සාමර්ථ්‍යය දක්නා ලද කාරණය හේතුවයි — අන්නෙන වසති, විජ්ජාය වසති."
   },
-  "meaning": "",
+  "meaning": "<p>(<strong>හෙත්වත්ථෙ ච</strong>, හෙත්වර්ථයක් ඇති කල්හි ද (ච ශබ්දයෙන් හෙතු ශබ්ද යෝගයෙහි ද); <strong>තතියා</strong>, තෘතීයා විභක්තිය වේ.)</p>",
   "paras": [
    {
     "kind": "pali",
@@ -678,7 +678,7 @@ window.SuttaDatabase["03_karaka_tatiya"] = [
    "parihara_pali": "කාලද්ධානදිසාදෙසාදීසු චායං — තෙන කාලෙන, තෙන සමයෙන.",
    "parihara": "කාල, අද්ධාන, දිශා, දේශ ආදියෙහි — තෙන කාලෙන, තෙන සමයෙන."
   },
-  "meaning": "",
+  "meaning": "<p>(<strong>සත්තම්‍යත්ථෙ ච</strong>, සප්තමී විභක්ත්‍යර්ථයෙහි ද; <strong>තතියා</strong>, තෘතීයා විභක්තිය වේ.)</p>",
   "paras": [
    {
     "kind": "pali",
@@ -788,7 +788,7 @@ window.SuttaDatabase["03_karaka_tatiya"] = [
    "parihara_pali": "පකතිආදීහිපි තතියාවිධානත්ථො — ගොත්තෙන ගොතමො නාථො.",
    "parihara": "පකති ආදියෙහිද තෘතීයා ගැනීමටයි — ගොත්තෙන ගොතමො නාථො."
   },
-  "meaning": "",
+  "meaning": "<p>(<strong>විසෙසනෙ ච</strong>, විශේෂණාර්ථයෙහි ද; <strong>තතියා</strong>, තෘතීයා විභක්තිය වේ.)</p>",
   "paras": [
    {
     "kind": "pali",
