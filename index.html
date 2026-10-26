@@ -256,9 +256,58 @@
 
     <script>
       if ('serviceWorker' in navigator) {
+        // යාවත්කාලීන දැනුම්දීම: බොත්තම ක්ලික් කළ පසු පමණක් යාවත්කාලීන වේ
+        function showUpdateBanner(worker) {
+          if (document.getElementById('rsUpdateBanner')) return;
+          const bar = document.createElement('div');
+          bar.id = 'rsUpdateBanner';
+          bar.setAttribute('role', 'alert');
+          bar.style.cssText = 'position:fixed;left:12px;right:12px;bottom:12px;z-index:10000;' +
+            'display:flex;align-items:center;justify-content:space-between;gap:12px;' +
+            'padding:12px 16px;border-radius:12px;background:#2B2118;color:#FDFBF7;' +
+            'box-shadow:0 4px 16px rgba(0,0,0,.3);font-size:15px;';
+          const msg = document.createElement('span');
+          msg.textContent = 'නව යාවත්කාලීනයක් ඇත.';
+          const btn = document.createElement('button');
+          btn.textContent = 'යාවත්කාලීන කරන්න';
+          btn.style.cssText = 'border:0;border-radius:8px;padding:8px 14px;cursor:pointer;' +
+            'background:#E8B04A;color:#2B2118;font-weight:600;font-size:15px;';
+          btn.addEventListener('click', () => {
+            btn.disabled = true;
+            btn.textContent = '...';
+            worker.postMessage({ type: 'SKIP_WAITING' });
+          });
+          bar.append(msg, btn);
+          document.body.appendChild(bar);
+        }
+
         window.addEventListener('load', () => {
+          const hadController = !!navigator.serviceWorker.controller;
+          let reloading = false;
+          navigator.serviceWorker.addEventListener('controllerchange', () => {
+            // පළමු install එකේදී නොව, පරිශීලකයා යාවත්කාලීන කළ විට පමණක් reload
+            if (!hadController || reloading) return;
+            reloading = true;
+            window.location.reload();
+          });
+
           navigator.serviceWorker.register('./sw.js')
-            .then((reg) => console.log('Service Worker සාර්ථකව ලියාපදිංචි විය:', reg.scope))
+            .then((reg) => {
+              if (reg.waiting && navigator.serviceWorker.controller) {
+                showUpdateBanner(reg.waiting);
+              }
+              reg.addEventListener('updatefound', () => {
+                const nw = reg.installing;
+                if (!nw) return;
+                nw.addEventListener('statechange', () => {
+                  if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+                    showUpdateBanner(nw);
+                  }
+                });
+              });
+              // ඇප් එක විවෘතව තිබියදීද පැය බැගින් යාවත්කාලීන පරීක්ෂා කිරීම
+              setInterval(() => reg.update().catch(() => {}), 60 * 60 * 1000);
+            })
             .catch((err) => console.error('Service Worker ලියාපදිංචි වීමේ දෝෂය:', err));
         });
       }

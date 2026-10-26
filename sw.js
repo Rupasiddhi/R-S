@@ -89,8 +89,15 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => cache.addAll(ASSETS_TO_CACHE))
-      .then(() => self.skipWaiting())
+    // skipWaiting() මෙහි නැත: පරිශීලකයා "යාවත්කාලීන කරන්න" ක්ලික් කළ පසුව පමණක් සක්‍රීය වේ.
   );
+});
+
+// පරිශීලකයා යාවත්කාලීන බොත්තම ක්ලික් කළ විට පමණක් අලුත් version එක සක්‍රීය කිරීම
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
 
 // 2. Activate: පැරණි Caches ඉවත් කිරීම
