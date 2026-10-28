@@ -8,7 +8,7 @@
 // නව ගොනුවක් index.html වෙත එක් කරන විට එය ASSETS_TO_CACHE ලැයිස්තුවටද එක් කරන්න.
 // ==========================================================================
 
-const CACHE_NAME = 'pada-rupasiddhi-v15.4.14';
+const CACHE_NAME = 'pada-rupasiddhi-v15.4.15';
 const FONT_CACHE = 'pada-rupasiddhi-fonts-v1';
 
 // Offline භාවිතය සඳහා Cache කරගත යුතු සියලුම අත්‍යවශ්‍ය ගොනු ලැයිස්තුව
@@ -79,10 +79,10 @@ const ASSETS_TO_CACHE = [
   './data/3_karaka/07_karaka_sattami.js',
 
   // Icons
-  './icons/icon-192.png',
-  './icons/icon-512.png',
-  './icons/icon-maskable.png',
-  './icons/apple-touch-icon.png'
+  './icons/rs-192.png',
+  './icons/rs-512.png',
+  './icons/rs-maskable.png',
+  './icons/rs-apple-180.png'
 ];
 
 // 1. Install: සියලු ගොනු Cache කිරීම
