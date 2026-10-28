@@ -24,7 +24,7 @@ window.SuttaDatabase["03b_samasa_digu_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "තයො + ලොකා + (සමාහටා)",
+    "formula": "තයො + ලොකා + (~සමාහටා~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -108,7 +108,7 @@ window.SuttaDatabase["03b_samasa_digu_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "පඤ්ච ගාවො + (සමාහටා)",
+    "formula": "පඤ්ච ගාවො + (~සමාහටා~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -200,7 +200,7 @@ window.SuttaDatabase["03b_samasa_digu_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "ද්වෙ + රත්තියො + (සමාහටා)",
+    "formula": "ද්වෙ + රත්තියො + (~සමාහටා~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {

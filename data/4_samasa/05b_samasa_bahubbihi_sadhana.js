@@ -24,7 +24,7 @@ window.SuttaDatabase["05b_samasa_bahubbihi_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "ජිතානි ඉන්ද්‍රියානි (යෙන සො)",
+    "formula": "ජිතානි ඉන්ද්‍රියානි (~යෙන සො~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -38,6 +38,10 @@ window.SuttaDatabase["05b_samasa_bahubbihi_sadhana"] = [
    {
     "formula": "ජිත් - ~අ~ + ඉන්ද්‍රිය",
     "rule": "සරා සරෙ ලොපං."
+   },
+   {
+    "formula": "ජිත් + ඉන්ද්‍රිය",
+    "rule": "නයෙ පරං යුත්තෙ."
    },
    {
     "formula": "ජිතින්ද්‍රිය",
@@ -116,7 +120,7 @@ window.SuttaDatabase["05b_samasa_bahubbihi_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "දින්නො සුඞ්කො (යස්ස රඤ්ඤො සො)",
+    "formula": "දින්නො සුඞ්කො (~යස්ස රඤ්ඤො සො~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -200,7 +204,7 @@ window.SuttaDatabase["05b_samasa_bahubbihi_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "නිග්ගතා ජනා (අස්මා ගාමා සො)",
+    "formula": "නිග්ගතා ජනා (~අස්මා ගාමා සො~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -284,7 +288,7 @@ window.SuttaDatabase["05b_samasa_bahubbihi_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "ආගතා සමණා (යං සො)",
+    "formula": "ආගතා සමණා (~යං සො~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -368,7 +372,7 @@ window.SuttaDatabase["05b_samasa_bahubbihi_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "දීඝා ජඞ්ඝා (යස්ස සො)",
+    "formula": "දීඝා ජඞ්ඝා (~යස්ස සො~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -460,7 +464,7 @@ window.SuttaDatabase["05b_samasa_bahubbihi_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "බහූ නදියො (යස්මිං සො)",
+    "formula": "බහූ නදියො (~යස්මිං සො~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -552,7 +556,7 @@ window.SuttaDatabase["05b_samasa_bahubbihi_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "බහවො කත්තාරො (අස්මිං සො)",
+    "formula": "බහවො කත්තාරො (~අස්මිං සො~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -640,7 +644,7 @@ window.SuttaDatabase["05b_samasa_bahubbihi_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "නත්ථි සමො (අස්ස සො)",
+    "formula": "නත්ථි සමො (~අස්ස සො~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -728,7 +732,7 @@ window.SuttaDatabase["05b_samasa_bahubbihi_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "නත්ථි (එතස්ස) උත්තරො",
+    "formula": "නත්ථි (~එතස්ස~) උත්තරො",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -816,7 +820,7 @@ window.SuttaDatabase["05b_samasa_bahubbihi_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "සහ + හෙතුනා + (යො සො)",
+    "formula": "සහ + හෙතුනා + (~යො සො~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -908,7 +912,7 @@ window.SuttaDatabase["05b_samasa_bahubbihi_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "නිග්‍රොධො + (ඉව) + පරිමණ්ඩලො",
+    "formula": "නිග්‍රොධො + (~ඉව~) + පරිමණ්ඩලො",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -992,7 +996,7 @@ window.SuttaDatabase["05b_samasa_bahubbihi_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "ද්වෙ + (වා) තයො + (වා) + පත්තා",
+    "formula": "ද්වෙ + (~වා~) තයො + (~වා~) + පත්තා",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -1088,7 +1092,7 @@ window.SuttaDatabase["05b_samasa_bahubbihi_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "පුබ්බස්සා (ච) දක්ඛිණස්සා (ච දිසාය)",
+    "formula": "පුබ්බස්සා (~ච~) දක්ඛිණස්සා (~ච දිසාය~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {

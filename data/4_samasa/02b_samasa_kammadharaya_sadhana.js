@@ -24,7 +24,7 @@ window.SuttaDatabase["02b_samasa_kammadharaya_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "නීලං (ච තං) උප්පලං (ච)",
+    "formula": "නීලං (~ච තං~) උප්පලං (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -38,6 +38,10 @@ window.SuttaDatabase["02b_samasa_kammadharaya_sadhana"] = [
    {
     "formula": "නීල් - ~අ~ + උප්පල",
     "rule": "සරා සරෙ ලොපං."
+   },
+   {
+    "formula": "නීල් + උප්පල",
+    "rule": "නයෙ පරං යුත්තෙ."
    },
    {
     "formula": "නීලුප්පල",
@@ -116,7 +120,7 @@ window.SuttaDatabase["02b_samasa_kammadharaya_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "දක්ඛො (ච සො) පුරිසො (ච)",
+    "formula": "දක්ඛො (~ච සො~) පුරිසො (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -200,7 +204,7 @@ window.SuttaDatabase["02b_samasa_kammadharaya_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "මහන්තො (ච සො) පුරිසො (ච)",
+    "formula": "මහන්තො (~ච සො~) පුරිසො (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -288,7 +292,7 @@ window.SuttaDatabase["02b_samasa_kammadharaya_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "මහන්තං (ච තං) බලං (ච)",
+    "formula": "මහන්තං (~ච තං~) බලං (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -464,7 +468,7 @@ window.SuttaDatabase["02b_samasa_kammadharaya_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "පුමා (ච සො) කොකිලො (ච)",
+    "formula": "පුමා (~ච සො~) කොකිලො (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -560,7 +564,7 @@ window.SuttaDatabase["02b_samasa_kammadharaya_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "පුමා (ච සො) නාගො (ච)",
+    "formula": "පුමා (~ච සො~) නාගො (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -656,7 +660,7 @@ window.SuttaDatabase["02b_samasa_kammadharaya_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "ඛත්තියා (ච සා) කඤ්ඤා (ච)",
+    "formula": "ඛත්තියා (~ච සා~) කඤ්ඤා (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -744,7 +748,7 @@ window.SuttaDatabase["02b_samasa_kammadharaya_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "සාරිපුත්තො (ච සො) ථෙරො (ච)",
+    "formula": "සාරිපුත්තො (~ච සො~) ථෙරො (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -836,7 +840,7 @@ window.SuttaDatabase["02b_samasa_kammadharaya_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "ගුණො + (එව) + ධනං",
+    "formula": "ගුණො + (~එව~) + ධනං",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -920,7 +924,7 @@ window.SuttaDatabase["02b_samasa_kammadharaya_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "අබහුලං (බහුලං) කතං",
+    "formula": "අබහුලං (~බහුලං~) කතං",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -1380,6 +1384,10 @@ window.SuttaDatabase["02b_samasa_kammadharaya_sadhana"] = [
     "rule": "සරා සරෙ ලොපං."
    },
    {
+    "formula": "කද් + අන්න",
+    "rule": "නයෙ පරං යුත්තෙ."
+   },
+   {
     "formula": "කදන්න",
     "rule": "තද්ධිතසමාසකිතකා නාමංවාතවෙතුනාදීසු ච."
    }
@@ -1474,6 +1482,10 @@ window.SuttaDatabase["02b_samasa_kammadharaya_sadhana"] = [
    {
     "formula": "කද් - ~අ~ + අසන",
     "rule": "සරා සරෙ ලොපං."
+   },
+   {
+    "formula": "කද් + අසන",
+    "rule": "නයෙ පරං යුත්තෙ."
    },
    {
     "formula": "කදසන",

@@ -32,7 +32,7 @@ window.SuttaDatabase["01b_samasa_abyayibhava_sadhana"] = [
     "rule": "තෙසං විභත්තියො ලොපා ච, පකති චස්ස සරන්තස්ස."
    },
    {
-    "formula": "නගර + උප + (සමීපං)",
+    "formula": "නගර + උප + (~සමීපං~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -124,7 +124,7 @@ window.SuttaDatabase["01b_samasa_abyayibhava_sadhana"] = [
     "rule": "තෙසං විභත්තියො ලොපා ච, පකති චස්ස සරන්තස්ස."
    },
    {
-    "formula": "දරථ + නි + (අභාවො)",
+    "formula": "දරථ + නි + (~අභාවො~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -220,7 +220,7 @@ window.SuttaDatabase["01b_samasa_abyayibhava_sadhana"] = [
     "rule": "තෙසං විභත්තියො ලොපා ච, පකති චස්ස සරන්තස්ස."
    },
    {
-    "formula": "රථ + අනු + (පච්ඡා)",
+    "formula": "රථ + අනු + (~පච්ඡා~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -312,7 +312,7 @@ window.SuttaDatabase["01b_samasa_abyayibhava_sadhana"] = [
     "rule": "තෙසං විභත්තියො ලොපා ච, පකති චස්ස සරන්තස්ස."
    },
    {
-    "formula": "රූප + අනු + (යොග්ගං)",
+    "formula": "රූප + අනු + (~යොග්ගං~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -504,7 +504,7 @@ window.SuttaDatabase["01b_samasa_abyayibhava_sadhana"] = [
     "rule": "තෙසං විභත්තියො ලොපා ච, පකති චස්ස සරන්තස්ස."
    },
    {
-    "formula": "ජෙට්ඨ + අනු + (අනුපුබ්බො)",
+    "formula": "ජෙට්ඨ + අනු + (~අනුපුබ්බො~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -596,7 +596,7 @@ window.SuttaDatabase["01b_samasa_abyayibhava_sadhana"] = [
     "rule": "තෙසං විභත්තියො ලොපා ච, පකති චස්ස සරන්තස්ස."
    },
    {
-    "formula": "සොත + පටි + (පටිලොමං)",
+    "formula": "සොත + පටි + (~පටිලොමං~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -688,7 +688,7 @@ window.SuttaDatabase["01b_samasa_abyayibhava_sadhana"] = [
     "rule": "තෙසං විභත්තියො ලොපා ච, පකති චස්ස සරන්තස්ස."
    },
    {
-    "formula": "අත්ත + අධි + (අධිකිච්ච)",
+    "formula": "අත්ත + අධි + (~අධිකිච්ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -888,7 +888,7 @@ window.SuttaDatabase["01b_samasa_abyayibhava_sadhana"] = [
     "rule": "තෙසං විභත්තියො ලොපා ච, පකති චස්ස සරන්තස්ස."
    },
    {
-    "formula": "වුඩ්ඪ + යථා + (පටිපාටි)",
+    "formula": "වුඩ්ඪ + යථා + (~පටිපාටි~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -980,7 +980,7 @@ window.SuttaDatabase["01b_samasa_abyayibhava_sadhana"] = [
     "rule": "තෙසං විභත්තියො ලොපා ච, පකති චස්ස සරන්තස්ස."
    },
    {
-    "formula": "කම + යථා + (අනතික්කමිත්වා)",
+    "formula": "කම + යථා + (~අනතික්කමිත්වා~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {

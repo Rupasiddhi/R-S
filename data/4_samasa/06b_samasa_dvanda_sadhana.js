@@ -24,7 +24,7 @@ window.SuttaDatabase["06b_samasa_dvanda_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "ද්වෙ (ච) ද්වෙ (ච)",
+    "formula": "ද්වෙ (~ච~) ද්වෙ (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -120,7 +120,7 @@ window.SuttaDatabase["06b_samasa_dvanda_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "ජායා (ච) පති (ච)",
+    "formula": "ජායා (~ච~) පති (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -220,7 +220,7 @@ window.SuttaDatabase["06b_samasa_dvanda_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "චක්ඛු (ච) සොතං (ච)",
+    "formula": "චක්ඛු (~ච~) සොතං (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -304,7 +304,7 @@ window.SuttaDatabase["06b_samasa_dvanda_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "පුබ්බා (ච) අපරා (ච)",
+    "formula": "පුබ්බා (~ච~) අපරා (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -400,7 +400,7 @@ window.SuttaDatabase["06b_samasa_dvanda_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "පාණී (ච) පාදා (ච)",
+    "formula": "පාණී (~ච~) පාදා (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -488,7 +488,7 @@ window.SuttaDatabase["06b_samasa_dvanda_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "හත්ථී (ච) ගාවො (ච) අස්සා (ච) වළවා (ච)",
+    "formula": "හත්ථී (~ච~) ගාවො (~ච~) අස්සා (~ච~) වළවා (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -580,7 +580,7 @@ window.SuttaDatabase["06b_samasa_dvanda_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "අස්සත්ථා (ච) කපිත්ථා (ච)",
+    "formula": "අස්සත්ථා (~ච~) කපිත්ථා (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -664,7 +664,7 @@ window.SuttaDatabase["06b_samasa_dvanda_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "සාලී (ච) යවා (ච)",
+    "formula": "සාලී (~ච~) යවා (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -752,7 +752,7 @@ window.SuttaDatabase["06b_samasa_dvanda_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "හිරඤ්ඤං (ච) සුවණ්ණං (ච)",
+    "formula": "හිරඤ්ඤං (~ච~) සුවණ්ණං (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -836,7 +836,7 @@ window.SuttaDatabase["06b_samasa_dvanda_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "කාසී (ච) කොසලා (ච)",
+    "formula": "කාසී (~ච~) කොසලා (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -924,7 +924,7 @@ window.SuttaDatabase["06b_samasa_dvanda_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "හංසා (ච) බකා (ච)",
+    "formula": "හංසා (~ච~) බකා (~ච~)",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {

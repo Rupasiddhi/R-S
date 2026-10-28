@@ -192,7 +192,7 @@ window.SuttaDatabase["04b_samasa_tappurisa_sadhana"] = [
     "rule": "ජිනවචනයුත්තං හි."
    },
    {
-    "formula": "ගුළෙන + (සංසට්ඨො) + ඔදනො",
+    "formula": "ගුළෙන + (~සංසට්ඨො~) + ඔදනො",
     "rule": "වුත්තට්ඨානමප්පයොගො."
    },
    {
@@ -206,6 +206,10 @@ window.SuttaDatabase["04b_samasa_tappurisa_sadhana"] = [
    {
     "formula": "ගුළ් - ~අ~ + ඔදන",
     "rule": "සරා සරෙ ලොපං."
+   },
+   {
+    "formula": "ගුළ් + ඔදන",
+    "rule": "නයෙ පරං යුත්තෙ."
    },
    {
     "formula": "ගුළොදන",
@@ -382,6 +386,10 @@ window.SuttaDatabase["04b_samasa_tappurisa_sadhana"] = [
    {
     "formula": "භික්ඛුසඞ්ඝ් - ~අ~ + අත්ථ",
     "rule": "සරා සරෙ ලොපං."
+   },
+   {
+    "formula": "භික්ඛුසඞ්ඝ් + අත්ථ",
+    "rule": "නයෙ පරං යුත්තෙ."
    },
    {
     "formula": "භික්ඛුසඞ්ඝත්ථ",
