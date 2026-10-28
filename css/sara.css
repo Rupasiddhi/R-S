@@ -344,3 +344,6 @@
     box-shadow: 0 2px 8px rgba(140, 45, 0, 0.25);
 }
 .sub-ul { text-decoration: underline; text-decoration-color: var(--theme-accent); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+.sn-mark { color: #8C2D00; font-weight: 700; font-size: 0.75em; }
+.sn-mark.sn-cur { background: #FFE9A8; border-radius: 3px; padding: 0 3px; }

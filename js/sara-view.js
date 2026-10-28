@@ -247,22 +247,18 @@ function renderSaraWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
 function renderSaraSpecialNotes(suttaData) {
     const list = (window.SamasaSuttaNotes || {})[suttaData.sutta_number] || [];
     if (!list.length) return '';
-    const sn = suttaData.sutta_number;
     return `
         <section class="panel-card kkn-panel">
-            <h3 class="section-heading"><span class="heading-icon">📝</span> විශේෂ සටහන්</h3>
-            ${list.length > 2 ? `<nav class="kkn-toc">${list.map((n, i) =>
-                `<a href="javascript:void(0)" onclick="document.getElementById('kkn-s${sn}-${i}').scrollIntoView({behavior:'smooth',block:'start'})"><b>${i + 1}.</b> ${n.title}</a>`).join('')}</nav>` : ''}
-            ${list.map((n, i) => `
-                <article class="kkn-card" id="kkn-s${sn}-${i}">
-                    <h4 class="kkn-title"><span class="kkn-no">${i + 1}</span>${n.title}</h4>
-                    ${n.source ? `<p class="kkn-source">${n.source}</p>` : ''}
-                    ${n.context ? `<p class="kkn-context"><span>අදාළ පාඨය:</span> ${n.context}</p>` : ''}
-                    ${n.html ? `<div class="kkn-body kk-notes-body">${n.html}</div>` : ''}
-                </article>`).join('')}
+            <h3 class="section-heading"><span class="heading-icon">📝</span> විශේෂ සටහන් <span class="kk-tika-hint">(${list.length}) — බැලීමට ක්ලික් කරන්න</span></h3>
+            ${list.map(n => `
+                <details class="kk-tika sn-note"><summary><span class="kk-tika-icon">📝</span> <b>සටහන ${n.n}</b> — ${n.title}</summary>
+                    <div class="kk-tika-body">
+                        ${n.context ? `<div class="sanna-vutti-box kk-pair"><span class="vutti-label">අදාළ ඡේදය:</span><div class="sanna-vutti-text kk-html">${n.context}</div></div>` : ''}
+                        <div class="kkn-body kk-notes-body" style="margin-top:0.6rem"><span class="vutti-label">සටහන:</span>${n.html}</div>
+                    </div>
+                </details>`).join('')}
         </section>`;
 }
-
 
 // සමාසකණ්ඩය — ටීකා විවරණ (ක්ලික් කළ විට විවෘත වේ) (data/4_samasa/samasa_tika.js)
 function renderSaraTika(suttaData) {
