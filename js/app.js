@@ -184,6 +184,7 @@ function populateSubKhandaUnderButton(khandaKey, subCategories) {
                 li.onclick = (e) => {
                     e.stopPropagation();
                     selectSuttaItem(sNumber, sub.id);
+                    hideSidebarMenu();
                 };
                 suttaListUl.appendChild(li);
             });
@@ -241,7 +242,7 @@ function renderSadhanaGroupedList(ul, subId, items) {
             const tag = (subId === '04b_sabbanama_sadhana' && it.linga) ? ` <small>(${it.linga.split(' ')[0]})</small>` : '';
             const sd = it.source === 'saddaniti' ? ` <span class="sd-tag" title="සද්දනීති පදමාලාවෙන්">සද්</span>` : '';
             li.innerHTML = `${it.word}${tag}${sd}`;
-            li.onclick = (e) => { e.stopPropagation(); selectSuttaItem(n, subId); };
+            li.onclick = (e) => { e.stopPropagation(); selectSuttaItem(n, subId); hideSidebarMenu(); };
             inner.appendChild(li);
         });
         gli.appendChild(head); gli.appendChild(inner);
@@ -294,6 +295,18 @@ function toggleSubKhandaSuttas(subId) {
 function isNamaSubKhanda(subId) {
     const nama = KHANDAS_CONFIG.find(k => k.key === '2_nama');
     return !!(nama && nama.subCategories.some(s => s.id === subId));
+}
+
+/**
+ * සූත්‍රයක් තේරූ පසු ඛාණ්ඩ ලයිස්තුව (sidebar) සැඟවීම
+ */
+function hideSidebarMenu() {
+    const nav = document.querySelector('.sidebar-nav');
+    const layout = document.querySelector('.layout-container');
+    const overlay = document.getElementById('sidebarOverlay');
+    if (nav) nav.classList.remove('drawer-open');
+    if (overlay) overlay.classList.remove('active');
+    if (window.innerWidth > 1024 && layout) layout.classList.add('sidebar-hidden');
 }
 
 /**
@@ -816,6 +829,7 @@ function navigateToSutta(khandaKey, subId, suttaNum) {
 
     renderKhandaTreeNavigation();
     selectSuttaItem(suttaNum, subId);
+    hideSidebarMenu();
 
     const activeItem = document.querySelector('.sutta-sub-item.active');
     if (activeItem) activeItem.scrollIntoView({ block: 'nearest' });
