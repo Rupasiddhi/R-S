@@ -144,6 +144,7 @@ function renderPadaSadhanaWorkspace(item, targetContainerId = 'viewSuttaPanel') 
             </div>
         ` : ''}
 
+        ${item.hide_declension ? '' : `
         <div class="panel-card">
             <h3 class="section-heading"><span class="heading-icon">📜</span> විභක්ති වරනැඟීම</h3>
             <div class="ps-hint-box">
@@ -153,11 +154,19 @@ function renderPadaSadhanaWorkspace(item, targetContainerId = 'viewSuttaPanel') 
             <div id="padaSadhanaGrid">${renderPadaSadhanaGrid(item, idx, vib)}</div>
             ${derivs.some(x => x.saddaniti_only) ? `<p class="ps-sd-legend"><span class="ps-form-chip ps-sd-only ps-legend-chip">රූපය</span> තිත් රේඛා සහිත රූප සද්දනීති පදමාලාවෙහි පමණක් එන, රූපසිද්ධියෙන් සෘජුව සාධනය නොවන රූපයි.</p>` : ''}
         </div>
+        `}
 
+        ${item.hide_declension ? `
+        <div class="panel-card nama-derivation-card" id="padaSadhanaCard">
+            <h3 class="section-heading"><span class="heading-icon">⚙️</span> සම්පූර්ණ පද සාධනය (පඨමා විභක්ති, එකවචන)</h3>
+            ${derivs[0] ? renderNamaDerivationTable(derivs[0]) : ''}
+        </div>
+        ` : `
         <div class="panel-card nama-derivation-card" id="padaSadhanaCard">
             <h3 class="section-heading"><span class="heading-icon">⚙️</span> සම්පූර්ණ පද සාධනය</h3>
             <div id="padaSadhanaContainer">${renderPadaSadhanaPanel(item, idx, vib)}</div>
         </div>
+        `}
 
         ${item.similar_words ? `
             <div class="panel-card">
