@@ -173,6 +173,24 @@
     font-weight: 600;
 }
 
+.settings-about {
+    margin-top: 0.7rem;
+    text-align: center;
+}
+
+.settings-about a {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--theme-primary, #5C1422);
+    text-decoration: none;
+    border: 1px solid var(--border-soft, #EADBBE);
+    border-radius: 8px;
+}
+
+.settings-about a:hover { text-decoration: underline; }
+
 .settings-version {
     margin-top: 0.7rem;
     text-align: center;
