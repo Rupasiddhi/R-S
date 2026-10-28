@@ -827,4 +827,17 @@ input {
     .shadakara-dynamic-grid {
         grid-template-columns: minmax(0, 1fr) !important;
     }
-}
+}
+/* සංවර්ධන අවධි දැනුම්දීම */
+.dev-notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    background: #E8B04A;
+    color: #2B2118;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+}
