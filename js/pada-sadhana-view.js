@@ -32,7 +32,7 @@ function renderPadaSadhanaGrid(item, activeIdx, activeVib) {
             <table class="data-table ps-decl-table">
                 <thead>
                     <tr>
-                        <th style="width: 120px;">විභක්ති</th>
+                        <th style="width: 120px;">${item.verb ? 'කාරකය · පුරුෂය' : 'විභක්ති'}</th>
                         <th>එකවචන</th>
                         <th>බහුවචන</th>
                     </tr>
@@ -78,7 +78,7 @@ function renderPadaSadhanaPanel(item, activeIdx, activeVib) {
     const d = (item.derivations || [])[activeIdx];
     const forms = padaSadhanaOfVibhatti(item, activeVib);
     return `
-        <div class="ps-step-label"><span class="ps-step-no">1</span> විභක්තිය තෝරන්න</div>
+        <div class="ps-step-label"><span class="ps-step-no">1</span> ${item.verb ? 'කාරකය හා පුරුෂය තෝරන්න' : 'විභක්තිය තෝරන්න'}</div>
         <div class="ps-vib-tabs">
             ${(item.declension || []).map(row => `
                 <button type="button" class="ps-vib-tab ${row.key === activeVib ? 'active' : ''}" onclick="selectPadaSadhanaVibhatti('${row.key}')">${row.vibhatti}</button>
@@ -127,10 +127,10 @@ function renderPadaSadhanaWorkspace(item, targetContainerId = 'viewSuttaPanel') 
                 ${item.ending ? `<span class="badge" style="background:#FAF2E6; color:#8C2D00; border:1px solid #E6D0BA;">${item.ending}</span>` : ''}
                 ${item.source === 'saddaniti' ? `<span class="badge ps-sd-badge" title="${item.source_ref || ''}">📗 ${item.source_label || 'සද්දනීති පදමාලා'}</span>` : ''}
             </div>
-            <h2 class="nama-sutta-title">${item.word} <span class="ps-title-sub">— ${item.ending || ''} ${item.linga || 'පුල්ලිඞ්ග'} ශබ්දය</span></h2>
+            <h2 class="nama-sutta-title">${item.word} <span class="ps-title-sub">${item.verb ? '— ආඛ්‍යාත පද සාධනය' : `— ${item.ending || ''} ${item.linga || 'පුල්ලිඞ්ග'} ශබ්දය`}</span></h2>
             <div class="nama-meaning-container">
                 <p class="nama-meaning-text">
-                    <strong>${item.word}</strong> — ${item.meaning || ''}
+                    ${item.verb ? '' : `<strong>${item.word}</strong> — `}${item.meaning || ''}
                     ${item.sutta_refs ? `<br><span class="ps-refs">අදාළ විශේෂ සූත්‍ර: ${item.sutta_refs}</span>` : ''}
                     ${item.source === 'saddaniti' ? `<br><span class="ps-refs ps-sd-src">මූලාශ්‍රය: ${item.source_ref || 'සද්දනීතිප්පකරණං (පදමාලා)'} — රූපසිද්ධියෙහි වෙනම පද සාධනයක් නැති පදයකි.</span>` : ''}
                 </p>
@@ -146,7 +146,7 @@ function renderPadaSadhanaWorkspace(item, targetContainerId = 'viewSuttaPanel') 
 
         ${item.hide_declension ? '' : `
         <div class="panel-card">
-            <h3 class="section-heading"><span class="heading-icon">📜</span> විභක්ති වරනැඟීම</h3>
+            <h3 class="section-heading"><span class="heading-icon">📜</span> ${item.verb ? 'රූප වගුව (කාරක · පුරුෂ · වචන)' : 'විභක්ති වරනැඟීම'}</h3>
             <div class="ps-hint-box">
                 <span class="ps-hint-icon">👆</span>
                 <span><strong>විභක්තියක නමක්</strong> හෝ <strong>රූපයක්</strong> ක්ලික් කරන්න — එහි සූත්‍ර සහිත සම්පූර්ණ පද සාධනය පහත <strong>“සම්පූර්ණ පද සාධනය”</strong> කොටසේ දිස් වේ.</span>
