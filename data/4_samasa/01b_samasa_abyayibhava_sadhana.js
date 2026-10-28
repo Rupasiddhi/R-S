@@ -132,7 +132,7 @@ window.SuttaDatabase["01b_samasa_abyayibhava_sadhana"] = [
     "rule": "උපසග්ගනිපාතපුබ්බකො අබ්‍යයීභාවො. නාමානං සමාසො යුත්තත්ථො."
    },
    {
-    "formula": "නිද් ද්ද් + අ + රථ",
+    "formula": "නිද්→නිද්ද් + අ + රථ",
     "rule": "පරද්වෙභාවො ඨානෙ."
    },
    {
@@ -416,7 +416,7 @@ window.SuttaDatabase["01b_samasa_abyayibhava_sadhana"] = [
     "rule": "ඉවණ්ණො යං නවා."
    },
    {
-    "formula": "ප + ත් + ය් → ච්ච් + අත්ත",
+    "formula": "ප + ත් + ය්→ච්ච් + අත්ත",
     "rule": "යවතං තලනදකාරානං බ්‍යඤ්ජනානි චලඤජකාරත්තං."
    },
    {
@@ -696,7 +696,7 @@ window.SuttaDatabase["01b_samasa_abyayibhava_sadhana"] = [
     "rule": "උපසග්ගනිපාතපුබ්බකො අබ්‍යයීභාවො. නාමානං සමාසො යුත්තත්ථො."
    },
    {
-    "formula": "අධි → අජ්ඣ + අත්ත",
+    "formula": "අධි→අජ්ඣ + අත්ත",
     "rule": "අජ්ඣො අධි."
    },
    {
@@ -988,7 +988,7 @@ window.SuttaDatabase["01b_samasa_abyayibhava_sadhana"] = [
     "rule": "උපසග්ගනිපාතපුබ්බකො අබ්‍යයීභාවො. නාමානං සමාසො යුත්තත්ථො."
    },
    {
-    "formula": "යථා + ක් ක්ක් + අම",
+    "formula": "යථා + ක්→ක්ක් + අම",
     "rule": "පරද්වෙභාවො ඨානෙ."
    },
    {
