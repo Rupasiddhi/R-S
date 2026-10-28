@@ -105,8 +105,10 @@ function renderKhandaTreeNavigation() {
         btn.type = 'button';
         btn.className = `khanda-tab ${isCurrentActive ? 'active' : ''}`;
         btn.setAttribute('data-khanda', item.key);
+        const khandaNo = (item.name.match(/^\s*(\d+)\./) || [])[1] || '•';
+        const khandaTitle = item.name.replace(/^\s*\d+\.\s*/, '');
         btn.innerHTML = `
-            <span>📄 ${item.name}</span>
+            <span class="khanda-label"><span class="khanda-icon">${khandaNo}</span><span>${khandaTitle}</span></span>
             <span class="chevron-icon" style="font-size:0.75rem;">${isCurrentActive ? '▼' : '▶'}</span>
         `;
         
@@ -147,7 +149,7 @@ function populateSubKhandaUnderButton(khandaKey, subCategories) {
         btn.type = 'button';
         btn.className = `subkhanda-tree-btn ${isCurrentSub ? 'active' : ''}`;
         btn.innerHTML = `
-            <span>▸ ${sub.name}</span>
+            <span>${sub.name}</span>
             <span class="sub-chevron" style="font-size:0.7rem;">${isCurrentSub ? '▼' : '▶'}</span>
         `;
         
