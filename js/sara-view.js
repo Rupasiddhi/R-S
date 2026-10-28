@@ -214,6 +214,9 @@ function renderSaraWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
         <!-- 05b. විශේෂ සටහන් -->
         ${renderSaraSpecialNotes(suttaData)}
 
+        <!-- 05c. ටීකා විවරණ (ක්ලික් කර බැලීමට) -->
+        ${renderSaraTika(suttaData)}
+
         <!-- 06. පියවරෙන් පියවර පද සාධන පුවරුව -->
         ${examples.length > 0 ? `
             <div class="panel-card sara-derivation-card">
@@ -257,6 +260,25 @@ function renderSaraSpecialNotes(suttaData) {
                     ${n.context ? `<p class="kkn-context"><span>අදාළ පාඨය:</span> ${n.context}</p>` : ''}
                     ${n.html ? `<div class="kkn-body kk-notes-body">${n.html}</div>` : ''}
                 </article>`).join('')}
+        </section>`;
+}
+
+
+// සමාසකණ්ඩය — ටීකා විවරණ (ක්ලික් කළ විට විවෘත වේ) (data/4_samasa/samasa_tika.js)
+function renderSaraTika(suttaData) {
+    const list = (window.SamasaTika || {})[suttaData.sutta_number] || [];
+    if (!list.length) return '';
+    return `
+        <section class="panel-card kkn-panel">
+            <h3 class="section-heading"><span class="heading-icon">📜</span> ටීකා විවරණ <span class="kk-tika-hint">(${list.length}) — බැලීමට ක්ලික් කරන්න</span></h3>
+            ${list.map(t => `
+                <details class="kk-tika"><summary><span class="kk-tika-icon">📜</span> ${t.source ? `<b>${t.source}</b> — ` : ''}${t.title}</summary>
+                    <div class="kk-tika-body"><div class="sanna-vutti-box kk-pair">
+                        ${t.pali ? `<span class="vutti-label">ටීකා පාඨය:</span><div class="sanna-vutti-text kk-html">${t.pali}</div>` : ''}
+                        ${t.pali && t.sanna ? `<hr class="sanna-sanna-divider">` : ''}
+                        ${t.sanna ? `<span class="vutti-label">පදයෙන් පද සන්නය:</span><div class="sanna-sanna-text kk-html kk-pair-sanna">${t.sanna}</div>` : ''}
+                    </div></div>
+                </details>`).join('')}
         </section>`;
 }
 
