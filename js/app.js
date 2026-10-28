@@ -58,7 +58,13 @@ const KHANDAS_CONFIG = [
             { id: "03_samasa_digu", name: "දිගු සමාස" },
             { id: "04_samasa_tappurisa", name: "තප්පුරිස සමාස" },
             { id: "05_samasa_bahubbihi", name: "බහුබ්බීහි සමාස" },
-            { id: "06_samasa_dvanda", name: "ද්වන්ද්ව සමාස" }
+            { id: "06_samasa_dvanda", name: "ද්වන්ද්ව සමාස" },
+            { id: "01b_samasa_abyayibhava_sadhana", name: "අබ්‍යයීභාව පද සාධනය" },
+            { id: "02b_samasa_kammadharaya_sadhana", name: "කම්මධාරය පද සාධනය" },
+            { id: "03b_samasa_digu_sadhana", name: "දිගු පද සාධනය" },
+            { id: "04b_samasa_tappurisa_sadhana", name: "තප්පුරිස පද සාධනය" },
+            { id: "05b_samasa_bahubbihi_sadhana", name: "බහුබ්බීහි පද සාධනය" },
+            { id: "06b_samasa_dvanda_sadhana", name: "ද්වන්ද්ව පද සාධනය" }
         ]
     },
     { key: "5_taddhita", name: "5. තද්ධිතකණ්ඩ", subCategories: [{ id: "01_taddhita_general", name: "තද්ධිත විධි" }] },
@@ -254,6 +260,7 @@ function sadhanaGroupKey(subId, item) {
         if (w === 'කා') return 'කිං';
         return (w.length > 1 && w.endsWith('ා')) ? w.slice(0, -1) : w;
     }
+    if (item.group_key) return item.group_key;
     const e = (item.ending || '').trim();
     return e.split(/[\s(→]/)[0] || 'වෙනත්';
 }

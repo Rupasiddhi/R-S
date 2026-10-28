@@ -123,7 +123,7 @@ function renderPadaSadhanaWorkspace(item, targetContainerId = 'viewSuttaPanel') 
         <div class="panel-card nama-banner-card">
             <div class="tag-row" style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.4rem;">
                 <span class="nama-category-badge">${item.sub_khanda_name || 'පද සාධනය'}</span>
-                <span class="badge badge-khanda">නාමකණ්ඩ</span>
+                <span class="badge badge-khanda">${item.khanda_badge || 'නාමකණ්ඩ'}</span>
                 ${item.ending ? `<span class="badge" style="background:#FAF2E6; color:#8C2D00; border:1px solid #E6D0BA;">${item.ending}</span>` : ''}
                 ${item.source === 'saddaniti' ? `<span class="badge ps-sd-badge" title="${item.source_ref || ''}">📗 ${item.source_label || 'සද්දනීති පදමාලා'}</span>` : ''}
             </div>
