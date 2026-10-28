@@ -67,7 +67,26 @@ const KHANDAS_CONFIG = [
             { id: "06b_samasa_dvanda_sadhana", name: "ද්වන්ද්ව පද සාධනය" }
         ]
     },
-    { key: "5_taddhita", name: "5. තද්ධිතකණ්ඩ", subCategories: [{ id: "01_taddhita_general", name: "තද්ධිත විධි" }] },
+    {
+        key: "5_taddhita",
+        name: "5. තද්ධිතකණ්ඩ",
+        subCategories: [
+            { id: "01_taddhita_apacca", name: "අපච්චාර්ථ තද්ධිත" },
+            { id: "02_taddhita_anekattha", name: "අනේකාර්ථ තද්ධිත" },
+            { id: "03_taddhita_bhava", name: "භාවාර්ථ තද්ධිත" },
+            { id: "04_taddhita_visesa", name: "විසෙසාර්ථ තද්ධිත" },
+            { id: "05_taddhita_assatthi", name: "අස්සත්ථි තද්ධිත" },
+            { id: "06_taddhita_sankhya", name: "සඞ්ඛ්‍යා තද්ධිත" },
+            { id: "07_taddhita_abyaya", name: "අබ්‍යය තද්ධිත" },
+            { id: "01b_taddhita_apacca_sadhana", name: "අපච්චාර්ථ තද්ධිත පද සාධනය" },
+            { id: "02b_taddhita_anekattha_sadhana", name: "අනේකාර්ථ තද්ධිත පද සාධනය" },
+            { id: "03b_taddhita_bhava_sadhana", name: "භාවාර්ථ තද්ධිත පද සාධනය" },
+            { id: "04b_taddhita_visesa_sadhana", name: "විසෙසාර්ථ තද්ධිත පද සාධනය" },
+            { id: "05b_taddhita_assatthi_sadhana", name: "අස්සත්ථි තද්ධිත පද සාධනය" },
+            { id: "06b_taddhita_sankhya_sadhana", name: "සඞ්ඛ්‍යා තද්ධිත පද සාධනය" },
+            { id: "07b_taddhita_abyaya_sadhana", name: "අබ්‍යය තද්ධිත පද සාධනය" }
+        ]
+    },
     { key: "6_akhyata", name: "6. ආඛ්‍යාතකණ්ඩ", subCategories: [{ id: "01_akhyata_general", name: "ආඛ්‍යාත විධි" }] },
     { key: "7_kibbhidhana", name: "7. කිබ්බිධානකණ්ඩ", subCategories: [{ id: "01_krt_general", name: "කිත් විධි" }] }
 ];
@@ -411,7 +430,7 @@ function selectSuttaItem(suttaNum, subId) {
         renderSannaWorkspace(sutta);
     } else if (subId === '02_sara' && typeof renderSaraWorkspace === 'function') {
         renderSaraWorkspace(sutta);
-    } else if (/^0\d_samasa_/.test(subId) && typeof renderSaraWorkspace === 'function') {
+    } else if (/^0\d_(samasa|taddhita)_/.test(subId) && typeof renderSaraWorkspace === 'function') {
         renderSaraWorkspace(sutta);
     } else if (subId === '03_byanjana' && typeof renderByanjanaWorkspace === 'function') {
         renderByanjanaWorkspace(sutta);

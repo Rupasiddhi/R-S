@@ -8,7 +8,7 @@
 // නව ගොනුවක් index.html වෙත එක් කරන විට එය ASSETS_TO_CACHE ලැයිස්තුවටද එක් කරන්න.
 // ==========================================================================
 
-const CACHE_NAME = 'pada-rupasiddhi-v15.4.24';
+const CACHE_NAME = 'pada-rupasiddhi-v15.4.25';
 const FONT_CACHE = 'pada-rupasiddhi-fonts-v1';
 
 // Offline භාවිතය සඳහා Cache කරගත යුතු සියලුම අත්‍යවශ්‍ය ගොනු ලැයිස්තුව
@@ -82,6 +82,20 @@ const ASSETS_TO_CACHE = [
   './data/4_samasa/04b_samasa_tappurisa_sadhana.js',
   './data/4_samasa/05b_samasa_bahubbihi_sadhana.js',
   './data/4_samasa/06b_samasa_dvanda_sadhana.js',
+  './data/5_taddhita/01_taddhita_apacca.js',
+  './data/5_taddhita/02_taddhita_anekattha.js',
+  './data/5_taddhita/03_taddhita_bhava.js',
+  './data/5_taddhita/04_taddhita_visesa.js',
+  './data/5_taddhita/05_taddhita_assatthi.js',
+  './data/5_taddhita/06_taddhita_sankhya.js',
+  './data/5_taddhita/07_taddhita_abyaya.js',
+  './data/5_taddhita/01b_taddhita_apacca_sadhana.js',
+  './data/5_taddhita/02b_taddhita_anekattha_sadhana.js',
+  './data/5_taddhita/03b_taddhita_bhava_sadhana.js',
+  './data/5_taddhita/04b_taddhita_visesa_sadhana.js',
+  './data/5_taddhita/05b_taddhita_assatthi_sadhana.js',
+  './data/5_taddhita/06b_taddhita_sankhya_sadhana.js',
+  './data/5_taddhita/07b_taddhita_abyaya_sadhana.js',
   './data/3_karaka/01_karaka_pathama.js',
   './data/3_karaka/02_karaka_dutiya.js',
   './data/3_karaka/03_karaka_tatiya.js',
