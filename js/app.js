@@ -87,7 +87,17 @@ const KHANDAS_CONFIG = [
             { id: "07b_taddhita_abyaya_sadhana", name: "අබ්‍යය තද්ධිත පද සාධනය" }
         ]
     },
-    { key: "6_akhyata", name: "6. ආඛ්‍යාතකණ්ඩ", subCategories: [{ id: "01_akhyata_general", name: "ආඛ්‍යාත විධි" }] },
+    {
+        key: "6_akhyata",
+        name: "6. ආඛ්‍යාතකණ්ඩ",
+        subCategories: [
+            { id: "00_akhyata_intro", name: "ආඛ්‍යාත හැඳින්වීම" },
+            { id: "01_akhyata_vibhatti", name: "විභත්ති විධාන" },
+            { id: "02_akhyata_adesa", name: "ධාතු ආදේශ ලොප විධි" },
+            { id: "03_akhyata_paccaya", name: "ධාතු ප්‍රත්‍යය විධි" },
+            { id: "04_akhyata_dhatuppaccaya", name: "ධාතුප්පච්චයන්ත විධි" }
+        ]
+    },
     { key: "7_kibbhidhana", name: "7. කිබ්බිධානකණ්ඩ", subCategories: [{ id: "01_krt_general", name: "කිත් විධි" }] }
 ];
 
@@ -430,7 +440,7 @@ function selectSuttaItem(suttaNum, subId) {
         renderSannaWorkspace(sutta);
     } else if (subId === '02_sara' && typeof renderSaraWorkspace === 'function') {
         renderSaraWorkspace(sutta);
-    } else if (/^0\d_(samasa|taddhita)_/.test(subId) && typeof renderSaraWorkspace === 'function') {
+    } else if (/^0\d_(samasa|taddhita|akhyata)_/.test(subId) && typeof renderSaraWorkspace === 'function') {
         renderSaraWorkspace(sutta);
     } else if (subId === '03_byanjana' && typeof renderByanjanaWorkspace === 'function') {
         renderByanjanaWorkspace(sutta);
