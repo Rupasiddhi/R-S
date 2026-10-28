@@ -766,7 +766,8 @@ input {
         box-shadow: 6px 0 24px rgba(43, 33, 24, 0.18);
     }
 
-    .sidebar-nav.drawer-open {
+    .sidebar-nav.drawer-open,
+    .layout-container.sidebar-hidden .sidebar-nav.drawer-open {
         transform: translateX(0);
         visibility: visible;
     }

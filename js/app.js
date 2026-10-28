@@ -336,13 +336,18 @@ function isNamaSubKhanda(subId) {
 /**
  * සූත්‍රයක් තේරූ පසු ඛාණ්ඩ ලයිස්තුව (sidebar) සැඟවීම
  */
+function isDrawerMode() {
+    try { return window.matchMedia('(max-width: 1024px)').matches; }
+    catch (e) { return window.innerWidth <= 1024; }
+}
+
 function hideSidebarMenu() {
     const nav = document.querySelector('.sidebar-nav');
     const layout = document.querySelector('.layout-container');
     const overlay = document.getElementById('sidebarOverlay');
     if (nav) nav.classList.remove('drawer-open');
     if (overlay) overlay.classList.remove('active');
-    if (window.innerWidth > 1024 && layout) layout.classList.add('sidebar-hidden');
+    if (!isDrawerMode() && layout) layout.classList.add('sidebar-hidden');
 }
 
 /**
@@ -930,10 +935,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnToggleSidebar) {
         btnToggleSidebar.addEventListener('click', (e) => {
             e.stopPropagation();
-            if (window.innerWidth <= 1024) {
-                if (sidebarNav) sidebarNav.classList.toggle('drawer-open');
-                if (sidebarOverlay) sidebarOverlay.classList.toggle('active');
+            if (isDrawerMode()) {
+                // දුරකථන/tablet: desktop මාදිලියෙන් ඉතිරි වූ සැඟවීමේ සළකුණ ඉවත් කර drawer එක විවෘත කිරීම
+                if (layoutContainer) layoutContainer.classList.remove('sidebar-hidden');
+                const willOpen = sidebarNav ? !sidebarNav.classList.contains('drawer-open') : false;
+                if (sidebarNav) sidebarNav.classList.toggle('drawer-open', willOpen);
+                if (sidebarOverlay) sidebarOverlay.classList.toggle('active', willOpen);
             } else {
+                if (sidebarNav) sidebarNav.classList.remove('drawer-open');
+                if (sidebarOverlay) sidebarOverlay.classList.remove('active');
                 if (layoutContainer) layoutContainer.classList.toggle('sidebar-hidden');
             }
         });
@@ -1001,12 +1011,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Desktop Layout හිදී සයිඩ්බාර් එක Hide කර තිරය නිදහස් කිරීම
-        if (window.innerWidth > 1024) {
+        if (!isDrawerMode()) {
             if (layoutContainer && !layoutContainer.classList.contains('sidebar-hidden')) {
                 layoutContainer.classList.add('sidebar-hidden');
             }
         }
     });
+
+    // තිරය කරකැවීමේදී / ප්‍රමාණය වෙනස් වීමේදී sidebar තත්ත්වය නිවැරදිව පවත්වා ගැනීම
+    const syncSidebarMode = () => {
+        if (isDrawerMode()) {
+            if (layoutContainer) layoutContainer.classList.remove('sidebar-hidden');
+        } else {
+            if (sidebarNav) sidebarNav.classList.remove('drawer-open');
+            if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+        }
+    };
+    window.addEventListener('resize', syncSidebarMode);
+    window.addEventListener('orientationchange', syncSidebarMode);
+    syncSidebarMode();
 
     showShadakaraIntro();
 });
