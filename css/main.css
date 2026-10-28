@@ -1131,3 +1131,29 @@ input {
 .khanda-tab.active {
     color: var(--theme-primary, #5C1422);
 }
+
+/* දුරකථන: තොරතුරු කාඩ්පත් තිරයේ සම්පූර්ණ පළල භාවිත කිරීම */
+@media (max-width: 640px) {
+    .main-viewport {
+        padding: 0.5rem 0 5.5rem;
+    }
+
+    .content-panel {
+        max-width: none;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    .panel-card {
+        border-left: 0;
+        border-right: 0;
+        border-radius: 0;
+        padding: 0.9rem 0.6rem;
+        box-shadow: none;
+    }
+
+    .table-responsive {
+        margin-left: -0.3rem;
+        margin-right: -0.3rem;
+    }
+}
