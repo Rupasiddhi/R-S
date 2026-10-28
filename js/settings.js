@@ -11,12 +11,25 @@ const RS_APP_VERSION = 'v15.4.0';
 const RS_FONT_MIN = 80;
 const RS_FONT_MAX = 150;
 const RS_FONT_STEP = 10;
-const RS_DEFAULTS = { fontScale: 100, appearance: 'light' };
+// දුරකථන (mobile) උපාංගද? — අකුරු ප්‍රමාණයේ පෙරනිමිය දුරකථනයේදී පමණක් 80% වේ
+const RS_IS_MOBILE = (function () {
+    try {
+        if (/Android.+Mobile|iPhone|iPod|Windows Phone/i.test(navigator.userAgent)) return true;
+        return !!(window.matchMedia && window.matchMedia('(max-width: 640px)').matches);
+    } catch (e) { return false; }
+})();
+const RS_DEFAULT_FONT = RS_IS_MOBILE ? 80 : 100;
+const RS_DEFAULTS = { fontScale: RS_DEFAULT_FONT, fontChosen: false, appearance: 'light' };
 
 function rsLoadSettings() {
     try {
         const raw = localStorage.getItem(RS_SETTINGS_KEY);
-        if (raw) return Object.assign({}, RS_DEFAULTS, JSON.parse(raw));
+        if (raw) {
+            const saved = JSON.parse(raw);
+            // පරිශීලකයා අකුරු ප්‍රමාණය තමන් වෙනස් කර නොමැති නම් (පැරණි සැකසුම් ඇතුළුව) උපාංගයේ පෙරනිමිය භාවිත කිරීම
+            if (!saved.fontChosen) delete saved.fontScale;
+            return Object.assign({}, RS_DEFAULTS, saved);
+        }
     } catch (e) { /* storage නොමැත */ }
     return Object.assign({}, RS_DEFAULTS);
 }
@@ -93,9 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('settingsClose').addEventListener('click', () => open(false));
 
     document.getElementById('settingsFontDec').addEventListener('click', () =>
-        rsUpdate({ fontScale: Math.max(RS_FONT_MIN, rsSettings.fontScale - RS_FONT_STEP) }));
+        rsUpdate({ fontScale: Math.max(RS_FONT_MIN, rsSettings.fontScale - RS_FONT_STEP), fontChosen: true }));
     document.getElementById('settingsFontInc').addEventListener('click', () =>
-        rsUpdate({ fontScale: Math.min(RS_FONT_MAX, rsSettings.fontScale + RS_FONT_STEP) }));
+        rsUpdate({ fontScale: Math.min(RS_FONT_MAX, rsSettings.fontScale + RS_FONT_STEP), fontChosen: true }));
 
     document.querySelectorAll('#settingsAppearance button').forEach(b =>
         b.addEventListener('click', () => rsUpdate({ appearance: b.dataset.value })));
