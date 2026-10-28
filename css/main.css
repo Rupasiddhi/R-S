@@ -1084,3 +1084,37 @@ input {
     font-size: 0.95rem;
     cursor: pointer;
 }
+
+/* ස්ථාපන බොත්තම: තිරයේ පහළ මැද, සෑම විටම පැහැදිළිව පෙනෙන */
+.pwa-install-btn {
+    position: fixed;
+    left: 50%;
+    bottom: 70px;
+    transform: translateX(-50%);
+    z-index: 9001;
+    gap: 0.6rem;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #FFF9E6;
+    border-radius: 999px;
+    background: var(--theme-primary, #5C1422);
+    color: #FFE9A6;
+    font-size: 1.1rem;
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    animation: installPulse 2.2s ease-in-out infinite;
+}
+
+.pwa-install-btn .install-icon { font-size: 1.4rem; }
+
+@keyframes installPulse {
+    0%, 100% { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 0 rgba(255, 233, 166, 0.65); }
+    50% { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 12px rgba(255, 233, 166, 0); }
+}
+
+@media (max-width: 640px) {
+    .pwa-install-btn {
+        font-size: 1rem;
+        padding: 0.7rem 1.2rem;
+        bottom: 66px;
+    }
+}
