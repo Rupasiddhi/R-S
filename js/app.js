@@ -95,7 +95,8 @@ const KHANDAS_CONFIG = [
             { id: "01_akhyata_vibhatti", name: "විභත්ති විධාන" },
             { id: "02_akhyata_adesa", name: "ධාතු ආදේශ ලොප විධි" },
             { id: "03_akhyata_paccaya", name: "ධාතු ප්‍රත්‍යය විධි" },
-            { id: "04_akhyata_dhatuppaccaya", name: "ධාතුප්පච්චයන්ත විධි" }
+            { id: "04_akhyata_dhatuppaccaya", name: "ධාතුප්පච්චයන්ත විධි" },
+            { id: "05b_akhyata_pada_sadhana", name: "ආඛ්‍යාත පද සාධනය" }
         ]
     },
     { key: "7_kibbhidhana", name: "7. කිබ්බිධානකණ්ඩ", subCategories: [
