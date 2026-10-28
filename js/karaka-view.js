@@ -111,8 +111,8 @@ function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
             <div class="tag-row" style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.4rem; flex-wrap: wrap;">
                 <span class="sanna-category-badge">${s.is_intro ? 'හැඳින්වීම' : (s.role || 'කාරක සූත්‍ර')}</span>
                 <span class="badge badge-khanda">කාරකකණ්ඩ</span>
-                ${!s.is_intro && s.sub_khanda_name ? `<span class="badge" style="background:#FAF2E6; color:#6B1D2F; border:1px solid #E6D0BA;">${s.sub_khanda_name}</span>` : ''}
-                ${refs ? `<span class="badge" style="background:#FFF; color:#6E6153; border:1px solid #E6D0BA;">${refs}</span>` : ''}
+                ${!s.is_intro && s.sub_khanda_name ? `<span class="badge" style="background:var(--theme-tint); color:var(--theme-primary); border:1px solid var(--border-soft);">${s.sub_khanda_name}</span>` : ''}
+                ${refs ? `<span class="badge" style="background:#FFF; color:#6E6153; border:1px solid var(--border-soft);">${refs}</span>` : ''}
             </div>
 
             <h2 class="sanna-sutta-title">${s.is_intro ? s.sutta_name : `${s.sutta_number}. ${s.pali}`}</h2>

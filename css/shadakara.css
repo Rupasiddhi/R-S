@@ -27,7 +27,7 @@
 }
 
 .pali-script-inline {
-    background: #FDF4E7;
+    background: var(--theme-tint);
     border: 1px solid #F0D5BA;
     color: #7A2800;
     padding: 0.2rem 0.55rem;
@@ -40,7 +40,7 @@
 /* 3. ගාථා සඳහා වූ විශේෂ අලංකාර රාමුව (Classical Verse Box) */
 .verse-quote-box {
     background: linear-gradient(180deg, #FDF9EE 0%, #F7EED8 100%);
-    border: 1.5px solid #D4AF37;
+    border: 1.5px solid var(--theme-accent);
     border-radius: 10px;
     padding: 1.2rem 1.6rem;
     margin: 1.2rem 0 1.5rem 0;
@@ -66,7 +66,7 @@
     font-family: var(--font-sinhala);
     font-size: 1.22rem !important; /* විශාල හා පැහැදිලි අකුරු */
     font-weight: 700 !important;
-    color: #5C1422 !important;     /* ගැඹුරු මෙරූන් පැහැය */
+    color: var(--theme-primary) !important;     /* ගැඹුරු මෙරූන් පැහැය */
     line-height: 2 !important;
     white-space: pre-line !important;
     letter-spacing: 0.4px;

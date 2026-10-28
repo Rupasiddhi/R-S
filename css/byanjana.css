@@ -5,7 +5,7 @@
 /* 1. Byanjana Banner කාඩ්පත */
 .byanjana-banner-card {
     background: linear-gradient(135deg, #FFFFFF 0%, #FDF8ED 100%);
-    border-top: 5px solid #6B1D2F;
+    border-top: 5px solid var(--theme-primary);
     box-shadow: 0 4px 15px rgba(107, 29, 47, 0.06);
     padding: 1.4rem 1.6rem;
     border-radius: 10px;
@@ -13,7 +13,7 @@
 }
 
 .byanjana-category-badge {
-    background: #6B1D2F;
+    background: var(--theme-primary);
     color: #FFF;
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
@@ -32,7 +32,7 @@
 .byanjana-meaning-container {
     background: #FFF9F2;
     border: 1px solid #F3DFCA;
-    border-left: 4px solid #C59B27;
+    border-left: 4px solid var(--theme-accent);
     border-radius: 6px;
     padding: 0.85rem 1.1rem;
     margin-top: 0.6rem;
@@ -49,15 +49,15 @@
 
 .byanjana-meaning-text strong,
 .byanjana-sanna-text strong {
-    color: #6B1D2F;
+    color: var(--theme-primary);
     font-weight: 700;
 }
 
 /* වෘත්තිය සහ සන්නය පෙන්වන පෙට්ටිය */
 .byanjana-vutti-container {
     background: #FFFDF9;
-    border: 1px dashed #C59B27;
-    border-left: 4px solid #6B1D2F;
+    border: 1px dashed var(--theme-accent);
+    border-left: 4px solid var(--theme-primary);
     border-radius: 6px;
     padding: 1.1rem 1.25rem;
     margin-top: 0.9rem;
@@ -67,7 +67,7 @@
     display: inline-block;
     font-weight: 700;
     font-size: 0.88rem;
-    color: #6B1D2F;
+    color: var(--theme-primary);
     margin-bottom: 0.4rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -126,7 +126,7 @@
 }
 
 .shad-number-badge {
-    background: #6B1D2F;
+    background: var(--theme-primary);
     color: #FFF;
     width: 22px;
     height: 22px;
@@ -142,12 +142,12 @@
     margin: 0;
     font-size: 0.98rem;
     font-weight: 700;
-    color: #6B1D2F;
+    color: var(--theme-primary);
 }
 
 .shad-lakkhana-box {
     background: #FDF9F2;
-    border-left: 3px solid #C59B27;
+    border-left: 3px solid var(--theme-accent);
     padding: 0.6rem 0.8rem;
     font-size: 0.94rem;
     line-height: 1.75;
@@ -171,7 +171,7 @@
 /* 3. සූත්‍රයෙන් සෑදෙන සියලු පද - Compact Wrapping Badge Layout */
 .byanjana-formed-card {
     background: #FCFBF7;
-    border-left: 4px solid #C59B27;
+    border-left: 4px solid var(--theme-accent);
     padding: 1.2rem 1.4rem;
 }
 
@@ -191,7 +191,7 @@
 .byanjana-group-title {
     font-weight: 700;
     font-size: 0.92rem;
-    color: #6B1D2F;
+    color: var(--theme-primary);
     margin-bottom: 0.45rem;
     display: flex;
     align-items: center;
@@ -201,7 +201,7 @@
 }
 
 .group-bullet {
-    color: #C59B27;
+    color: var(--theme-accent);
     font-size: 0.85rem;
 }
 
@@ -226,9 +226,9 @@
 }
 
 .byanjana-word-badge:hover {
-    background: #6B1D2F;
+    background: var(--theme-primary);
     color: #FFF9E6;
-    border-color: #6B1D2F;
+    border-color: var(--theme-primary);
     transform: translateY(-1px);
 }
 
@@ -258,8 +258,8 @@
 
 /* 5. සන්න / ටීකා විශේෂ සටහන් (Extended Commentary) */
 .byanjana-commentary-card {
-    background: #FDFBF7;
-    border-left: 4px solid #C59B27;
+    background: var(--surface-soft);
+    border-left: 4px solid var(--theme-accent);
 }
 
 .byanjana-commentary-text {
@@ -291,7 +291,7 @@
 .byanjana-siddha-box {
     margin-top: 1.2rem;
     background: linear-gradient(135deg, #FCFBF7 0%, #F5EFE3 100%);
-    border: 1.5px solid #C59B27;
+    border: 1.5px solid var(--theme-accent);
     padding: 1rem 1.4rem;
     border-radius: 8px;
     display: flex;
@@ -333,13 +333,13 @@
 }
 
 .example-tab-btn:hover {
-    background: #FDF4E7;
-    border-color: #6B1D2F;
+    background: var(--theme-tint);
+    border-color: var(--theme-primary);
 }
 
 .example-tab-btn.active {
-    background: #6B1D2F !important;
+    background: var(--theme-primary) !important;
     color: #FFFFFF !important;
-    border-color: #6B1D2F !important;
+    border-color: var(--theme-primary) !important;
     box-shadow: 0 2px 8px rgba(107, 29, 47, 0.25);
 }

@@ -14,6 +14,8 @@
     --surface-soft: #FDFBF7;
     --border-soft: #EADBBE;
     --border-strong: #D4AF37;
+    --theme-tint: #FFF7E3;
+    --theme-tint-strong: #FFF3D6;
     --text-dark: #2B2118;
     --text-muted: #6E6153;
     
@@ -27,38 +29,106 @@
     --shadow-elevated: 0 10px 30px rgba(92, 20, 34, 0.08);
 }
 
-/* ඛාණ්ඩයන්ට අදාළ Dynamic Theme Modifiers */
+/* ඛාණ්ඩයන්ට අදාළ Dynamic Theme Modifiers — ඛාණ්ඩයක් තේරූ විට header, sidebar, කාඩ්පත් සියල්ලේ වර්ණ මාරු වේ */
 body[data-theme="khanda-1_sandhi"] {
     --theme-primary: #5C1422;
+    --theme-primary-dark: #3F0B15;
+    --theme-primary-glow: rgba(92, 20, 34, 0.15);
     --theme-accent: #C59B27;
+    --theme-accent-light: #F4E8C1;
+    --border-soft: #EADBBE;
+    --border-strong: #C59B27;
+    --theme-light: #FAF4E6;
+    --surface-soft: #FDFBF7;
+    --theme-tint: #FFF7E3;
+    --theme-tint-strong: #FFF3D6;
 }
 
 body[data-theme="khanda-2_nama"] {
     --theme-primary: #14355C;
+    --theme-primary-dark: #0B2340;
+    --theme-primary-glow: rgba(20, 53, 92, 0.15);
     --theme-accent: #2E86AB;
-}
-
-body[data-theme="khanda-6_akhyata"] {
-    --theme-primary: #1B4D3E;
-    --theme-accent: #52B788;
+    --theme-accent-light: #CFE6F0;
+    --border-soft: #C9DCE8;
+    --border-strong: #2E86AB;
+    --theme-light: #EEF4F8;
+    --surface-soft: #F8FBFD;
+    --theme-tint: #EAF3F9;
+    --theme-tint-strong: #D9EAF4;
 }
 
 body[data-theme="khanda-3_karaka"] {
     --theme-primary: #4A2C6B;
+    --theme-primary-dark: #321C4B;
+    --theme-primary-glow: rgba(74, 44, 107, 0.15);
     --theme-accent: #9B72CF;
+    --theme-accent-light: #E4D8F4;
+    --border-soft: #DCCFEC;
+    --border-strong: #9B72CF;
+    --theme-light: #F5F0FA;
+    --surface-soft: #FBF9FD;
+    --theme-tint: #F1EAF9;
+    --theme-tint-strong: #E6DAF4;
 }
 
 body[data-theme="khanda-4_samasa"] {
     --theme-primary: #7A3B12;
+    --theme-primary-dark: #55270A;
+    --theme-primary-glow: rgba(122, 59, 18, 0.15);
     --theme-accent: #D98E04;
+    --theme-accent-light: #F8E3B8;
+    --border-soft: #EBD6BC;
+    --border-strong: #D98E04;
+    --theme-light: #FBF3E7;
+    --surface-soft: #FEFAF4;
+    --theme-tint: #FFF1DC;
+    --theme-tint-strong: #FCE4BE;
 }
 
 body[data-theme="khanda-5_taddhita"] {
     --theme-primary: #0F5257;
+    --theme-primary-dark: #093A3E;
+    --theme-primary-glow: rgba(15, 82, 87, 0.15);
     --theme-accent: #3BA99C;
+    --theme-accent-light: #CDEDE8;
+    --border-soft: #C5E2DE;
+    --border-strong: #3BA99C;
+    --theme-light: #EDF7F5;
+    --surface-soft: #F8FCFB;
+    --theme-tint: #E6F5F2;
+    --theme-tint-strong: #D3EEE9;
+}
+
+body[data-theme="khanda-6_akhyata"] {
+    --theme-primary: #1B4D3E;
+    --theme-primary-dark: #11362B;
+    --theme-primary-glow: rgba(27, 77, 62, 0.15);
+    --theme-accent: #52B788;
+    --theme-accent-light: #D3EFE0;
+    --border-soft: #CBE5D8;
+    --border-strong: #52B788;
+    --theme-light: #EEF7F2;
+    --surface-soft: #F8FCFA;
+    --theme-tint: #E8F5EE;
+    --theme-tint-strong: #D8EEE2;
 }
 
 body[data-theme="khanda-7_kibbhidhana"] {
     --theme-primary: #3D3D3D;
+    --theme-primary-dark: #262626;
+    --theme-primary-glow: rgba(61, 61, 61, 0.15);
     --theme-accent: #B08D57;
+    --theme-accent-light: #EADFC9;
+    --border-soft: #DDD6CA;
+    --border-strong: #B08D57;
+    --theme-light: #F4F2EE;
+    --surface-soft: #FBFAF8;
+    --theme-tint: #F1EEE8;
+    --theme-tint-strong: #E6E1D7;
+}
+
+/* වර්ණ මාරුව සුමටව සිදුවීම */
+.app-header, .sidebar-nav, .panel-card, .main-viewport, body {
+    transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease;
 }

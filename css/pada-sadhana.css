@@ -32,7 +32,7 @@
 .ps-form-chip {
     background: #FFFDF9;
     border: 1px solid #D9C8A9;
-    color: #5C1422;
+    color: var(--theme-primary);
     padding: 0.28rem 0.7rem;
     border-radius: 6px;
     font-size: 0.98rem;
@@ -44,7 +44,7 @@
 
 .ps-form-chip:hover {
     background: #FBF1E2;
-    border-color: #C59B27;
+    border-color: var(--theme-accent);
 }
 
 .ps-form-chip.active {
@@ -67,15 +67,15 @@
 }
 
 .ps-deriv-tag-soft {
-    background: #FAF2E6;
+    background: var(--theme-tint);
     color: #8C2D00;
-    border: 1px solid #E6D0BA;
+    border: 1px solid var(--border-soft);
 }
 
 .ps-deriv-word {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #5C1422;
+    color: var(--theme-primary);
     margin-left: 0.2rem;
 }
 
@@ -93,7 +93,7 @@
     gap: 0.6rem;
     background: #FFF8E8;
     border: 1px solid #E8C86A;
-    border-left: 4px solid #C59B27;
+    border-left: 4px solid var(--theme-accent);
     border-radius: 6px;
     padding: 0.65rem 0.9rem;
     margin: -0.2rem 0 1rem 0;
@@ -124,11 +124,11 @@
 
 .ps-vib-btn:hover {
     background: #FBF1E2;
-    border-color: #C59B27;
+    border-color: var(--theme-accent);
 }
 
 .ps-arrow {
-    color: #C59B27;
+    color: var(--theme-accent);
     font-size: 0.8rem;
 }
 
@@ -152,7 +152,7 @@
     gap: 0.45rem;
     font-size: 0.88rem;
     font-weight: 700;
-    color: #6B1D2F;
+    color: var(--theme-primary);
     margin: 0.2rem 0 0.5rem 0;
 }
 
@@ -163,7 +163,7 @@
     width: 1.35rem;
     height: 1.35rem;
     border-radius: 50%;
-    background: #C59B27;
+    background: var(--theme-accent);
     color: #FFF;
     font-size: 0.78rem;
 }
@@ -181,7 +181,7 @@
 .ps-vib-tab {
     background: #FFFDF9;
     border: 1px solid #D9C8A9;
-    color: #5C1422;
+    color: var(--theme-primary);
     padding: 0.4rem 0.85rem;
     border-radius: 20px;
     font-family: inherit;
@@ -193,12 +193,12 @@
 
 .ps-vib-tab:hover {
     background: #FBF1E2;
-    border-color: #C59B27;
+    border-color: var(--theme-accent);
 }
 
 .ps-vib-tab.active {
-    background: linear-gradient(135deg, #8C2D00 0%, #6B1D2F 100%);
-    border-color: #6B1D2F;
+    background: linear-gradient(135deg, #8C2D00 0%, var(--theme-primary) 100%);
+    border-color: var(--theme-primary);
     color: #FFF;
 }
 
@@ -225,13 +225,13 @@
 
 .ps-form-tab:hover {
     background: #FBF1E2;
-    border-color: #C59B27;
+    border-color: var(--theme-accent);
 }
 
 .ps-form-tab-word {
     font-size: 1.02rem;
     font-weight: 700;
-    color: #5C1422;
+    color: var(--theme-primary);
 }
 
 .ps-form-tab-vac {
@@ -264,7 +264,7 @@
 
 .ps-now-label {
     font-weight: 700;
-    color: #6B1D2F;
+    color: var(--theme-primary);
     font-size: 0.92rem;
 }
 
@@ -282,10 +282,10 @@
 /* එකවචන / බහුවචන මාරු කිරීම */
 .ps-vacana-toggle {
     display: inline-flex;
-    border: 1px solid #E6D0BA;
+    border: 1px solid var(--border-soft);
     border-radius: 20px;
     overflow: hidden;
-    background: #FAF2E6;
+    background: var(--theme-tint);
 }
 
 .ps-vac-btn {
@@ -301,7 +301,7 @@
 }
 
 .ps-vac-btn + .ps-vac-btn {
-    border-left: 1px solid #E6D0BA;
+    border-left: 1px solid var(--border-soft);
 }
 
 .ps-vac-btn:hover:not(:disabled):not(.active) {

@@ -32,7 +32,7 @@
 .niggahita-meaning-container {
     background: #F8FAFC;
     border: 1px solid #E2E8F0;
-    border-left: 4px solid #C59B27;
+    border-left: 4px solid var(--theme-accent);
     border-radius: 6px;
     padding: 0.85rem 1.1rem;
     margin-top: 0.6rem;
@@ -147,7 +147,7 @@
 
 .shad-lakkhana-box {
     background: #F7FAFC;
-    border-left: 3px solid #C59B27;
+    border-left: 3px solid var(--theme-accent);
     padding: 0.6rem 0.8rem;
     font-size: 0.94rem;
     line-height: 1.75;
@@ -171,7 +171,7 @@
 /* 3. සූත්‍රයෙන් සෑදෙන සියලු පද - Compact Wrapping Badge Layout */
 .niggahita-formed-card {
     background: #F8FAFC;
-    border-left: 4px solid #C59B27;
+    border-left: 4px solid var(--theme-accent);
     padding: 1.2rem 1.4rem;
 }
 
@@ -201,7 +201,7 @@
 }
 
 .group-bullet {
-    color: #C59B27;
+    color: var(--theme-accent);
     font-size: 0.85rem;
 }
 
@@ -259,7 +259,7 @@
 /* 5. සන්න / ටීකා විශේෂ සටහන් (Extended Commentary) */
 .niggahita-commentary-card {
     background: #F8FAFC;
-    border-left: 4px solid #C59B27;
+    border-left: 4px solid var(--theme-accent);
 }
 
 .niggahita-commentary-text {
@@ -291,7 +291,7 @@
 .niggahita-siddha-box {
     margin-top: 1.2rem;
     background: linear-gradient(135deg, #F8FAFC 0%, #EDF2F7 100%);
-    border: 1.5px solid #C59B27;
+    border: 1.5px solid var(--theme-accent);
     padding: 1rem 1.4rem;
     border-radius: 8px;
     display: flex;

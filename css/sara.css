@@ -32,7 +32,7 @@
 .sara-meaning-container {
     background: #FFF9F2;
     border: 1px solid #F3DFCA;
-    border-left: 4px solid #C59B27;
+    border-left: 4px solid var(--theme-accent);
     border-radius: 6px;
     padding: 0.85rem 1.1rem;
     margin-top: 0.6rem;
@@ -56,7 +56,7 @@
 /* වෘත්තිය සහ සන්නය පෙන්වන පෙට්ටිය */
 .sara-vutti-container {
     background: #FFFDF9;
-    border: 1px dashed #D4AF37;
+    border: 1px dashed var(--theme-accent);
     border-left: 4px solid #8C2D00;
     border-radius: 6px;
     padding: 1.1rem 1.25rem;
@@ -76,7 +76,7 @@
 .sara-vutti-text {
     font-size: 1.08rem;
     line-height: 1.9;
-    color: #5C1422;
+    color: var(--theme-primary);
     font-weight: 600;
     text-align: justify;
     text-justify: inter-word;
@@ -142,16 +142,16 @@
     margin: 0;
     font-size: 0.98rem;
     font-weight: 700;
-    color: #6B1D2F;
+    color: var(--theme-primary);
 }
 
 .shad-lakkhana-box {
     background: #FDF9F2;
-    border-left: 3px solid #D4AF37;
+    border-left: 3px solid var(--theme-accent);
     padding: 0.6rem 0.8rem;
     font-size: 0.94rem;
     line-height: 1.75;
-    color: #5C1422;
+    color: var(--theme-primary);
     font-weight: 600;
     margin-bottom: 0.6rem;
     border-radius: 0 4px 4px 0;
@@ -171,7 +171,7 @@
 /* 3. සූත්‍රයෙන් සෑදෙන සියලු පද - Compact Horizontal Wrapping Badges */
 .sara-formed-card {
     background: #FCFBF7;
-    border-left: 4px solid #C59B27;
+    border-left: 4px solid var(--theme-accent);
     padding: 1.2rem 1.4rem;
 }
 
@@ -191,7 +191,7 @@
 .sara-group-title {
     font-weight: 700;
     font-size: 0.92rem;
-    color: #6B1D2F;
+    color: var(--theme-primary);
     margin-bottom: 0.45rem;
     display: flex;
     align-items: center;
@@ -201,7 +201,7 @@
 }
 
 .group-bullet {
-    color: #C59B27;
+    color: var(--theme-accent);
     font-size: 0.85rem;
 }
 
@@ -226,9 +226,9 @@
 }
 
 .sara-word-badge:hover {
-    background: #6B1D2F;
+    background: var(--theme-primary);
     color: #FFF9E6;
-    border-color: #6B1D2F;
+    border-color: var(--theme-primary);
     transform: translateY(-1px);
 }
 
@@ -258,8 +258,8 @@
 
 /* 5. සන්න / ටීකා විශේෂ සටහන් (Extended Commentary) */
 .sara-commentary-card {
-    background: #FDFBF7;
-    border-left: 4px solid #C59B27;
+    background: var(--surface-soft);
+    border-left: 4px solid var(--theme-accent);
 }
 
 .sara-commentary-text {
@@ -291,7 +291,7 @@
 .sara-siddha-box {
     margin-top: 1.2rem;
     background: linear-gradient(135deg, #FCFBF7 0%, #F5EFE3 100%);
-    border: 1.5px solid #D4AF37;
+    border: 1.5px solid var(--theme-accent);
     padding: 1rem 1.4rem;
     border-radius: 8px;
     display: flex;
@@ -323,7 +323,7 @@
 .example-tab-btn {
     background: #FFFDF9;
     border: 1px solid #D9C8A9;
-    color: #5C1422;
+    color: var(--theme-primary);
     padding: 0.45rem 1rem;
     border-radius: 6px;
     font-size: 0.95rem;
@@ -333,7 +333,7 @@
 }
 
 .example-tab-btn:hover {
-    background: #FDF4E7;
+    background: var(--theme-tint);
     border-color: #8C2D00;
 }
 

@@ -115,6 +115,12 @@ function parseLopaCuts(text) {
 
 function switchTheme(themeKey) {
     document.body.setAttribute('data-theme', themeKey);
+    // බ්‍රවුසරයේ / ඇප් එකේ ඉහළ තීරුවේ වර්ණයද මාරු කිරීම
+    try {
+        const c = getComputedStyle(document.body).getPropertyValue('--theme-primary').trim();
+        const m = document.querySelector('meta[name="theme-color"]');
+        if (c && m) m.setAttribute('content', c);
+    } catch (e) {}
 }
 
 /**

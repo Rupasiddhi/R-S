@@ -17,8 +17,8 @@ function parseSaraMarkdownBold(text) {
 function formatSaraFormula(text) {
     if (!text) return '';
     let formatted = text.replace(/~([^~]+)~/g, '<span class="lopa-cut">$1</span>');
-    formatted = formatted.replace(/→/g, '<span style="color: #C59B27; font-weight: bold; margin: 0 4px;">➔</span>');
-    formatted = formatted.replace(/\[(.*?)\]/g, '<span style="background: #FDF4E7; border: 1px solid #E6D0BA; padding: 1px 6px; border-radius: 4px; color: #8C2D00; font-weight: 700;">$1</span>');
+    formatted = formatted.replace(/→/g, '<span style="color: var(--theme-accent); font-weight: bold; margin: 0 4px;">➔</span>');
+    formatted = formatted.replace(/\[(.*?)\]/g, '<span style="background: var(--theme-tint); border: 1px solid var(--border-soft); padding: 1px 6px; border-radius: 4px; color: #8C2D00; font-weight: 700;">$1</span>');
     return formatted;
 }
 
@@ -145,7 +145,7 @@ function renderSaraWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
             <div class="tag-row" style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.4rem;">
                 <span class="sara-category-badge">සර සන්ධි</span>
                 <span class="badge badge-khanda">සන්ධිකණ්ඩ</span>
-                ${suttaData.sutta_type ? `<span class="badge" style="background:#FAF2E6; color:#8C2D00; border:1px solid #E6D0BA;">${suttaData.sutta_type}</span>` : ''}
+                ${suttaData.sutta_type ? `<span class="badge" style="background:var(--theme-tint); color:#8C2D00; border:1px solid var(--border-soft);">${suttaData.sutta_type}</span>` : ''}
             </div>
             
             <h2 class="sara-sutta-title">${suttaData.sutta_name || suttaData.sutta}</h2>

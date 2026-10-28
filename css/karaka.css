@@ -89,7 +89,7 @@
 .kk-sn-body .nama-sanna-text { margin: 0 0 0.6rem; }
 .kk-sn-body .nama-sanna-text:last-child { margin-bottom: 0; }
 .kk-sn-center { text-align: center; font-weight: 600; color: #8C2D00; margin: 0.5rem 0; }
-.kk-sn-verse { text-align: center; font-style: italic; color: #5C1422; margin: 0.6rem 0; }
+.kk-sn-verse { text-align: center; font-style: italic; color: var(--theme-primary); margin: 0.6rem 0; }
 .kk-sn-verse p { margin: 0.1rem 0; }
 .kk-sn-note { font-size: 0.85rem; color: var(--text-muted, #6E6153); border-top: 1px dotted #E2CEB1; padding-top: 0.35rem; margin: 0.5rem 0; }
 @media (max-width: 640px) {
@@ -104,7 +104,7 @@
 .kk-pair .kk-verse { text-align: center; font-style: italic; }
 .sanna-banner-card .kk-subhead h2, .sanna-banner-card .kk-subhead h3 { margin: 1.2rem 0 0.2rem; }
 /* රූපයේ ආකාරයට: සන්නය එම කොටුව තුළම, තද පාළි පද + සිංහල තේරුම */
-.kk-pair-sanna strong { background: none !important; border: 0 !important; padding: 0 !important; margin: 0 !important; color: #6B1D2F; }
+.kk-pair-sanna strong { background: none !important; border: 0 !important; padding: 0 !important; margin: 0 !important; color: var(--theme-primary); }
 .kk-pair-sanna mark { background: none; color: inherit; padding: 0; }
 .kk-pair .sanna-vutti-text mark { background: none; color: inherit; padding: 0; }
 @media (max-width: 640px) {
@@ -157,7 +157,7 @@
 .kkn-body ul, .kkn-body ol { margin: 0.35rem 0; padding-left: 1.3rem; }
 .kkn-body li { margin: 0.2rem 0; }
 .kkn-body h5 { margin: 0.8rem 0 0.3rem; font-size: 0.95rem; color: #2F5E86; }
-.kkn-body i { color: #6B1D2F; }
+.kkn-body i { color: var(--theme-primary); }
 .kkn-pali { font-weight: 700; color: #4D121D; padding-left: 0.7rem; border-left: 3px solid var(--theme-accent, #C59B27); }
 .kkn-mute { font-size: 0.88rem; color: var(--text-muted, #6E6153); }
 .kkn-callout { margin: 0.6rem 0; padding: 0.6rem 0.85rem; border-radius: 6px; background: #FFF8E6; border: 1px solid #EBD9A8; }
@@ -192,7 +192,7 @@
 .kkt-d1 > li > .kkt-node .kkt-label { background: #E4EEF6; }
 .kkt-leaf .kkt-label { background: #fff; font-weight: 600; color: #2F5E86; }
 .kkt-ex { display: inline-flex; flex-direction: column; padding: 0.3rem 0.75rem; border-radius: 6px; border: 1px solid #EBD9A8; background: #FFF8E6; }
-.kkt-pali { font-weight: 700; color: #6B1D2F; }
+.kkt-pali { font-weight: 700; color: var(--theme-primary); }
 .kkt-si { color: #3A3128; font-size: 0.9rem; }
 @media (max-width: 640px) {
     .kkt-tree ul { padding-left: 1rem; }
@@ -209,7 +209,7 @@
 .kk-pair, .kk-notes, .shadakara-dynamic-grid, .kkn-panel, .sanna-meaning-box, .kk-tika, .sanna-banner-card .sanna-sutta-title { overflow-wrap: anywhere; word-break: break-word; }
 
 /* ලේඛනයේ විශේෂ සටහන් කාඩ්පත් */
-.kkn-context { font-size: 0.85rem; color: #6B1D2F; background: #FAF4E6; border-radius: 4px; padding: 0.25rem 0.6rem; margin: -0.2rem 0 0.6rem; }
+.kkn-context { font-size: 0.85rem; color: var(--theme-primary); background: var(--theme-light); border-radius: 4px; padding: 0.25rem 0.6rem; margin: -0.2rem 0 0.6rem; }
 .kkn-context span { font-weight: 700; color: #6E6153; }
 .kk-notes-body .kk-note-line { padding: 0.1rem 0; border-bottom: 1px dashed #EADFCB; }
 .kk-notes-body .kk-note-line:last-child { border-bottom: 0; }
@@ -218,7 +218,7 @@
 .kk-notes-body table { border-collapse: collapse; width: 100%; margin: 0.4rem 0; }
 .kk-notes-body td, .kk-notes-body th { border: 1px solid #E2D7C3; padding: 0.3rem 0.5rem; vertical-align: top; }
 .kk-notes-body ul { padding-left: 1.3rem; }
-.kkn-card-refs { border-left-color: #C59B27; }
+.kkn-card-refs { border-left-color: var(--theme-accent); }
 .kkn-refs { list-style: none; padding: 0; margin: 0; }
 .kkn-refs li { padding: 0.25rem 0; font-weight: 600; color: #4D121D; }
 .night-mode .kkn-context { background: #2A241D; color: #E8B4B4; }

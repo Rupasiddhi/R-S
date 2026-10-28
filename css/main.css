@@ -410,7 +410,7 @@ input {
 
 .khanda-tab:hover {
     border-color: var(--theme-accent, #C59B27);
-    background: #FFFDF6;
+    background: var(--theme-tint);
 }
 
 .khanda-tab.active {
@@ -456,11 +456,11 @@ input {
 }
 
 .subkhanda-tree-btn:hover {
-    background: #FFF7E3;
+    background: var(--theme-tint);
 }
 
 .subkhanda-tree-btn.active {
-    background: #FFF3D6;
+    background: var(--theme-tint-strong);
     border-color: var(--theme-accent, #C59B27);
     color: var(--theme-primary, #5C1422);
 }
@@ -493,7 +493,7 @@ input {
 }
 
 .sutta-sub-item:hover {
-    background: #FFF7E3;
+    background: var(--theme-tint);
     color: var(--text-dark, #2B2118);
 }
 
@@ -575,9 +575,9 @@ input {
 }
 
 .badge-subkhanda {
-    background: #FAF2E6;
+    background: var(--theme-tint);
     color: var(--theme-primary, #5C1422);
-    border: 1px solid #E6D0BA;
+    border: 1px solid var(--border-soft);
 }
 
 /* පෙරනිමි සූත්‍ර Banner (renderSuttaWorkspace) */
@@ -655,8 +655,8 @@ input {
 
 .rule-badge {
     display: inline-block;
-    background: #FDF4E7;
-    border: 1px solid #E6D0BA;
+    background: var(--theme-tint);
+    border: 1px solid var(--border-soft);
     color: var(--theme-primary, #5C1422);
     font-size: 0.85rem;
     font-weight: 600;
@@ -701,7 +701,7 @@ input {
 }
 
 .example-tab-btn:hover {
-    background: #FDF4E7;
+    background: var(--theme-tint);
     border-color: var(--theme-primary, #5C1422);
 }
 
