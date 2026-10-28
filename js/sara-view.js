@@ -264,18 +264,21 @@ function renderSaraSpecialNotes(suttaData) {
 function renderSaraTika(suttaData) {
     const list = ((window.SamasaTika || {})[suttaData.sutta_number] || []).concat((window.TaddhitaTika || {})[suttaData.sutta_number] || []);
     if (!list.length) return '';
-    return `
+    const mk = (items, icon, title, lbl1, lbl2) => !items.length ? '' : `
         <section class="panel-card kkn-panel">
-            <h3 class="section-heading"><span class="heading-icon">📜</span> ටීකා විවරණ <span class="kk-tika-hint">(${list.length}) — බැලීමට ක්ලික් කරන්න</span></h3>
-            ${list.map(t => `
-                <details class="kk-tika"><summary><span class="kk-tika-icon">📜</span> ${t.source ? `<b>${t.source}</b> — ` : ''}${t.title}</summary>
+            <h3 class="section-heading"><span class="heading-icon">${icon}</span> ${title} <span class="kk-tika-hint">(${items.length}) — බැලීමට ක්ලික් කරන්න</span></h3>
+            ${items.map(t => `
+                <details class="kk-tika"><summary><span class="kk-tika-icon">${icon}</span> ${t.source ? `<b>${t.source}</b> — ` : ''}${t.title}</summary>
                     <div class="kk-tika-body"><div class="sanna-vutti-box kk-pair">
-                        ${t.pali ? `<span class="vutti-label">ටීකා පාඨය:</span><div class="sanna-vutti-text kk-html">${t.pali}</div>` : ''}
+                        ${t.pali ? `<span class="vutti-label">${lbl1}</span><div class="sanna-vutti-text kk-html">${t.pali}</div>` : ''}
                         ${t.pali && t.sanna ? `<hr class="sanna-sanna-divider">` : ''}
-                        ${t.sanna ? `<span class="vutti-label">පදයෙන් පද සන්නය:</span><div class="sanna-sanna-text kk-html kk-pair-sanna">${t.sanna}</div>` : ''}
+                        ${t.sanna ? `<span class="vutti-label">${lbl2}</span><div class="sanna-sanna-text kk-html kk-pair-sanna">${t.sanna}</div>` : ''}
                     </div></div>
                 </details>`).join('')}
         </section>`;
+    const rupa = list.filter(t => t.kind === 'rupa');
+    const tika = list.filter(t => t.kind !== 'rupa');
+    return mk(rupa, '📖', 'රූපසිද්ධි විවරණය', 'රූපසිද්ධි පාඨය:', 'සන්නය:') + mk(tika, '📜', 'ටීකා විවරණ', 'ටීකා පාඨය:', 'පදයෙන් පද සන්නය:');
 }
 
 // උදාහරණ Tab ක්ලික් කළ විට ක්‍රියාත්මක වන සෘජු ශ්‍රිතය (DOM-Direct Switch)
