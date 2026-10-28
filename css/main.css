@@ -1158,3 +1158,14 @@ input {
         margin-right: -0.3rem;
     }
 }
+
+/* ෂඩාකාරය හැඳින්වීම බොත්තම: පැහැදිළිව පෙනෙන ලෙස */
+.intro-btn-text strong {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.intro-card-btn {
+    min-height: 52px;
+}
