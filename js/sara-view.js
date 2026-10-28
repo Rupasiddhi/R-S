@@ -245,7 +245,7 @@ function renderSaraWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
 
 // සමාසකණ්ඩය — සූත්‍රයට අදාළ විශේෂ සටහන් (data/4_samasa/samasa_sutta_notes.js)
 function renderSaraSpecialNotes(suttaData) {
-    const list = ((window.SamasaSuttaNotes || {})[suttaData.sutta_number] || []).concat((window.TaddhitaSuttaNotes || {})[suttaData.sutta_number] || []).concat((window.AkhyataSuttaNotes || {})[suttaData.sutta_number] || []);
+    const list = ((window.SamasaSuttaNotes || {})[suttaData.sutta_number] || []).concat((window.TaddhitaSuttaNotes || {})[suttaData.sutta_number] || []).concat((window.AkhyataSuttaNotes || {})[suttaData.sutta_number] || []).concat((window.KitakaSuttaNotes || {})[suttaData.sutta_number] || []);
     if (!list.length) return '';
     return `
         <section class="panel-card kkn-panel">
@@ -262,7 +262,7 @@ function renderSaraSpecialNotes(suttaData) {
 
 // සමාසකණ්ඩය — ටීකා විවරණ (ක්ලික් කළ විට විවෘත වේ) (data/4_samasa/samasa_tika.js)
 function renderSaraTika(suttaData) {
-    const list = ((window.SamasaTika || {})[suttaData.sutta_number] || []).concat((window.TaddhitaTika || {})[suttaData.sutta_number] || []).concat((window.AkhyataTika || {})[suttaData.sutta_number] || []);
+    const list = ((window.SamasaTika || {})[suttaData.sutta_number] || []).concat((window.TaddhitaTika || {})[suttaData.sutta_number] || []).concat((window.AkhyataTika || {})[suttaData.sutta_number] || []).concat((window.KitakaTika || {})[suttaData.sutta_number] || []);
     if (!list.length) return '';
     const mk = (items, icon, title, lbl1, lbl2) => !items.length ? '' : `
         <section class="panel-card kkn-panel">

@@ -98,7 +98,15 @@ const KHANDAS_CONFIG = [
             { id: "04_akhyata_dhatuppaccaya", name: "ධාතුප්පච්චයන්ත විධි" }
         ]
     },
-    { key: "7_kibbhidhana", name: "7. කිබ්බිධානකණ්ඩ", subCategories: [{ id: "01_krt_general", name: "කිත් විධි" }] }
+    { key: "7_kibbhidhana", name: "7. කිබ්බිධානකණ්ඩ", subCategories: [
+            { id: "00_kitaka_intro", name: "කිබ්බිධාන හැඳින්වීම" },
+            { id: "01_kitaka_kiccha", name: "කිච්චප්පච්චයන්තනය" },
+            { id: "02_kitaka_tekalika", name: "තෙකාලික කිතකප්පච්චයන්තනය" },
+            { id: "03_kitaka_atita", name: "අතීතප්පච්චයන්තනය" },
+            { id: "04_kitaka_tavetuna", name: "තවෙතුනාදිප්පච්චයන්තනය" },
+            { id: "05_kitaka_vattamana", name: "වත්තමාන-අනාගතකාලික ප්පච්චයන්තනය" },
+            { id: "06_kitaka_unadi", name: "උණාදිප්පච්චයන්තනය" }
+        ] }
 ];
 
 // Global App State
@@ -440,7 +448,7 @@ function selectSuttaItem(suttaNum, subId) {
         renderSannaWorkspace(sutta);
     } else if (subId === '02_sara' && typeof renderSaraWorkspace === 'function') {
         renderSaraWorkspace(sutta);
-    } else if (/^0\d_(samasa|taddhita|akhyata)_/.test(subId) && typeof renderSaraWorkspace === 'function') {
+    } else if (/^0\d_(samasa|taddhita|akhyata|kitaka)_/.test(subId) && typeof renderSaraWorkspace === 'function') {
         renderSaraWorkspace(sutta);
     } else if (subId === '03_byanjana' && typeof renderByanjanaWorkspace === 'function') {
         renderByanjanaWorkspace(sutta);
