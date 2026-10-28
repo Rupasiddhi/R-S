@@ -143,8 +143,8 @@ function renderSaraWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
         <!-- 01. සූත්‍ර Top Banner -->
         <div class="panel-card sara-banner-card">
             <div class="tag-row" style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.4rem;">
-                <span class="sara-category-badge">සර සන්ධි</span>
-                <span class="badge badge-khanda">සන්ධිකණ්ඩ</span>
+                <span class="sara-category-badge">${suttaData.category_badge || 'සර සන්ධි'}</span>
+                <span class="badge badge-khanda">${suttaData.khanda_badge || 'සන්ධිකණ්ඩ'}</span>
                 ${suttaData.sutta_type ? `<span class="badge" style="background:var(--theme-tint); color:#8C2D00; border:1px solid var(--border-soft);">${suttaData.sutta_type}</span>` : ''}
             </div>
             
