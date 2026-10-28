@@ -69,14 +69,44 @@ window.AppState = {
 // PWA Deferred Prompt
 let deferredPrompt = null;
 
+// ස්ථාපිත ඇප් එකක් ලෙස (හෝ කලින් ස්ථාපනය කර) තිබේදැයි පරීක්ෂාව
+function isAppInstalled() {
+    try {
+        if (window.matchMedia('(display-mode: standalone)').matches) return true;
+        if (window.navigator.standalone === true) return true;
+        if (localStorage.getItem('rsInstalled') === '1') return true;
+    } catch (e) {}
+    return false;
+}
+
+function setInstallButtonVisible(visible) {
+    const btn = document.getElementById('btnInstallApp');
+    if (btn) btn.style.display = visible ? 'inline-flex' : 'none';
+}
+
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    const btnInstallApp = document.getElementById('btnInstallApp');
-    if (btnInstallApp) {
-        btnInstallApp.style.display = 'inline-flex';
-    }
+    // නැවත ස්ථාපනය කළ හැකි බව බ්‍රවුසරය පෙන්වන විට කලින් සළකුණ ඉවත් කිරීම
+    try { localStorage.removeItem('rsInstalled'); } catch (err) {}
+    setInstallButtonVisible(true);
 });
+
+function showInstallHelp() {
+    if (document.getElementById('installHelp')) return;
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const text = isIOS
+        ? 'Safari හි පහළ ඇති බෙදාගන්න (Share) අයිකනය ඔබා "Add to Home Screen" තෝරන්න.'
+        : 'බ්‍රවුසරයේ මෙනුව (⋮) විවෘත කර "Install app" හෝ "Add to Home screen" තෝරන්න.';
+    const wrap = document.createElement('div');
+    wrap.id = 'installHelp';
+    wrap.className = 'install-help';
+    wrap.innerHTML = `<div class="install-help-box" role="dialog"><h3>📲 යෙදුම ස්ථාපනය කරන්න</h3><p>${text}</p><button type="button">හරි</button></div>`;
+    const close = () => wrap.remove();
+    wrap.addEventListener('click', (ev) => { if (ev.target === wrap) close(); });
+    wrap.querySelector('button').addEventListener('click', close);
+    document.body.appendChild(wrap);
+}
 
 function parseLopaCuts(text) {
     if (!text) return '';
@@ -912,26 +942,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // PWA Install Button Handler
     const btnInstallApp = document.getElementById('btnInstallApp');
+    // ස්ථාපනය කර ඇත්නම් බොත්තම සැඟවීම; නැතිනම් සෑම විටම පෙන්වීම
+    setInstallButtonVisible(!isAppInstalled());
     if (btnInstallApp) {
         btnInstallApp.addEventListener('click', async (e) => {
             e.stopPropagation();
-            if (!deferredPrompt) return;
+            if (!deferredPrompt) { showInstallHelp(); return; }
             deferredPrompt.prompt();
             const { outcome } = await deferredPrompt.userChoice;
             if (outcome === 'accepted') {
-                console.log('PWA Install accepted');
+                try { localStorage.setItem('rsInstalled', '1'); } catch (err) {}
+                setInstallButtonVisible(false);
             }
             deferredPrompt = null;
-            btnInstallApp.style.display = 'none';
         });
     }
 
     window.addEventListener('appinstalled', () => {
-        if (btnInstallApp) {
-            btnInstallApp.style.display = 'none';
-        }
+        try { localStorage.setItem('rsInstalled', '1'); } catch (err) {}
+        setInstallButtonVisible(false);
         deferredPrompt = null;
     });
+
+    try {
+        window.matchMedia('(display-mode: standalone)').addEventListener('change', (ev) => {
+            if (ev.matches) setInstallButtonVisible(false);
+        });
+    } catch (e) {}
 
     // Sidebar එක ඇතුළත ක්ලික් වූ විට පිටත Click event එක trigger වීම වැළැක්වීම
     if (sidebarNav) {

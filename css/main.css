@@ -811,9 +811,13 @@ input {
         max-width: 48vw;
     }
 
-    .search-shortcut,
-    .install-label {
+    .search-shortcut {
         display: none;
+    }
+
+    .pwa-install-btn {
+        padding: 0.35rem 0.65rem;
+        font-size: 0.78rem;
     }
 
     .main-viewport {
@@ -1041,4 +1045,42 @@ input {
 .section-divider {
     background: transparent;
     margin: 0.5rem 0;
+}
+
+/* ස්ථාපන උපදෙස් කොටුව */
+.install-help {
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.45);
+    padding: 1rem;
+}
+
+.install-help-box {
+    max-width: 380px;
+    width: 100%;
+    background: #FFFFFF;
+    color: #2B2118;
+    border-radius: 16px;
+    padding: 1.2rem 1.3rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    line-height: 1.7;
+}
+
+.install-help-box h3 { margin: 0 0 0.5rem; font-size: 1.05rem; }
+.install-help-box p { margin: 0 0 0.9rem; font-size: 0.95rem; }
+
+.install-help-box button {
+    width: 100%;
+    border: 0;
+    border-radius: 10px;
+    padding: 0.6rem;
+    background: var(--theme-primary, #5C1422);
+    color: #FFF9E6;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
 }
