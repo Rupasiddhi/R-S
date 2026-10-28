@@ -16,6 +16,7 @@ function parseNiggahitaMarkdownBold(text) {
 function formatNiggahitaFormula(text) {
     if (!text) return '';
     let formatted = text.replace(/~([^~]+)~/g, '<span class="lopa-cut">$1</span>');
+    formatted = formatted.replace(/([^\s~→\-+()<>]+)→([^\s~→\-+()<>]+)/g, function (m, a, b) { return '<span class="sub-ul">' + a + '<span style="color: var(--theme-accent); font-weight: bold; margin: 0 2px;">➔</span>' + b + '</span>'; });
     formatted = formatted.replace(/→/g, '<span style="color: var(--theme-accent); font-weight: bold; margin: 0 4px;">➔</span>');
     formatted = formatted.replace(/\[(.*?)\]/g, '<span style="background: #EBF8FF; border: 1px solid #BEE3F8; padding: 1px 6px; border-radius: 4px; color: #2B6CB0; font-weight: 700;">$1</span>');
     return formatted;

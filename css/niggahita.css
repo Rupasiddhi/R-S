@@ -343,3 +343,4 @@
     border-color: #1A365D !important;
     box-shadow: 0 2px 8px rgba(26, 54, 93, 0.25);
 }
+.sub-ul { text-decoration: underline; text-decoration-color: var(--theme-accent); text-decoration-thickness: 2px; text-underline-offset: 4px; }

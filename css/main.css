@@ -1231,3 +1231,5 @@ input {
     .dev-notice { animation: none; opacity: 1; }
     .dev-notice-icon { animation: none; }
 }
+
+.sub-ul { text-decoration: underline; text-decoration-color: var(--theme-accent); text-decoration-thickness: 2px; text-underline-offset: 4px; }
