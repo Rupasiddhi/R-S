@@ -347,3 +347,8 @@
 
 .sn-mark { color: #8C2D00; font-weight: 700; font-size: 0.75em; }
 .sn-mark.sn-cur { background: #FFE9A8; border-radius: 3px; padding: 0 3px; }
+
+.sara-rupa-item { margin-top: 0.8rem; }
+.sara-rupa-item:first-of-type { margin-top: 0; }
+.sara-rupa-title { display:block; font-weight:700; color: var(--theme-primary); margin-bottom: 0.4rem; }
+.sara-rupa-sanna-card .kk-html p { margin: 0.35rem 0; }
