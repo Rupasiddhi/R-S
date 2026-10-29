@@ -269,12 +269,15 @@ function getSaraTikaList(suttaData) {
 }
 
 // ෂඩාකාරයට පහළින් — රූපසිද්ධි සන්නය (විවෘතව, වෘත්තියේ පදයෙන් පද සන්නය ආකාරයෙන්)
+function isSaraRupaItem(t) { return t.kind === 'rupa' || (!t.kind && !t.source); }
 function renderSaraRupaSanna(suttaData) {
-    const items = getSaraTikaList(suttaData).filter(t => t.kind === 'rupa');
-    if (!items.length) return '';
+    const items = getSaraTikaList(suttaData).filter(isSaraRupaItem);
+    const ext = suttaData.extended_commentary;
+    if (!items.length && !ext) return '';
     return `
         <div class="panel-card sara-rupa-sanna-card">
             <h3 class="section-heading"><span class="heading-icon">📖</span> සන්නය <span class="kk-tika-hint">(රූපසිද්ධි විවරණය — පදයෙන් පද සන්නය)</span></h3>
+            ${ext ? `<div class="sara-vutti-container sara-rupa-item"><div class="sara-sanna-text kk-html">${/<\w+/.test(ext) ? ext : `<p>${ext}</p>`}</div></div>` : ''}
             ${items.map(t => `
                 <div class="sara-vutti-container sara-rupa-item">
                     ${t.title ? `<span class="sara-rupa-title">${t.title}</span>` : ''}
@@ -292,7 +295,7 @@ function renderSaraRupaSanna(suttaData) {
 }
 
 function renderSaraTika(suttaData) {
-    const list = getSaraTikaList(suttaData).filter(t => t.kind !== 'rupa');
+    const list = getSaraTikaList(suttaData).filter(t => !isSaraRupaItem(t));
     if (!list.length) return '';
     const mk = (items, icon, title, lbl1, lbl2) => !items.length ? '' : `
         <section class="panel-card kkn-panel">

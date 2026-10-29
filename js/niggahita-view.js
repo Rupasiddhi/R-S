@@ -184,6 +184,15 @@ function renderNiggahitaWorkspace(suttaData, targetContainerId = 'viewSuttaPanel
             </div>
         ` : ''}
 
+        <!-- 02b. සන්නය (සන්න, ටීකා හා න්‍යාස විවරණ) — ෂඩාකාරයට පහළින්, විවෘතව -->
+        ${suttaData.extended_commentary ? `
+            <div class="panel-card sara-rupa-sanna-card">
+                <h3 class="section-heading"><span class="heading-icon">📖</span> සන්නය <span class="kk-tika-hint">(සන්න, ටීකා හා න්‍යාස විවරණ)</span></h3>
+                <div class="nama-commentary-text sanna-commentary-box">${suttaData.extended_commentary}</div>
+            </div>
+        ` : ''}
+
+
         <!-- 03. සූත්‍රයෙන් සෑදෙන සියලු පද (Compact Horizontal Wrapping Badges) -->
         ${renderNiggahitaFormedWords(suttaData.formed_words)}
 
@@ -199,15 +208,6 @@ function renderNiggahitaWorkspace(suttaData, targetContainerId = 'viewSuttaPanel
             </div>
         ` : ''}
 
-        <!-- 05. සන්න, ටීකා හා න්‍යාස විශේෂ විමර්ශන (Extended Commentary) -->
-        ${suttaData.extended_commentary ? `
-            <div class="panel-card niggahita-commentary-card">
-                <h3 class="section-heading"><span class="heading-icon">📖</span> සන්න, ටීකා හා න්‍යාස විශේෂ විවරණ</h3>
-                <div class="niggahita-commentary-text">
-                    ${suttaData.extended_commentary}
-                </div>
-            </div>
-        ` : ''}
 
         <!-- 06. පියවරෙන් පියවර පද සාධන පුවරුව -->
         ${examples.length > 0 ? `
