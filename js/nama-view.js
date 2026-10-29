@@ -186,13 +186,8 @@ function renderNamaWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
             </div>
         ` : ''}
 
-        <!-- 02b. සන්නය (සන්න, ටීකා හා න්‍යාස විවරණ) — ෂඩාකාරයට පහළින්, විවෘතව -->
-        ${suttaData.extended_commentary ? `
-            <div class="panel-card sara-rupa-sanna-card">
-                <h3 class="section-heading"><span class="heading-icon">📖</span> සන්නය <span class="kk-tika-hint">(සන්න, ටීකා හා න්‍යාස විවරණ)</span></h3>
-                <div class="nama-commentary-text sanna-commentary-box">${suttaData.extended_commentary}</div>
-            </div>
-        ` : ''}
+        <!-- 02b. සන්නය — ෂඩාකාරයට පහළින්, විවෘතව -->
+        ${renderExtraSanna(suttaData)}
 
 
         <!-- 03. සූත්‍රයෙන් සෑදෙන සියලු පද -->
