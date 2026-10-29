@@ -186,6 +186,9 @@ function renderSaraWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
             </div>
         ` : ''}
 
+        <!-- 02b. සන්නය (රූපසිද්ධි පාඨය හා පදයෙන් පද සන්නය) -->
+        ${renderSaraRupaSanna(suttaData)}
+
         <!-- 03. සූත්‍රයෙන් සෑදෙන සියලු පද -->
         ${renderSaraFormedWords(suttaData.formed_words)}
 
@@ -261,8 +264,35 @@ function renderSaraSpecialNotes(suttaData) {
 }
 
 // සමාසකණ්ඩය — ටීකා විවරණ (ක්ලික් කළ විට විවෘත වේ) (data/4_samasa/samasa_tika.js)
+function getSaraTikaList(suttaData) {
+    return ((window.SamasaTika || {})[suttaData.sutta_number] || []).concat((window.TaddhitaTika || {})[suttaData.sutta_number] || []).concat((window.AkhyataTika || {})[suttaData.sutta_number] || []).concat((window.KitakaTika || {})[suttaData.sutta_number] || []);
+}
+
+// ෂඩාකාරයට පහළින් — රූපසිද්ධි සන්නය (විවෘතව, වෘත්තියේ පදයෙන් පද සන්නය ආකාරයෙන්)
+function renderSaraRupaSanna(suttaData) {
+    const items = getSaraTikaList(suttaData).filter(t => t.kind === 'rupa');
+    if (!items.length) return '';
+    return `
+        <div class="panel-card sara-rupa-sanna-card">
+            <h3 class="section-heading"><span class="heading-icon">📖</span> සන්නය <span class="kk-tika-hint">(රූපසිද්ධි විවරණය — පදයෙන් පද සන්නය)</span></h3>
+            ${items.map(t => `
+                <div class="sara-vutti-container sara-rupa-item">
+                    ${t.title ? `<span class="sara-rupa-title">${t.title}</span>` : ''}
+                    ${t.pali ? `
+                        <span class="vutti-label">රූපසිද්ධි පාඨය (පාළි):</span>
+                        <div class="sara-vutti-text kk-html">${t.pali}</div>
+                    ` : ''}
+                    ${t.pali && t.sanna ? `<hr class="sara-sanna-divider">` : ''}
+                    ${t.sanna ? `
+                        <span class="vutti-label">පදයෙන් පද සන්නය:</span>
+                        <div class="sara-sanna-text kk-html kk-pair-sanna">${t.sanna}</div>
+                    ` : ''}
+                </div>`).join('')}
+        </div>`;
+}
+
 function renderSaraTika(suttaData) {
-    const list = ((window.SamasaTika || {})[suttaData.sutta_number] || []).concat((window.TaddhitaTika || {})[suttaData.sutta_number] || []).concat((window.AkhyataTika || {})[suttaData.sutta_number] || []).concat((window.KitakaTika || {})[suttaData.sutta_number] || []);
+    const list = getSaraTikaList(suttaData).filter(t => t.kind !== 'rupa');
     if (!list.length) return '';
     const mk = (items, icon, title, lbl1, lbl2) => !items.length ? '' : `
         <section class="panel-card kkn-panel">
@@ -276,9 +306,7 @@ function renderSaraTika(suttaData) {
                     </div></div>
                 </details>`).join('')}
         </section>`;
-    const rupa = list.filter(t => t.kind === 'rupa');
-    const tika = list.filter(t => t.kind !== 'rupa');
-    return mk(rupa, '📖', 'රූපසිද්ධි විවරණය', 'රූපසිද්ධි පාඨය:', 'සන්නය:') + mk(tika, '📜', 'ටීකා විවරණ', 'ටීකා පාඨය:', 'පදයෙන් පද සන්නය:');
+    return mk(list, '📜', 'ටීකා විවරණ', 'ටීකා පාඨය:', 'පදයෙන් පද සන්නය:');
 }
 
 // උදාහරණ Tab ක්ලික් කළ විට ක්‍රියාත්මක වන සෘජු ශ්‍රිතය (DOM-Direct Switch)
