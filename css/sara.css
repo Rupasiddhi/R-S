@@ -350,6 +350,5 @@
 
 .sara-rupa-item { margin-top: 0.8rem; }
 .sara-rupa-item:first-of-type { margin-top: 0; }
-.sara-rupa-item .sara-vutti-text, .sara-rupa-item .sara-vutti-text * { font-weight: 700; }
 .sara-rupa-title { display:block; font-weight:700; color: var(--theme-primary); margin-bottom: 0.4rem; }
 .sara-rupa-sanna-card .kk-html p { margin: 0.35rem 0; }
