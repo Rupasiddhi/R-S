@@ -136,11 +136,12 @@ function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
             </div>
         ` : ''}
 
-        <!-- 02a. සූත්‍රයට අදාළ විශේෂ සටහන් -->
+        <!-- 02a. සන්නය — ලේඛනයේ ඉතිරි පාළි පාඨ හා පදයෙන් පද සන්නය (ෂඩාකාරයට පහළින්, විවෘතව) -->
+        ${body ? `<div class="panel-card sanna-banner-card kk-rest-card"><h3 class="section-heading"><span class="heading-icon">📖</span> සන්නය <span class="kk-tika-hint">(පාළි පාඨ හා පදයෙන් පද සන්නය)</span></h3>${body}</div>` : ''}
+
+        <!-- 02b. සූත්‍රයට අදාළ විශේෂ සටහන් -->
         ${kkSuttaNotes(s)}
 
-        <!-- 02b. ලේඛනයේ ඉතිරි පාළි පාඨ හා සන්නය -->
-        ${body ? `<div class="panel-card sanna-banner-card kk-rest-card">${body}</div>` : ''}
 
 
         <!-- 02c. කාරක හැඳින්වීම — විශේෂ සටහන් -->
