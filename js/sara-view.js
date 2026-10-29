@@ -246,9 +246,19 @@ function renderSaraWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
 }
 
 
+// සූත්‍ර අංකය 0 (හැඳින්වීම් පිටු) ආඛ්‍යාත/කිතක යන කණ්ඩ කිහිපයකට පොදු බැවින්, අදාළ කණ්ඩයේ දත්ත පමණක් ගැනීම
+function saraOwnKhanda(suttaData, key) {
+    if (suttaData.sutta_number !== 0) return true;
+    const id = String(suttaData.sub_khanda_id || '').toLowerCase();
+    return id.indexOf(key) !== -1;
+}
+function saraPick(suttaData, name, key) {
+    return saraOwnKhanda(suttaData, key) ? ((window[name] || {})[suttaData.sutta_number] || []) : [];
+}
+
 // සමාසකණ්ඩය — සූත්‍රයට අදාළ විශේෂ සටහන් (data/4_samasa/samasa_sutta_notes.js)
 function renderSaraSpecialNotes(suttaData) {
-    const list = ((window.SamasaSuttaNotes || {})[suttaData.sutta_number] || []).concat((window.TaddhitaSuttaNotes || {})[suttaData.sutta_number] || []).concat((window.AkhyataSuttaNotes || {})[suttaData.sutta_number] || []).concat((window.KitakaSuttaNotes || {})[suttaData.sutta_number] || []).concat((window.SandhiSuttaNotes || {})[suttaData.sutta_number] || []);
+    const list = ((window.SamasaSuttaNotes || {})[suttaData.sutta_number] || []).concat((window.TaddhitaSuttaNotes || {})[suttaData.sutta_number] || []).concat(saraPick(suttaData, 'AkhyataSuttaNotes', 'akhyata')).concat(saraPick(suttaData, 'KitakaSuttaNotes', 'kitaka')).concat((window.SandhiSuttaNotes || {})[suttaData.sutta_number] || []);
     if (!list.length) return '';
     return `
         <section class="panel-card kkn-panel">
@@ -273,7 +283,7 @@ function boldQuotedWords(html) {
 
 // සමාසකණ්ඩය — ටීකා විවරණ (ක්ලික් කළ විට විවෘත වේ) (data/4_samasa/samasa_tika.js)
 function getSaraTikaList(suttaData) {
-    return ((window.SamasaTika || {})[suttaData.sutta_number] || []).concat((window.TaddhitaTika || {})[suttaData.sutta_number] || []).concat((window.AkhyataTika || {})[suttaData.sutta_number] || []).concat((window.KitakaTika || {})[suttaData.sutta_number] || []).concat((window.SandhiTika || {})[suttaData.sutta_number] || []);
+    return ((window.SamasaTika || {})[suttaData.sutta_number] || []).concat((window.TaddhitaTika || {})[suttaData.sutta_number] || []).concat(saraPick(suttaData, 'AkhyataTika', 'akhyata')).concat(saraPick(suttaData, 'KitakaTika', 'kitaka')).concat((window.SandhiTika || {})[suttaData.sutta_number] || []);
 }
 
 // ෂඩාකාරයට පහළින් — රූපසිද්ධි සන්නය (විවෘතව, වෘත්තියේ පදයෙන් පද සන්නය ආකාරයෙන්)
