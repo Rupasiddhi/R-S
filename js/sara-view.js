@@ -209,7 +209,7 @@ function renderSaraWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
             <div class="panel-card sara-commentary-card">
                 <h3 class="section-heading"><span class="heading-icon">📖</span> සන්න, ටීකා හා න්‍යාස විශේෂ විවරණ</h3>
                 <div class="sara-commentary-text">
-                    ${suttaData.extended_commentary}
+                    ${boldQuotedWords(suttaData.extended_commentary)}
                 </div>
             </div>
         ` : ''}
@@ -263,6 +263,14 @@ function renderSaraSpecialNotes(suttaData) {
         </section>`;
 }
 
+// සන්න/ටීකා විවරණයේ ' ' (හෝ ‘ ’) අතර ඇති වචන බොල්ඩ් කිරීම
+function boldQuotedWords(html) {
+    if (!html) return html;
+    return String(html).replace(/&#x27;|&#39;/g, "'").replace(/(^|>)([^<]+)/g, (m, pre, txt) =>
+        pre + txt.replace(/'([^'\n]{1,80}?)'/g, "'<strong>$1</strong>'")
+                 .replace(/\u2018\u2018?([^\u2018\u2019\n]{1,80}?)\u2019\u2019?/g, (q, w) => q.replace(w, `<strong>${w}</strong>`)));
+}
+
 // සමාසකණ්ඩය — ටීකා විවරණ (ක්ලික් කළ විට විවෘත වේ) (data/4_samasa/samasa_tika.js)
 function getSaraTikaList(suttaData) {
     return ((window.SamasaTika || {})[suttaData.sutta_number] || []).concat((window.TaddhitaTika || {})[suttaData.sutta_number] || []).concat((window.AkhyataTika || {})[suttaData.sutta_number] || []).concat((window.KitakaTika || {})[suttaData.sutta_number] || []).concat((window.SandhiTika || {})[suttaData.sutta_number] || []);
@@ -277,7 +285,7 @@ function renderSaraRupaSanna(suttaData) {
     return `
         <div class="panel-card sara-rupa-sanna-card">
             <h3 class="section-heading"><span class="heading-icon">📖</span> සන්නය <span class="kk-tika-hint">(රූපසිද්ධි විවරණය — පදයෙන් පද සන්නය)</span></h3>
-            ${ext ? `<div class="sara-vutti-container sara-rupa-item"><div class="sara-sanna-text kk-html">${/<\w+/.test(ext) ? ext : `<p>${ext}</p>`}</div></div>` : ''}
+            ${ext ? `<div class="sara-vutti-container sara-rupa-item"><div class="sara-sanna-text kk-html">${boldQuotedWords(/<\w+/.test(ext) ? ext : `<p>${ext}</p>`)}</div></div>` : ''}
             ${items.map(t => `
                 <div class="sara-vutti-container sara-rupa-item">
                     ${t.pali ? `

@@ -29,7 +29,7 @@ function renderExtraSanna(s) {
                     ${t.pali && t.sanna ? `<hr class="sara-sanna-divider">` : ''}
                     ${t.sanna ? `<span class="vutti-label">පදයෙන් පද සන්නය:</span><div class="sara-sanna-text kk-html kk-pair-sanna">${t.sanna}</div>` : ''}
                 </div>`).join('')}
-            ${ext ? `<div class="sara-vutti-container sara-rupa-item"><span class="vutti-label">සන්න, ටීකා හා න්‍යාස විවරණ:</span><div class="sara-sanna-text kk-html">${/<\w+/.test(ext) ? ext : `<p>${ext}</p>`}</div></div>` : ''}
+            ${ext ? `<div class="sara-vutti-container sara-rupa-item"><span class="vutti-label">සන්න, ටීකා හා න්‍යාස විවරණ:</span><div class="sara-sanna-text kk-html">${boldQuotedWords(/<\w+/.test(ext) ? ext : `<p>${ext}</p>`)}</div></div>` : ''}
         </div>`;
     }
     if (tika.length) {
