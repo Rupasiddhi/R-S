@@ -25,7 +25,6 @@ function renderExtraSanna(s) {
             <h3 class="section-heading"><span class="heading-icon">📖</span> සන්නය <span class="kk-tika-hint">(රූපසිද්ධි විවරණය — පදයෙන් පද සන්නය)</span></h3>
             ${rupa.map(t => `
                 <div class="sara-vutti-container sara-rupa-item">
-                    ${t.title ? `<span class="sara-rupa-title">${t.title}</span>` : ''}
                     ${t.pali ? `<span class="vutti-label">රූපසිද්ධි පාඨය (පාළි):</span><div class="sara-vutti-text kk-html">${t.pali}</div>` : ''}
                     ${t.pali && t.sanna ? `<hr class="sara-sanna-divider">` : ''}
                     ${t.sanna ? `<span class="vutti-label">පදයෙන් පද සන්නය:</span><div class="sara-sanna-text kk-html kk-pair-sanna">${t.sanna}</div>` : ''}
