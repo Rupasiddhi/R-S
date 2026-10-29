@@ -280,7 +280,6 @@ function renderSaraRupaSanna(suttaData) {
             ${ext ? `<div class="sara-vutti-container sara-rupa-item"><div class="sara-sanna-text kk-html">${/<\w+/.test(ext) ? ext : `<p>${ext}</p>`}</div></div>` : ''}
             ${items.map(t => `
                 <div class="sara-vutti-container sara-rupa-item">
-                    ${t.title ? `<span class="sara-rupa-title">${t.title}</span>` : ''}
                     ${t.pali ? `
                         <span class="vutti-label">රූපසිද්ධි පාඨය (පාළි):</span>
                         <div class="sara-vutti-text kk-html">${t.pali}</div>
