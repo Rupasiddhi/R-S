@@ -159,6 +159,74 @@
     font-weight: 700;
 }
 
+/* අදහස් / යෝජනා — කැපී පෙනෙන කාඩ්පත */
+.settings-feedback {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin: 0.9rem 0 0.8rem;
+    padding: 0.7rem 0.8rem;
+    color: #FFF9E6;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--theme-primary, #5C1422), var(--theme-primary-dark, #3F0B15));
+    border: 1px solid var(--theme-accent, #C59B27);
+    border-radius: 12px;
+    box-shadow: 0 4px 14px var(--theme-primary-glow, rgba(92, 20, 34, 0.15));
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.settings-feedback:hover,
+.settings-feedback:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px var(--theme-primary-glow, rgba(92, 20, 34, 0.3));
+}
+
+.settings-feedback:active { transform: translateY(0); }
+
+.settings-feedback-icon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: var(--theme-primary-dark, #3F0B15);
+    background: var(--theme-accent, #C59B27);
+}
+
+.settings-feedback-icon svg { width: 22px; height: 22px; }
+
+.settings-feedback-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+}
+
+.settings-feedback-text strong { font-size: 0.95rem; line-height: 1.3; }
+
+.settings-feedback-text small {
+    font-size: 0.74rem;
+    line-height: 1.35;
+    opacity: 0.85;
+}
+
+.settings-feedback-arrow {
+    flex: none;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--theme-accent, #C59B27);
+    transition: transform 0.15s ease;
+}
+
+.settings-feedback:hover .settings-feedback-arrow { transform: translateX(3px); }
+
+@media (prefers-reduced-motion: reduce) {
+    .settings-feedback,
+    .settings-feedback-arrow { transition: none; }
+}
+
 .settings-actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
