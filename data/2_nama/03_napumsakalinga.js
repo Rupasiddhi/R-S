@@ -511,7 +511,7 @@ window.SuttaDatabase["03_napumsakalinga"] = [
             "rule": ""
           },
           {
-            "formula": "ගුණවන්ත්-උ→අ+ යො",
+            "formula": "ගුණවන්ත්-උ→අ+ යො",
             "rule": "න්තුස්සන්තො යොසු ච."
           },
           {

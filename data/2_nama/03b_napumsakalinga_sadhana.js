@@ -12859,7 +12859,7 @@ window.SuttaDatabase["03b_napumsakalinga_sadhana"] = [
       "rule": "බහුම්හි වත්තබ්බෙ බහුවචනං."
      },
      {
-      "formula": "ගුණවන්ත්-උ→අ+ යො",
+      "formula": "ගුණවන්ත්-උ→අ+ යො",
       "rule": "න්තුස්සන්තො යොසු ච."
      },
      {
@@ -13072,7 +13072,7 @@ window.SuttaDatabase["03b_napumsakalinga_sadhana"] = [
       "rule": "බහුම්හි වත්තබ්බෙ බහුවචනං."
      },
      {
-      "formula": "ගුණවන්ත්-උ→අ+ යො",
+      "formula": "ගුණවන්ත්-උ→අ+ යො",
       "rule": "න්තුස්සන්තො යොසු ච."
      },
      {
@@ -13211,7 +13211,7 @@ window.SuttaDatabase["03b_napumsakalinga_sadhana"] = [
       "rule": "බහුම්හි වත්තබ්බෙ බහුවචනං."
      },
      {
-      "formula": "ගුණවන්ත්-උ→අ+ යො",
+      "formula": "ගුණවන්ත්-උ→අ+ යො",
       "rule": "න්තුස්සන්තො යොසු ච."
      },
      {
