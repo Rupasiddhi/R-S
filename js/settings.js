@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (ver) ver.textContent = 'රූපසිද්ධි සංහිතා ' + RS_APP_VERSION;
 
     // අදහස් / යෝජනා - ඊමේල් යෙදුම විවෘත කරයි (ලිපිනය මෙතැනින් වෙනස් කරන්න)
-    const RS_FEEDBACK_EMAIL = 'pavara9803@gmail.com';
+    const RS_FEEDBACK_EMAIL = 'buddhisteducationallibrary@gmail.com';
     const fb = document.getElementById('settingsFeedback');
     if (fb) {
         const subject = 'රූපසිද්ධි සංහිතා - අදහස් / යෝජනා (' + RS_APP_VERSION + ')';
