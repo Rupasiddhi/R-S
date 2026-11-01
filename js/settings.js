@@ -119,6 +119,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const ver = document.getElementById('settingsVersion');
     if (ver) ver.textContent = 'රූපසිද්ධි සංහිතා ' + RS_APP_VERSION;
 
+    // අදහස් / යෝජනා - ඊමේල් යෙදුම විවෘත කරයි (ලිපිනය මෙතැනින් වෙනස් කරන්න)
+    const RS_FEEDBACK_EMAIL = 'pavara9803@gmail.com';
+    const fb = document.getElementById('settingsFeedback');
+    if (fb) {
+        const subject = 'රූපසිද්ධි සංහිතා - අදහස් / යෝජනා (' + RS_APP_VERSION + ')';
+        const body = 'ඔබේ අදහස / යෝජනාව මෙතැන ලියන්න:\n\n\n';
+        fb.href = 'mailto:' + RS_FEEDBACK_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    }
+
     if (rsDarkQuery && rsDarkQuery.addEventListener) {
         rsDarkQuery.addEventListener('change', () => rsApplySettings(rsSettings));
     }

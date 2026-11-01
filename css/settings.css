@@ -245,3 +245,5 @@ html.night-mode .app-header .search-results {
 .sadhana-word-list { display: none; list-style: none; margin: 0; padding: 0 0 0 0.9rem; }
 .sadhana-group.open > .sadhana-word-list { display: block; }
 .sadhana-word small { opacity: 0.65; }
+
+.settings-about a { margin: 0 0.2rem 0.4rem; }
