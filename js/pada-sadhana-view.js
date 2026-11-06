@@ -183,6 +183,8 @@ function renderPadaSadhanaWorkspace(item, targetContainerId = 'viewSuttaPanel') 
                 </div>
             </div>
         ` : ''}
+
+        ${renderNamaGathaSanna(item)}
     `;
 }
 
@@ -250,4 +252,24 @@ function selectPadaSadhanaVibhatti(vkey) {
     if (!first) return;
     const fromGrid = !!(document.activeElement && document.activeElement.classList.contains('ps-vib-btn'));
     updatePadaSadhanaView(first.i, fromGrid);
+}
+
+
+// නාම වරනැඟිල්ලෙහි ගාථා සන්නය (1873 මුද්‍රණය) — අදාළ සද්දසම ගාථා හා පදයෙන් පද සන්නය (ක්ලික් කළ පසු විවෘත වේ)
+function renderNamaGathaSanna(item) {
+    const G = window.NamaGathaSanna;
+    if (!G || !item || item.source === 'saddaniti') return '';
+    const ids = ((G.map || {})[item.sub_khanda_id] || {})[item.word];
+    if (!ids || !ids.length) return '';
+    const blocks = ids.map(id => G.sections[id]).filter(Boolean).map(s => `
+        <details class="gs-item">
+            <summary>${s.title} <span class="gs-hint">(බැලීමට ක්ලික් කරන්න)</span></summary>
+            <div class="gs-body">${s.html}</div>
+        </details>`).join('');
+    if (!blocks) return '';
+    return `
+        <div class="panel-card nama-commentary-card gs-card">
+            <h3 class="section-heading"><span class="heading-icon">📜</span> සද්දසම ගාථා සන්නය <span class="gs-hint">(නාම වරනැඟිල්ල — 1873 මුද්‍රණය)</span></h3>
+            ${blocks}
+        </div>`;
 }

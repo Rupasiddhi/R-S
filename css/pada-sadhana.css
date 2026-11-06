@@ -332,3 +332,15 @@
 .ps-sd-legend { margin: 0.6rem 0 0; font-size: 0.82rem; color: var(--text-muted, #6E6153); display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
 .ps-legend-chip { cursor: default; pointer-events: none; }
 .sd-tag { display: inline-block; margin-left: 0.3rem; padding: 0 0.3rem; font-size: 0.68rem; line-height: 1.35; color: #1F6B3A; background: #E8F3EC; border: 1px solid #B9DCC5; border-radius: 4px; vertical-align: middle; }
+
+/* ===== සද්දසම ගාථා සන්නය ===== */
+.gs-card .gs-item { margin: 0.5rem 0; border: 1px solid var(--border-soft, #EADBCE); border-radius: 10px; background: #FFFDF8; }
+.gs-card summary { cursor: pointer; padding: 0.6rem 0.9rem; font-weight: 700; color: var(--theme-primary, #5C1422); }
+.gs-hint { font-size: 0.78rem; font-weight: 500; color: var(--text-muted, #6E6153); }
+.gs-body { padding: 0.2rem 0.9rem 0.9rem; }
+.gs-verse { margin: 0.7rem 0 0.5rem; padding: 0.6rem 0.9rem; border-left: 4px solid var(--theme-accent, #C59B27); background: var(--theme-tint, #FFF8F0); border-radius: 6px; line-height: 1.9; font-weight: 600; }
+.gs-gloss { list-style: none; margin: 0 0 0.6rem; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.25rem 1rem; }
+.gs-gloss li { font-size: 0.92rem; line-height: 1.6; padding: 0.1rem 0; border-bottom: 1px dotted var(--border-soft, #EADBCE); }
+.gs-gloss b { color: #8C2D00; }
+.gs-para, .gs-foot { font-size: 0.92rem; line-height: 1.8; margin: 0.4rem 0; }
+.gs-foot { color: var(--text-muted, #6E6153); }
