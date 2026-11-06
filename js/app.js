@@ -455,6 +455,10 @@ function hideSidebarMenu() {
  * සූත්‍රයක් තෝරා ගැනීම සහ අදාළ Renderer එක කැඳවීම
  */
 function selectSuttaItem(suttaNum, subId) {
+    try { return _selectSuttaItemCore(suttaNum, subId); } finally { try { renderSuttaPager(suttaNum, subId); } catch (e) {} }
+}
+
+function _selectSuttaItemCore(suttaNum, subId) {
     AppState.activeSuttaNumber = suttaNum;
     AppState.activeSubKhandaId = subId;
     AppState.activeExampleIndex = 0;
@@ -1088,3 +1092,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     showShadakaraIntro();
 });
+
+// ==========================================================================
+// සූත්‍ර පිටුවේ අවසානයේ — පෙර සූත්‍රයට / ඊළඟ සූත්‍රයට යාමේ බොත්තම්
+// ==========================================================================
+function suttaPagerLabel(s) {
+    const raw = String(s.sutta_name || s.pali || s.word || s.sutta_number || '').replace(/<[^>]+>/g, '').trim();
+    return raw.length > 60 ? raw.slice(0, 58) + '…' : raw;
+}
+
+function suttaPagerSequence(subId) {
+    // එකම ඛාණ්ඩයේ සියලු අනුඛාණ්ඩ අනුපිළිවෙළින්
+    const kh = KHANDAS_CONFIG.find(k => k.subCategories.some(s => s.id === subId));
+    const subs = kh ? kh.subCategories.map(s => s.id) : [subId];
+    const seq = [];
+    subs.forEach(id => ((window.SuttaDatabase && window.SuttaDatabase[id]) || []).forEach(s => {
+        const num = s.sutta_number !== undefined ? s.sutta_number : s.id;
+        seq.push({ sub: id, num, s });
+    }));
+    return seq;
+}
+
+function renderSuttaPager(suttaNum, subId) {
+    const panel = document.getElementById('viewSuttaPanel');
+    if (!panel) return;
+    let bar = document.getElementById('suttaPager');
+    if (!bar) {
+        bar = document.createElement('nav');
+        bar.id = 'suttaPager';
+        bar.className = 'sutta-pager';
+        panel.parentNode.insertBefore(bar, panel.nextSibling);
+    }
+    if (typeof isKarakaSubKhanda === 'function' && isKarakaSubKhanda(subId)) { bar.innerHTML = ''; return; }
+    const seq = suttaPagerSequence(subId);
+    const i = seq.findIndex(o => o.sub === subId && String(o.num) === String(suttaNum));
+    if (i === -1) { bar.innerHTML = ''; return; }
+    const btn = (o, dir) => o ? `<button type="button" class="sp-btn sp-${dir}" data-sub="${o.sub}" data-num="${String(o.num).replace(/"/g, '&quot;')}">
+            <span class="sp-dir">${dir === 'prev' ? '◀ පෙර සූත්‍රය' : 'ඊළඟ සූත්‍රය ▶'}</span>
+            <span class="sp-name">${suttaPagerLabel(o.s)}</span></button>` : '<span class="sp-gap"></span>';
+    bar.innerHTML = btn(seq[i - 1], 'prev') + btn(seq[i + 1], 'next');
+    bar.querySelectorAll('.sp-btn').forEach(b => b.onclick = () => {
+        const sub = b.dataset.sub;
+        const o = seq.find(x => x.sub === sub && String(x.num) === b.dataset.num);
+        const kh = KHANDAS_CONFIG.find(k => k.subCategories.some(s => s.id === sub));
+        navigateToSutta(kh ? kh.key : AppState.activeKhandaKey, sub, o ? o.num : b.dataset.num);
+        const vp = document.getElementById('mainViewport');
+        if (vp) vp.scrollTop = 0;
+    });
+}

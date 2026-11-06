@@ -1288,3 +1288,15 @@ input {
     white-space: nowrap;
 }
 .sub-box .sub-arrow { color: var(--theme-accent); font-weight: bold; margin: 0 4px; }
+
+
+/* සූත්‍ර පෙර / ඊළඟ යාම */
+.sutta-pager{display:flex;gap:.8rem;justify-content:space-between;margin:1.2rem 0 2rem;padding:0 .2rem}
+#viewSuttaPanel[style*="display: none"] + .sutta-pager{display:none}
+.sutta-pager .sp-btn{flex:1 1 0;max-width:49%;display:flex;flex-direction:column;gap:.2rem;padding:.7rem 1rem;border:1px solid var(--border-soft,#e8d9c9);border-radius:12px;background:var(--theme-tint,#fff7ee);color:var(--text-main,#3B2F2F);cursor:pointer;font:inherit;text-align:left;transition:transform .15s,box-shadow .15s}
+.sutta-pager .sp-btn:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.sutta-pager .sp-next{text-align:right;margin-left:auto}
+.sutta-pager .sp-dir{font-size:.8rem;font-weight:700;color:var(--theme-accent,#c2562a)}
+.sutta-pager .sp-name{font-weight:600;line-height:1.4}
+.sutta-pager .sp-gap{flex:1}
+@media(max-width:600px){.sutta-pager{flex-direction:column}.sutta-pager .sp-btn{max-width:100%}}
