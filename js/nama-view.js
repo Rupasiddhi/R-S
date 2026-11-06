@@ -188,22 +188,6 @@ function renderNamaWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
         ${renderExtraSanna(suttaData)}
 
 
-        <!-- 03. සූත්‍රයෙන් සෑදෙන සියලු පද -->
-        ${renderNamaFormedWords(suttaData.formed_words)}
-
-        <!-- 04. සෑදිය නොහැකි පද / ප්‍රත්‍යුදාහරණ -->
-        ${suttaData.counter_examples ? `
-            <div class="panel-card nama-counter-card">
-                <h3 class="section-heading"><span class="heading-icon">🚫</span> සෑදිය නොහැකි පද / නීතිය නොවළඳින තැන් (ප්‍රත්‍යුදාහරණ)</h3>
-                <div class="nama-counter-content">
-                    ${Array.isArray(suttaData.counter_examples) 
-                        ? suttaData.counter_examples.map(ce => `<div class="counter-line">✖ ${ce}</div>`).join('') 
-                        : `<div class="counter-line">✖ ${suttaData.counter_examples}</div>`}
-                </div>
-            </div>
-        ` : ''}
-
-
         <!-- 06. පියවරෙන් පියවර පද සාධන පුවරුව -->
         ${examples.length > 0 ? `
             <div class="panel-card nama-derivation-card">
@@ -223,6 +207,21 @@ function renderNamaWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
                 <!-- සාධන පියවර වගුව රඳවන Container එක -->
                 <div id="namaDerivationContainer">
                     ${currentExample ? renderNamaDerivationTable(currentExample) : ''}
+                </div>
+            </div>
+        ` : ''}
+
+        <!-- 03. සූත්‍රයෙන් සෑදෙන සියලු පද -->
+        ${renderNamaFormedWords(suttaData.formed_words)}
+
+        <!-- 04. සෑදිය නොහැකි පද / ප්‍රත්‍යුදාහරණ -->
+        ${suttaData.counter_examples ? `
+            <div class="panel-card nama-counter-card">
+                <h3 class="section-heading"><span class="heading-icon">🚫</span> සෑදිය නොහැකි පද / නීතිය නොවළඳින තැන් (ප්‍රත්‍යුදාහරණ)</h3>
+                <div class="nama-counter-content">
+                    ${Array.isArray(suttaData.counter_examples) 
+                        ? suttaData.counter_examples.map(ce => `<div class="counter-line">✖ ${ce}</div>`).join('') 
+                        : `<div class="counter-line">✖ ${suttaData.counter_examples}</div>`}
                 </div>
             </div>
         ` : ''}

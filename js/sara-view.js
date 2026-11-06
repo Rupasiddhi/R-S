@@ -187,6 +187,29 @@ function renderSaraWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
         <!-- 02b. සන්නය (රූපසිද්ධි පාඨය හා පදයෙන් පද සන්නය) -->
         ${renderSaraRupaSanna(suttaData)}
 
+        <!-- 06. පියවරෙන් පියවර පද සාධන පුවරුව -->
+        ${examples.length > 0 ? `
+            <div class="panel-card sara-derivation-card">
+                <h3 class="section-heading"><span class="heading-icon">⚙️</span> පියවරෙන් පියවර පද සාධන විධික්‍රමය</h3>
+                
+                <!-- උදාහරණ තේරීමේ Tabs -->
+                <div class="example-tabs-list" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                    ${examples.map((ex, idx) => `
+                        <button type="button" 
+                                class="example-tab-btn ${idx === activeIndex ? 'active' : ''}" 
+                                onclick="switchSaraExample(${idx})">
+                            ${ex.word || `උදාහරණය ${idx + 1}`}
+                        </button>
+                    `).join('')}
+                </div>
+
+                <!-- සාධන පියවර වගුව රඳවන Container එක -->
+                <div id="saraDerivationContainer">
+                    ${currentExample ? renderSaraDerivationTable(currentExample) : ''}
+                </div>
+            </div>
+        ` : ''}
+
         <!-- 03. සූත්‍රයෙන් සෑදෙන සියලු පද -->
         ${renderSaraFormedWords(suttaData.formed_words)}
 
@@ -217,29 +240,6 @@ function renderSaraWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
 
         <!-- 05c. ටීකා විවරණ (ක්ලික් කර බැලීමට) -->
         ${renderSaraTika(suttaData)}
-
-        <!-- 06. පියවරෙන් පියවර පද සාධන පුවරුව -->
-        ${examples.length > 0 ? `
-            <div class="panel-card sara-derivation-card">
-                <h3 class="section-heading"><span class="heading-icon">⚙️</span> පියවරෙන් පියවර පද සාධන විධික්‍රමය</h3>
-                
-                <!-- උදාහරණ තේරීමේ Tabs -->
-                <div class="example-tabs-list" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
-                    ${examples.map((ex, idx) => `
-                        <button type="button" 
-                                class="example-tab-btn ${idx === activeIndex ? 'active' : ''}" 
-                                onclick="switchSaraExample(${idx})">
-                            ${ex.word || `උදාහරණය ${idx + 1}`}
-                        </button>
-                    `).join('')}
-                </div>
-
-                <!-- සාධන පියවර වගුව රඳවන Container එක -->
-                <div id="saraDerivationContainer">
-                    ${currentExample ? renderSaraDerivationTable(currentExample) : ''}
-                </div>
-            </div>
-        ` : ''}
     `;
 }
 
