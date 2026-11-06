@@ -442,13 +442,36 @@ function isDrawerMode() {
     catch (e) { return window.innerWidth <= 1024; }
 }
 
-function hideSidebarMenu() {
+function hideSidebarMenuNow() {
     const nav = document.querySelector('.sidebar-nav');
     const layout = document.querySelector('.layout-container');
     const overlay = document.getElementById('sidebarOverlay');
     if (nav) nav.classList.remove('drawer-open');
     if (overlay) overlay.classList.remove('active');
     if (!isDrawerMode() && layout) layout.classList.add('sidebar-hidden');
+}
+
+// ලැප්ටොප් හා ටැබ්ලට් (landscape) — තිරයේ වෙනත් තැනක් ස්පර්ශ කරන තුරු ඛාණ්ඩ ලැයිස්තුව රඳවා ගනී
+function isPersistentSidebarDevice() {
+    try {
+        const land = window.matchMedia('(orientation: landscape)').matches;
+        return window.innerWidth > 1024 || (land && window.innerHeight >= 600 && window.innerWidth >= 900);
+    } catch (e) { return window.innerWidth > 1024; }
+}
+
+let _sidebarOutsideHandler = null;
+function hideSidebarMenu() {
+    if (!isPersistentSidebarDevice()) { hideSidebarMenuNow(); return; }
+    if (_sidebarOutsideHandler) return;
+    _sidebarOutsideHandler = function (e) {
+        const nav = document.querySelector('.sidebar-nav');
+        if (nav && nav.contains(e.target)) return;
+        if (e.target.closest && e.target.closest('#btnToggleSidebar')) return;
+        document.removeEventListener('pointerdown', _sidebarOutsideHandler, true);
+        _sidebarOutsideHandler = null;
+        hideSidebarMenuNow();
+    };
+    document.addEventListener('pointerdown', _sidebarOutsideHandler, true);
 }
 
 /**
