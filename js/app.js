@@ -584,56 +584,8 @@ function renderSuttaWorkspace(sutta) {
     const shadGrid = document.getElementById('displayShadakaraGrid');
 
     if (shadGrid) {
-        shadGrid.innerHTML = `
-            <div class="shad-aspect-card">
-                <div class="shad-card-header">
-                    <span class="shad-number-badge">1</span>
-                    <h4 class="shad-card-title">සම්බන්ධො</h4>
-                </div>
-                <div class="shad-lakkhana-box">${shad.sambandha_pali || "සුත්තෙ පුබ්බාපරපදානං එකවාක්‍යතාය යොජනා සම්බන්ධො"}</div>
-                <p class="shad-card-desc">${shad.sambandha || "--"}</p>
-            </div>
-            <div class="shad-aspect-card">
-                <div class="shad-card-header">
-                    <span class="shad-number-badge">2</span>
-                    <h4 class="shad-card-title">පදං</h4>
-                </div>
-                <div class="shad-lakkhana-box">${shad.pada_pali || "සුත්තෙ පදච්ඡෙදවසෙන පදං වෙදිතබ්බං"}</div>
-                <p class="shad-card-desc">${shad.pada || "--"}</p>
-            </div>
-            <div class="shad-aspect-card">
-                <div class="shad-card-header">
-                    <span class="shad-number-badge">3</span>
-                    <h4 class="shad-card-title">පදත්‍ථො</h4>
-                </div>
-                <div class="shad-lakkhana-box">${shad.padattha_pali || "සුත්තත්ථවසෙන පදත්‍ථො වෙදිතබ්බං"}</div>
-                <p class="shad-card-desc">${shad.padattha || "--"}</p>
-            </div>
-            <div class="shad-aspect-card">
-                <div class="shad-card-header">
-                    <span class="shad-number-badge">4</span>
-                    <h4 class="shad-card-title">පදවිග්ගහො</h4>
-                </div>
-                <div class="shad-lakkhana-box">${shad.padaviggaha_pali || "සුත්තෙ විජ්ජමානසමාස-තද්ධිත-කිතකපදානං විග්ගහදස්සනං"}</div>
-                <p class="shad-card-desc">${shad.padaviggaha || "--"}</p>
-            </div>
-            <div class="shad-aspect-card">
-                <div class="shad-card-header">
-                    <span class="shad-number-badge">5</span>
-                    <h4 class="shad-card-title">චොදනා</h4>
-                </div>
-                <div class="shad-lakkhana-box">${shad.chodana_pali || "සුත්තෙ පදානං පයොජනාදිපුච්ඡනං චොදනා"}</div>
-                <p class="shad-card-desc">${shad.chodana || "--"}</p>
-            </div>
-            <div class="shad-aspect-card">
-                <div class="shad-card-header">
-                    <span class="shad-number-badge">6</span>
-                    <h4 class="shad-card-title">පරිහාරො</h4>
-                </div>
-                <div class="shad-lakkhana-box">${shad.parihara_pali || "සුත්තෙ පදානං සාත්ථකතාදිදස්සනවසෙන පරිහරණං පරිහාරො"}</div>
-                <p class="shad-card-desc">${shad.parihara || "--"}</p>
-            </div>
-        `;
+        shadGrid.classList.remove('shadakara-dynamic-grid');
+        shadGrid.innerHTML = renderShadakaraExplorer(shad);
     }
 
     renderExtraSuttaInformation(sutta);

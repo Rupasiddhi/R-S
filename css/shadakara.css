@@ -428,3 +428,79 @@
     color: var(--theme-primary);
     font-size: 0.96rem;
 }
+
+/* ===== ෂඩාකාර විමර්ශනය - ක්ලික් කර බලන පුවරුව ===== */
+.shx-intro { margin: 0.2rem 0 0.8rem; font-size: 0.92rem; color: var(--text-muted, #6E6153); }
+.shx-intro-icon { margin-right: 0.3rem; }
+.shx-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; }
+.shx-tile {
+    position: relative;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 0.15rem;
+    padding: 0.65rem 0.75rem 0.7rem 3rem;
+    text-align: left; font: inherit; color: inherit;
+    background: #FFFFFF; border: 1px solid var(--border-soft, #EADBCE); border-radius: 10px;
+    cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.shx-tile:hover, .shx-tile:focus-visible { transform: translateY(-2px); box-shadow: 0 5px 14px rgba(0, 0, 0, 0.1); border-color: var(--theme-accent, #C59B27); }
+.shx-tile .shx-num {
+    position: absolute; left: 0.7rem; top: 50%; transform: translateY(-50%);
+}
+.shx-num {
+    display: inline-grid; place-items: center; flex: none;
+    width: 1.9rem; height: 1.9rem; border-radius: 50%;
+    background: var(--theme-primary, #5C1422); color: #FFF8E1; font-weight: 700; font-size: 0.95rem;
+    box-shadow: 0 0 0 3px var(--theme-tint, #FBEFE4);
+}
+.shx-name { font-weight: 700; font-size: 1rem; color: var(--theme-primary, #5C1422); }
+.shx-hint { font-size: 0.78rem; color: var(--text-muted, #6E6153); }
+.shx-tile.seen::after {
+    content: '✓'; position: absolute; right: 0.55rem; top: 0.4rem; font-size: 0.8rem; font-weight: 700;
+    color: var(--theme-accent, #C59B27);
+}
+.shx-tile.active {
+    background: linear-gradient(135deg, var(--theme-primary, #5C1422), var(--theme-primary-dark, #3F0B15));
+    border-color: var(--theme-accent, #C59B27); box-shadow: 0 6px 16px var(--theme-primary-glow, rgba(92, 20, 34, 0.25));
+}
+.shx-tile.active .shx-name { color: #FFF8E1; }
+.shx-tile.active .shx-hint { color: rgba(255, 248, 225, 0.8); }
+.shx-tile.active .shx-num { background: var(--theme-accent, #C59B27); color: var(--theme-primary-dark, #3F0B15); box-shadow: none; }
+.shx-tile-empty { opacity: 0.45; cursor: default; background: transparent; border-style: dashed; }
+
+.shx-panel { margin-top: 0.9rem; }
+.shx-pop { animation: shx-pop 0.28s ease; }
+@keyframes shx-pop { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.shx-detail {
+    padding: 0.95rem 1.1rem 1rem;
+    background: var(--theme-tint, #FFF8F0);
+    border: 1px solid var(--border-soft, #EADBCE); border-left: 5px solid var(--theme-accent, #C59B27);
+    border-radius: 10px;
+}
+.shx-detail + .shx-detail { margin-top: 0.8rem; }
+.shx-detail-head { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+.shx-detail-title { margin: 0; font-size: 1.15rem; color: var(--theme-primary, #5C1422); }
+.shx-detail-hint {
+    font-size: 0.78rem; padding: 0.1rem 0.55rem; border-radius: 999px;
+    background: #FFFFFF; border: 1px solid var(--border-soft, #EADBCE); color: var(--text-muted, #6E6153);
+}
+.shx-pali {
+    margin: 0 0 0.7rem; padding: 0.6rem 0.85rem; background: #FFFFFF;
+    border-left: 3px solid var(--theme-primary, #5C1422); border-radius: 0 8px 8px 0;
+    font-weight: 600; color: var(--theme-primary, #5C1422); line-height: 1.7;
+}
+.shx-meaning { line-height: 1.85; text-align: justify; overflow-wrap: anywhere; }
+.shx-nav { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-top: 0.9rem; padding-top: 0.7rem; border-top: 1px dashed var(--border-soft, #EADBCE); }
+.shx-nav-pos { font-size: 0.85rem; color: var(--text-muted, #6E6153); }
+.shx-nav-btn, .shx-all {
+    font: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer;
+    padding: 0.4rem 0.85rem; border-radius: 8px; color: var(--theme-primary, #5C1422);
+    background: #FFFFFF; border: 1px solid var(--theme-accent, #C59B27);
+}
+.shx-nav-btn:hover:not(:disabled), .shx-all:hover { background: var(--theme-primary, #5C1422); color: #FFF8E1; }
+.shx-nav-btn:disabled { opacity: 0.4; cursor: default; }
+.shx-tools { margin-top: 0.8rem; text-align: right; }
+.shx-all { border-style: dashed; }
+@media (max-width: 520px) {
+    .shx-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .shx-nav-btn { padding: 0.4rem 0.6rem; font-size: 0.82rem; }
+}
+@media (prefers-reduced-motion: reduce) { .shx-pop { animation: none; } .shx-tile { transition: none; } }

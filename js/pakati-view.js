@@ -169,9 +169,7 @@ function renderPakatiWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') 
         ${suttaData.shadakara ? `
             <div class="panel-card">
                 <h3 class="section-heading"><span class="heading-icon">⚜️</span> සූත්‍ර ෂඩාකාර විමර්ශනය</h3>
-                <div class="shadakara-dynamic-grid">
-                    ${renderPakatiShadakaraCards(suttaData.shadakara)}
-                </div>
+                ${renderShadakaraExplorer(suttaData.shadakara)}
             </div>
         ` : ''}
 
