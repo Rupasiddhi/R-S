@@ -1245,7 +1245,8 @@ input {
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
 }
-.ltr-hl.ltr-r { color: #7B341E; text-decoration-color: #D69E2E; }
+.ltr-hl.ltr-r { color: #7B341E; text-decoration: none; }
+.ltr-join .ltr-hl { text-decoration: none; }
 .ltr-join {
     position: relative;
     display: inline-block;
