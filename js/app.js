@@ -705,6 +705,7 @@ function buildSearchIndex() {
     KHANDAS_CONFIG.forEach(khanda => {
         (khanda.subCategories || []).forEach(sub => {
             (db[sub.id] || []).forEach(sutta => {
+                if (sutta.is_adhikara_ref) return;
                 const num = sutta.sutta_number !== undefined ? sutta.sutta_number : sutta.id;
                 const title = sutta.sutta_name || sutta.sutta || sutta.word || '';
                 const fields = [];
