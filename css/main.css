@@ -1274,3 +1274,16 @@ input {
     border-bottom: 9px solid #E53E3E;
     transform: rotate(12deg);
 }
+
+/* ආදේශ වීම්: ඔ ➔ වි (කොටුවක් සහිතව) */
+.sub-box {
+    display: inline-block;
+    background: var(--theme-tint);
+    border: 1px solid var(--border-soft);
+    padding: 1px 6px;
+    border-radius: 4px;
+    color: #8C2D00;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.sub-box .sub-arrow { color: var(--theme-accent); font-weight: bold; margin: 0 4px; }
