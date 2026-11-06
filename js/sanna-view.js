@@ -134,7 +134,6 @@ function renderSannaDerivationTable(example) {
                     `).join('')}
                 </tbody>
             </table>
-            ${renderLetterLegend(example.steps)}
         </div>
 
         <div class="sanna-siddha-box">

@@ -1274,13 +1274,3 @@ input {
     border-bottom: 9px solid #E53E3E;
     transform: rotate(12deg);
 }
-.ltr-legend {
-    margin-top: 0.6rem;
-    padding: 0.45rem 0.7rem;
-    font-size: 0.85rem;
-    color: var(--text-muted, #6E6153);
-    background: var(--theme-tint, #FFF8F0);
-    border: 1px dashed var(--border-soft, #E5D5C0);
-    border-radius: 8px;
-}
-.ltr-legend .ltr-hl { font-size: 0.9rem; }

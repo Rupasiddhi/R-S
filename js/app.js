@@ -206,18 +206,6 @@ function markSandhiLetters(raw, html) {
         (x, a, v) => a + box('ltr-v', v));
 }
 
-function renderLetterLegend(steps) {
-    const has = (steps || []).some(st => {
-        const f = st.formula || st.action || '';
-        return markSandhiLetters(f, f + ' ').indexOf('ltr-hl') !== -1;
-    });
-    if (!has) return '';
-    return '<div class="ltr-legend">' +
-        '<span class="ltr-join"><span class="ltr-hl ltr-c">ක්</span><span class="ltr-link" aria-hidden="true"></span><span class="ltr-hl ltr-v">අ</span></span>' +
-        ' <b>= ව්‍යඤ්ජනයට ස්වරය එක් කිරීම</b> (ක් + අ = <span class="ltr-hl ltr-r">ක</span>) &nbsp;·&nbsp; ' +
-        '<span class="ltr-hl ltr-v">අ</span> <b>= වෙන් කළ / යොදන ස්වරය (යටින් ඉරක්)</b></div>';
-}
-
 function switchTheme(themeKey) {
     document.body.setAttribute('data-theme', themeKey);
     // බ්‍රවුසරයේ / ඇප් එකේ ඉහළ තීරුවේ වර්ණයද මාරු කිරීම

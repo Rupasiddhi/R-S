@@ -114,7 +114,6 @@ function renderNiggahitaDerivationTable(example) {
                     `).join('')}
                 </tbody>
             </table>
-            ${renderLetterLegend(example.steps)}
         </div>
 
         <div class="niggahita-siddha-box">

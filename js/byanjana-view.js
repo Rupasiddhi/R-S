@@ -116,7 +116,6 @@ function renderByanjanaDerivationTable(example) {
                     `).join('')}
                 </tbody>
             </table>
-            ${renderLetterLegend(example.steps)}
         </div>
 
         <div class="byanjana-siddha-box">

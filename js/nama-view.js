@@ -115,7 +115,6 @@ function renderNamaDerivationTable(example) {
                     `).join('')}
                 </tbody>
             </table>
-            ${renderLetterLegend(example.steps)}
         </div>
 
         <div class="nama-siddha-box">

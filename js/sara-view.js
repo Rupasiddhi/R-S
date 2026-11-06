@@ -115,7 +115,6 @@ function renderSaraDerivationTable(example) {
                     `).join('')}
                 </tbody>
             </table>
-            ${renderLetterLegend(example.steps)}
         </div>
 
         <div class="sara-siddha-box">
