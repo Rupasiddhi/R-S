@@ -185,6 +185,7 @@ function renderPadaSadhanaWorkspace(item, targetContainerId = 'viewSuttaPanel') 
         ` : ''}
 
         ${renderNamaGathaSanna(item)}
+        ${renderAkhyataVaranagilla(item)}
     `;
 }
 
@@ -272,4 +273,38 @@ function renderNamaGathaSanna(item) {
             <h3 class="section-heading"><span class="heading-icon">📜</span> සද්දසම ගාථා සන්නය <span class="gs-hint">(නාම වරනැඟිල්ල — 1873 මුද්‍රණය)</span></h3>
             ${blocks}
         </div>`;
+}
+
+// ආඛ්‍යාත වරනැඟිල්ල (ආඛ්‍යාතික පදමාලා) හා ව්‍යාඛ්‍යාව (1873 මුද්‍රණය) — ආඛ්‍යාත පද සාධන පිටුවල අමතර කොටස්
+function renderAkhyataVaranagilla(item) {
+    const A = window.AkhyataVaranagilla;
+    if (!A || !item || !item.verb || item.sub_khanda_id !== '05b_akhyata_pada_sadhana') return '';
+    const name = Object.keys(A.tenseNames).find(n => String(item.word || '').indexOf(n) !== -1);
+    if (!name) return '';
+    const key = A.tenseNames[name];
+    const ten = A.tenses[key];
+    const secById = {};
+    A.sections.forEach(s => { secById[s.key] = s; });
+    const ids = (A.tenseSections[key] || []).concat(key === 'vatta' ? A.generalSections : []);
+    const det = (s, open) => `
+        <details class="gs-item av-sec" ${open ? 'open' : ''}>
+            <summary>${s.title} <span class="gs-hint">(බැලීමට ක්ලික් කරන්න)</span></summary>
+            <div class="gs-body">${s.html}</div>
+        </details>`;
+    const extra = ids.map(id => secById[id]).filter(Boolean).map(s => det(s, false)).join('');
+    return `
+        <div class="panel-card nama-commentary-card gs-card av-card">
+            <h3 class="section-heading"><span class="heading-icon">📜</span> ආඛ්‍යාතික පදමාලාව <span class="gs-hint">(ආඛ්‍යාත වරනැඟිල්ල — 1873 මුද්‍රණය)</span></h3>
+            <p class="av-tmean"><strong>${name}</strong> — ${ten.tmean}</p>
+            <div class="av-wrap">${ten.html}</div>
+            ${key === 'vatta' && A.tenses.caus ? `
+                <details class="gs-item av-sec"><summary>හෙතුකත්තරි — කාරිත පදමාලාව <span class="gs-hint">(බැලීමට ක්ලික් කරන්න)</span></summary>
+                <div class="gs-body"><p class="av-tmean">${A.tenses.caus.tmean}</p><div class="av-wrap">${A.tenses.caus.html}</div></div></details>` : ''}
+        </div>
+        ${extra ? `
+        <div class="panel-card nama-commentary-card gs-card">
+            <h3 class="section-heading"><span class="heading-icon">📖</span> ආඛ්‍යාත ව්‍යාඛ්‍යාව <span class="gs-hint">(සිංහල විවරණය — 1873 මුද්‍රණය)</span></h3>
+            ${key === 'vatta' && A.lead ? `<div class="av-lead">${A.lead}</div>` : ''}
+            ${extra}
+        </div>` : ''}`;
 }

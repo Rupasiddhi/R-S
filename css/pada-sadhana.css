@@ -344,3 +344,26 @@
 .gs-gloss b { color: #8C2D00; }
 .gs-para, .gs-foot { font-size: 0.92rem; line-height: 1.8; margin: 0.4rem 0; }
 .gs-foot { color: var(--text-muted, #6E6153); }
+
+/* ===== ආඛ්‍යාතික පදමාලාව / ව්‍යාඛ්‍යාව (1873) ===== */
+.av-tmean { margin: 0.3rem 0 0.6rem; color: var(--text-muted, #6E6153); }
+.av-suff, .av-bhave, .av-note { margin: 0.5rem 0; line-height: 1.8; font-size: 0.95rem; }
+.av-lab { display: inline-block; padding: 0 0.5rem; margin-right: 0.4rem; border-radius: 999px; background: var(--theme-primary, #5C1422); color: #FFF8E1; font-size: 0.78rem; font-weight: 700; }
+.av-voices { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0.8rem; margin: 0.6rem 0; }
+.av-voice { margin: 0; border: 1px solid var(--border-soft, #EADBCE); border-radius: 10px; overflow: hidden; background: #FFFFFF; }
+.av-voice figcaption { padding: 0.35rem 0.8rem; font-weight: 700; color: #FFF; background: #137A74; }
+.av-voice.av-v-m figcaption { background: #B8512B; }
+.av-tw { overflow-x: auto; }
+.av-conj, .av-caus, .av-numt, .av-wrap table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.av-conj th, .av-conj td, .av-caus th, .av-caus td, .av-numt th, .av-numt td { padding: 0.35rem 0.6rem; border-bottom: 1px solid var(--border-soft, #EADBCE); text-align: left; vertical-align: top; }
+.av-conj thead th, .av-caus thead th, .av-numt thead th { background: var(--theme-tint, #FFF8F0); color: var(--theme-primary, #5C1422); }
+.av-conj small { display: block; font-size: 0.72rem; font-weight: 400; color: var(--text-muted, #6E6153); }
+.av-f { font-weight: 700; color: #2B2118; }
+.av-chip { display: inline-block; padding: 0 0.5rem; border-radius: 999px; background: var(--theme-tint, #FFF8F0); border: 1px solid var(--border-soft, #EADBCE); }
+.av-head { margin: 0.7rem 0 0.3rem; font-weight: 700; color: var(--theme-primary, #5C1422); }
+.av-verse, .av-quote { margin: 0.6rem 0; padding: 0.6rem 0.9rem; border-left: 4px solid var(--theme-accent, #C59B27); background: var(--theme-tint, #FFF8F0); border-radius: 6px; line-height: 1.9; font-weight: 600; }
+.av-vl { display: block; }
+.av-para { font-size: 0.93rem; line-height: 1.9; margin: 0.5rem 0; }
+.av-lead { margin-bottom: 0.6rem; }
+.av-sec .av-wrap { overflow-x: auto; }
+.av-wrap .av-caus .av-sfx { background: var(--theme-tint, #FFF8F0); font-weight: 700; }
