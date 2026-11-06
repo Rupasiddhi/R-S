@@ -20,7 +20,7 @@ function formatSannaFormula(text) {
     formatted = formatted.replace(/([^\s~→\-+()<>]+)→([^\s~→\-+()<>]+)/g, function (m, a, b) { return '<span class="sub-ul">' + a + '<span style="color: var(--theme-accent); font-weight: bold; margin: 0 2px;">➔</span>' + b + '</span>'; });
     formatted = formatted.replace(/→/g, '<span style="color: var(--theme-accent); font-weight: bold; margin: 0 4px;">➔</span>');
     formatted = formatted.replace(/\[(.*?)\]/g, '<span style="background: var(--theme-tint); border: 1px solid var(--border-soft); padding: 1px 6px; border-radius: 4px; color: var(--theme-primary); font-weight: 700;">$1</span>');
-    return formatted;
+    return markSandhiLetters(text, formatted);
 }
 
 // ෂඩාකාර කාඩ්පත් Helper
@@ -134,6 +134,7 @@ function renderSannaDerivationTable(example) {
                     `).join('')}
                 </tbody>
             </table>
+            ${renderLetterLegend(example.steps)}
         </div>
 
         <div class="sanna-siddha-box">

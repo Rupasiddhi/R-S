@@ -1233,3 +1233,38 @@ input {
 }
 
 .sub-ul { text-decoration: underline; text-decoration-color: var(--theme-accent); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+/* ===== පද සාධනයේ විශේෂ අකුරු සලකුණු (කොටු / සම්බන්ධ වක් ඉර) ===== */
+.ltr-hl {
+    display: inline-block;
+    padding: 0 4px;
+    margin: 0 1px;
+    border: 2px solid #E53E3E;
+    border-radius: 4px;
+    background: #FFF5F5;
+    color: #9B1C1C;
+    font-weight: 700;
+    line-height: 1.35;
+}
+.ltr-hl.ltr-r { background: #FFFBEA; border-color: #D69E2E; color: #7B341E; }
+.ltr-join { display: inline-flex; align-items: center; white-space: nowrap; }
+.ltr-link {
+    display: inline-block;
+    width: 1.3em;
+    height: 0.6em;
+    margin: 0 -1px;
+    border: 2px solid #E53E3E;
+    border-top: 0;
+    border-radius: 0 0 14px 14px;
+    transform: translateY(0.45em);
+}
+.ltr-legend {
+    margin-top: 0.6rem;
+    padding: 0.45rem 0.7rem;
+    font-size: 0.85rem;
+    color: var(--text-muted, #6E6153);
+    background: var(--theme-tint, #FFF8F0);
+    border: 1px dashed var(--border-soft, #E5D5C0);
+    border-radius: 8px;
+}
+.ltr-legend .ltr-hl { font-size: 0.9rem; }

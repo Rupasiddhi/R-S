@@ -168,6 +168,56 @@ function parseLopaCuts(text) {
     return text.replace(/~([^~]+)~/g, '<span class="lopa-cut">$1</span>');
 }
 
+// ==========================================================================
+// සන්ධි / පද සාධන පියවරවල විශේෂ අකුරු සලකුණු කිරීම
+//  • වියෝජනය  (ලොක් - [අ])        : වෙන් කළ ස්වරය රතු කොටුවකින්
+//  • නයෙ පරං යුත්තෙ (ක් ⌣ අ → ක)  : ව්‍යඤ්ජනය හා ස්වරය රතු කොටු දෙකකින්,
+//                                  ඒ දෙක සම්බන්ධ කරන වක් ඉරකින්, සිද්ධ අකුර ද කොටුවකින්
+// ==========================================================================
+const SANDHI_CONS = '[ක-ෆ]';
+const SANDHI_VOW = '[අ-ඖ]';
+const SANDHI_SIGN = { 'අ': '', 'ආ': 'ා', 'ඉ': 'ි', 'ඊ': 'ී', 'උ': 'ු', 'ඌ': 'ූ', 'එ': 'ෙ', 'ඔ': 'ො' };
+
+function markSandhiLetters(raw, html) {
+    if (!raw || !html) return html;
+    const box = (cls, s) => '<span class="ltr-hl ' + cls + '">' + s + '</span>';
+    if (raw.indexOf('→') !== -1) {
+        const m = raw.match(new RegExp('(' + SANDHI_CONS + ')් [+\\-] (' + SANDHI_VOW + ')([^\\s+\\-→~]*)'));
+        if (!m) return html;
+        const joinRe = new RegExp('(' + SANDHI_CONS + '්) [+\\-] (' + SANDHI_VOW + ')', 'g');
+        html = html.replace(joinRe, (x, c, v) =>
+            '<span class="ltr-join" title="ව්‍යඤ්ජනයට ස්වරය එක් වේ">' + box('ltr-c', c) +
+            '<span class="ltr-link" aria-hidden="true"></span>' + box('ltr-v', v) + '</span>');
+        // සිද්ධ වූ අකුර (ව්‍යඤ්ජනය + ස්වරය) අවසන් රූපයේ කොටු කිරීම
+        const glyph = m[1] + (SANDHI_SIGN[m[2]] || '');
+        const rest = m[3];
+        const cut = html.lastIndexOf('➔</span>');
+        if (cut !== -1 && rest) {
+            const head = html.slice(0, cut + 8), tail = html.slice(cut + 8);
+            if (tail.indexOf('<') === -1) {
+                const at = tail.indexOf(glyph + rest);
+                if (at !== -1) html = head + tail.slice(0, at) + box('ltr-r', glyph) + tail.slice(at + glyph.length);
+            }
+        }
+        return html;
+    }
+    // වියෝජන පියවර: "ලොක් - අ" හි ස්වරය විශේෂ කිරීම
+    return html.replace(new RegExp('(' + SANDHI_CONS + '් - )(' + SANDHI_VOW + ')(?=\\s|$)', 'g'),
+        (x, a, v) => a + box('ltr-v', v));
+}
+
+function renderLetterLegend(steps) {
+    const has = (steps || []).some(st => {
+        const f = st.formula || st.action || '';
+        return markSandhiLetters(f, f + ' ').indexOf('ltr-hl') !== -1;
+    });
+    if (!has) return '';
+    return '<div class="ltr-legend">' +
+        '<span class="ltr-hl ltr-c">ක්</span><span class="ltr-link" aria-hidden="true"></span><span class="ltr-hl ltr-v">අ</span>' +
+        ' <b>= ව්‍යඤ්ජනයට ස්වරය එක් කිරීම</b> (ක් + අ = <span class="ltr-hl ltr-r">ක</span>) &nbsp;·&nbsp; ' +
+        '<span class="ltr-hl ltr-v">අ</span> <b>= වෙන් කළ / යොදන ස්වරය</b></div>';
+}
+
 function switchTheme(themeKey) {
     document.body.setAttribute('data-theme', themeKey);
     // බ්‍රවුසරයේ / ඇප් එකේ ඉහළ තීරුවේ වර්ණයද මාරු කිරීම
