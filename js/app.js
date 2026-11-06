@@ -106,7 +106,8 @@ const KHANDAS_CONFIG = [
             { id: "03_kitaka_atita", name: "අතීතප්පච්චයන්තනය" },
             { id: "04_kitaka_tavetuna", name: "තවෙතුනාදිප්පච්චයන්තනය" },
             { id: "05_kitaka_vattamana", name: "වත්තමාන-අනාගතකාලික ප්පච්චයන්තනය" },
-            { id: "06_kitaka_unadi", name: "උණාදිප්පච්චයන්තනය" }
+            { id: "06_kitaka_unadi", name: "උණාදිප්පච්චයන්තනය" },
+            { id: "07b_kitaka_pada_sadhana", name: "කිතක පද සාධනය" }
         ] }
 ];
 
