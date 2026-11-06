@@ -1234,29 +1234,44 @@ input {
 
 .sub-ul { text-decoration: underline; text-decoration-color: var(--theme-accent); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
-/* ===== පද සාධනයේ විශේෂ අකුරු සලකුණු (කොටු / සම්බන්ධ වක් ඉර) ===== */
+/* ===== පද සාධනයේ විශේෂ අකුරු සලකුණු (යටි ඉර / වක්‍ර ඊතලය) ===== */
 .ltr-hl {
-    display: inline-block;
-    padding: 0 4px;
-    margin: 0 1px;
-    border: 2px solid #E53E3E;
-    border-radius: 4px;
-    background: #FFF5F5;
+    display: inline;
+    padding: 0 1px;
     color: #9B1C1C;
     font-weight: 700;
-    line-height: 1.35;
+    text-decoration: underline;
+    text-decoration-color: #E53E3E;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
 }
-.ltr-hl.ltr-r { background: #FFFBEA; border-color: #D69E2E; color: #7B341E; }
-.ltr-join { display: inline-flex; align-items: center; white-space: nowrap; }
-.ltr-link {
+.ltr-hl.ltr-r { color: #7B341E; text-decoration-color: #D69E2E; }
+.ltr-join {
+    position: relative;
     display: inline-block;
-    width: 1.3em;
-    height: 0.6em;
-    margin: 0 -1px;
+    white-space: nowrap;
+    padding-bottom: 0.85em;
+}
+.ltr-join .ltr-c { margin-right: 1.1em; }
+.ltr-link {
+    position: absolute;
+    left: 0.5em;
+    right: 0.35em;
+    bottom: 0.1em;
+    height: 0.7em;
     border: 2px solid #E53E3E;
     border-top: 0;
-    border-radius: 0 0 14px 14px;
-    transform: translateY(0.45em);
+    border-radius: 0 0 50% 50% / 0 0 100% 100%;
+}
+.ltr-link::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: -7px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 9px solid #E53E3E;
+    transform: rotate(12deg);
 }
 .ltr-legend {
     margin-top: 0.6rem;

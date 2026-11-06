@@ -213,9 +213,9 @@ function renderLetterLegend(steps) {
     });
     if (!has) return '';
     return '<div class="ltr-legend">' +
-        '<span class="ltr-hl ltr-c">ක්</span><span class="ltr-link" aria-hidden="true"></span><span class="ltr-hl ltr-v">අ</span>' +
+        '<span class="ltr-join"><span class="ltr-hl ltr-c">ක්</span><span class="ltr-link" aria-hidden="true"></span><span class="ltr-hl ltr-v">අ</span></span>' +
         ' <b>= ව්‍යඤ්ජනයට ස්වරය එක් කිරීම</b> (ක් + අ = <span class="ltr-hl ltr-r">ක</span>) &nbsp;·&nbsp; ' +
-        '<span class="ltr-hl ltr-v">අ</span> <b>= වෙන් කළ / යොදන ස්වරය</b></div>';
+        '<span class="ltr-hl ltr-v">අ</span> <b>= වෙන් කළ / යොදන ස්වරය (යටින් ඉරක්)</b></div>';
 }
 
 function switchTheme(themeKey) {
