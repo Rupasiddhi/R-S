@@ -22,11 +22,21 @@
         steps.unshift({ formula: stem, rule: RULE });
     }
 
+    // ආදේශ සූත්‍ර ("සො.", "අතො නෙන." ආදිය) — "සි → ඔ" ආදේශයක් බැවින් කොටුවක් සහිත ආදේශ ආකාරයෙන් (සි→ඔ) පෙන්වයි
+    const SUBST_RULES = /^(සො\.|සබ්බයොනීනමාඑ|අතො නෙන|සබ්බනාමකාරතෙ පඨමො|ඝපතො ස්මිංසානං|ත්‍රතොථෙසු)/;
+    function fixSubst(steps) {
+        (steps || []).forEach(st => {
+            if (!st || !SUBST_RULES.test(String(st.rule || '').trim())) return;
+            const m = String(st.formula || '').match(/^(.*\+ )(\S+) → (\S+)$/);
+            if (m) st.formula = m[1] + m[2] + '→' + m[3];
+        });
+    }
+
     const db = window.SuttaDatabase || {};
     Object.keys(db).forEach(sub => {
         if (SKIP_SUB.test(sub)) return;
         (db[sub] || []).forEach(s => {
-            ['examples', 'derivations'].forEach(k => (s[k] || []).forEach(ex => fix(ex.steps, NAMA_SUB.test(sub))));
+            ['examples', 'derivations'].forEach(k => (s[k] || []).forEach(ex => { fixSubst(ex.steps); fix(ex.steps, NAMA_SUB.test(sub)); }));
         });
     });
 })();
