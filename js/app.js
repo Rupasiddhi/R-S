@@ -189,7 +189,7 @@ function markSandhiLetters(raw, html) {
         const joinRe = new RegExp('(' + SANDHI_CONS + '්) ' + sep + ' (' + SANDHI_VOW + ')', 'g');
         html = html.replace(joinRe, (x, c, v) =>
             '<span class="ltr-join" title="ව්‍යඤ්ජනයට ස්වරය එක් වේ">' + box('ltr-c', c) +
-            '<span class="ltr-link" aria-hidden="true"></span>' + box('ltr-v', v) + '</span>');
+            '<span class="ltr-plus">+</span><span class="ltr-link" aria-hidden="true"></span>' + box('ltr-v', v) + '</span>');
         // සිද්ධ වූ අකුර (ව්‍යඤ්ජනය + ස්වරය) අවසන් රූපයේ සලකුණු කිරීම
         const glyph = m[1] + (SANDHI_SIGN[m[2]] || '');
         const rest = m[3];

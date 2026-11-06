@@ -1253,7 +1253,7 @@ input {
     white-space: nowrap;
     padding-bottom: 0.85em;
 }
-.ltr-join .ltr-c { margin-right: 1.1em; }
+.ltr-join .ltr-plus { margin: 0 0.45em; color: var(--text-main, #3B2F2F); font-weight: 600; }
 .ltr-link {
     position: absolute;
     left: 0.5em;
