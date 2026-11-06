@@ -163,9 +163,17 @@ function showInstallHelp() {
     document.body.appendChild(wrap);
 }
 
+// [ඉ → එ] ආදේශ සලකුණ නාම ඛණ්ඩයේ ආකාරයට (යටි ඉරක් සහිත  ඉ ➔ එ ) පෙන්වීම
+function convertBracketSubst(text) {
+    if (!text) return text;
+    return text.replace(/\[([^\]→]+?)\s*→\s*([^\]]+?)\]/g, function (m, a, b) {
+        return '<span class="sub-ul">' + a + '<span style="color: var(--theme-accent); font-weight: bold; margin: 0 2px;">➔</span>' + b + '</span>';
+    });
+}
+
 function parseLopaCuts(text) {
     if (!text) return '';
-    return text.replace(/~([^~]+)~/g, '<span class="lopa-cut">$1</span>');
+    return convertBracketSubst(text).replace(/~([^~]+)~/g, '<span class="lopa-cut">$1</span>');
 }
 
 // ==========================================================================
