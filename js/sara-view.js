@@ -176,8 +176,6 @@ function renderSaraWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
             ` : ''}
         </div>
 
-        ${typeof renderKitakaIntro === 'function' ? renderKitakaIntro(suttaData) : ''}
-
         <!-- 02. ෂඩාකාර විමර්ශනය -->
         ${suttaData.shadakara ? `
             <div class="panel-card">
@@ -188,6 +186,8 @@ function renderSaraWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
 
         <!-- 02b. සන්නය (රූපසිද්ධි පාඨය හා පදයෙන් පද සන්නය) -->
         ${renderSaraRupaSanna(suttaData)}
+
+        ${typeof renderKitakaIntro === 'function' ? renderKitakaIntro(suttaData) : ''}
 
         <!-- 06. පියවරෙන් පියවර පද සාධන පුවරුව -->
         ${examples.length > 0 ? `
