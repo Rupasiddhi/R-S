@@ -1,0 +1,15 @@
+/* දුරකථන සඳහා පමණක් — පද සාධන වගු කුඩා කර පැහැදිලිව පෙන්වීම */
+@media (max-width: 600px), (max-height: 500px) and (orientation: landscape) {
+    #viewSuttaPanel .table-responsive .data-table { font-size: 0.8rem; table-layout: auto; }
+    #viewSuttaPanel .table-responsive .data-table th { padding: 0.35rem 0.4rem; font-size: 0.72rem; line-height: 1.25; }
+    #viewSuttaPanel .table-responsive .data-table td { padding: 0.35rem 0.4rem; line-height: 1.45; }
+    #viewSuttaPanel .table-responsive .data-table td:first-child,
+    #viewSuttaPanel .table-responsive .data-table th:first-child { width: 1.6rem; text-align: center; padding-left: 0.2rem; padding-right: 0.2rem; font-size: 0.72rem; }
+    #viewSuttaPanel .table-responsive .data-table td:nth-child(2) { font-size: 0.92rem; font-weight: 600; word-break: break-word; }
+    #viewSuttaPanel .table-responsive .data-table th:nth-child(2) { white-space: nowrap; }
+    #viewSuttaPanel .table-responsive .data-table .rule-badge { font-size: 0.68rem; padding: 0.1rem 0.35rem; line-height: 1.35; border-radius: 6px; }
+    #viewSuttaPanel .nama-siddha-box { padding: 0.6rem 0.8rem; }
+    #viewSuttaPanel .nama-result-label { font-size: 0.78rem; }
+    #viewSuttaPanel .nama-result-word { font-size: 1.25rem; }
+    #viewSuttaPanel .nama-usage-line { font-size: 0.8rem; }
+}
