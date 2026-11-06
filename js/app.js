@@ -181,18 +181,20 @@ const SANDHI_SIGN = { 'අ': '', 'ආ': 'ා', 'ඉ': 'ි', 'ඊ': 'ී', 'උ'
 function markSandhiLetters(raw, html) {
     if (!raw || !html) return html;
     const box = (cls, s) => '<span class="ltr-hl ' + cls + '">' + s + '</span>';
-    if (raw.indexOf('→') !== -1) {
-        const m = raw.match(new RegExp('(' + SANDHI_CONS + ')් [+\\-] (' + SANDHI_VOW + ')([^\\s+\\-→~]*)'));
-        if (!m) return html;
-        const joinRe = new RegExp('(' + SANDHI_CONS + '්) [+\\-] (' + SANDHI_VOW + ')', 'g');
+    const hasArrow = raw.indexOf('→') !== -1;
+    // ප්‍රතිඵල ඊතලය ඇති පියවරවල "ක් - අ" හෝ "ක් + අ"; ඊතලයක් නැති පියවරවල "ක් + අ" පමණි
+    const sep = hasArrow ? '[+\\-]' : '\\+';
+    const m = raw.match(new RegExp('(' + SANDHI_CONS + ')් ' + sep + ' (' + SANDHI_VOW + ')([^\\s+\\-→~]*)'));
+    if (m) {
+        const joinRe = new RegExp('(' + SANDHI_CONS + '්) ' + sep + ' (' + SANDHI_VOW + ')', 'g');
         html = html.replace(joinRe, (x, c, v) =>
             '<span class="ltr-join" title="ව්‍යඤ්ජනයට ස්වරය එක් වේ">' + box('ltr-c', c) +
             '<span class="ltr-link" aria-hidden="true"></span>' + box('ltr-v', v) + '</span>');
-        // සිද්ධ වූ අකුර (ව්‍යඤ්ජනය + ස්වරය) අවසන් රූපයේ කොටු කිරීම
+        // සිද්ධ වූ අකුර (ව්‍යඤ්ජනය + ස්වරය) අවසන් රූපයේ සලකුණු කිරීම
         const glyph = m[1] + (SANDHI_SIGN[m[2]] || '');
         const rest = m[3];
         const cut = html.lastIndexOf('➔</span>');
-        if (cut !== -1 && rest) {
+        if (hasArrow && cut !== -1 && rest) {
             const head = html.slice(0, cut + 8), tail = html.slice(cut + 8);
             if (tail.indexOf('<') === -1) {
                 const at = tail.indexOf(glyph + rest);
@@ -201,6 +203,7 @@ function markSandhiLetters(raw, html) {
         }
         return html;
     }
+    if (hasArrow) return html;
     // වියෝජන පියවර: "ලොක් - අ" හි ස්වරය විශේෂ කිරීම
     return html.replace(new RegExp('(' + SANDHI_CONS + '් - )(' + SANDHI_VOW + ')(?=\\s|$)', 'g'),
         (x, a, v) => a + box('ltr-v', v));
