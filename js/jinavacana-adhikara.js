@@ -1,38 +1,32 @@
 // ==========================================================================
-// 60. ජිනවචනයුත්තං හි — මතු සියලු සූත්‍රවලට අදාළ අධිකාර සූත්‍රය
-// නාමඛාණ්ඩයේ (පුල්ලිඞ්ගං) පළමු සූත්‍රය වන මෙය, කාරක/සමාස/තද්ධිත/ආඛ්‍යාත/කිබ්බිධාන
-// ඛාණ්ඩවල පද සාධනයේ මුලටම පෙන්වයි (එකම දත්ත පිටපතක් නැවත භාවිත කරයි).
+// ජිනවචනයුත්තං හි — සියලු නාම/සමාස/තද්ධිත පද සාධනවල මුල් පියවර
+// ප්‍රාතිපදිකය සිද්ධ කිරීමට පෙර "ජිනවචනයුත්තං හි." සූත්‍රය පළමු පියවර ලෙස එක් කරයි
+// (නාමකණ්ඩයේ 60 වන සූත්‍රයේ උදාහරණයේ මෙන්).
 // ==========================================================================
 (function () {
+    const RULE = 'ජිනවචනයුත්තං හි.';
+    const STARTS = [/^ලිඞ්ගඤ්ච නිපච්චතෙ/, /^තතො ච විභත්තියො/, /^ලිඞ්ගත්ථෙ පඨමා/];
+    const SKIP_SUB = /^(01_sanna|02_sara|03_byanjana|04_niggahita|05_pakati|0\d_akhyata|0\d_kitaka|07_abyaya)/;
+
+    const NAMA_SUB = /^0[1-6]b?_(pullinga|itthilinga|napumsakalinga|sabbanama|alinga|vibhattippaccaya)/;
+
+    function fix(steps, anyRule) {
+        if (!Array.isArray(steps) || !steps.length) return;
+        const first = steps[0] || {};
+        const rule = String(first.rule || '').trim();
+        if (rule.indexOf('ජිනවචනයුත්තං හි') !== -1) return;
+        if (!anyRule && !STARTS.some(re => re.test(rule))) return;
+        const f = String(first.formula || '').trim();
+        const stem = f.split(' + ')[0].replace(/\s*\(.*\)\s*$/, '').trim();
+        if (!stem || /[~\[\]→=]/.test(stem)) return;
+        steps.unshift({ formula: stem, rule: RULE });
+    }
+
     const db = window.SuttaDatabase || {};
-    const src = (db['01_pullinga'] || []).find(s => s.sutta_number === 60);
-    if (!src) return;
-
-    const TARGETS = [
-        { id: '00_karaka_intro',      name: 'කාරක හැඳින්වීම',        karaka: true },
-        { id: '01_samasa_abyayibhava', name: 'අබ්‍යයීභාව සමාස' },
-        { id: '01_taddhita_apacca',    name: 'අපච්චාර්ථ තද්ධිත' },
-        { id: '00_akhyata_intro',      name: 'ආඛ්‍යාත හැඳින්වීම' },
-        { id: '00_kitaka_intro',       name: 'කිබ්බිධාන හැඳින්වීම' }
-    ];
-
-    TARGETS.forEach(t => {
-        const list = db[t.id];
-        if (!list || list.some(s => s.is_adhikara_ref)) return;
-        const e = Object.assign({}, src, {
-            sub_khanda_id: t.id,
-            sub_khanda_name: t.name,
-            sutta_type: 'අධිකාර සූත්‍රය (සියලු ඛාණ්ඩවලට පොදුයි)',
-            is_adhikara_ref: true,
-            examples: []
+    Object.keys(db).forEach(sub => {
+        if (SKIP_SUB.test(sub)) return;
+        (db[sub] || []).forEach(s => {
+            ['examples', 'derivations'].forEach(k => (s[k] || []).forEach(ex => fix(ex.steps, NAMA_SUB.test(sub))));
         });
-        if (t.karaka) {
-            e.pali = 'ජිනවචනයුත්තං හි.';
-            e.role = 'අධිකාර සූත්‍රය';
-            e.meaning = src.sutta_meaning;
-            e.head_notes = [];
-            e.paras = [{ html: src.vutti, sanna: [{ kind: 'sanna', html: src.vutti_sanna }], notes: [], heads: [] }];
-        }
-        list.unshift(e);
     });
 })();
