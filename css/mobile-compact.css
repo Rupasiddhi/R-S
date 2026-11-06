@@ -1,15 +1,45 @@
-/* දුරකථන සඳහා පමණක් — පද සාධන වගු කුඩා කර පැහැදිලිව පෙන්වීම */
+/* දුරකථන සඳහා පමණක් — පද සාධන වගු වම/දකුණට ඇඳ බැලිය හැකි ලෙස (අකුරු ප්‍රමාණය වෙනස් නොකර) */
 @media (max-width: 600px), (max-height: 500px) and (orientation: landscape) {
-    #viewSuttaPanel .table-responsive .data-table { font-size: 0.8rem; table-layout: auto; }
-    #viewSuttaPanel .table-responsive .data-table th { padding: 0.35rem 0.4rem; font-size: 0.72rem; line-height: 1.25; }
-    #viewSuttaPanel .table-responsive .data-table td { padding: 0.35rem 0.4rem; line-height: 1.45; }
-    #viewSuttaPanel .table-responsive .data-table td:first-child,
-    #viewSuttaPanel .table-responsive .data-table th:first-child { width: 1.6rem; text-align: center; padding-left: 0.2rem; padding-right: 0.2rem; font-size: 0.72rem; }
-    #viewSuttaPanel .table-responsive .data-table td:nth-child(2) { font-size: 0.92rem; font-weight: 600; word-break: break-word; }
-    #viewSuttaPanel .table-responsive .data-table th:nth-child(2) { white-space: nowrap; }
-    #viewSuttaPanel .table-responsive .data-table .rule-badge { font-size: 0.68rem; padding: 0.1rem 0.35rem; line-height: 1.35; border-radius: 6px; }
-    #viewSuttaPanel .nama-siddha-box { padding: 0.6rem 0.8rem; }
-    #viewSuttaPanel .nama-result-label { font-size: 0.78rem; }
-    #viewSuttaPanel .nama-result-word { font-size: 1.25rem; }
-    #viewSuttaPanel .nama-usage-line { font-size: 0.8rem; }
+    #viewSuttaPanel .table-responsive:has(> .data-table) {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        touch-action: pan-x pan-y;
+        padding-bottom: 0.4rem;
+        border-radius: 10px;
+        /* දාර සෙවණැලි — තව අන්තර්ගතයක් ඇති බව පෙන්වීමට */
+        background:
+            linear-gradient(to right, #fff 30%, rgba(255,255,255,0)) left center / 28px 100% no-repeat local,
+            linear-gradient(to left, #fff 30%, rgba(255,255,255,0)) right center / 28px 100% no-repeat local,
+            linear-gradient(to right, rgba(92,20,34,.28), rgba(92,20,34,0)) left center / 14px 100% no-repeat scroll,
+            linear-gradient(to left, rgba(92,20,34,.28), rgba(92,20,34,0)) right center / 14px 100% no-repeat scroll;
+    }
+    #viewSuttaPanel .table-responsive:has(> .data-table)::before {
+        content: "◀  වමට / දකුණට ඇඳ බලන්න  ▶";
+        display: block;
+        position: sticky;
+        left: 0;
+        width: calc(100vw - 2.4rem);
+        max-width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--theme-primary, #5C1422);
+        background: var(--theme-tint, #fff4e6);
+        border: 1px dashed var(--border-soft, #e0c9a8);
+        border-radius: 8px;
+        padding: 0.25rem 0.5rem;
+        margin-bottom: 0.4rem;
+    }
+    #viewSuttaPanel .table-responsive > .data-table { min-width: 720px; width: max-content; }
+    #viewSuttaPanel .table-responsive > .data-table td:first-child,
+    #viewSuttaPanel .table-responsive > .data-table th:first-child {
+        position: sticky; left: 0; z-index: 2; background: inherit;
+    }
+    #viewSuttaPanel .table-responsive > .data-table th:first-child { background: var(--theme-primary, #5C1422); }
+    #viewSuttaPanel .table-responsive > .data-table tbody td:first-child { background: #fffaf2; }
+    #viewSuttaPanel .table-responsive > .data-table td:nth-child(2) { min-width: 260px; }
+    #viewSuttaPanel .table-responsive > .data-table td:last-child { min-width: 260px; }
 }
