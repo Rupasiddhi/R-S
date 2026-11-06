@@ -455,7 +455,7 @@ function hideSidebarMenu() {
  * සූත්‍රයක් තෝරා ගැනීම සහ අදාළ Renderer එක කැඳවීම
  */
 function selectSuttaItem(suttaNum, subId) {
-    try { return _selectSuttaItemCore(suttaNum, subId); } finally { try { renderSuttaPager(suttaNum, subId); } catch (e) {} }
+    try { return _selectSuttaItemCore(suttaNum, subId); } finally { try { renderSuttaPager(suttaNum, subId); } catch (e) {} try { appHistoryPush({ sub: subId, num: suttaNum, khanda: AppState.activeKhandaKey }); } catch (e) {} }
 }
 
 function _selectSuttaItemCore(suttaNum, subId) {
@@ -549,6 +549,7 @@ function selectKhanda(khandaKey) {
  * 0. ෂඩාකාරය හැඳින්වීම පෙන්වීම
  */
 function showShadakaraIntro() {
+    try { appHistoryPush({ intro: 1 }); } catch (e) {}
     AppState.currentMode = 'intro';
     AppState.activeKhandaKey = null;
     AppState.activeSubKhandaId = null;
@@ -1140,3 +1141,30 @@ function renderSuttaPager(suttaNum, subId) {
         if (vp) vp.scrollTop = 0;
     });
 }
+
+
+// ==========================================================================
+// පසුපස (Back) බොත්තම — ඇප් එකෙන් ඉවත් නොවී පෙර පිටුවට යාම
+// ==========================================================================
+window.__histRestoring = false;
+function appHistoryPush(st) {
+    if (window.__histRestoring) return;
+    const cur = history.state || {};
+    if (cur.intro && st.intro) return;
+    if (cur.sub === st.sub && String(cur.num) === String(st.num)) return;
+    history.pushState(st, '');
+}
+window.addEventListener('popstate', (e) => {
+    const st = e.state || { root: 1 };
+    window.__histRestoring = true;
+    try {
+        if (st.sub !== undefined) {
+            navigateToSutta(st.khanda || AppState.activeKhandaKey, st.sub, st.num);
+        } else {
+            // මුල් පිටුව: ඇප් එකෙන් ඉවත් නොවී එහි රැඳී සිටීම
+            if (st.root) history.pushState({ intro: 1 }, '');
+            showShadakaraIntro();
+        }
+    } catch (err) {} finally { window.__histRestoring = false; }
+});
+try { history.replaceState({ root: 1 }, ''); history.pushState({ intro: 1 }, ''); } catch (e) {}
