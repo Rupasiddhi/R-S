@@ -176,6 +176,8 @@ function renderSaraWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
             ` : ''}
         </div>
 
+        ${typeof renderKitakaIntro === 'function' ? renderKitakaIntro(suttaData) : ''}
+
         <!-- 02. ෂඩාකාර විමර්ශනය -->
         ${suttaData.shadakara ? `
             <div class="panel-card">
