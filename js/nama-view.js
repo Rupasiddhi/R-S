@@ -20,8 +20,7 @@ function formatNamaFormula(text, rule) {
     formatted = formatted.replace(/([^\s~→\-+()<>]+)→([^\s~→\-+()<>]+)/g, function (m, a, b) { return '<span class="sub-box">' + a + '<span class="sub-arrow">➔</span>' + b + '</span>'; });
     formatted = formatted.replace(/→/g, '<span style="color: var(--theme-accent); font-weight: bold; margin: 0 4px;">➔</span>');
     formatted = formatted.replace(/\[(.*?)\]/g, '<span style="background: var(--theme-tint); border: 1px solid var(--border-soft); padding: 1px 6px; border-radius: 4px; color: #8C2D00; font-weight: 700;">$1</span>');
-    if (rule !== undefined && !/^\s*නයෙ\s*පරං/.test(rule || '')) return formatted;
-    return markSandhiLetters(text, formatted);
+    return markSandhiLetters(text, formatted, rule !== undefined && !/^\s*නයෙ\s*පරං/.test(rule || ''));
 }
 
 // සූත්‍රයෙන් සෑදෙන සියලු පද හා ප්‍රභේද

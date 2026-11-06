@@ -178,7 +178,7 @@ const SANDHI_CONS = '[ක-ෆ]';
 const SANDHI_VOW = '[අ-ඖ]';
 const SANDHI_SIGN = { 'අ': '', 'ආ': 'ා', 'ඉ': 'ි', 'ඊ': 'ී', 'උ': 'ු', 'ඌ': 'ූ', 'එ': 'ෙ', 'ඔ': 'ො' };
 
-function markSandhiLetters(raw, html) {
+function markSandhiLetters(raw, html, noJoin) {
     if (!raw || !html) return html;
     const box = (cls, s) => '<span class="ltr-hl ' + cls + '">' + s + '</span>';
     const hasArrow = raw.indexOf('→') !== -1;
@@ -187,7 +187,7 @@ function markSandhiLetters(raw, html) {
     // "පච් + අ + ති" වැනි මැද ස්වර ආගම පියවරවල (ඊතලයක් නැති) එක් කිරීමේ සලකුණු අවශ්‍ය නැත
     if (!hasArrow && new RegExp('(' + SANDHI_CONS + ')් \\+ (' + SANDHI_VOW + ') \\+ ').test(raw)) return html;
     const m = raw.match(new RegExp('(' + SANDHI_CONS + ')් ' + sep + ' (' + SANDHI_VOW + ')([^\\s+\\-→~]*)'));
-    if (m) {
+    if (m && !noJoin) {
         const joinRe = new RegExp('(' + SANDHI_CONS + '්) ' + sep + ' (' + SANDHI_VOW + ')', 'g');
         html = html.replace(joinRe, (x, c, v) =>
             '<span class="ltr-join" title="ව්‍යඤ්ජනයට ස්වරය එක් වේ">' + box('ltr-c', c) +
