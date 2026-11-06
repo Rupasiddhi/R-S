@@ -1243,7 +1243,8 @@ input {
     text-decoration: underline;
     text-decoration-color: #E53E3E;
     text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
+    text-underline-offset: 6px;
+    text-decoration-skip-ink: none;
 }
 .ltr-hl.ltr-r { color: #7B341E; text-decoration: none; }
 .ltr-join .ltr-hl { text-decoration: none; }
