@@ -375,5 +375,42 @@ window.SuttaDatabase["01_sanna"] = [
         ],
         extended_commentary: "සද්දසත්ථවිදුනො නිග්ගහීතසඞ්ඛාතස්ස අනුස්සාරස්සාපි ඝොසවන්තත්තං ඉච්ඡන්ති; සාසනිකා පන තස්ස ඝොසාඝොසවිනිම්මුත්තත්තං යෙව ඉච්ඡන්ති. — ශබ්දශාස්ත්‍රඥයෝ නිග්ගහීතය (අනුස්වාරය) ඝෝෂ ලෙස සලකති; සාසනික ආචාර්යයෝ එය ඝෝෂ-අඝෝෂ දෙකින්ම විනිර්මුක්ත ලෙස සලකති. ලිංග ලක්ෂණයෙහි ‘ධාතුලිඞ්ගෙහි පරා පච්චයා’ (3-2-1) යන බැවින් විභක්තීහු ද ප්‍රත්‍යයන් කෙරෙහි ඇතුළත් වුව ද විභක්තීන් වෙන් කොට කී හෙයින් (පච්චය ග්‍රහණයෙන්) විභක්තීන්ගේ ග්‍රහණය නොවේ යයි දත යුතුය (සන්න).",
         examples: []
+    },
+
+    // 12. අමුණුම - පාළි හෝඩිය
+    {
+        sutta_number: 12,
+        sub_khanda_id: "01_sanna",
+        sub_khanda_name: "සංඥා සූත්‍ර",
+        sutta_name: "පාළි හෝඩිය (Pāḷi Alphabet)",
+        is_appendix: true,
+        sutta_meaning: "සංඥා සූත්‍රවල දැක්වෙන පාළි අක්ෂර 41, ඒවායේ උපදනා ස්ථාන (කණ්ඨජ, තාලුජ ආදි), ඝෝෂ-අඝෝෂ, අල්පප්‍රාණ-මහාප්‍රාණ ආදි සංඥා එක් බැල්මට දැක්වෙන වර්ණ සටහන.",
+        pali_alphabet: {
+            columns: [
+                { id: "short", group: "sara",  si: "හ්‍රස්ව",      en: "short",                tags: ["sara", "ghosa"] },
+                { id: "long",  group: "sara",  si: "දීර්ඝ",        en: "long",                 tags: ["sara", "ghosa"] },
+                { id: "k1",    group: "vagga", si: "අඝෝෂ",         en: "Unvoiced · Unaspirate", sub: "අල්පප්‍රාණ", tags: ["aghosa", "alpa"] },
+                { id: "k2",    group: "vagga", si: "අඝෝෂ",         en: "Unvoiced · Aspirate",   sub: "මහාප්‍රාණ", tags: ["aghosa", "maha"] },
+                { id: "k3",    group: "vagga", si: "ඝෝෂ",          en: "Voiced · Unaspirate",   sub: "අල්පප්‍රාණ", tags: ["ghosa", "alpa"] },
+                { id: "k4",    group: "vagga", si: "ඝෝෂ",          en: "Voiced · Aspirate",     sub: "මහාප්‍රාණ", tags: ["ghosa", "maha"] },
+                { id: "k5",    group: "vagga", si: "ඝෝෂ",          en: "Voiced · Nasal",        sub: "අනුනාසික", tags: ["ghosa"] },
+                { id: "semi",  group: "avagga", si: "අන්තස්ථ",     en: "Semi-vowels",          sub: "ඝෝෂ", tags: ["ghosa"] },
+                { id: "sibu",  group: "avagga", si: "ඌෂ්ම",        en: "Sibilant · Unvoiced",  sub: "අඝෝෂ අල්පප්‍රාණ", tags: ["aghosa", "alpa"] },
+                { id: "sibv",  group: "avagga", si: "ඌෂ්ම",        en: "Spirant · Voiced",     sub: "ඝෝෂ මහාප්‍රාණ", tags: ["ghosa", "maha"] },
+                { id: "anu",   group: "nig",   si: "නිග්ගහීත",     en: "Anusvāra",             sub: "ඝෝෂ", tags: ["ghosa"] }
+            ],
+            rows: [
+                { si: "කණ්ඨජ",        en: "Gutturals",          cells: { short: [["අ","a"]], long: [["ආ","ā"]], k1: [["ක","ka"]], k2: [["ඛ","kha"]], k3: [["ග","ga"]], k4: [["ඝ","gha"]], k5: [["ඞ","ṅa"]], sibv: [["හ","ha"]] } },
+                { si: "තාලුජ",        en: "Palatals",           cells: { short: [["ඉ","i"]], long: [["ඊ","ī"]], k1: [["ච","ca"]], k2: [["ඡ","cha"]], k3: [["ජ","ja"]], k4: [["ඣ","jha"]], k5: [["ඤ","ña"]], semi: [["ය","ya"]] } },
+                { si: "මුද්ධජ",       en: "Retroflex",          cells: { k1: [["ට","ṭa"]], k2: [["ඨ","ṭha"]], k3: [["ඩ","ḍa"]], k4: [["ඪ","ḍha"]], k5: [["ණ","ṇa"]], semi: [["ර","ra"], ["ළ","ḷa"]] } },
+                { si: "දන්තජ",        en: "Dental",             cells: { k1: [["ත","ta"]], k2: [["ථ","tha"]], k3: [["ද","da"]], k4: [["ධ","dha"]], k5: [["න","na"]], semi: [["ල","la"]], sibu: [["ස","sa"]] } },
+                { si: "ඔට්ඨජ",        en: "Labial",             cells: { short: [["උ","u"]], long: [["ඌ","ū"]], k1: [["ප","pa"]], k2: [["ඵ","pha"]], k3: [["බ","ba"]], k4: [["භ","bha"]], k5: [["ම","ma"]] } },
+                { si: "කණ්ඨතාලුජ",    en: "Guttural-Palatal",   cells: { long: [["එ","e"]] } },
+                { si: "කණ්ඨොට්ඨජ",    en: "Guttural-Labial",    cells: { long: [["ඔ","o"]] } },
+                { si: "දන්තොට්ඨජ",    en: "Dental-Labial",      cells: { semi: [["ව","va"]] } },
+                { si: "නාසිකට්ඨානජ",  en: "Pure Nasal",         cells: { anu: [["ං","ṃ"]] } }
+            ]
+        },
+        examples: []
     }
 ];

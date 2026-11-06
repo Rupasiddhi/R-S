@@ -143,10 +143,128 @@ function renderSannaDerivationTable(example) {
     `;
 }
 
+// ==========================================================================
+// පාළි හෝඩිය (Pāḷi Alphabet) - සංඥා සූත්‍ර අවසානයේ අමුණුම
+// අක්ෂරයක් ක්ලික් කළ විට එහි ස්ථානය හා ප්‍රයත්නය පෙන්වයි; පෙරහන් බොත්තම් වලින් වර්ග ඉස්මතු කළ හැක.
+// ==========================================================================
+const PA_FILTERS = [
+    { key: 'all',    label: 'සියල්ල' },
+    { key: 'sara',   label: 'ස්වර' },
+    { key: 'aghosa', label: 'අඝෝෂ' },
+    { key: 'ghosa',  label: 'ඝෝෂ' },
+    { key: 'alpa',   label: 'අල්පප්‍රාණ (සිථිල)' },
+    { key: 'maha',   label: 'මහාප්‍රාණ (ධනිත)' }
+];
+const PA_GROUPS = {
+    sara:   { label: 'ස්වර', en: 'Vowels' },
+    vagga:  { label: 'වර්ග', en: 'Categorized' },
+    avagga: { label: 'අවර්ග', en: 'Uncategorized' },
+    nig:    { label: 'නිග්ගහීත', en: 'Anusvāra' }
+};
+
+function renderPaliAlphabetPage(s, container) {
+    const a = s.pali_alphabet;
+    window.AppState.currentSutta = s;
+    window.AppState.currentTargetId = container.id;
+    window.paData = a;
+
+    // සිරස් කොටස් (colspan) ගණනය
+    const order = [];
+    a.columns.forEach(c => { const last = order[order.length - 1]; if (last && last.g === c.group) last.n++; else order.push({ g: c.group, n: 1 }); });
+
+    const head1 = order.map(o => `<th colspan="${o.n}" class="pa-th-group pa-g-${o.g}">${PA_GROUPS[o.g].label} <small>${PA_GROUPS[o.g].en}</small></th>`).join('');
+    const head2 = a.columns.map(c => `
+        <th class="pa-th-col pa-g-${c.group}">
+            <span class="pa-th-si">${c.si}</span>
+            ${c.sub ? `<span class="pa-th-sub">${c.sub}</span>` : ''}
+            <span class="pa-th-en">${c.en}</span>
+        </th>`).join('');
+
+    const body = a.rows.map((r, ri) => `
+        <tr>
+            <th scope="row" class="pa-th-row"><span class="pa-row-si">${r.si}</span><span class="pa-row-en">${r.en}</span></th>
+            ${a.columns.map((c, ci) => {
+                const items = (r.cells || {})[c.id] || [];
+                return `<td class="pa-td pa-g-${c.group}">${items.map((it, ii) => `
+                    <button type="button" class="pa-cell" data-r="${ri}" data-c="${ci}" data-i="${ii}" data-tags="${c.tags.join(' ')}"
+                            onclick="paSelect(${ri}, ${ci}, ${ii})" aria-label="${it[0]} (${it[1]})">
+                        <span class="pa-si">${it[0]}</span><span class="pa-ro">${it[1]}</span>
+                    </button>`).join('')}</td>`;
+            }).join('')}
+        </tr>`).join('');
+
+    container.innerHTML = `
+        <div class="panel-card sanna-banner-card pa-banner">
+            <div class="tag-row" style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:0.4rem;">
+                <span class="sanna-category-badge">අමුණුම</span>
+                <span class="badge badge-khanda">සංඥා සූත්‍ර</span>
+            </div>
+            <h2 class="sanna-sutta-title">🔤 පාළි හෝඩිය <span class="pa-title-en">Pāḷi Alphabet</span></h2>
+            <div class="sanna-meaning-box">
+                <p class="sanna-meaning-text">${s.sutta_meaning}</p>
+            </div>
+            <div class="pa-counts">
+                <span><b>8</b> ස්වර</span><span><b>25</b> වර්ග</span><span><b>7</b> අවර්ග</span><span><b>1</b> නිග්ගහීත</span><span class="pa-total">= අක්ෂර <b>41</b></span>
+            </div>
+        </div>
+
+        <div class="panel-card pa-card">
+            <h3 class="section-heading"><span class="heading-icon">🎨</span> අක්ෂර සටහන</h3>
+            <p class="pa-hint">👆 අක්ෂරයක් ක්ලික් කර එහි ස්ථානය හා ප්‍රයත්නය බලන්න. පහත බොත්තම් වලින් අදාළ වර්ගය ඉස්මතු කරන්න.</p>
+            <div class="pa-filters" role="group" aria-label="පෙරහන">
+                ${PA_FILTERS.map(f => `<button type="button" class="pa-filter ${f.key === 'all' ? 'active' : ''}" data-f="${f.key}" onclick="paFilter('${f.key}')">${f.label}</button>`).join('')}
+            </div>
+            <div class="pa-detail" id="paDetail" aria-live="polite">
+                <span class="pa-detail-empty">අක්ෂරයක් තෝරන්න…</span>
+            </div>
+            <div class="table-responsive pa-scroll">
+                <table class="pa-table">
+                    <thead>
+                        <tr><th rowspan="2" class="pa-corner">ස්ථානය<br><small>Place</small></th>${head1}</tr>
+                        <tr>${head2}</tr>
+                    </thead>
+                    <tbody>${body}</tbody>
+                </table>
+            </div>
+            <p class="pa-foot">ඝෝෂ-අඝෝෂ, සිථිල (අල්පප්‍රාණ)-ධනිත (මහාප්‍රාණ) ආදි සංඥා, සංඥා සූත්‍රවල කී පරිදි ය.</p>
+        </div>
+    `;
+}
+
+function paSelect(ri, ci, ii) {
+    const a = window.paData; if (!a) return;
+    const row = a.rows[ri], col = a.columns[ci], it = row.cells[col.id][ii];
+    document.querySelectorAll('.pa-cell.selected').forEach(b => b.classList.remove('selected'));
+    const btn = document.querySelector(`.pa-cell[data-r="${ri}"][data-c="${ci}"][data-i="${ii}"]`);
+    if (btn) btn.classList.add('selected');
+    const grp = PA_GROUPS[col.group];
+    const prayatna = [col.si, col.sub].filter(Boolean).join(' · ');
+    const el = document.getElementById('paDetail');
+    if (el) el.innerHTML = `
+        <span class="pa-big">${it[0]}</span>
+        <span class="pa-detail-body">
+            <span class="pa-detail-roman">${it[1]}</span>
+            <span class="pa-detail-line"><b>ස්ථානය:</b> ${row.si} <em>(${row.en})</em></span>
+            <span class="pa-detail-line"><b>ගණය:</b> ${grp.label} <em>(${grp.en})</em></span>
+            <span class="pa-detail-line"><b>ප්‍රයත්නය:</b> ${prayatna} <em>(${col.en})</em></span>
+        </span>`;
+}
+
+function paFilter(key) {
+    document.querySelectorAll('.pa-filter').forEach(b => b.classList.toggle('active', b.dataset.f === key));
+    document.querySelectorAll('.pa-cell').forEach(b => {
+        const on = key === 'all' || b.dataset.tags.split(' ').indexOf(key) !== -1;
+        b.classList.toggle('dim', !on);
+        b.classList.toggle('lit', key !== 'all' && on);
+    });
+}
+
 // ප්‍රධාන Workspace Rendering Function
 function renderSannaWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
     const container = document.getElementById(targetContainerId);
     if (!container || !suttaData) return;
+
+    if (suttaData.pali_alphabet) { renderPaliAlphabetPage(suttaData, container); return; }
 
     // සූත්‍රය සහ Active Index එක State එකට save කිරීම
     if (window.AppState.currentSutta !== suttaData) {

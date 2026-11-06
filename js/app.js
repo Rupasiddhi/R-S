@@ -312,7 +312,8 @@ function populateSubKhandaUnderButton(khandaKey, subCategories) {
                     displayName = displayName.split('. ')[1];
                 }
 
-                li.innerHTML = sutta.is_intro ? `🧭 ${sutta.sutta_name}` : `<strong>${sNumber}.</strong> ${displayName}`;
+                li.innerHTML = sutta.is_intro ? `🧭 ${sutta.sutta_name}` : (sutta.is_appendix ? `🔤 ${sutta.sutta_name}` : `<strong>${sNumber}.</strong> ${displayName}`);
+                if (sutta.is_appendix) li.dataset.appendix = String(sNumber);
                 li.onclick = (e) => {
                     e.stopPropagation();
                     selectSuttaItem(sNumber, sub.id);
@@ -471,7 +472,7 @@ function selectSuttaItem(suttaNum, subId) {
                 if (g) { g.classList.add('open'); const c = g.querySelector('.sadhana-group-chev'); if (c) c.innerText = '▼'; }
             }
         } else {
-            el.classList.toggle('active', el.innerText.trim().startsWith(`${suttaNum}.`));
+            el.classList.toggle('active', el.dataset.appendix !== undefined ? el.dataset.appendix === String(suttaNum) : el.innerText.trim().startsWith(`${suttaNum}.`));
         }
     });
 
