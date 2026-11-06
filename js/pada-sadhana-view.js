@@ -286,12 +286,7 @@ function renderAkhyataVaranagilla(item) {
     const secById = {};
     A.sections.forEach(s => { secById[s.key] = s; });
     const ids = (A.tenseSections[key] || []).concat(key === 'vatta' ? A.generalSections : []);
-    const det = (s, open) => `
-        <details class="gs-item av-sec" ${open ? 'open' : ''}>
-            <summary>${s.title} <span class="gs-hint">(බැලීමට ක්ලික් කරන්න)</span></summary>
-            <div class="gs-body">${s.html}</div>
-        </details>`;
-    const extra = ids.map(id => secById[id]).filter(Boolean).map(s => det(s, false)).join('');
+    const extra = renderAvSections(ids, secById, key === 'vatta' ? A.lead : '');
     return `
         <div class="panel-card nama-commentary-card gs-card av-card">
             <h3 class="section-heading"><span class="heading-icon">📜</span> ආඛ්‍යාතික පදමාලාව <span class="gs-hint">(ආඛ්‍යාත වරනැඟිල්ල — 1873 මුද්‍රණය)</span></h3>
@@ -304,7 +299,124 @@ function renderAkhyataVaranagilla(item) {
         ${extra ? `
         <div class="panel-card nama-commentary-card gs-card">
             <h3 class="section-heading"><span class="heading-icon">📖</span> ආඛ්‍යාත ව්‍යාඛ්‍යාව <span class="gs-hint">(සිංහල විවරණය — 1873 මුද්‍රණය)</span></h3>
-            ${key === 'vatta' && A.lead ? `<div class="av-lead">${A.lead}</div>` : ''}
             ${extra}
         </div>` : ''}`;
+}
+
+// ==========================================================================
+// ආඛ්‍යාත ව්‍යාඛ්‍යාව — අන්තර්ගතය පැහැදිළිව හා නිර්මාණශීලීව දැක්වීම
+//  • “…” ඇතුළත පාළි පාඨ වෙනම ලේබල් ලෙස
+//  • "පදය, අර්ථය;" ආකාරයේ ඡේද → පද-අර්ථ සටහන් (කාඩ්පත් ජාලයක්)
+//  • " — " වලින් බෙදුණු දිගු ඡේද → අංක සහිත පියවර රේඛාවක්
+//  • පාළි උද්ධෘත → උද්ධෘත කාඩ්පත්; එක් එක් කොටසට අයිකනයක් හා සාරාංශයක්
+// (මූල දත්ත වෙනස් නොකරයි — පෙන්වීමේදී පමණක් සකස් කරයි)
+// ==========================================================================
+const AV_ICONS = {
+    'v-lakkhana': '🔖', 'v-kala': '🕰️', 'v-purisa': '👤', 'v-vibhatti': '🧩', 'v-sakamma': '🎯', 'v-kattu': '📝',
+    'v-padakkama': '🔗', 'v-kala6': '⏳', 'v-missa': '🔀', 'v-kamma': '🔄', 'v-bhava': '🌱', 'v-panc': '📣',
+    'v-panc-rs': '📚', 'v-anagata': '🌅', 'v-satt': '🤔', 'v-hiya': '🌙', 'v-paro': '🔭', 'v-ajja': '🌤️',
+    'v-bhav': '🚀', 'v-kala8': '⛔', 'v-nama': '🏷️', 'v-hetu': '⚙️', 'v-kamma-count': '🔢', 'v-iccha': '💭',
+    'v-namadhatu': '🧬', 'v-gana': '🗂️'
+};
+
+function avText(s) { return String(s || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim(); }
+
+// “…” ඇතුළත පාළි පාඨ ලේබල් කිරීම
+function avQuotes(html) {
+    return html.replace(/“([^“”<>]{1,90})”/g, '<q class="avx-q">$1</q>');
+}
+
+// "පදය, අර්ථය; පදය, අර්ථය;" ආකාරයේ ඡේදයක් පද-අර්ථ ලැයිස්තුවක් බවට
+function avGloss(text) {
+    const parts = text.split(/;\s+/).map(x => x.trim()).filter(Boolean);
+    if (parts.length < 4) return null;
+    const rows = [];
+    for (const p of parts) {
+        const m = p.match(/^([^,;()“”—]{1,32}),\s+(.{2,}?)[;.]?$/);
+        if (m) rows.push([m[1].trim(), m[2].trim()]);
+    }
+    if (rows.length < 4 || rows.length / parts.length < 0.7) return null;
+    return `<div class="avx-gloss">${rows.map(r => `<div class="avx-gl"><b>${r[0]}</b><span>${avQuotes(r[1])}</span></div>`).join('')}</div>`;
+}
+
+// " — " වලින් බෙදුණු ඡේදයක් පියවර රේඛාවක් බවට
+function avSteps(inner) {
+    const raw = inner.split(/\s+—\s+/).map(x => x.trim()).filter(Boolean);
+    const pieces = [];
+    raw.forEach(p => { if (pieces.length && p.length < 14) pieces[pieces.length - 1] += ' — ' + p; else pieces.push(p); });
+    if (pieces.length < 3) return null;
+    return `<ol class="avx-steps">${pieces.map(p => `<li>${avQuotes(p)}</li>`).join('')}</ol>`;
+}
+
+function avEnhanceHtml(html) {
+    const tpl = document.createElement('template');
+    tpl.innerHTML = html;
+    const out = [];
+    Array.from(tpl.content.childNodes).forEach(n => {
+        if (n.nodeType !== 1) { if (n.textContent.trim()) out.push(`<p class="avx-p">${avQuotes(n.textContent)}</p>`); return; }
+        const cls = n.className || '';
+        if (n.tagName === 'BLOCKQUOTE') {
+            const isVerse = /verse/.test(cls);
+            out.push(`<figure class="avx-quote ${isVerse ? 'is-verse' : ''}"><span class="avx-qmark">❝</span><div>${n.innerHTML}</div></figure>`);
+        } else if (n.tagName === 'P' && /av-para/.test(cls)) {
+            const g = avGloss(avText(n.innerHTML));
+            if (g) { out.push(`<div class="avx-tag">📖 පද – අර්ථ</div>${g}`); return; }
+            const s = avSteps(n.innerHTML);
+            out.push(s ? `<div class="avx-tag">🧭 පියවරින් පියවර</div>${s}` : `<p class="avx-p">${avQuotes(n.innerHTML)}</p>`);
+        } else if (n.tagName === 'P' && /av-head/.test(cls)) {
+            out.push(`<p class="avx-end">${n.innerHTML}</p>`);
+        } else {
+            out.push(n.outerHTML);
+        }
+    });
+    return out.join('');
+}
+
+function avSnippet(html) {
+    const t = avText(html).replace(/[“”]/g, '');
+    return t.length > 80 ? t.slice(0, 80).replace(/\s\S*$/, '') + '…' : t;
+}
+
+function avSection(s, no) {
+    const body = avEnhanceHtml(s.html);
+    const firstP = (s.html.match(/<p class="av-para">(.*?)<\/p>/) || [])[1] || '';
+    return `
+        <details class="avx-sec" id="avx-${s.key}">
+            <summary>
+                <span class="avx-no">${no}</span>
+                <span class="avx-ico">${AV_ICONS[s.key] || '📘'}</span>
+                <span class="avx-title">${s.title}${firstP ? `<small>${avSnippet(firstP)}</small>` : ''}</span>
+                <span class="avx-chev" aria-hidden="true"></span>
+            </summary>
+            <div class="avx-body">${body}</div>
+        </details>`;
+}
+
+function avToggleAll(btn, open) {
+    const box = btn.closest('.avx-wrap');
+    if (box) box.querySelectorAll('details.avx-sec').forEach(d => { d.open = open; });
+}
+
+function avJump(id) {
+    const d = document.getElementById('avx-' + id);
+    if (!d) return;
+    d.open = true;
+    d.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderAvSections(ids, secById, lead) {
+    const secs = ids.map(id => secById[id]).filter(Boolean);
+    if (!secs.length) return '';
+    return `
+        <div class="avx-wrap">
+            ${lead ? `<div class="avx-lead">${avEnhanceHtml(lead)}</div>` : ''}
+            <div class="avx-toolbar">
+                <div class="avx-chips">${secs.map((s, i) => `<button type="button" class="avx-chip" onclick="avJump('${s.key}')" title="${s.title}"><span>${AV_ICONS[s.key] || '📘'}</span>${i + 1}</button>`).join('')}</div>
+                <span class="avx-btns">
+                    <button type="button" class="avx-btn" onclick="avToggleAll(this, true)">⤵ සියල්ල විවෘත කරන්න</button>
+                    <button type="button" class="avx-btn" onclick="avToggleAll(this, false)">⤴ සියල්ල වසන්න</button>
+                </span>
+            </div>
+            ${secs.map((s, i) => avSection(s, i + 1)).join('')}
+        </div>`;
 }
