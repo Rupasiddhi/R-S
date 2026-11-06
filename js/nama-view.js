@@ -121,6 +121,7 @@ function renderNamaDerivationTable(example) {
             <span class="nama-result-label">සිද්ධ රූපය (අවසන් ඵලය):</span>
             <span class="nama-result-word">${example.final_result || example.word}</span>
         </div>
+        ${example.usage ? `<div class="nama-usage-line"><span class="nama-usage-label">ප්‍රයෝග:</span> ${example.usage}</div>` : ''}
     `;
 }
 

@@ -184,6 +184,8 @@ function markSandhiLetters(raw, html) {
     const hasArrow = raw.indexOf('→') !== -1;
     // ප්‍රතිඵල ඊතලය ඇති පියවරවල "ක් - අ" හෝ "ක් + අ"; ඊතලයක් නැති පියවරවල "ක් + අ" පමණි
     const sep = hasArrow ? '[+\\-]' : '\\+';
+    // "පච් + අ + ති" වැනි මැද ස්වර ආගම පියවරවල (ඊතලයක් නැති) එක් කිරීමේ සලකුණු අවශ්‍ය නැත
+    if (!hasArrow && new RegExp('(' + SANDHI_CONS + ')් \\+ (' + SANDHI_VOW + ') \\+ ').test(raw)) return html;
     const m = raw.match(new RegExp('(' + SANDHI_CONS + ')් ' + sep + ' (' + SANDHI_VOW + ')([^\\s+\\-→~]*)'));
     if (m) {
         const joinRe = new RegExp('(' + SANDHI_CONS + '්) ' + sep + ' (' + SANDHI_VOW + ')', 'g');
