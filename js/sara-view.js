@@ -109,7 +109,7 @@ function renderSaraDerivationTable(example) {
                     ${(example.steps || []).map((st, i) => `
                         <tr>
                             <td style="text-align: center; font-weight: bold; color: var(--text-muted);">${i + 1}</td>
-                            <td style="font-size: 1.05rem; font-weight: 600;">${formatSaraFormula(st.formula || st.action)}</td>
+                            <td style="font-size: 1.05rem; font-weight: 600;">${(typeof AppState !== 'undefined' && AppState.activeKhandaKey && AppState.activeKhandaKey !== '1_sandhi' && typeof formatNamaFormula === 'function' && typeof namaJoinFormula === 'function') ? formatNamaFormula(namaJoinFormula(example.steps, i), st.rule || '') : formatSaraFormula(st.formula || st.action)}</td>
                             <td><span class="rule-badge">${st.rule || '-'}</span></td>
                         </tr>
                     `).join('')}
