@@ -97,6 +97,19 @@ function renderNamaShadakaraCards(shadakara) {
     }).join('');
 }
 
+// "නයෙ පරං යුත්තෙ" පියවර: ඉහත පියවරේ ස්වරලොපයෙන් පසු ව්‍යඤ්ජනය + ස්වරය එක්වීම සංකේතයෙන් පෙන්වීම
+function namaJoinFormula(steps, i) {
+    const st = steps[i];
+    const cur = st.formula || st.action || '';
+    if (i === 0 || !/^\s*නයෙ\s*පරං/.test(st.rule || '') || /[+→]/.test(cur)) return cur;
+    const prev = (steps[i - 1].formula || '');
+    if (prev.indexOf('→') !== -1 || !/\s?-\s?~[^~]+~/.test(prev)) return cur;
+    let join = prev.replace(/\s?-\s?~[^~]+~/g, '');
+    if (/~/.test(join) || join.indexOf(' + ') === -1) return cur;
+    join = join.replace(/(්)\s?-\s?(?=(අ|ආ|ඉ|ඊ|උ|ඌ|එ|ඔ))/g, '$1 + ');
+    return join + ' → ' + cur;
+}
+
 // පද සාධන වගු Helper
 function renderNamaDerivationTable(example) {
     if (!example) return '<div class="text-muted p-3">සාධන පියවර නොමැත.</div>';
@@ -114,7 +127,7 @@ function renderNamaDerivationTable(example) {
                     ${(example.steps || []).map((st, i) => `
                         <tr>
                             <td style="text-align: center; font-weight: bold; color: var(--text-muted);">${i + 1}</td>
-                            <td style="font-size: 1.05rem; font-weight: 600;">${formatNamaFormula(st.formula || st.action, st.rule || '')}</td>
+                            <td style="font-size: 1.05rem; font-weight: 600;">${formatNamaFormula(namaJoinFormula(example.steps, i), st.rule || '')}</td>
                             <td><span class="rule-badge">${st.rule || '-'}</span></td>
                         </tr>
                     `).join('')}
