@@ -23,7 +23,7 @@ function formatNamaFormula(text, rule) {
     let out = markSandhiLetters(text, formatted, rule !== undefined && !/^\s*නයෙ\s*පරං/.test(rule || ''));
     // වියෝජන පියවර (ව්-අ සිට්ඨ්-අ + ණ්-අ): හයිෆනයෙන් වෙන් වූ ස්වර සලකුණු කිරීම
     if (/වියොජයෙ/.test(rule || '') && text.indexOf('→') === -1) {
-        out = out.replace(/(\p{Script=Sinhala}්)-(අ|ආ|ඉ|ඊ|උ|ඌ|එ|ඔ)(?=\s|$|\+)/gu, (x, c, v) => c + '-<span class="ltr-hl ltr-v">' + v + '</span>');
+        out = out.replace(/(\p{Script=Sinhala}[්ාැෑිීුූෙෛොෞ]?)-(අ|ආ|ඉ|ඊ|උ|ඌ|එ|ඔ)(?=\s|$|\+)/gu, (x, c, v) => c + '-<span class="ltr-hl ltr-v">' + v + '</span>');
     }
     return out;
 }
