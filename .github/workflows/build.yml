@@ -91,6 +91,18 @@ jobs:
             echo "Signing: secrets not set → debug build only"
           fi
 
+      - name: Check keystore (diagnostic)
+        if: env.KS_FILE != ''
+        run: |
+          for n in KS_PASS KS_ALIAS KS_KEY_PASS; do
+            v="${!n}"; [[ "$v" =~ [[:space:]] ]] && echo "$n: contains whitespace/newline" || echo "$n: no whitespace"
+          done
+          echo "keystore file bytes: $(wc -c < "$KS_FILE")"
+          echo "--- list"; keytool -list -keystore "$KS_FILE" -storepass "$KS_PASS" 2>&1 | head -8 || true
+          echo "--- alias lookup"; keytool -list -keystore "$KS_FILE" -storepass "$KS_PASS" -alias "$KS_ALIAS" 2>&1 | head -4 || true
+          echo "--- key recover test"; keytool -keypasswd -keystore "$KS_FILE" -alias "$KS_ALIAS" -storepass "$KS_PASS" -keypass "$KS_KEY_PASS" -new "$KS_KEY_PASS" 2>&1 | head -4 || true
+          true
+
       - name: Apply app settings (splash, version, signing)
         working-directory: android-app
         env:
