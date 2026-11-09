@@ -69,13 +69,14 @@ jobs:
       - name: Launcher icons
         run: |
           res=android-app/android/app/src/main/res
+          IM=$(command -v magick || command -v convert)
           declare -A L=([mdpi]=48 [hdpi]=72 [xhdpi]=96 [xxhdpi]=144 [xxxhdpi]=192)
           declare -A F=([mdpi]=108 [hdpi]=162 [xhdpi]=216 [xxhdpi]=324 [xxxhdpi]=432)
           for d in mdpi hdpi xhdpi xxhdpi xxxhdpi; do
-            convert icons/rs-512.png -resize ${L[$d]}x${L[$d]} $res/mipmap-$d/ic_launcher.png
-            convert icons/rs-512.png -resize ${L[$d]}x${L[$d]} $res/mipmap-$d/ic_launcher_round.png
+            $IM icons/rs-512.png -resize ${L[$d]}x${L[$d]} $res/mipmap-$d/ic_launcher.png
+            $IM icons/rs-512.png -resize ${L[$d]}x${L[$d]} $res/mipmap-$d/ic_launcher_round.png
             s=${F[$d]}; inner=$(( s * 72 / 100 ))
-            convert icons/rs-maskable.png -resize ${inner}x${inner} -background none -gravity center -extent ${s}x${s} $res/mipmap-$d/ic_launcher_foreground.png
+            $IM icons/rs-maskable.png -resize ${inner}x${inner} -background none -gravity center -extent ${s}x${s} $res/mipmap-$d/ic_launcher_foreground.png
           done
 
       - name: Signing key
