@@ -106,6 +106,8 @@ jobs:
         working-directory: android-app/android
         run: |
           chmod +x gradlew
+          # Gradle බාගත කිරීම තාවකාලිකව අසාර්ථක විය හැක → 5 වතාවක් දක්වා නැවත උත්සාහ කරයි
+          for i in 1 2 3 4 5; do ./gradlew --no-daemon --version && break; echo "retry $i"; sleep 20; done
           if [ -n "$KS_FILE" ]; then
             ./gradlew --no-daemon assembleRelease bundleRelease
           else
