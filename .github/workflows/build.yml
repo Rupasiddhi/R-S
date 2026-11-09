@@ -69,6 +69,7 @@ jobs:
       - name: Launcher icons
         run: |
           res=android-app/android/app/src/main/res
+          sudo apt-get update -qq && sudo apt-get install -y -qq imagemagick
           IM=$(command -v magick || command -v convert)
           declare -A L=([mdpi]=48 [hdpi]=72 [xhdpi]=96 [xxhdpi]=144 [xxxhdpi]=192)
           declare -A F=([mdpi]=108 [hdpi]=162 [xhdpi]=216 [xxhdpi]=324 [xxxhdpi]=432)
