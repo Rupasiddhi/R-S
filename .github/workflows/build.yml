@@ -1,0 +1,120 @@
+# =====================================================================
+#  රූපසිද්ධි — offline Android app (Capacitor) build   [app.vercel.rupasiddhi.twa]
+#  ස්වයංක්‍රීයව ධාවනය නොවේ — අවශ්‍ය විට: GitHub → Actions → "Android build" → Run workflow
+#  • version code: Play Store එකේ අවසාන අගයට වඩා වැඩි පූර්ණ සංඛ්‍යාවක් (1, 2, 3 …)
+#  • ප්‍රතිඵලය: run එකේ "Artifacts" යටතේ rupasiddhi-android-…  (APK + AAB)
+#  • Repo Settings → Secrets and variables → Actions හි පහත 4 ඇත්නම් signed release (APK + AAB);
+#    නැත්නම් පරීක්ෂණ debug APK පමණි:
+#      ANDROID_KEYSTORE_BASE64   ANDROID_KEYSTORE_PASSWORD   ANDROID_KEY_ALIAS   ANDROID_KEY_PASSWORD
+# =====================================================================
+name: Android build
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_code:
+        description: 'Version code (Play Store එකේ අවසාන අගයට වඩා වැඩි අංකයක්, උදා: 1)'
+        required: true
+        default: '1'
+      version_name:
+        description: 'Version name (උදා: 1.0.0)'
+        required: true
+        default: '1.0.0'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      KS_B64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+      KS_PASS: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+      KS_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+      KS_KEY_PASS: ${{ secrets.ANDROID_KEY_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: 'platforms;android-36 build-tools;36.0.0 platform-tools'
+
+      - name: Install Capacitor
+        working-directory: android-app
+        run: npm install --no-audit --no-fund
+
+      - name: Copy web files into the app
+        working-directory: android-app
+        run: npm run prepare-www
+
+      - name: Create Android project
+        working-directory: android-app
+        run: |
+          npx cap add android
+          npx cap sync android
+
+      - name: Launcher icons
+        run: |
+          res=android-app/android/app/src/main/res
+          declare -A L=([mdpi]=48 [hdpi]=72 [xhdpi]=96 [xxhdpi]=144 [xxxhdpi]=192)
+          declare -A F=([mdpi]=108 [hdpi]=162 [xhdpi]=216 [xxhdpi]=324 [xxxhdpi]=432)
+          for d in mdpi hdpi xhdpi xxhdpi xxxhdpi; do
+            convert icons/rs-512.png -resize ${L[$d]}x${L[$d]} $res/mipmap-$d/ic_launcher.png
+            convert icons/rs-512.png -resize ${L[$d]}x${L[$d]} $res/mipmap-$d/ic_launcher_round.png
+            s=${F[$d]}; inner=$(( s * 72 / 100 ))
+            convert icons/rs-maskable.png -resize ${inner}x${inner} -background none -gravity center -extent ${s}x${s} $res/mipmap-$d/ic_launcher_foreground.png
+          done
+
+      - name: Signing key
+        run: |
+          if [ -n "$KS_B64" ] && [ -n "$KS_PASS" ] && [ -n "$KS_ALIAS" ]; then
+            echo "$KS_B64" | base64 -d > "$RUNNER_TEMP/release.keystore"
+            echo "KS_FILE=$RUNNER_TEMP/release.keystore" >> "$GITHUB_ENV"
+            [ -n "$KS_KEY_PASS" ] || echo "KS_KEY_PASS=$KS_PASS" >> "$GITHUB_ENV"
+            echo "Signing: release keystore found"
+          else
+            echo "Signing: secrets not set → debug build only"
+          fi
+
+      - name: Apply app settings (splash, version, signing)
+        working-directory: android-app
+        env:
+          VERSION_CODE: ${{ inputs.version_code }}
+          VERSION_NAME: ${{ inputs.version_name }}
+        run: |
+          if ! [[ "$VERSION_CODE" =~ ^[0-9]+$ ]] || [ "$VERSION_CODE" -lt 1 ]; then
+            echo "Version code must be a whole number, e.g. 1 (got: '$VERSION_CODE')"; exit 1
+          fi
+          npm run patch-android
+
+      - name: Build
+        working-directory: android-app/android
+        run: |
+          chmod +x gradlew
+          if [ -n "$KS_FILE" ]; then
+            ./gradlew --no-daemon assembleRelease bundleRelease
+          else
+            ./gradlew --no-daemon assembleDebug
+          fi
+          rm -f "$RUNNER_TEMP/release.keystore"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rupasiddhi-android-v${{ inputs.version_name }}-code${{ inputs.version_code }}
+          path: |
+            android-app/android/app/build/outputs/apk/**/*.apk
+            android-app/android/app/build/outputs/bundle/**/*.aab
+          if-no-files-found: error

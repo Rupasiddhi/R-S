@@ -1,0 +1,17 @@
+{
+  "name": "rupasiddhi-android",
+  "private": true,
+  "version": "1.0.0",
+  "description": "රූපසිද්ධි — offline Android app (Capacitor). GitHub Actions මගින් build වේ: .github/workflows/build.yml",
+  "scripts": {
+    "prepare-www": "node scripts/prepare-www.mjs",
+    "patch-android": "node scripts/patch-android.mjs"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.3.0",
+    "@capacitor/core": "^8.3.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.3.0"
+  }
+}
