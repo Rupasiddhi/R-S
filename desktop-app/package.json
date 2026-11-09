@@ -1,0 +1,15 @@
+{
+  "name": "rupasiddhi-desktop",
+  "private": true,
+  "version": "1.0.0",
+  "description": "රූපසිද්ධි — offline Windows app (Tauri). GitHub Actions මගින් build වේ: .github/workflows/windows.yml",
+  "scripts": {
+    "prepare-www": "node ../android-app/scripts/prepare-www.mjs www",
+    "set-version": "node scripts/set-version.mjs",
+    "icons": "tauri icon ../icons/rs-512.png",
+    "build": "tauri build"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2"
+  }
+}

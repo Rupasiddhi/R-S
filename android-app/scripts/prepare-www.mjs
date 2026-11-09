@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, '..', '..');
-const out = resolve(here, '..', 'www');
-const SKIP = new Set(['.git', '.github', 'android-app', 'node_modules', 'README.md', 'vercel.json',
+const out = process.argv[2] ? resolve(process.argv[2]) : resolve(here, '..', 'www');   // Windows ඇප් එක: node … prepare-www.mjs www
+const SKIP = new Set(['.git', '.github', 'android-app', 'desktop-app', 'node_modules', 'README.md', 'vercel.json',
   '.vercelignore', '.nojekyll', '.gitignore', 'sw.js', 'CLAUDE.md', 'build.log']);   // sw.js: ඇප් එකේ ගොනු දැනටමත් ඇතුළතය
 
 rmSync(out, { recursive: true, force: true });

@@ -1,0 +1,67 @@
+# =====================================================================
+#  රූපසිද්ධි — offline Windows app (Tauri) build
+#  අවශ්‍ය විට: GitHub → Actions → "Windows build" → Run workflow → version (උදා: 1.0.0)
+#  ප්‍රතිඵලය: run එකේ "Artifacts" යටතේ rupasiddhi-windows-…
+#    • Rupasiddhi_x.y.z_x64-setup.exe  — installer ("මට පමණක්" හෝ "සියලු පරිශීලකයින්ට")
+#    • Rupasiddhi_x.y.z_x64_en-US.msi
+# =====================================================================
+name: Windows build
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version (උදා: 1.0.0 — උපරිම 255.255.65535)'
+        required: true
+        default: '1.0.0'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: windows-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+    env:
+      APP_VERSION: ${{ inputs.version || '1.0.0' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: desktop-app/src-tauri
+
+      - name: Install Tauri CLI
+        working-directory: desktop-app
+        run: npm install --no-audit --no-fund
+
+      - name: Copy web files, icons, set version
+        working-directory: desktop-app
+        run: |
+          npm run prepare-www
+          npm run icons
+          npm run set-version
+
+      - name: Build installer (.exe + .msi)
+        working-directory: desktop-app
+        run: npx tauri build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rupasiddhi-windows-v${{ env.APP_VERSION }}
+          path: |
+            desktop-app/src-tauri/target/release/bundle/nsis/*.exe
+            desktop-app/src-tauri/target/release/bundle/msi/*.msi
+          if-no-files-found: error
