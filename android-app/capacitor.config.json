@@ -1,0 +1,8 @@
+{
+  "appId": "app.vercel.rupasiddhi.twa",
+  "appName": "රූපසිද්ධි",
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": false
+  }
+}
