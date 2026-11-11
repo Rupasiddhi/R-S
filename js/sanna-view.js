@@ -14,13 +14,13 @@ function parseSannaMarkdownBold(text) {
 }
 
 // ලෝපය, ආදේශ සහ ඊතල හැඩගැස්වීම
-function formatSannaFormula(text) {
+function formatSannaFormula(text, rule) {
     if (!text) return '';
     let formatted = text.replace(/~([^~]+)~/g, '<span class="lopa-cut">$1</span>');
     formatted = formatted.replace(/([^\s~→\-+()<>]+)→([^\s~→\-+()<>]+)/g, function (m, a, b) { return '<span class="sub-box">' + a + '<span class="sub-arrow">➔</span>' + b + '</span>'; });
     formatted = formatted.replace(/→/g, '<span style="color: var(--theme-accent); font-weight: bold; margin: 0 4px;">➔</span>');
     formatted = formatted.replace(/\[(.*?)\]/g, '<span style="background: var(--theme-tint); border: 1px solid var(--border-soft); padding: 1px 6px; border-radius: 4px; color: var(--theme-primary); font-weight: 700;">$1</span>');
-    return markSandhiLetters(text, formatted);
+    return markSandhiLetters(text, formatted, !/^\s*නයෙ\s*පරං/.test(rule || ''));
 }
 
 // ෂඩාකාර කාඩ්පත් Helper
@@ -128,7 +128,7 @@ function renderSannaDerivationTable(example) {
                     ${(example.steps || []).map((st, i) => `
                         <tr>
                             <td style="text-align: center; font-weight: bold; color: var(--text-muted);">${i + 1}</td>
-                            <td style="font-size: 1.05rem; font-weight: 600;">${formatSannaFormula(st.formula || st.action)}</td>
+                            <td style="font-size: 1.05rem; font-weight: 600;">${formatSannaFormula(st.formula || st.action, st.rule || '')}</td>
                             <td><span class="rule-badge">${st.rule || '-'}</span></td>
                         </tr>
                     `).join('')}

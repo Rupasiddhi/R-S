@@ -13,13 +13,13 @@ function parseNiggahitaMarkdownBold(text) {
 }
 
 // ලෝපය (කැපී යාම), ආදේශ සහ ඊතල හැඩගැස්වීම
-function formatNiggahitaFormula(text) {
+function formatNiggahitaFormula(text, rule) {
     if (!text) return '';
     let formatted = text.replace(/~([^~]+)~/g, '<span class="lopa-cut">$1</span>');
     formatted = formatted.replace(/([^\s~→\-+()<>]+)→([^\s~→\-+()<>]+)/g, function (m, a, b) { return '<span class="sub-box">' + a + '<span class="sub-arrow">➔</span>' + b + '</span>'; });
     formatted = formatted.replace(/→/g, '<span style="color: var(--theme-accent); font-weight: bold; margin: 0 4px;">➔</span>');
     formatted = formatted.replace(/\[(.*?)\]/g, '<span style="background: #EBF8FF; border: 1px solid #BEE3F8; padding: 1px 6px; border-radius: 4px; color: #2B6CB0; font-weight: 700;">$1</span>');
-    return markSandhiLetters(text, formatted);
+    return markSandhiLetters(text, formatted, !/^\s*නයෙ\s*පරං/.test(rule || ''));
 }
 
 // සූත්‍රයෙන් සෑදෙන සියලු පද හා ප්‍රභේද - Compact Wrapping Badges Layout
@@ -108,7 +108,7 @@ function renderNiggahitaDerivationTable(example) {
                     ${(example.steps || []).map((st, i) => `
                         <tr>
                             <td style="text-align: center; font-weight: bold; color: var(--text-muted);">${i + 1}</td>
-                            <td style="font-size: 1.05rem; font-weight: 600;">${formatNiggahitaFormula(st.formula || st.action)}</td>
+                            <td style="font-size: 1.05rem; font-weight: 600;">${formatNiggahitaFormula(st.formula || st.action, st.rule || '')}</td>
                             <td><span class="rule-badge">${st.rule || '-'}</span></td>
                         </tr>
                     `).join('')}
