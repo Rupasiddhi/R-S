@@ -1901,7 +1901,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -1958,7 +1962,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -2019,7 +2027,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -2080,7 +2092,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -2141,7 +2157,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -2198,7 +2218,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -2259,7 +2283,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -2320,7 +2348,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -2377,7 +2409,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -2438,7 +2474,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -2495,7 +2535,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -2552,7 +2596,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -2613,7 +2661,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -2725,7 +2777,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -2786,7 +2842,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -2847,7 +2907,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -2908,7 +2972,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -2969,7 +3037,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -3030,7 +3102,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -3091,7 +3167,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -3152,7 +3232,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -3213,7 +3297,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -3274,7 +3362,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -3335,7 +3427,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -3396,7 +3492,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -3508,7 +3608,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -3573,7 +3677,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -3638,7 +3746,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -3703,7 +3815,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -3764,7 +3880,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -3829,7 +3949,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -3890,7 +4014,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -3951,7 +4079,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -4012,7 +4144,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -4073,7 +4209,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -4134,7 +4274,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -4199,7 +4343,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -4311,7 +4459,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -4372,7 +4524,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -4433,7 +4589,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -4494,7 +4654,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -4559,7 +4723,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -4620,7 +4788,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -4685,7 +4857,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -4750,7 +4926,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -4815,7 +4995,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -4880,7 +5064,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -4945,7 +5133,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -5006,7 +5198,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -5123,7 +5319,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -5180,7 +5380,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -5237,7 +5441,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -5298,7 +5506,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -5355,7 +5567,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -5416,7 +5632,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -5473,7 +5693,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -5534,7 +5758,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -5591,7 +5819,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -5648,7 +5880,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -5709,7 +5945,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -5770,7 +6010,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -5827,7 +6071,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -5939,7 +6187,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -5996,7 +6248,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -6053,7 +6309,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -6110,7 +6370,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -6167,7 +6431,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -6224,7 +6492,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -6281,7 +6553,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -6338,7 +6614,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -6395,7 +6675,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -6452,7 +6736,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -6509,7 +6797,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -6566,7 +6858,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -6674,7 +6970,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -6735,7 +7035,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -6796,7 +7100,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -6857,7 +7165,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -6918,7 +7230,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -6979,7 +7295,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි. & කත්තරි පරස්සපදං."
+            "rule": "අථ පුබ්බානි විභත්තීනං ඡ පරස්සපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි පරස්සපදං."
           },
           {
             "formula": "පච්",
@@ -7040,7 +7360,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -7101,7 +7425,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -7162,7 +7490,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -7223,7 +7555,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -7284,7 +7620,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
@@ -7345,7 +7685,11 @@ window.SuttaDatabase["05b_akhyata_pada_sadhana"] = [
           },
           {
             "formula": "පච්",
-            "rule": "පරාණ්‍යත්තනොපදානි. & කත්තරි ච."
+            "rule": "පරාණ්‍යත්තනොපදානි."
+          },
+          {
+            "formula": "පච්",
+            "rule": "කත්තරි ච."
           },
           {
             "formula": "පච්",
