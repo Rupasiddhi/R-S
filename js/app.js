@@ -14,7 +14,8 @@ const KHANDAS_CONFIG = [
             { id: "02_sara", name: "ස්වර සන්ධි" },
             { id: "05_pakati", name: "පකති සන්ධි" },
             { id: "03_byanjana", name: "ව්‍යංජන සන්ධි" },
-            { id: "04_niggahita", name: "නිග්ගහීත සන්ධි" }
+            { id: "04_niggahita", name: "නිග්ගහීත සන්ධි" },
+            { id: "06b_sandhi_pada_sadhana", name: "සන්ධි පද සාධනය" }
         ]
     },
     {

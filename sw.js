@@ -8,7 +8,7 @@
 // නව ගොනුවක් index.html වෙත එක් කරන විට එය ASSETS_TO_CACHE ලැයිස්තුවටද එක් කරන්න.
 // ==========================================================================
 
-const CACHE_NAME = 'pada-rupasiddhi-v15.4.99';
+const CACHE_NAME = 'pada-rupasiddhi-v15.4.100';
 const FONT_CACHE = 'pada-rupasiddhi-fonts-v1';
 
 // Offline භාවිතය සඳහා Cache කරගත යුතු සියලුම අත්‍යවශ්‍ය ගොනු ලැයිස්තුව
@@ -53,6 +53,7 @@ const ASSETS_TO_CACHE = [
   './data/1_sandhi/03_byanjana.js',
   './data/1_sandhi/04_niggahita.js',
   './data/1_sandhi/05_pakati.js',
+  './data/1_sandhi/06b_sandhi_pada_sadhana.js',
   './data/2_nama/01_pullinga.js',
   './data/2_nama/01b_pullinga_sadhana.js',
   './data/2_nama/01c_pullinga_saddaniti.js',
