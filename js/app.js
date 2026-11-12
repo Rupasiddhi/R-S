@@ -303,7 +303,7 @@ function populateSubKhandaUnderButton(khandaKey, subCategories) {
         if (suttasForSub.length === 0) {
             suttaListUl.innerHTML = `<li style="padding: 0.4rem; font-size: 0.8rem; color: var(--text-muted); font-style: italic;">සූත්‍ර ඇතුළත් කර නොමැත.</li>`;
         } else {
-            if (typeof isPadaSadhanaSubKhanda === 'function' && isPadaSadhanaSubKhanda(sub.id)) {
+            if ((typeof isPadaSadhanaSubKhanda === 'function' && isPadaSadhanaSubKhanda(sub.id)) || sub.id === '06b_sandhi_pada_sadhana') {
                 renderSadhanaGroupedList(suttaListUl, sub.id, suttasForSub);
             } else suttasForSub.forEach(sutta => {
                 const li = document.createElement('li');
@@ -344,6 +344,7 @@ function sadhanaGroupKey(subId, item) {
         if (w === 'කා') return 'කිං';
         return (w.length > 1 && w.endsWith('ා')) ? w.slice(0, -1) : w;
     }
+    if (item.sandhi_group) return item.sandhi_group;
     if (item.group_key) return item.group_key;
     const e = (item.ending || '').trim();
     return e.split(/[\s(→]/)[0] || 'වෙනත්';
@@ -379,7 +380,7 @@ function renderSadhanaGroupedList(ul, subId, items) {
             li.dataset.sub = subId; li.dataset.num = n;
             const tag = (subId === '04b_sabbanama_sadhana' && it.linga) ? ` <small>(${it.linga.split(' ')[0]})</small>` : '';
             const sd = it.source === 'saddaniti' ? ` <span class="sd-tag" title="සද්දනීති පදමාලාවෙන්">සද්</span>` : '';
-            li.innerHTML = `${it.word}${tag}${sd}`;
+            li.innerHTML = it.sandhi ? `<strong>${n}.</strong> ${String(it.sutta_name || '').replace(/^\s*\d+\.\s*/, '')}` : `${it.word}${tag}${sd}`;
             li.onclick = (e) => { e.stopPropagation(); selectSuttaItem(n, subId); hideSidebarMenu(); };
             inner.appendChild(li);
         });
