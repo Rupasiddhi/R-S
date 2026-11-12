@@ -532,6 +532,8 @@ function _selectSuttaItemCore(suttaNum, subId) {
         renderPakatiWorkspace(sutta);
     } else if (typeof isKarakaSubKhanda === 'function' && isKarakaSubKhanda(subId) && typeof renderKarakaWorkspace === 'function') {
         renderKarakaWorkspace(sutta);
+    } else if (subId === '06b_sandhi_pada_sadhana' && typeof renderSandhiSadhanaWorkspace === 'function') {
+        renderSandhiSadhanaWorkspace(sutta);
     } else if (typeof isPadaSadhanaSubKhanda === 'function' && isPadaSadhanaSubKhanda(subId) && typeof renderPadaSadhanaWorkspace === 'function') {
         renderPadaSadhanaWorkspace(sutta);
     } else if (isNamaSubKhanda(subId) && typeof renderNamaWorkspace === 'function') {
