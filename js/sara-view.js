@@ -97,7 +97,7 @@ function renderSaraDerivationTable(example) {
     if (!example) return '<div class="text-muted p-3">සාධන පියවර නොමැත.</div>';
     return `
         <div class="table-responsive">
-            <table class="data-table">
+            <table class="data-table deriv-table">
                 <thead>
                     <tr>
                         <th style="width: 60px; text-align: center;">පියවර</th>
