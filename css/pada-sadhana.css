@@ -427,7 +427,7 @@
     .deriv-table { width: max-content; min-width: 100%; }
     .deriv-table th, .deriv-table td { padding: 0.55rem 0.4rem; }
     .deriv-table th:nth-child(1), .deriv-table td:nth-child(1) { width: 2.1rem !important; min-width: 2.1rem; text-align: center !important; padding-left: 0.2rem; padding-right: 0.2rem; }
-    .deriv-table td:nth-child(2) { white-space: nowrap; min-width: 68vw; font-size: 1.1rem !important; }
-    .deriv-table th:nth-child(3), .deriv-table td:nth-child(3) { width: 15rem !important; min-width: 15rem; padding-left: 0.9rem; }
+    .deriv-table td:nth-child(2) { white-space: nowrap; min-width: 50vw; font-size: 1.1rem !important; }
+    .deriv-table th:nth-child(3), .deriv-table td:nth-child(3) { width: 15rem !important; min-width: 15rem; padding-left: 0.5rem; }
     .deriv-table .rule-badge { font-size: 0.88rem; line-height: 1.5; }
 }
