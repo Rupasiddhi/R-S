@@ -7,11 +7,8 @@
  * ==========================================================================
  */
 
-const SANDHI_SADHANA_ID = '06b_sandhi_pada_sadhana';
 
 function isPadaSadhanaSubKhanda(subId) {
-    // සන්ධි පද සාධනය: සූත්‍ර ලැයිස්තුව → පද ලැයිස්තුව → පද සාධනය (වෙනම දර්ශනයක්)
-    if (subId === SANDHI_SADHANA_ID) return false;
     return typeof subId === 'string' && subId.endsWith('_sadhana');
 }
 
@@ -423,63 +420,4 @@ function renderAvSections(ids, secById, lead) {
             </div>
             ${secs.map((s, i) => avSection(s, i + 1)).join('')}
         </div>`;
-}
-
-
-/* ==========================================================================
- * සන්ධි පද සාධනය — සූත්‍රයක් ක්ලික් කළ පසු එහි පද ලැයිස්තුව පෙන්වයි;
- * පදයක් ක්ලික් කළ විට එහි පද සාධනය පහතින් පෙන්වයි.
- * ========================================================================== */
-function renderSandhiSadhanaWorkspace(item, targetContainerId = 'viewSuttaPanel') {
-    const container = document.getElementById(targetContainerId);
-    if (!container || !item) return;
-    window.AppState.currentSutta = item;
-    window.AppState.activeExampleIndex = -1;
-    const derivs = item.derivations || [];
-    const esc = (t) => String(t || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-    const md = (t) => esc(t).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-
-    container.innerHTML = `
-        <div class="panel-card nama-banner-card">
-            <div class="tag-row" style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.4rem;">
-                <span class="nama-category-badge">${esc(item.sub_khanda_name)}</span>
-                <span class="badge badge-khanda">${esc(item.khanda_badge || 'සන්ධිකණ්ඩ')}</span>
-                ${item.sandhi_group ? `<span class="badge" style="background:#FAF2E6; color:#8C2D00; border:1px solid #E6D0BA;">${esc(item.sandhi_group)}</span>` : ''}
-            </div>
-            <h2 class="nama-sutta-title">${esc(item.sutta_name)}</h2>
-            ${item.sutta_meaning ? `<div class="nama-meaning-container"><p class="nama-meaning-text">${md(item.sutta_meaning)}</p></div>` : ''}
-        </div>
-
-        <div class="panel-card">
-            <h3 class="section-heading"><span class="heading-icon">📜</span> මෙම සූත්‍රයෙන් සිද්ධ වන පද (${derivs.length})</h3>
-            <div class="ps-hint-box">
-                <span class="ps-hint-icon">👆</span>
-                <span>පදයක් <strong>ක්ලික් කරන්න</strong> — එහි සූත්‍ර සහිත සම්පූර්ණ පද සාධනය පහත දිස් වේ.</span>
-            </div>
-            <div class="ps-chip-row" id="sandhiWordChips" style="flex-wrap: wrap;">
-                ${derivs.map((d, i) => `<button type="button" class="ps-form-chip" data-idx="${i}" onclick="showSandhiWord(${i})">${esc(d.word)}</button>`).join('')}
-            </div>
-        </div>
-
-        <div class="panel-card nama-derivation-card" id="sandhiSadhanaCard">
-            <h3 class="section-heading"><span class="heading-icon">⚙️</span> සම්පූර්ණ පද සාධනය</h3>
-            <div id="sandhiSadhanaPanel"><p class="ps-note" style="color: var(--text-muted); font-style: italic;">ඉහත පද ලැයිස්තුවෙන් පදයක් තෝරන්න.</p></div>
-        </div>
-    `;
-}
-
-function showSandhiWord(index) {
-    const item = window.AppState && window.AppState.currentSutta;
-    const d = item && item.derivations && item.derivations[index];
-    if (!d) return;
-    window.AppState.activeExampleIndex = index;
-    document.querySelectorAll('#sandhiWordChips .ps-form-chip').forEach(el => {
-        el.classList.toggle('active', Number(el.dataset.idx) === index);
-    });
-    const box = document.getElementById('sandhiSadhanaPanel');
-    if (box) box.innerHTML = `
-        <div class="ps-now-showing"><span class="ps-now-label">පද සාධනය:</span> <span class="ps-deriv-word">${d.word}</span></div>
-        ${renderNamaDerivationTable(d)}`;
-    const card = document.getElementById('sandhiSadhanaCard');
-    if (card && card.scrollIntoView) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }

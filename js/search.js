@@ -420,7 +420,6 @@ function openSearchResult(idx) {
 function openSearchedWord(e) {
     if (e.wi == null) return;
     try {
-        if (e.subId === '06b_sandhi_pada_sadhana' && typeof showSandhiWord === 'function') { showSandhiWord(e.wi); return; }
         if (typeof isPadaSadhanaSubKhanda === 'function' && isPadaSadhanaSubKhanda(e.subId) && typeof updatePadaSadhanaView === 'function' && document.getElementById('padaSadhanaContainer')) { updatePadaSadhanaView(e.wi, true); return; }
         const tabs = document.querySelectorAll('.example-tab-btn');
         if (tabs[e.wi]) { tabs[e.wi].click(); const c = document.getElementById('derivationStepsBody'); if (c && c.scrollIntoView) c.scrollIntoView({ behavior: 'smooth', block: 'center' }); }

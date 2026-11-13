@@ -14,8 +14,7 @@ const KHANDAS_CONFIG = [
             { id: "02_sara", name: "ස්වර සන්ධි" },
             { id: "05_pakati", name: "පකති සන්ධි" },
             { id: "03_byanjana", name: "ව්‍යංජන සන්ධි" },
-            { id: "04_niggahita", name: "නිග්ගහීත සන්ධි" },
-            { id: "06b_sandhi_pada_sadhana", name: "සන්ධි පද සාධනය" }
+            { id: "04_niggahita", name: "නිග්ගහීත සන්ධි" }
         ]
     },
     {
@@ -303,7 +302,7 @@ function populateSubKhandaUnderButton(khandaKey, subCategories) {
         if (suttasForSub.length === 0) {
             suttaListUl.innerHTML = `<li style="padding: 0.4rem; font-size: 0.8rem; color: var(--text-muted); font-style: italic;">සූත්‍ර ඇතුළත් කර නොමැත.</li>`;
         } else {
-            if ((typeof isPadaSadhanaSubKhanda === 'function' && isPadaSadhanaSubKhanda(sub.id)) || sub.id === '06b_sandhi_pada_sadhana') {
+            if ((typeof isPadaSadhanaSubKhanda === 'function' && isPadaSadhanaSubKhanda(sub.id))) {
                 renderSadhanaGroupedList(suttaListUl, sub.id, suttasForSub);
             } else suttasForSub.forEach(sutta => {
                 const li = document.createElement('li');
@@ -344,7 +343,6 @@ function sadhanaGroupKey(subId, item) {
         if (w === 'කා') return 'කිං';
         return (w.length > 1 && w.endsWith('ා')) ? w.slice(0, -1) : w;
     }
-    if (item.sandhi_group) return item.sandhi_group;
     if (item.group_key) return item.group_key;
     const e = (item.ending || '').trim();
     return e.split(/[\s(→]/)[0] || 'වෙනත්';
@@ -533,8 +531,6 @@ function _selectSuttaItemCore(suttaNum, subId) {
         renderPakatiWorkspace(sutta);
     } else if (typeof isKarakaSubKhanda === 'function' && isKarakaSubKhanda(subId) && typeof renderKarakaWorkspace === 'function') {
         renderKarakaWorkspace(sutta);
-    } else if (subId === '06b_sandhi_pada_sadhana' && typeof renderSandhiSadhanaWorkspace === 'function') {
-        renderSandhiSadhanaWorkspace(sutta);
     } else if (typeof isPadaSadhanaSubKhanda === 'function' && isPadaSadhanaSubKhanda(subId) && typeof renderPadaSadhanaWorkspace === 'function') {
         renderPadaSadhanaWorkspace(sutta);
     } else if (isNamaSubKhanda(subId) && typeof renderNamaWorkspace === 'function') {
