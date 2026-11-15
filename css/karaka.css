@@ -222,3 +222,7 @@
 .kkn-refs { list-style: none; padding: 0; margin: 0; }
 .kkn-refs li { padding: 0.25rem 0; font-weight: 600; color: #4D121D; }
 .night-mode .kkn-context { background: #2A241D; color: #E8B4B4; }
+
+/* ටීකා පාඨ — සාමාන්‍ය පාඨය සැහැල්ලුව, ලේඛනයේ bold කළ පාඨ පැහැදිලිව තදින් */
+.kk-tika-body .sanna-vutti-text { font-weight: 400; color: #3A2A1E; }
+.kk-tika-body .sanna-vutti-text strong, .kk-tika-body .sanna-vutti-text b { font-weight: 800; color: #8C2D00; }
