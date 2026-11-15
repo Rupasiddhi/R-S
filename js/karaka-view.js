@@ -70,6 +70,22 @@ function kkTikaHtml(list) {
         </div></div></details>`;
 }
 
+// මහාරූපසිද්ධිටීකා — සූත්‍ර අංකය අනුව (ක්ලික් කළ විට විවෘත වේ)
+function kkMahaTika(s) {
+    const list = (window.KarakaTika || {})[s.sutta_number] || [];
+    if (!list.length) return '';
+    return `
+        <section class="panel-card kkn-panel">
+            <h3 class="section-heading"><span class="heading-icon">📜</span> ටීකා විවරණ <span class="kk-tika-hint">(${list.length}) — බැලීමට ක්ලික් කරන්න</span></h3>
+            ${list.map(t => `
+                <details class="kk-tika"><summary><span class="kk-tika-icon">📜</span> ${t.source ? `<b>${t.source}</b> — ` : ''}${t.title}</summary>
+                    <div class="kk-tika-body"><div class="sanna-vutti-box kk-pair">
+                        <span class="vutti-label">ටීකා පාඨය:</span><div class="sanna-vutti-text kk-html">${t.pali}</div>
+                    </div></div>
+                </details>`).join('')}
+        </section>`;
+}
+
 function kkParaBox(p, first) {
     const sanna = (p.sanna || []).map(b => (b.kind === 'sanna' ? b.html : kkBlockHtml(b))).join('');
     const notes = p.notes || [];
@@ -141,6 +157,9 @@ function renderKarakaWorkspace(s, targetContainerId = 'viewSuttaPanel') {
 
         <!-- 02b. සූත්‍රයට අදාළ විශේෂ සටහන් -->
         ${kkSuttaNotes(s)}
+
+        <!-- 02b-2. මහාරූපසිද්ධිටීකා (data/3_karaka/karaka_tika.js) -->
+        ${kkMahaTika(s)}
 
 
 
