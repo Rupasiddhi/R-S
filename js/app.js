@@ -437,9 +437,24 @@ function isNamaSubKhanda(subId) {
 /**
  * සූත්‍රයක් තේරූ පසු ඛාණ්ඩ ලයිස්තුව (sidebar) සැඟවීම
  */
+// දුරකථන සහ tablet portrait = drawer; laptop සහ tablet landscape = ස්ථිර (docked) ලැයිස්තුව
+const DRAWER_MEDIA = '(max-width: 899px), (max-width: 1024px) and (orientation: portrait)';
 function isDrawerMode() {
-    try { return window.matchMedia('(max-width: 1024px)').matches; }
-    catch (e) { return window.innerWidth <= 1024; }
+    try { return window.matchMedia(DRAWER_MEDIA).matches; }
+    catch (e) { return window.innerWidth <= 1024 && window.innerWidth <= window.innerHeight || window.innerWidth < 900; }
+}
+
+// docked මාදිලියේ පරිශීලකයා ලැයිස්තුව සැඟවූවාද යන්න මතක තබා ගැනීම
+function rsSidebarPrefHidden() { try { return localStorage.getItem('rs_sidebar_hidden') === '1'; } catch (e) { return false; } }
+function rsSetSidebarHidden(hidden) {
+    const layout = document.querySelector('.layout-container');
+    if (layout) layout.classList.toggle('sidebar-hidden', !!hidden);
+    try { localStorage.setItem('rs_sidebar_hidden', hidden ? '1' : '0'); } catch (e) {}
+    const edge = document.getElementById('sidebarEdgeToggle');
+    if (edge) {
+        edge.setAttribute('aria-expanded', hidden ? 'false' : 'true');
+        edge.title = hidden ? 'ඛාණ්ඩ ලැයිස්තුව පෙන්වන්න' : 'ඛාණ්ඩ ලැයිස්තුව වම්පසට සඟවන්න';
+    }
 }
 
 function hideSidebarMenuNow() {
@@ -461,6 +476,7 @@ function isPersistentSidebarDevice() {
 
 let _sidebarOutsideHandler = null;
 function hideSidebarMenu() {
+    if (!isDrawerMode()) return; // laptop / tablet landscape: ලැයිස්තුව පෙන්වාම තබයි
     if (!isPersistentSidebarDevice()) { hideSidebarMenuNow(); return; }
     if (_sidebarOutsideHandler) return;
     _sidebarOutsideHandler = function (e) {
@@ -791,7 +807,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 if (sidebarNav) sidebarNav.classList.remove('drawer-open');
                 if (sidebarOverlay) sidebarOverlay.classList.remove('active');
-                if (layoutContainer) layoutContainer.classList.toggle('sidebar-hidden');
+                rsSetSidebarHidden(!(layoutContainer && layoutContainer.classList.contains('sidebar-hidden')));
             }
         });
     }
@@ -857,12 +873,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (sidebarOverlay) sidebarOverlay.classList.remove('active');
         }
 
-        // Desktop Layout හිදී සයිඩ්බාර් එක Hide කර තිරය නිදහස් කිරීම
-        if (!isDrawerMode()) {
-            if (layoutContainer && !layoutContainer.classList.contains('sidebar-hidden')) {
-                layoutContainer.classList.add('sidebar-hidden');
-            }
-        }
     });
 
     // තිරය කරකැවීමේදී / ප්‍රමාණය වෙනස් වීමේදී sidebar තත්ත්වය නිවැරදිව පවත්වා ගැනීම
@@ -872,8 +882,18 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             if (sidebarNav) sidebarNav.classList.remove('drawer-open');
             if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+            rsSetSidebarHidden(rsSidebarPrefHidden());
         }
     };
+
+    // වම් දාරයේ සඟවන / පෙන්වන ටැබය (laptop / tablet landscape)
+    const edgeToggle = document.getElementById('sidebarEdgeToggle');
+    if (edgeToggle) {
+        edgeToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            rsSetSidebarHidden(!(layoutContainer && layoutContainer.classList.contains('sidebar-hidden')));
+        });
+    }
     window.addEventListener('resize', syncSidebarMode);
     window.addEventListener('orientationchange', syncSidebarMode);
     syncSidebarMode();

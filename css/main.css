@@ -745,7 +745,7 @@ input {
 /* --------------------------------------------------------------------------
    8. Responsive
    -------------------------------------------------------------------------- */
-@media (max-width: 1024px) {
+@media (max-width: 899px), (max-width: 1024px) and (orientation: portrait) {
     .layout-container,
     .layout-container.sidebar-hidden {
         grid-template-columns: minmax(0, 1fr);
@@ -1300,3 +1300,43 @@ input {
 .sutta-pager .sp-name{font-weight:600;line-height:1.4}
 .sutta-pager .sp-gap{flex:1}
 @media(max-width:600px){.sutta-pager{flex-direction:column}.sutta-pager .sp-btn{max-width:100%}}
+
+/* --------------------------------------------------------------------------
+   Laptop / Tablet landscape: ස්ථිර ඛාණ්ඩ ලැයිස්තුව + වම්පසට සඟවන ටැබය
+   -------------------------------------------------------------------------- */
+.sidebar-edge-toggle {
+    position: fixed;
+    top: calc(50vh + var(--header-height, 72px) / 2);
+    left: var(--sidebar-width, 320px);
+    transform: translate(-50%, -50%);
+    z-index: 60;
+    display: flex; flex-direction: column; align-items: center; gap: 0.15rem;
+    width: 1.6rem; padding: 0.55rem 0;
+    border: 1px solid var(--border-soft, #EADBBE);
+    border-radius: 999px;
+    background: var(--surface-card, #fff);
+    color: var(--theme-primary, #5C1422);
+    box-shadow: 0 3px 12px rgba(43, 33, 24, 0.16);
+    cursor: pointer;
+    transition: left 0.25s ease, background 0.2s ease, width 0.2s ease;
+    font-family: inherit;
+}
+.sidebar-edge-toggle:hover { background: var(--theme-tint, #FAF2E6); }
+.sidebar-edge-toggle .edge-arrow { font-size: 1.15rem; line-height: 1; font-weight: 700; transition: transform 0.25s ease; }
+.sidebar-edge-toggle .edge-label { display: none; writing-mode: vertical-rl; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; }
+.layout-container.sidebar-hidden .sidebar-edge-toggle {
+    left: 0; transform: translate(0, -50%);
+    border-radius: 0 12px 12px 0; border-left: 0;
+    width: 1.9rem; padding: 0.7rem 0;
+    background: var(--theme-primary, #5C1422); color: #FFF9E6;
+}
+.layout-container.sidebar-hidden .sidebar-edge-toggle .edge-arrow { transform: rotate(180deg); }
+.layout-container.sidebar-hidden .sidebar-edge-toggle .edge-label { display: block; }
+.layout-container.sidebar-hidden .main-viewport { padding-left: 2.6rem; }
+@media (min-width: 900px) and (max-width: 1280px) and (orientation: landscape) {
+    .layout-container { --sidebar-width: 280px; }
+}
+@media (max-width: 899px), (max-width: 1024px) and (orientation: portrait) {
+    .sidebar-edge-toggle { display: none !important; }
+    .layout-container.sidebar-hidden .main-viewport { padding-left: 1rem; }
+}
