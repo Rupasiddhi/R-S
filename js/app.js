@@ -507,6 +507,7 @@ function _selectSuttaItemCore(suttaNum, subId) {
     const suttaPanel = document.getElementById('viewSuttaPanel');
     if (introPanel) introPanel.style.display = 'none';
     if (suttaPanel) suttaPanel.style.display = 'flex';
+    if (typeof hideKosaPanel === 'function') hideKosaPanel();
 
     // Sidebar active item class toggle
     document.querySelectorAll('.sutta-sub-item').forEach(el => {
@@ -561,6 +562,15 @@ function _selectSuttaItemCore(suttaNum, subId) {
  * (මෙහිදී අනුඛාණ්ඩ ලැයිස්තුව පමණක් විවෘත වන අතර සූත්‍ර ලැයිස්තුව ඉබේ දිගහැරීම වළක්වා ඇත)
  */
 function selectKhanda(khandaKey) {
+    // ශබ්දකෝෂයේ සිට ඛාණ්ඩයකට පැමිණි විට එහි පුවරුව වසා හැඳින්වීම පෙන්වීම
+    if (AppState.currentMode === 'kosa') {
+        if (typeof hideKosaPanel === 'function') hideKosaPanel();
+        const introP = document.getElementById('viewIntroPanel');
+        const suttaP = document.getElementById('viewSuttaPanel');
+        if (introP) introP.style.display = 'flex';
+        if (suttaP) suttaP.style.display = 'none';
+    }
+
     if (AppState.currentMode === 'khanda' && AppState.activeKhandaKey === khandaKey) {
         AppState.currentMode = 'intro';
         AppState.activeKhandaKey = null;
@@ -605,6 +615,7 @@ function showShadakaraIntro() {
     const suttaPanel = document.getElementById('viewSuttaPanel');
     if (introPanel) introPanel.style.display = 'flex';
     if (suttaPanel) suttaPanel.style.display = 'none';
+    if (typeof hideKosaPanel === 'function') hideKosaPanel();
 
     renderKhandaTreeNavigation();
     
@@ -965,7 +976,11 @@ window.addEventListener('popstate', (e) => {
     const st = e.state || { root: 1 };
     window.__histRestoring = true;
     try {
-        if (st.sub !== undefined) {
+        if (st.kosa) {
+            if (typeof showSabdaKosa === 'function') {
+                showSabdaKosa({ letter: st.kl, index: st.ki, noHistory: true });
+            }
+        } else if (st.sub !== undefined) {
             navigateToSutta(st.khanda || AppState.activeKhandaKey, st.sub, st.num);
         } else {
             // මුල් පිටුව: ඇප් එකෙන් ඉවත් නොවී එහි රැඳී සිටීම

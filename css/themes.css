@@ -136,6 +136,22 @@ body[data-theme="khanda-7_kibbhidhana"] {
     --khanda-color: #5856D6;
 }
 
+/* ශබ්දකෝෂය (ව්‍යාකරණ සද්දසින්ධු) — ඛාණ්ඩ ලැයිස්තුවේ අග ඇති කොටස */
+body[data-theme="kosa"] {
+    --theme-primary: #0D5C63;
+    --theme-primary-dark: #09454A;
+    --theme-primary-glow: rgba(13, 92, 99, 0.15);
+    --theme-accent: #00A39B;
+    --theme-accent-light: #CFF3EF;
+    --border-soft: #CDEDEA;
+    --border-strong: #00A39B;
+    --theme-light: #F0FBFA;
+    --surface-soft: #F8FDFD;
+    --theme-tint: #EAFBFA;
+    --theme-tint-strong: #D8F4F1;
+    --khanda-color: #00A39B;
+}
+
 /* වර්ණ මාරුව සුමටව සිදුවීම */
 .app-header, .sidebar-nav, .panel-card, .main-viewport, .khanda-node, body {
     transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease;

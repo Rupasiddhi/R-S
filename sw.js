@@ -8,7 +8,7 @@
 // නව ගොනුවක් index.html වෙත එක් කරන විට එය ASSETS_TO_CACHE ලැයිස්තුවටද එක් කරන්න.
 // ==========================================================================
 
-const CACHE_NAME = 'pada-rupasiddhi-v15.4.112';
+const CACHE_NAME = 'pada-rupasiddhi-v15.4.113';
 const FONT_CACHE = 'pada-rupasiddhi-fonts-v1';
 
 // Offline භාවිතය සඳහා Cache කරගත යුතු සියලුම අත්‍යවශ්‍ය ගොනු ලැයිස්තුව
@@ -141,6 +141,51 @@ const ASSETS_TO_CACHE = [
   './data/3_karaka/06_karaka_chatthi.js',
   './data/3_karaka/07_karaka_sattami.js',
 
+
+  // ශබ්දකෝෂය — ව්‍යාකරණ සද්දසින්ධු
+  './css/sabdakosa.css',
+  './js/sabdakosa-view.js',
+  './data/8_sabdakosa/sabdakosa_index.js',
+  './data/8_sabdakosa/sabdakosa_front.js',
+  './data/8_sabdakosa/sk_01.js',
+  './data/8_sabdakosa/sk_02.js',
+  './data/8_sabdakosa/sk_03.js',
+  './data/8_sabdakosa/sk_04.js',
+  './data/8_sabdakosa/sk_05.js',
+  './data/8_sabdakosa/sk_06.js',
+  './data/8_sabdakosa/sk_07.js',
+  './data/8_sabdakosa/sk_08.js',
+  './data/8_sabdakosa/sk_09.js',
+  './data/8_sabdakosa/sk_10.js',
+  './data/8_sabdakosa/sk_11.js',
+  './data/8_sabdakosa/sk_12.js',
+  './data/8_sabdakosa/sk_13.js',
+  './data/8_sabdakosa/sk_14.js',
+  './data/8_sabdakosa/sk_15.js',
+  './data/8_sabdakosa/sk_16.js',
+  './data/8_sabdakosa/sk_17.js',
+  './data/8_sabdakosa/sk_18.js',
+  './data/8_sabdakosa/sk_19.js',
+  './data/8_sabdakosa/sk_20.js',
+  './data/8_sabdakosa/sk_21.js',
+  './data/8_sabdakosa/sk_22.js',
+  './data/8_sabdakosa/sk_23.js',
+  './data/8_sabdakosa/sk_24.js',
+  './data/8_sabdakosa/sk_25.js',
+  './data/8_sabdakosa/sk_26.js',
+  './data/8_sabdakosa/sk_27.js',
+  './data/8_sabdakosa/sk_28.js',
+  './data/8_sabdakosa/sk_29.js',
+  './data/8_sabdakosa/sk_30.js',
+  './data/8_sabdakosa/sk_31.js',
+  './data/8_sabdakosa/sk_32.js',
+  './data/8_sabdakosa/sk_33.js',
+  './data/8_sabdakosa/sk_34.js',
+  './data/8_sabdakosa/sk_35.js',
+  './data/8_sabdakosa/sk_36.js',
+  './data/8_sabdakosa/sk_37.js',
+  './data/8_sabdakosa/sk_38.js',
+  './data/8_sabdakosa/sk_39.js',
   // Icons
   './icons/rs-192.png',
   './icons/rs-512.png',

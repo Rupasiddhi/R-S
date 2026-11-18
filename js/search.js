@@ -16,9 +16,10 @@ const SEARCH_CATS = [
     { key: 'all', label: 'සියල්ල', icon: '✨' },
     { key: 'sutta', label: 'සූත්‍ර', icon: '📜' },
     { key: 'word', label: 'පද සාධන', icon: '🔤' },
-    { key: 'content', label: 'අන්තර්ගතය', icon: '📖' }
+    { key: 'content', label: 'අන්තර්ගතය', icon: '📖' },
+    { key: 'kosa', label: 'ශබ්දකෝෂය', icon: '📘' }
 ];
-const SEARCH_ALL_LIMITS = { sutta: 5, word: 8, content: 6 };
+const SEARCH_ALL_LIMITS = { sutta: 5, word: 8, content: 6, kosa: 5 };
 const SEARCH_TAB_LIMIT = 60;
 const SEARCH_KHANDA_COLOR = { '1_sandhi': '#B45309', '2_nama': '#9B2C2C', '3_karaka': '#2C7A7B', '4_samasa': '#6B46C1', '5_taddhita': '#2B6CB0', '6_akhyata': '#2F855A', '7_kibbhidhana': '#B7791F' };
 const SEARCH_SUGGESTIONS = ['දීඝං', 'සරා සරෙ ලොපං', 'පචති', 'පුරිස', 'ක්වචි', 'ඉති'];
@@ -148,7 +149,15 @@ const SEARCH_EXTRA_DATA = {
 
 function buildSearchIndex() {
     const db = window.SuttaDatabase || {};
-    const idx = { sutta: [], word: [], content: [] };
+    const idx = { sutta: [], word: [], content: [], kosa: [] };
+
+    // ශබ්දකෝෂය (ව්‍යාකරණ සද්දසින්ධු) — පද නාමාවලියෙන්
+    const kosa = window.SabdaKosaIndex;
+    if (kosa && kosa.letters) {
+        kosa.letters.forEach(m => (m.w || []).forEach((hw, i) => {
+            idx.kosa.push({ type: 'kosa', letter: m.l, ki: i, word: hw, wordNorm: normalizeSearchText(hw) });
+        }));
+    }
 
     KHANDAS_CONFIG.forEach(khanda => {
         const itemByNum = {};
@@ -214,8 +223,17 @@ function runSearch(q) {
     if (!SEARCH_INDEX) SEARCH_INDEX = buildSearchIndex();
     const nq = normalizeSearchText(q);
     const terms = searchTerms(q);
-    const out = { sutta: [], word: [], content: [] };
+    const out = { sutta: [], word: [], content: [], kosa: [] };
     if (!terms.length) return out;
+
+    (SEARCH_INDEX.kosa || []).forEach(e => {
+        if (!terms.every(t => e.wordNorm.includes(t))) return;
+        let score = 30;
+        if (e.wordNorm === nq) score = 110;
+        else if (e.wordNorm.startsWith(nq)) score = 80;
+        else if (e.wordNorm.includes(nq)) score = 55;
+        out.kosa.push({ entry: e, score });
+    });
 
     SEARCH_INDEX.sutta.forEach(e => {
         let score = 0, snippet = null;
@@ -254,7 +272,7 @@ function runSearch(q) {
         out.content.push({ entry: e, score, snippet: { label: f.label, text: searchSnippet(f.raw, terms[0]) } });
     });
 
-    ['sutta', 'word', 'content'].forEach(k => out[k].sort((a, b) => b.score - a.score));
+    ['sutta', 'word', 'content', 'kosa'].forEach(k => out[k].sort((a, b) => b.score - a.score));
     return out;
 }
 
@@ -274,6 +292,15 @@ function searchPath(e) {
 function searchResultHtml(r, i, q) {
     const e = r.entry;
     const act = i === searchActiveIndex ? ' active' : '';
+    if (e.type === 'kosa') {
+        return `<button type="button" class="search-result-item sr-word${act}" role="option" data-idx="${i}">
+            <span class="sr-icon">📘</span>
+            <span class="sr-main">
+                <span class="sr-word-pill">${highlightTerms(e.word, q)}</span>
+                <span class="sr-sub">ව්‍යාකරණ සද්දසින්ධු — පාරිභාෂික ශබ්දකෝෂය</span>
+                <span class="sr-path"><i class="sr-dot" style="background:#00A39B"></i>ශබ්දකෝෂය › ${escapeHtml(e.letter)} අකුර</span>
+            </span><span class="sr-go">අර්ථය ›</span></button>`;
+    }
     const titleText = String(e.title).replace(/^\s*[^\s.]+\.\s+/, '');
     if (e.type === 'word') {
         return `<button type="button" class="search-result-item sr-word${act}" role="option" data-idx="${i}">
@@ -313,6 +340,7 @@ function searchEmptyStateHtml() {
             <li>📜 <b>සූත්‍ර</b> — නමින් හෝ අංකයෙන් (උදා: <i>17</i>)</li>
             <li>🔤 <b>පද සාධන</b> — පදයක් ක්ලික් කළ විට එහි සාධනයටම යයි</li>
             <li>📖 <b>අන්තර්ගතය</b> — වෘත්තිය, සන්නය, ටීකා, සටහන් ඇතුළු සියල්ල</li>
+            <li>📘 <b>ශබ්දකෝෂය</b> — ව්‍යාකරණ සද්දසින්ධු පාරිභාෂික පද</li>
             <li>⌨️ Roman අකුරින් ද ලිවිය හැක: <i>dīgha</i> / <i>diigha</i> / <i>dhammo</i></li>
         </ul></div>`;
 }
@@ -333,12 +361,12 @@ function renderSearchResults(query) {
     }
 
     const res = runSearch(q);
-    const counts = { sutta: res.sutta.length, word: res.word.length, content: res.content.length };
-    counts.all = counts.sutta + counts.word + counts.content;
+    const counts = { sutta: res.sutta.length, word: res.word.length, content: res.content.length, kosa: res.kosa.length };
+    counts.all = counts.sutta + counts.word + counts.content + counts.kosa;
 
     let flat = [], sections = [];
     if (searchCat === 'all') {
-        ['sutta', 'word', 'content'].forEach(k => {
+        ['sutta', 'word', 'content', 'kosa'].forEach(k => {
             const part = res[k].slice(0, SEARCH_ALL_LIMITS[k]);
             if (part.length) sections.push({ key: k, items: part, more: res[k].length - part.length });
         });
@@ -351,7 +379,7 @@ function renderSearchResults(query) {
     searchActiveIndex = flat.length ? 0 : -1;
 
     const tabs = SEARCH_CATS.map(c => `<button type="button" class="sr-tab ${c.key === searchCat ? 'active' : ''}" data-cat="${c.key}" role="tab"><span>${c.icon}</span> ${c.label} <b>${counts[c.key]}</b></button>`).join('');
-    const secTitle = { sutta: '📜 සූත්‍ර', word: '🔤 පද සාධන', content: '📖 අන්තර්ගතය' };
+    const secTitle = { sutta: '📜 සූත්‍ර', word: '🔤 පද සාධන', content: '📖 අන්තර්ගතය', kosa: '📘 ශබ්දකෝෂය' };
     let i = 0;
     const body = flat.length ? sections.map(s => `
         <div class="sr-section">
@@ -411,6 +439,11 @@ function openSearchResult(idx) {
     closeSearchResults();
     const input = document.getElementById('globalSearchInput');
     if (input) input.blur();
+
+    if (e.type === 'kosa') {
+        if (typeof navigateToKosaEntry === 'function') navigateToKosaEntry(e.letter, e.ki);
+        return;
+    }
 
     navigateToSutta(e.khandaKey, e.subId, e.num);
     if (e.type === 'word') openSearchedWord(e);
